@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Dockerコンテナ上でHexoを導入してGithubPagesにデプロイする〜①コンテナ作成編〜 | ただの技術メモ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="概要Dockerコンテナ上にHexoをインストールして静的WebサイトをGithubPageにローンチするまでの流れをまとめました。   Dockerコンテナ上で諸々を行うので、Dockerさえインストールされていれば、ローカルへのnodeおよびHexoのインストールが必要ありません。Hexoに興味があってちょっと試してみたい人などにおすすめです。   準備物 Git Pages用のリポジトリ D">
+<meta name="keywords" content="Hexo,Docker,Github Pages">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Dockerコンテナ上でHexoを導入してGithubPagesにデプロイする〜①コンテナ作成編〜">
+<meta property="og:url" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;hexo_test&#x2F;2019&#x2F;10&#x2F;29&#x2F;start-hexo-container&#x2F;index.html">
+<meta property="og:site_name" content="ただの技術メモ">
+<meta property="og:description" content="概要Dockerコンテナ上にHexoをインストールして静的WebサイトをGithubPageにローンチするまでの流れをまとめました。   Dockerコンテナ上で諸々を行うので、Dockerさえインストールされていれば、ローカルへのnodeおよびHexoのインストールが必要ありません。Hexoに興味があってちょっと試してみたい人などにおすすめです。   準備物 Git Pages用のリポジトリ D">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-11-01T22:51:53.000Z">
+<meta name="twitter:card" content="summary">
+  
+  
+    <link rel="icon" href="/hexo_test/css/images/favicon.ico">
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+  
+  <link rel="stylesheet" href="/hexo_test/css/style.css">
+  
+    <link rel="stylesheet" href="/hexo_test/fancybox/jquery.fancybox.min.css">
+  
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/hexo_test/" id="logo">ただの技術メモ</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/hexo_test/">Home</a>
+        
+          <a class="main-nav-link" href="/hexo_test/about">About</a>
+        
+          <a class="main-nav-link" href="/hexo_test/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://karintomania.github.io/hexo_test"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-start-hexo-container" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/hexo_test/2019/10/29/start-hexo-container/" class="article-date">
+  <time datetime="2019-10-29T19:44:23.000Z" itemprop="datePublished">2019-10-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Dockerコンテナ上でHexoを導入してGithubPagesにデプロイする〜①コンテナ作成編〜
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h2><p>Dockerコンテナ上にHexoをインストールして<br>静的WebサイトをGithubPageにローンチするまでの流れをまとめました。  </p>
+<p>Dockerコンテナ上で諸々を行うので、Dockerさえインストールされていれば、ローカルへのnodeおよびHexoのインストールが必要ありません。<br>Hexoに興味があってちょっと試してみたい人などにおすすめです。  </p>
+<h2 id="準備物"><a href="#準備物" class="headerlink" title="準備物"></a>準備物</h2><ul>
+<li>Git Pages用のリポジトリ</li>
+<li>Docker</li>
+</ul>
+<a id="more"></a>
+
+<h2 id="コンテナの準備"><a href="#コンテナの準備" class="headerlink" title="コンテナの準備"></a>コンテナの準備</h2><p>コンテナを作ります。<br>DockerfileとDocker-compose用のymlファイルを作成します。<br>nodeイメージをベースにDockerfile内のRUNコマンドでHexo運用に必要なツールをインストールしています。</p>
+<figure class="highlight dockerfile"><figcaption><span>Dockerfile</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># node:10.13-alpineイメージを使用</span></span><br><span class="line"><span class="keyword">FROM</span> node:<span class="number">10.13</span>-alpine</span><br><span class="line"></span><br><span class="line"><span class="comment"># よくわかってないです笑。要調査</span></span><br><span class="line"><span class="keyword">WORKDIR</span><span class="bash"> /app</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># git, hexo, hexoのgithub pagesデプロイ用ツールをインストールするコマンド</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> apk add git</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> npm install -g hexo-cli</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> npm install -g hexo-deployer-git</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 4000ポートを開く</span></span><br><span class="line"><span class="comment"># Hexoではサイトプレビュー用にローカルサーバを立てられるのですが、</span></span><br><span class="line"><span class="comment"># そこでlocalhost:4000を使用するので開けておきます。</span></span><br><span class="line"><span class="keyword">EXPOSE</span> <span class="number">4000</span></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight yaml"><figcaption><span>docker-compose.yml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">'3'</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line"><span class="attr">  app:</span></span><br><span class="line"><span class="attr">    build:</span> <span class="string">.</span></span><br><span class="line"><span class="attr">    image:</span> <span class="string">hexo_app</span></span><br><span class="line"><span class="attr">    container_name:</span> <span class="string">hexo_app</span></span><br><span class="line"><span class="attr">    volumes:</span> </span><br><span class="line"><span class="bullet">      -</span> <span class="string">./app:/app</span></span><br><span class="line"><span class="attr">    ports:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="number">4000</span><span class="string">:4000</span></span><br><span class="line"><span class="attr">    tty:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<p>こいつらを適当なフォルダに配置して以下のコマンドを実行しましょう。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># docker-compose up -d</span><br><span class="line"># docker exec -it hexo_app /bin/sh</span><br></pre></td></tr></table></figure>
+
+<p>上手くいっていたらbash画面が開くはずです。<br>nodeのバージョン確認をしてみませう。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/app node -v</span><br><span class="line">v10.13.0</span><br></pre></td></tr></table></figure>
+
+<p>できたっぽいっすね。  </p>
+<p>次回はHexoの導入とサイトの生成をローカルでやってみます。  </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://karintomania.github.io/hexo_test/2019/10/29/start-hexo-container/" data-id="ck37wsjyb00051tqsad1172s2" data-title="Dockerコンテナ上でHexoを導入してGithubPagesにデプロイする〜①コンテナ作成編〜" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo_test/tags/Docker/" rel="tag">Docker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo_test/tags/Github-Pages/" rel="tag">Github Pages</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/hexo_test/tags/Hexo/" rel="tag">Hexo</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/hexo_test/2019/10/29/start-hexo-deploy/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Dockerコンテナ上でHexoを導入してGithubPagesにデプロイする〜③デプロイ編〜
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    <div class="widget-wrap">
+<h3 class="widget-title">About</h3>
+<div class="widget">
+	<img src="/hexo_test/css/images/author.png" alt="著者" class="author-img">
+	<a class="author-link" href="/hexo_test/about" >karintomania</a>
+	<p><p>イギリス在住のWeb開発者が日々学んだことを書き連ねています。<br> Java/PHP/Dockerに興味があります。</p>
+</p>
+</div>
+</div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/hexo_test/2019/11/20/20191120-vscode-project-update/">VSCodeでJavaのGradleプロジェクトの依存性を更新する方法</a>
+          </li>
+        
+          <li>
+            <a href="/hexo_test/2019/11/04/20191101-heroku-springboot-postgres/">HerokuのPostgreSQLにSpringアプリケーションから接続する</a>
+          </li>
+        
+          <li>
+            <a href="/hexo_test/2019/11/01/psql-container/">PostgreSQLをコンテナ化する</a>
+          </li>
+        
+          <li>
+            <a href="/hexo_test/2019/10/31/vscode-spring-herok-deploy/">VS CodeからSpring Bootプロジェクトを作成してHerokuにデプロイするまで</a>
+          </li>
+        
+          <li>
+            <a href="/hexo_test/2019/10/30/hexo-add-about-widget/">Hexoでサイドバーにウィジェット(プロフィール)を追加する</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/hexo_test/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo_test/tags/Github-Pages/" rel="tag">Github Pages</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo_test/tags/Heroku/" rel="tag">Heroku</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo_test/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo_test/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo_test/tags/PostgreSQL/" rel="tag">PostgreSQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo_test/tags/Spring-Boot/" rel="tag">Spring Boot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/hexo_test/tags/VS-Code/" rel="tag">VS Code</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/hexo_test/tags/Docker/" style="font-size: 20px;">Docker</a> <a href="/hexo_test/tags/Github-Pages/" style="font-size: 16.67px;">Github Pages</a> <a href="/hexo_test/tags/Heroku/" style="font-size: 13.33px;">Heroku</a> <a href="/hexo_test/tags/Hexo/" style="font-size: 20px;">Hexo</a> <a href="/hexo_test/tags/Java/" style="font-size: 16.67px;">Java</a> <a href="/hexo_test/tags/PostgreSQL/" style="font-size: 13.33px;">PostgreSQL</a> <a href="/hexo_test/tags/Spring-Boot/" style="font-size: 16.67px;">Spring Boot</a> <a href="/hexo_test/tags/VS-Code/" style="font-size: 10px;">VS Code</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/hexo_test/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/hexo_test/archives/2019/10/">October 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 karintomania<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/hexo_test/" class="mobile-nav-link">Home</a>
+  
+    <a href="/hexo_test/about" class="mobile-nav-link">About</a>
+  
+    <a href="/hexo_test/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="/hexo_test/js/jquery-3.4.1.min.js"></script>
+
+
+  <script src="/hexo_test/fancybox/jquery.fancybox.min.js"></script>
+
+
+<script src="/hexo_test/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
