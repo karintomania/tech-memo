@@ -4,13 +4,17 @@
   <meta charset="utf-8">
   
   
-  <title>Tag: Hexo | ただの技術メモ</title>
+  <title>PostgreSQLをコンテナ化する | ただの技術メモ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="ただの技術メモ">
-<meta property="og:url" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;tags&#x2F;Hexo&#x2F;index.html">
+  <meta name="description" content="PostgreSQLをDockerコンテナにします。 今までMySQLしか使ったことなかったのですが、 Herokuにアプリケーションをデプロイする際にポスグレを使う必要があったので、 試してみることにしました。">
+<meta name="keywords" content="Docker,Spring Boot,PostgreSQL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PostgreSQLをコンテナ化する">
+<meta property="og:url" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;2019&#x2F;11&#x2F;2019-1101-psql-container&#x2F;index.html">
 <meta property="og:site_name" content="ただの技術メモ">
+<meta property="og:description" content="PostgreSQLをDockerコンテナにします。 今までMySQLしか使ったことなかったのですが、 Herokuにアプリケーションをデプロイする際にポスグレを使う必要があったので、 試してみることにしました。">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-02-13T08:23:24.286Z">
 <meta name="twitter:card" content="summary">
   
   
@@ -59,125 +63,77 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/tech-memo/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/tech-memo/2020/02/2020-0213-HowToUseAssetFolder/" class="archive-article-date">
-  <time datetime="2020-02-13T08:32:39.000Z" itemprop="datePublished">Feb 13</time>
+        <section id="main"><article id="post-2019-1101-psql-container" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/tech-memo/2019/11/2019-1101-psql-container/" class="article-date">
+  <time datetime="2019-11-01T11:25:28.000Z" itemprop="datePublished">2019-11-01</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/tech-memo/2020/02/2020-0213-HowToUseAssetFolder/">HexoでAssetFolderを有効にする</a>
+    <h1 class="article-title" itemprop="name">
+      PostgreSQLをコンテナ化する
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
+    <div class="article-entry" itemprop="articleBody">
       
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/tech-memo/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/tech-memo/2019/10/2019-1030-hexo-add-about-widget/" class="archive-article-date">
-  <time datetime="2019-10-30T17:42:03.000Z" itemprop="datePublished">Oct 30</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/tech-memo/2019/10/2019-1030-hexo-add-about-widget/">Hexoでサイドバーにウィジェット(プロフィール)を追加する</a>
-    </h1>
-  
+        <p> PostgreSQLをDockerコンテナにします。<br> 今までMySQLしか使ったことなかったのですが、<br> Herokuにアプリケーションをデプロイする際にポスグレを使う必要があったので、<br> 試してみることにしました。</p>
+<a id="more"></a>
+<p> 色々試行錯誤した気がしますが、結論はこれです。<br>とりあえず、これでSpringアプリケーションから接続できました。</p>
+<p>ポイントは環境変数を宣言しているところくらいですかね。<br>最初、Dockerfileにこの宣言を書いていたのですが、<br>これはdocker runコマンドに必要な宣言らしく、<br>docker-compose.ymlに書く必要があるみたいです。  </p>
+ <figure class="highlight yaml"><figcaption><span>docker-compose.yml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">"3"</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line"><span class="attr">  psql_docker:</span></span><br><span class="line"><span class="attr">    image:</span> <span class="attr">postgres:12.0-alpine</span></span><br><span class="line"><span class="attr">    container_name:</span> <span class="string">psql_docker</span></span><br><span class="line"><span class="attr">    ports:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">"5432:5432"</span></span><br><span class="line"><span class="attr">    environment:</span></span><br><span class="line"><span class="attr">       POSTGRES_USER:</span> <span class="string">"dev"</span></span><br><span class="line"><span class="attr">       POSTGRES_PASSWORD:</span> <span class="string">"dev"</span></span><br><span class="line"><span class="attr">       POSTGRES_DB:</span> <span class="string">"mydb"</span></span><br><span class="line"> </span><br></pre></td></tr></table></figure>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/tech-memo/2019/10/2019-1029-start-hexo-generate-site/" class="archive-article-date">
-  <time datetime="2019-10-29T19:45:15.000Z" itemprop="datePublished">Oct 29</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/tech-memo/2019/10/2019-1029-start-hexo-generate-site/">Dockerコンテナ上でHexoを導入してGithubPagesにデプロイする〜②サイト生成編〜</a>
-    </h1>
-  
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/tech-memo/2019/10/2019-1029-start-hexo-deploy/" class="archive-article-date">
-  <time datetime="2019-10-29T19:44:48.000Z" itemprop="datePublished">Oct 29</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/tech-memo/2019/10/2019-1029-start-hexo-deploy/">Dockerコンテナ上でHexoを導入してGithubPagesにデプロイする〜③デプロイ編〜</a>
-    </h1>
-  
+<p>コンテナを起動するときは</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># docker-compose up -d</span><br></pre></td></tr></table></figure>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/tech-memo/2019/10/2019-1029-start-hexo-container/" class="archive-article-date">
-  <time datetime="2019-10-29T19:44:23.000Z" itemprop="datePublished">Oct 29</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/tech-memo/2019/10/2019-1029-start-hexo-container/">Dockerコンテナ上でHexoを導入してGithubPagesにデプロイする〜①コンテナ作成編〜</a>
-    </h1>
-  
+<p>以下コマンドで、PSQLを起動できます。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># docker exec -it psql_docker psql -U dev -d mydb</span><br></pre></td></tr></table></figure>
 
-    </header>
+<p> 以上。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://karintomania.github.io/tech-memo/2019/11/2019-1101-psql-container/" data-id="ck6y4u9bx000hcplicyxp2e54" data-title="PostgreSQLをコンテナ化する" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tech-memo/tags/Docker/" rel="tag">Docker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tech-memo/tags/PostgreSQL/" rel="tag">PostgreSQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tech-memo/tags/Spring-Boot/" rel="tag">Spring Boot</a></li></ul>
+
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/tech-memo/2019/11/2019-1101-heroku-springboot-postgres/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          HerokuのPostgreSQLにSpringアプリケーションから接続する
+        
+      </div>
+    </a>
+  
+  
+    <a href="/tech-memo/2019/10/2019-1031-vscode-spring-herok-deploy/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">VS CodeからSpring Bootプロジェクトを作成してHerokuにデプロイするまで</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
 
 
 </section>

@@ -4,14 +4,20 @@
   <meta charset="utf-8">
   
   
-  <title>Tag: Hexo | ただの技術メモ</title>
+  <title>VSCodeでJavaのGradleプロジェクトの依存性を更新する方法 | ただの技術メモ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="ただの技術メモ">
-<meta property="og:url" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;tags&#x2F;Hexo&#x2F;index.html">
+  <meta name="description" content="Gradleを変更した際にどうしたら変更がプロジェクトに反映されるのか分からずハマったので、解決方法を書きます。   build.gradleに依存性を追加した時に、そのままではプロジェクトにパッケージが追加されません。">
+<meta name="keywords" content="Java,VS Code">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VSCodeでJavaのGradleプロジェクトの依存性を更新する方法">
+<meta property="og:url" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;2019&#x2F;11&#x2F;2019-1120-vscode-project-update&#x2F;index.html">
 <meta property="og:site_name" content="ただの技術メモ">
+<meta property="og:description" content="Gradleを変更した際にどうしたら変更がプロジェクトに反映されるのか分からずハマったので、解決方法を書きます。   build.gradleに依存性を追加した時に、そのままではプロジェクトにパッケージが追加されません。">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;2019&#x2F;11&#x2F;2019-1120-vscode-project-update&#x2F;update_pj.png">
+<meta property="og:updated_time" content="2020-02-13T08:28:57.300Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;2019&#x2F;11&#x2F;2019-1120-vscode-project-update&#x2F;update_pj.png">
   
   
     <link rel="icon" href="/tech-memo/css/images/favicon.ico">
@@ -59,125 +65,71 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/tech-memo/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/tech-memo/2020/02/2020-0213-HowToUseAssetFolder/" class="archive-article-date">
-  <time datetime="2020-02-13T08:32:39.000Z" itemprop="datePublished">Feb 13</time>
+        <section id="main"><article id="post-2019-1120-vscode-project-update" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/tech-memo/2019/11/2019-1120-vscode-project-update/" class="article-date">
+  <time datetime="2019-11-20T23:19:08.000Z" itemprop="datePublished">2019-11-20</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/tech-memo/2020/02/2020-0213-HowToUseAssetFolder/">HexoでAssetFolderを有効にする</a>
+    <h1 class="article-title" itemprop="name">
+      VSCodeでJavaのGradleプロジェクトの依存性を更新する方法
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
+    <div class="article-entry" itemprop="articleBody">
       
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/tech-memo/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/tech-memo/2019/10/2019-1030-hexo-add-about-widget/" class="archive-article-date">
-  <time datetime="2019-10-30T17:42:03.000Z" itemprop="datePublished">Oct 30</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/tech-memo/2019/10/2019-1030-hexo-add-about-widget/">Hexoでサイドバーにウィジェット(プロフィール)を追加する</a>
-    </h1>
-  
+        <p>Gradleを変更した際にどうしたら変更がプロジェクトに反映されるのか<br>分からずハマったので、解決方法を書きます。  </p>
+<p>build.gradleに依存性を追加した時に、そのままではプロジェクトにパッケージが追加されません。  </p>
+<a id="more"></a>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/tech-memo/2019/10/2019-1029-start-hexo-generate-site/" class="archive-article-date">
-  <time datetime="2019-10-29T19:45:15.000Z" itemprop="datePublished">Oct 29</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/tech-memo/2019/10/2019-1029-start-hexo-generate-site/">Dockerコンテナ上でHexoを導入してGithubPagesにデプロイする〜②サイト生成編〜</a>
-    </h1>
-  
+<p>更新の際にはbuildd.gradleファイルを開いて、<br>右クリック &gt; Update Project Configurationを押します。   </p>
+<p><img src="update_pj.png" alt="Update Project Configuration"></p>
+<p>そうすると、依存性が追加されているはずです。  </p>
+<p>短いですが、以上です。  </p>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/tech-memo/2019/10/2019-1029-start-hexo-deploy/" class="archive-article-date">
-  <time datetime="2019-10-29T19:44:48.000Z" itemprop="datePublished">Oct 29</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/tech-memo/2019/10/2019-1029-start-hexo-deploy/">Dockerコンテナ上でHexoを導入してGithubPagesにデプロイする〜③デプロイ編〜</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/tech-memo/2019/10/2019-1029-start-hexo-container/" class="archive-article-date">
-  <time datetime="2019-10-29T19:44:23.000Z" itemprop="datePublished">Oct 29</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://karintomania.github.io/tech-memo/2019/11/2019-1120-vscode-project-update/" data-id="ck6y4u9c4000kcplicp1526ta" data-title="VSCodeでJavaのGradleプロジェクトの依存性を更新する方法" class="article-share-link">Share</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/tech-memo/2019/10/2019-1029-start-hexo-container/">Dockerコンテナ上でHexoを導入してGithubPagesにデプロイする〜①コンテナ作成編〜</a>
-    </h1>
-  
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tech-memo/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tech-memo/tags/VS-Code/" rel="tag">VS Code</a></li></ul>
 
-    </header>
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/tech-memo/2020/02/2020-0204-OrchidStart/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Java製の静的サイトジェネレータ「Orchid」を解説する
+        
+      </div>
+    </a>
+  
+  
+    <a href="/tech-memo/2019/11/2019-1101-heroku-springboot-postgres/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">HerokuのPostgreSQLにSpringアプリケーションから接続する</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
 
 
 </section>

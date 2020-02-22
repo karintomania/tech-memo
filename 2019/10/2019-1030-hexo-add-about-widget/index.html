@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hexoでサイドバーにウィジェット(プロフィール)を追加する | ただの技術メモ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Hexoで作ったブログにウィジェットを追加する方法を紹介します。サイドバーにこんな感じの著者プロフィールウィジェットを追加してみます。landscapeをテーマに使用している前提で記載していますので、別のテーマを使用している場合は適宜読み替えてください。     ウィジェット用テンプレートの追加ウィジェットのテンプレートを追加します。まずはabout.ejsをtheme&amp;gt;landscape&amp;">
+<meta name="keywords" content="Hexo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexoでサイドバーにウィジェット(プロフィール)を追加する">
+<meta property="og:url" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;2019&#x2F;10&#x2F;2019-1030-hexo-add-about-widget&#x2F;index.html">
+<meta property="og:site_name" content="ただの技術メモ">
+<meta property="og:description" content="Hexoで作ったブログにウィジェットを追加する方法を紹介します。サイドバーにこんな感じの著者プロフィールウィジェットを追加してみます。landscapeをテーマに使用している前提で記載していますので、別のテーマを使用している場合は適宜読み替えてください。     ウィジェット用テンプレートの追加ウィジェットのテンプレートを追加します。まずはabout.ejsをtheme&amp;gt;landscape&amp;">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;2019&#x2F;10&#x2F;2019-1030-hexo-add-about-widget&#x2F;about_style.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;2019&#x2F;10&#x2F;2019-1030-hexo-add-about-widget&#x2F;about_plane.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;2019&#x2F;10&#x2F;2019-1030-hexo-add-about-widget&#x2F;about_setting.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;2019&#x2F;10&#x2F;2019-1030-hexo-add-about-widget&#x2F;author.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;2019&#x2F;10&#x2F;2019-1030-hexo-add-about-widget&#x2F;about_image.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;2019&#x2F;10&#x2F;2019-1030-hexo-add-about-widget&#x2F;about_style.png">
+<meta property="og:updated_time" content="2020-02-13T08:22:54.062Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;2019&#x2F;10&#x2F;2019-1030-hexo-add-about-widget&#x2F;about_style.png">
+  
+  
+    <link rel="icon" href="/tech-memo/css/images/favicon.ico">
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+  
+  <link rel="stylesheet" href="/tech-memo/css/style.css">
+  
+    <link rel="stylesheet" href="/tech-memo/fancybox/jquery.fancybox.min.css">
+  
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/tech-memo/" id="logo">ただの技術メモ</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/tech-memo/">Home</a>
+        
+          <a class="main-nav-link" href="/tech-memo/about">About</a>
+        
+          <a class="main-nav-link" href="/tech-memo/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://karintomania.github.io/tech-memo"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2019-1030-hexo-add-about-widget" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/tech-memo/2019/10/2019-1030-hexo-add-about-widget/" class="article-date">
+  <time datetime="2019-10-30T17:42:03.000Z" itemprop="datePublished">2019-10-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Hexoでサイドバーにウィジェット(プロフィール)を追加する
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Hexoで作ったブログにウィジェットを追加する方法を紹介します。<br>サイドバーにこんな感じの著者プロフィールウィジェットを追加してみます。<br>landscapeをテーマに使用している前提で記載していますので、別のテーマを使用している場合は適宜読み替えてください。  </p>
+<img src="/tech-memo/2019/10/2019-1030-hexo-add-about-widget/about_style.png" class="" title="[著者プロフィール]">
+
+<h2 id="ウィジェット用テンプレートの追加"><a href="#ウィジェット用テンプレートの追加" class="headerlink" title="ウィジェット用テンプレートの追加"></a>ウィジェット用テンプレートの追加</h2><p>ウィジェットのテンプレートを追加します。<br>まずはabout.ejsをtheme&gt;landscape&gt;layout&gt;_widget内に追加します。<br>他のejsファイルを参考にしつつ、こんな感じにしました。</p>
+<figure class="highlight html"><figcaption><span>about.ejs</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"widget-wrap"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h3</span> <span class="attr">class</span>=<span class="string">"widget-title"</span>&gt;</span>About<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"widget"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">h3</span>&gt;</span>karintomania<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">p</span>&gt;</span>私はうんぬんかんぬんかくかくしかじか。。。<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<p>そして、widgetを追加するには、_config.ymlをいじる必要があります。<br>この_config.ymlは使用しているテーマ内のものなので、プロジェクト全体のものと間違わないようにしてください。  </p>
+<figure class="highlight yaml"><figcaption><span>landscape > _config.yml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Sidebar</span></span><br><span class="line"><span class="attr">sidebar:</span> <span class="string">right</span></span><br><span class="line"><span class="attr">widgets:</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">about</span>  <span class="comment"># aboutを追加</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">category</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">tag</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">tagcloud</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">archive</span></span><br><span class="line"><span class="bullet">-</span> <span class="string">recent_posts</span></span><br></pre></td></tr></table></figure>
+
+<p>そしてHexo serverコマンドでサイトをプレビューするとAboutウィジェットが追加されているはずです。<br><img src="about_plane.png" alt="Aboutウィジェットが追加された"></p>
+<p>これだけでは技術的にも絵的にも少し物足りないので、<br>もう少し工夫します。 </p>
+<h2 id="設定ファイルから値を取得"><a href="#設定ファイルから値を取得" class="headerlink" title="設定ファイルから値を取得"></a>設定ファイルから値を取得</h2><p>まずは著者名は設定ファイルに持っているので、そこから持ってくるようにしましょう。<br>プロジェクトのconfig.ymlの値はconfig変数に持っているようです。  </p>
+<p>また、テーマのconfig.ymlの内容はtheme変数に持っています。<br>説明文用のプロパティをテーマのconfig.ymlに追加して取得させてみます。</p>
+<figure class="highlight yaml"><figcaption><span>landscape>_config.yml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Site</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">ただの技術メモ</span></span><br><span class="line"><span class="attr">subtitle:</span></span><br><span class="line"><span class="attr">description:</span></span><br><span class="line"><span class="attr">keywords:</span></span><br><span class="line"><span class="attr">author:</span> <span class="string">karintomania</span> <span class="comment"># 参照元の著者名</span></span><br><span class="line"><span class="string">....</span></span><br></pre></td></tr></table></figure>
+
+<p>config.yml末尾に新規プロパティを追加します。</p>
+<figure class="highlight yaml"><figcaption><span>theme>_config.yml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># about</span></span><br><span class="line"><span class="attr">author_description:</span> <span class="string">"うんぬんかんぬん"</span>  <span class="comment"># 新しくauthor_descriptionプロパティを追加</span></span><br></pre></td></tr></table></figure>
+
+<p>about.ejsは以下のようになります。<br>&lt;%= 変数 %&gt;で変数を参照することができます。<br>また、今回は説明文にマークダウンを使えるようマークダウンヘルパー markdown()を使用しています。<br>ヘルパーを使用する際は&lt;%- 関数 %&gt;と%の後にハイフンを続けます。<br>単なる変数参照の時と若干記法が違うので気をつけてください。  </p>
+<figure class="highlight html"><figcaption><span>about.ejs</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"widget-wrap"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h3</span> <span class="attr">class</span>=<span class="string">"widget-title"</span>&gt;</span>About<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"widget"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">h3</span>&gt;</span><span class="tag">&lt;<span class="name">%=</span> <span class="attr">config.author</span> %&gt;</span><span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">%-</span> <span class="attr">markdown</span>(<span class="attr">theme.author_description</span>) %&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>きちんと反映されていますね。</p>
+<p><img src="about_setting.png" alt="設定ファイルから内容を参照している"></p>
+<h2 id="画像の追加"><a href="#画像の追加" class="headerlink" title="画像の追加"></a>画像の追加</h2><p>さて、著者の画像も追加してみます。</p>
+<p><img src="author.png" alt="著者画像"><br>画像の置き場はtheme/landscape/source/css/images/author.pngとします。<br>これもconfig.ymlにプロパティとして持たせておきましょう。</p>
+<figure class="highlight yaml"><figcaption><span>theme>_config.yml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># about</span></span><br><span class="line"><span class="attr">author_description:</span> <span class="string">"うんぬんかんぬん"</span>  <span class="comment"># 新しくauthor_descriptionプロパティを追加</span></span><br><span class="line"><span class="attr">author_image:</span> <span class="string">"css/images/author.png"</span></span><br></pre></td></tr></table></figure>
+
+<p>これをejsファイルから参照する際には、相対パスは使用できません。<br>代わりにurl_for関数を使用します。この関数はURLを自動的に生成してくれます。</p>
+<figure class="highlight html"><figcaption><span>about.ejs</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"widget-wrap"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">h3</span> <span class="attr">class</span>=<span class="string">"widget-title"</span>&gt;</span>About<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"widget"</span>&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- url_forで著者の画像URLを生成している --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"&lt;%- url_for(theme.author_image) %&gt;"</span> <span class="attr">alt</span>=<span class="string">"著者"</span> <span class="attr">class</span>=<span class="string">"author_img"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">h3</span>&gt;</span><span class="tag">&lt;<span class="name">%=</span> <span class="attr">config.author</span> %&gt;</span><span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">%-</span> <span class="attr">markdown</span>(<span class="attr">theme.author_description</span>) %&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>できました。が、著しくはみ出てますね。<br>スタイルも指定できるようにしましょう。<br><img src="about_image.png" alt="画像が追加された"></p>
+<p>hexoでは、cssの代わりに.styl形式を使用しているようです。  </p>
+<p>theme/landscape/source/css/_partial/about.stylを追加します。  </p>
+<figure class="highlight styl"><figcaption><span>about.styl</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.author-img</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">70%</span></span><br><span class="line">  <span class="attribute">border-radius</span>: <span class="number">1em</span></span><br><span class="line">  <span class="attribute">border</span>: <span class="number">0.2em</span> solid <span class="number">#999</span></span><br></pre></td></tr></table></figure>
+
+<p>また、そのままではこのファイルが読み込まれないので、<br>theme/landscape/source/css/style.stylにて、importの設定をします。</p>
+<figure class="highlight styl"><figcaption><span>style.styl</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@import <span class="string">"_extend"</span></span><br><span class="line">@import <span class="string">"_partial/header"</span></span><br><span class="line">@import <span class="string">"_partial/article"</span></span><br><span class="line">@import <span class="string">"_partial/comment"</span></span><br><span class="line">@import <span class="string">"_partial/archive"</span></span><br><span class="line">@import <span class="string">"_partial/footer"</span></span><br><span class="line">@import <span class="string">"_partial/highlight"</span></span><br><span class="line">@import <span class="string">"_partial/mobile"</span></span><br><span class="line">@import <span class="string">"_partial/about"</span></span><br></pre></td></tr></table></figure>
+
+<p>これで画像が表示されるようになりました。  </p>
+<p><img src="about_style.png" alt="ウィジェットが完成しました。"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://karintomania.github.io/tech-memo/2019/10/2019-1030-hexo-add-about-widget/" data-id="ck6y4u9bh000acpli6c9bc1v8" data-title="Hexoでサイドバーにウィジェット(プロフィール)を追加する" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tech-memo/tags/Hexo/" rel="tag">Hexo</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/tech-memo/2019/10/2019-1031-vscode-spring-herok-deploy/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          VS CodeからSpring Bootプロジェクトを作成してHerokuにデプロイするまで
+        
+      </div>
+    </a>
+  
+  
+    <a href="/tech-memo/2019/10/2019-1029-start-hexo-generate-site/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Dockerコンテナ上でHexoを導入してGithubPagesにデプロイする〜②サイト生成編〜</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    <div class="widget-wrap">
+<h3 class="widget-title">About</h3>
+<div class="widget">
+	<img src="/tech-memo/css/images/author.png" alt="著者" class="author-img">
+	<a class="author-link" href="/tech-memo/about" >karintomania</a>
+	<p><p>イギリス在住のWeb開発者が日々学んだことを書き連ねています。<br> Java/PHP/Dockerに興味があります。</p>
+</p>
+</div>
+</div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/tech-memo/2020/02/2020-0222-CookieByUiPath/">UiPathでCookie Clickerに挑戦する</a>
+          </li>
+        
+          <li>
+            <a href="/tech-memo/2020/02/2020-0213-HowToUseAssetFolder/">HexoでAssetFolderを有効にする</a>
+          </li>
+        
+          <li>
+            <a href="/tech-memo/2020/02/2020-0204-OrchidStart/">Java製の静的サイトジェネレータ「Orchid」を解説する</a>
+          </li>
+        
+          <li>
+            <a href="/tech-memo/2019/11/2019-1120-vscode-project-update/">VSCodeでJavaのGradleプロジェクトの依存性を更新する方法</a>
+          </li>
+        
+          <li>
+            <a href="/tech-memo/2019/11/2019-1101-heroku-springboot-postgres/">HerokuのPostgreSQLにSpringアプリケーションから接続する</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/Github-Pages/" rel="tag">Github Pages</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/Heroku/" rel="tag">Heroku</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/Orchid/" rel="tag">Orchid</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/PostgreSQL/" rel="tag">PostgreSQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/Spring-Boot/" rel="tag">Spring Boot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/UiPath/" rel="tag">UiPath</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/VS-Code/" rel="tag">VS Code</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tech-memo/tags/Docker/" style="font-size: 17.5px;">Docker</a> <a href="/tech-memo/tags/Github-Pages/" style="font-size: 15px;">Github Pages</a> <a href="/tech-memo/tags/Heroku/" style="font-size: 12.5px;">Heroku</a> <a href="/tech-memo/tags/Hexo/" style="font-size: 20px;">Hexo</a> <a href="/tech-memo/tags/Java/" style="font-size: 17.5px;">Java</a> <a href="/tech-memo/tags/Orchid/" style="font-size: 10px;">Orchid</a> <a href="/tech-memo/tags/PostgreSQL/" style="font-size: 12.5px;">PostgreSQL</a> <a href="/tech-memo/tags/Spring-Boot/" style="font-size: 15px;">Spring Boot</a> <a href="/tech-memo/tags/UiPath/" style="font-size: 10px;">UiPath</a> <a href="/tech-memo/tags/VS-Code/" style="font-size: 10px;">VS Code</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/tech-memo/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/tech-memo/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/tech-memo/archives/2019/10/">October 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 karintomania<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/tech-memo/" class="mobile-nav-link">Home</a>
+  
+    <a href="/tech-memo/about" class="mobile-nav-link">About</a>
+  
+    <a href="/tech-memo/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="/tech-memo/js/jquery-3.4.1.min.js"></script>
+
+
+  <script src="/tech-memo/fancybox/jquery.fancybox.min.js"></script>
+
+
+<script src="/tech-memo/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

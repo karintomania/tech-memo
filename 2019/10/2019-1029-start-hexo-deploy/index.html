@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Dockerコンテナ上でHexoを導入してGithubPagesにデプロイする〜③デプロイ編〜 | ただの技術メモ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="めんどくさそうなデプロイですが、Hexoならコマンド一発で楽勝です。   Gitの設定デプロイにはGitを使うので、設定を済ませてしまいましょう。以下のコマンドでユーザ設定をします。   12&#x2F;app&#x2F;test # git config --global user.name &amp;quot;Your Name&amp;quot;&#x2F;app&#x2F;test # git config --global user.emai">
+<meta name="keywords" content="Docker,Hexo,Github Pages">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Dockerコンテナ上でHexoを導入してGithubPagesにデプロイする〜③デプロイ編〜">
+<meta property="og:url" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;2019&#x2F;10&#x2F;2019-1029-start-hexo-deploy&#x2F;index.html">
+<meta property="og:site_name" content="ただの技術メモ">
+<meta property="og:description" content="めんどくさそうなデプロイですが、Hexoならコマンド一発で楽勝です。   Gitの設定デプロイにはGitを使うので、設定を済ませてしまいましょう。以下のコマンドでユーザ設定をします。   12&#x2F;app&#x2F;test # git config --global user.name &amp;quot;Your Name&amp;quot;&#x2F;app&#x2F;test # git config --global user.emai">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;2019&#x2F;10&#x2F;2019-1029-start-hexo-deploy&#x2F;git_url.png">
+<meta property="og:updated_time" content="2020-02-13T08:24:09.197Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;2019&#x2F;10&#x2F;2019-1029-start-hexo-deploy&#x2F;git_url.png">
+  
+  
+    <link rel="icon" href="/tech-memo/css/images/favicon.ico">
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+  
+  <link rel="stylesheet" href="/tech-memo/css/style.css">
+  
+    <link rel="stylesheet" href="/tech-memo/fancybox/jquery.fancybox.min.css">
+  
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/tech-memo/" id="logo">ただの技術メモ</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/tech-memo/">Home</a>
+        
+          <a class="main-nav-link" href="/tech-memo/about">About</a>
+        
+          <a class="main-nav-link" href="/tech-memo/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://karintomania.github.io/tech-memo"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2019-1029-start-hexo-deploy" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/tech-memo/2019/10/2019-1029-start-hexo-deploy/" class="article-date">
+  <time datetime="2019-10-29T19:44:48.000Z" itemprop="datePublished">2019-10-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Dockerコンテナ上でHexoを導入してGithubPagesにデプロイする〜③デプロイ編〜
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>めんどくさそうなデプロイですが、<br>Hexoならコマンド一発で楽勝です。  </p>
+<h2 id="Gitの設定"><a href="#Gitの設定" class="headerlink" title="Gitの設定"></a>Gitの設定</h2><p>デプロイにはGitを使うので、<br>設定を済ませてしまいましょう。<br>以下のコマンドでユーザ設定をします。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/app/test # git config --global user.name &quot;Your Name&quot;</span><br><span class="line">/app/test # git config --global user.email &quot;you@example.com&quot;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="config-ymlの設定"><a href="#config-ymlの設定" class="headerlink" title="_config.ymlの設定"></a>_config.ymlの設定</h2><p>_config.ymlの設定をします。<br>その前に、対象リポジトリのURLを調べておきましょう。<br>GithubでWebサイト用に作成したリポジトリの Clone or Downloadボタンをクリックすると、<br>コミット用URLが表示されます。<br><img src="git_url.png" alt="コミット用URL"></p>
+<p>URLを取得したら_config.ymlを以下のように編集します。</p>
+<figure class="highlight yaml"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># URL</span></span><br><span class="line"><span class="comment">## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'</span></span><br><span class="line"><span class="attr">url:</span> <span class="attr">https://&#123;githubのusername&#125;.github.io/&#123;リポジトリ名&#125;/</span></span><br><span class="line"><span class="attr">root:</span> <span class="string">/&#123;リポジトリ名&#125;/</span></span><br><span class="line"><span class="attr">permalink:</span> <span class="string">:year/:month/:day/:title/</span></span><br><span class="line"><span class="attr">permalink_defaults:</span></span><br><span class="line"><span class="attr">pretty_urls:</span></span><br><span class="line"><span class="attr">  trailing_index:</span> <span class="literal">true</span> <span class="comment"># Set to false to remove trailing index.html from permalinks</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="comment">## Docs: https://hexo.io/docs/deployment.html</span></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line"><span class="attr">  type:</span> <span class="string">git</span></span><br><span class="line"><span class="attr">  repo:</span> <span class="string">&#123;先ほど取得したURLをここに貼り付ける&#125;</span></span><br><span class="line"><span class="attr">  branch:</span> <span class="string">gh-pages</span></span><br><span class="line">	</span><br></pre></td></tr></table></figure>
+
+<p>設定ができたら以下のコマンドでデプロイします。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/app/test # hexo deploy</span><br></pre></td></tr></table></figure>
+<p>デプロイできたらGithubPagesへアクセスして確認してみましょう。<br>https://{githubのusername}.github.io/{リポジトリ名}/</p>
+<p>できたでしょうか。<br>これでサイトができました！！おめでとうございます。  </p>
+<p>ちなみにこのやり方だと、gh-pagesブランチに公開用ソースを格納して、<br>Masterブランチは使用しません。<br>なので、Masterブランチに下書きも含めたフォルダ全体を管理するリポジトリにしてしまうのがいいのかなと思います。  </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://karintomania.github.io/tech-memo/2019/10/2019-1029-start-hexo-deploy/" data-id="ck6y4u9bb0008cplic0e0e4o4" data-title="Dockerコンテナ上でHexoを導入してGithubPagesにデプロイする〜③デプロイ編〜" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tech-memo/tags/Docker/" rel="tag">Docker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tech-memo/tags/Github-Pages/" rel="tag">Github Pages</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tech-memo/tags/Hexo/" rel="tag">Hexo</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/tech-memo/2019/10/2019-1029-start-hexo-generate-site/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Dockerコンテナ上でHexoを導入してGithubPagesにデプロイする〜②サイト生成編〜
+        
+      </div>
+    </a>
+  
+  
+    <a href="/tech-memo/2019/10/2019-1029-start-hexo-container/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Dockerコンテナ上でHexoを導入してGithubPagesにデプロイする〜①コンテナ作成編〜</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    <div class="widget-wrap">
+<h3 class="widget-title">About</h3>
+<div class="widget">
+	<img src="/tech-memo/css/images/author.png" alt="著者" class="author-img">
+	<a class="author-link" href="/tech-memo/about" >karintomania</a>
+	<p><p>イギリス在住のWeb開発者が日々学んだことを書き連ねています。<br> Java/PHP/Dockerに興味があります。</p>
+</p>
+</div>
+</div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/tech-memo/2020/02/2020-0222-CookieByUiPath/">UiPathでCookie Clickerに挑戦する</a>
+          </li>
+        
+          <li>
+            <a href="/tech-memo/2020/02/2020-0213-HowToUseAssetFolder/">HexoでAssetFolderを有効にする</a>
+          </li>
+        
+          <li>
+            <a href="/tech-memo/2020/02/2020-0204-OrchidStart/">Java製の静的サイトジェネレータ「Orchid」を解説する</a>
+          </li>
+        
+          <li>
+            <a href="/tech-memo/2019/11/2019-1120-vscode-project-update/">VSCodeでJavaのGradleプロジェクトの依存性を更新する方法</a>
+          </li>
+        
+          <li>
+            <a href="/tech-memo/2019/11/2019-1101-heroku-springboot-postgres/">HerokuのPostgreSQLにSpringアプリケーションから接続する</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/Github-Pages/" rel="tag">Github Pages</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/Heroku/" rel="tag">Heroku</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/Orchid/" rel="tag">Orchid</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/PostgreSQL/" rel="tag">PostgreSQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/Spring-Boot/" rel="tag">Spring Boot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/UiPath/" rel="tag">UiPath</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/VS-Code/" rel="tag">VS Code</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tech-memo/tags/Docker/" style="font-size: 17.5px;">Docker</a> <a href="/tech-memo/tags/Github-Pages/" style="font-size: 15px;">Github Pages</a> <a href="/tech-memo/tags/Heroku/" style="font-size: 12.5px;">Heroku</a> <a href="/tech-memo/tags/Hexo/" style="font-size: 20px;">Hexo</a> <a href="/tech-memo/tags/Java/" style="font-size: 17.5px;">Java</a> <a href="/tech-memo/tags/Orchid/" style="font-size: 10px;">Orchid</a> <a href="/tech-memo/tags/PostgreSQL/" style="font-size: 12.5px;">PostgreSQL</a> <a href="/tech-memo/tags/Spring-Boot/" style="font-size: 15px;">Spring Boot</a> <a href="/tech-memo/tags/UiPath/" style="font-size: 10px;">UiPath</a> <a href="/tech-memo/tags/VS-Code/" style="font-size: 10px;">VS Code</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/tech-memo/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/tech-memo/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/tech-memo/archives/2019/10/">October 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 karintomania<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/tech-memo/" class="mobile-nav-link">Home</a>
+  
+    <a href="/tech-memo/about" class="mobile-nav-link">About</a>
+  
+    <a href="/tech-memo/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="/tech-memo/js/jquery-3.4.1.min.js"></script>
+
+
+  <script src="/tech-memo/fancybox/jquery.fancybox.min.js"></script>
+
+
+<script src="/tech-memo/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
