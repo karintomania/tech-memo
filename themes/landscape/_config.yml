@@ -1,0 +1,60 @@
+# Header
+menu:
+  Home: /
+  About: /about
+  Archives: /archives
+rss: 
+banner: "images/banner.png"
+
+# Content
+excerpt_link: Read More
+fancybox: true
+recent_posts_limits: 5
+
+# Sidebar
+sidebar: right
+widgets:
+- about
+- recent_posts
+- category
+- tag
+- tagcloud
+- archive
+
+# display widgets at the bottom of index pages (pagination == 2)
+index_widgets:
+# - category
+# - tagcloud
+# - archive
+
+# widget behavior
+archive_type: 'monthly'
+show_count: false
+
+# Miscellaneous
+google_analytics:
+gauges_analytics:
+favicon: css/images/favicon.ico
+twitter:
+fb_admins:
+fb_app_id:
+
+# valine comment system. https://valine.js.org
+valine:
+  enable: false # if you want use valine,please set this value is true
+  appId:  # leancloud application app id
+  appKey:  # leancloud application app key
+  notify: false # valine mail notify (true/false) https://github.com/xCss/Valine/wiki
+  verify: false # valine verify code (true/false)
+  pageSize: 10 # comment list page size
+  avatar: mm # gravatar style https://valine.js.org/#/avatar
+  lang: zh-cn # i18n: zh-cn/en
+  placeholder: Just go go # valine comment input placeholder(like: Please leave your footprints )
+  guest_info: nick,mail,link #valine comment header info
+
+# about
+author_description:
+ "イギリス在住のWeb開発者が日々学んだことを書き連ねています。<br>
+Java/PHP/Dockerに興味があります。"
+author_image: "css/images/author.png"
+author_link: /about
