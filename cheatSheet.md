@@ -21,6 +21,6 @@ hexo clean
  {% endcodeblock %}
 {% asset_img about_style.png [著者プロフィール] %}
 
-
+[リンク文面](https://orchid.run/wiki/learn )
 
 https://karintomania.github.io/tech-memo/
