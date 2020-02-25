@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Mac Vimを導入してみた | ただの技術メモ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="テキストエディタへのこだわり皆さん、突然ですがテキストエディタは何を使っていますか。僕は開発の際はVSCodeを使い、それ以外の簡単なテキストはMac標準のテキストエディットを使っていました。ある日突然気づきました。 これってダサいのでは？言うなれば、WindowsでIE使い続けているようなものではないかと。Vimを使うしかない、とその時、確信しました。">
+<meta name="keywords" content="Vim">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mac Vimを導入してみた">
+<meta property="og:url" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;2020&#x2F;02&#x2F;2020-0225-macvim&#x2F;index.html">
+<meta property="og:site_name" content="ただの技術メモ">
+<meta property="og:description" content="テキストエディタへのこだわり皆さん、突然ですがテキストエディタは何を使っていますか。僕は開発の際はVSCodeを使い、それ以外の簡単なテキストはMac標準のテキストエディットを使っていました。ある日突然気づきました。 これってダサいのでは？言うなれば、WindowsでIE使い続けているようなものではないかと。Vimを使うしかない、とその時、確信しました。">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;2020&#x2F;02&#x2F;2020-0225-macvim&#x2F;01_download.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;2020&#x2F;02&#x2F;2020-0225-macvim&#x2F;02_origin.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;2020&#x2F;02&#x2F;2020-0225-macvim&#x2F;02_set.png">
+<meta property="og:updated_time" content="2020-02-25T18:22:48.190Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;2020&#x2F;02&#x2F;2020-0225-macvim&#x2F;01_download.png">
+  
+  
+    <link rel="icon" href="/tech-memo/css/images/favicon.ico">
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+  
+  <link rel="stylesheet" href="/tech-memo/css/style.css">
+  
+    <link rel="stylesheet" href="/tech-memo/fancybox/jquery.fancybox.min.css">
+  
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/tech-memo/" id="logo">ただの技術メモ</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/tech-memo/">Home</a>
+        
+          <a class="main-nav-link" href="/tech-memo/about">About</a>
+        
+          <a class="main-nav-link" href="/tech-memo/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://karintomania.github.io/tech-memo"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2020-0225-macvim" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/tech-memo/2020/02/2020-0225-macvim/" class="article-date">
+  <time datetime="2020-02-25T18:22:36.000Z" itemprop="datePublished">2020-02-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Mac Vimを導入してみた
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="テキストエディタへのこだわり"><a href="#テキストエディタへのこだわり" class="headerlink" title="テキストエディタへのこだわり"></a>テキストエディタへのこだわり</h2><p>皆さん、突然ですがテキストエディタは何を使っていますか。<br>僕は開発の際はVSCodeを使い、それ以外の簡単なテキストはMac標準のテキストエディットを使っていました。<br>ある日突然気づきました。 <strong>これってダサいのでは？</strong><br>言うなれば、WindowsでIE使い続けているようなものではないかと。<br>Vimを使うしかない、とその時、確信しました。</p>
+<a id="more"></a>
+<p>もう少し補足をすると、僕はVSCodeではVimキーバインドの拡張機能を入れていたのでVimのコマンド自体には馴染みがありました。<br>しかし、ただのメモをするだけの時などにVSCodeでは重いので、<br>サクサク動くテキストエディタを必要としていました。  </p>
+<p>業務でWindowsを使うときはサクラエディタがその役目を果たしていたのですが、<br>Macで似たようなソフトを見つけられず、テキストエディットに甘んじていたのです。<br>あのときなぜVimという選択肢が浮かばなかったのか。。。</p>
+<h2 id="この記事の対象読者"><a href="#この記事の対象読者" class="headerlink" title="この記事の対象読者"></a>この記事の対象読者</h2><ul>
+<li>Vimに興味ある人  </li>
+<li>Macbook使いでテキストエディタに悩んでいる人  </li>
+</ul>
+<h2 id="Vimの何がいいのか"><a href="#Vimの何がいいのか" class="headerlink" title="Vimの何がいいのか"></a>Vimの何がいいのか</h2><p>これについてはもっと良い記事がその辺で見つかると思うので、僕の感じていることを少しだけ。<br>パソコンで文章を書くメリットの一つとして、書き換えが簡単、ということがあると思います。<br>Vimを使うと、この書き換えの作業というのがとても素早くできるってイメージですね。<br>例えば、行を入れ替えたいときとかは入れ替えたい行にカーソルを置いてddyと打てばそれで終了です。<br>あとはコマンドをひたすら覚えていくのが楽しい、というマニアックな楽しみ方もあります。<br>学習コストが高いほど燃えるのがプログラマなのではないでしょうか。<br>（それに伴って享受できるメリットが大きければ、という前提はありますが。）  </p>
+<h2 id="インストール"><a href="#インストール" class="headerlink" title="インストール"></a>インストール</h2><p>実はMacbookには元々Vimが入っているのですが、今回紹介するのはMacVimという別ものです。<br>違いとしてはVimはターミナルからの利用を想定しているに対して、<br>MacVimは普通のアプリケーションのように使用できるところです。<br>Vimガチ勢の中にはMacVimを邪道と考える人もいるとかいないとか。  </p>
+<p>macvim.dmgをここからダウンロードしましょう。</p>
+<p>ReleaseのところからMacVim.dmgをダウンロードしてきてください。<br><a href="https://github.com/macvim-dev/macvim" target="_blank" rel="noopener">https://github.com/macvim-dev/macvim</a></p>
+<img src="/tech-memo/2020/02/2020-0225-macvim/01_download.png" class="" title="[Vimのダウンロード">
+<p>インストールは普通のMacアプリと同じ感じです。  </p>
+<h2 id="vimrcの設定"><a href="#vimrcの設定" class="headerlink" title="vimrcの設定"></a>vimrcの設定</h2><p>実はVimは設定を多少しないと、デフォルトでは割と使いづらいエディタです。<br>これがVim普及の妨げになっているのではないかとも思っているくらいです。<br>設定でどのくらい変わるのかというと、<br>こいつが</p>
+<img src="/tech-memo/2020/02/2020-0225-macvim/02_origin.png" class="" title="[見辛いVim]">
+<p>こんな感じになります。</p>
+<img src="/tech-memo/2020/02/2020-0225-macvim/02_set.png" class="" title="[見やすくなったVim]">
+<p>見た目だけでも大した違いですが、<br>キーバインドなどで相当な操作性の違いが出てきます。<br>一つ一つ見ていきましょう。  </p>
+<h2 id="vimrcファイルの作成"><a href="#vimrcファイルの作成" class="headerlink" title="vimrcファイルの作成"></a>vimrcファイルの作成</h2><p>vimの設定はvimrcファイルというファイルに記述していきます。<br>GUIでの設定画面もあるにはあるんですが、わかりづらい上に設定は保存されません。<br>そんなんだからとっつきづらいんだよなーと思いつつも、<br>設定ファイルになっていることで先人の設定をコピペで丸パクリできる、なんてメリットもあります。  </p>
+<p>さて、まずはvimrcファイルを作ります。<br>root/User/{User名}配下に.vimrcと.gvimrcというファイルを作ってください。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">root/User/&#123;User名&#125;</span><br><span class="line"> ┣.vimrc</span><br><span class="line"> ┗.gvimrc</span><br></pre></td></tr></table></figure>
+<p>このgvimrcはguiに関する設定が入ります。<br>root/usr/share/vim配下にもvimrcというファイルがあるのですが、<br><del>そいつはフェイクだ！</del>編集できません。できるのかも知れなけど僕はできませんでした。<br>無難に自分の権限のあるところでやりましょう。  </p>
+<h2 id="見た目系の変更"><a href="#見た目系の変更" class="headerlink" title="見た目系の変更"></a>見た目系の変更</h2><p>まずは分かりやすい見た目の変更から行きます。<br>そのままだとフォントが小さくてみづらいので、フォントを変えます。<br>Edit-&gt;Font-&gt;Show Fontsからフォントがプレビューできます。<br>適当に好きなフォントとサイズを選びましょう。<br>設定したフォントは以下のコマンドで表示できます。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">guiコマンド</span><br></pre></td></tr></table></figure>
+
+<p>フォントの設定が分かったらそれを.gvimrcに記述します。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set guifont=Osaka-Mono:h18</span><br></pre></td></tr></table></figure>
+<p>フォントは変わったでしょうか。  </p>
+<p>ここからは.vimrcファイルの設定に入っていきます。<br>見た目系の設定で言うと、以下のあたりを設定すると良い感じに充実してきます。<br>ちなみにステータスラインとは、Vimを開いた時に下の方に見えている欄のことです。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&quot; 行番号表示</span><br><span class="line">set number</span><br><span class="line"></span><br><span class="line">&quot; Status Line系の充実</span><br><span class="line">&quot; ステータスラインを常に表示</span><br><span class="line">set laststatus=2 </span><br><span class="line">&quot; 現在のモードを表示</span><br><span class="line">set showmode </span><br><span class="line">&quot; 打ったコマンドをステータスラインの下に表示</span><br><span class="line">set showcmd </span><br><span class="line">&quot; ステータスラインの右側にカーソルの現在位置を表示する</span><br><span class="line">set ruler </span><br><span class="line">&quot; メニュー補完</span><br><span class="line">set wildmenu</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&quot; 不可視文字の可視化</span><br><span class="line">set list</span><br><span class="line">set listchars=tab:&gt;_,trail:·,eol:↲</span><br></pre></td></tr></table></figure>
+
+<h2 id="カラースキームの設定"><a href="#カラースキームの設定" class="headerlink" title="カラースキームの設定"></a>カラースキームの設定</h2><p>また、Vimはカラースキームを設定できます。<br>おそらくコードを書く時などはデフォルトもそれなりに使えるかも知れませんが、<br>僕の用途は（.txtと言う意味の）テキストを編集することが主な用途なので、<br>デフォルトだとちょっと薄暗くて見づらいので変えて見ます。</p>
+<p>カラースキームを選ぶ際には、こちらのページを参考にしました。<br><a href="https://www.slant.co/topics/480/~best-vim-color-schemes" target="_blank" rel="noopener">vimカラースキームランキング</a><br>ここから選びたいスキームの.vimファイルをダウンロードしてきます。  </p>
+<p>僕はZenburnというテーマを設定して見ました。<br>ダウンロードした.vimファイルを<br>root/User/{User名}/vim/color/フォルダに配置します。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot; Color scheme</span><br><span class="line">syntax enable  &quot; シンタックスハイライトを有効にする</span><br><span class="line">colorscheme zenburn  &quot; zenburnをカラースキームに設定</span><br></pre></td></tr></table></figure>
+<p>これでVimを再起動するとだいぶ良い感じになっているかと思います。  </p>
+<h2 id="テキストエディタとして必要な設定"><a href="#テキストエディタとして必要な設定" class="headerlink" title="テキストエディタとして必要な設定"></a>テキストエディタとして必要な設定</h2><p>あとは、おすすめの設定を以下に書いておきます。<br>というか、クリップボードやエンコーディングについてはテキストエディタとしてないと使い物にならない系なので、設定しとくことをお勧めします。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&quot; ヤンクやペースト時クリップボードの内容を使用する</span><br><span class="line">set clipboard=unnamed </span><br><span class="line"></span><br><span class="line">&quot; encoding 日本語を編集する際に大事</span><br><span class="line">set encoding=utf-8</span><br><span class="line">set fileencodings=utf-8</span><br><span class="line">set ambiwidth=double  &quot; ◯や◆などの文字が半角の幅で表示されてしまうことを防ぐ</span><br><span class="line"></span><br><span class="line">&quot; auto indent</span><br><span class="line">set autoindent</span><br><span class="line">set smartindent</span><br><span class="line"></span><br><span class="line">&quot; tab</span><br><span class="line">set tabstop=4  &quot; タブの幅をスペース４つ分にする</span><br><span class="line">set shiftwidth=4</span><br><span class="line"></span><br><span class="line">&quot; search</span><br><span class="line">set smartcase  &quot; 大文字が検索文字に含まれていたときは大文字小文字を区別する</span><br><span class="line">set hlsearch   &quot; 検索キーワードをハイライトする</span><br></pre></td></tr></table></figure>
+
+<h2 id="キーバインド"><a href="#キーバインド" class="headerlink" title="キーバインド"></a>キーバインド</h2><p>Vimでは自分の好きなショートカットを登録することができます。<br>ここでは僕が登録しているキーバインドを紹介します。<br>ちなみにMacのcommandボタンとの同時押しは<code>&lt;D-x&gt;</code>と表示します。<br>Windowsのノリで<code>&lt;C-x&gt;</code>で登録するとCtrlキーになってしまいます。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&quot; Key binds</span><br><span class="line">nnoremap &lt;D-Enter&gt; o&lt;ESC&gt;  &quot; Command+Enterで改行</span><br><span class="line">noremap H ^  &quot; Shift+hで行先頭ジャンプ</span><br><span class="line">noremap L $  &quot; Shift+lで行末ジャンプ</span><br><span class="line">remap kj &lt;ESC&gt;  &quot; k+jでEscape</span><br><span class="line">nnoremap &lt;D-]&gt; &gt;&gt;  &quot; Command+]でインデントをふやす</span><br><span class="line">nnoremap &lt;D-[&gt; &lt;&lt;  &quot; 上のやつの逆</span><br><span class="line"></span><br><span class="line">vnoremap &lt;D-]&gt; &gt;gv  &quot; Visualモードでのインデント。gvで同じ範囲の再選択</span><br><span class="line">vnoremap &lt;D-[&gt; &lt;gv  &quot; 上に同じ</span><br></pre></td></tr></table></figure>
+
+<p>僕はこんな感じでキーバインドをしています。<br>参考になれば幸いです。  </p>
+<p>それでは今回はこの辺りで。<br>Happy text editing!!</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://karintomania.github.io/tech-memo/2020/02/2020-0225-macvim/" data-id="ck72fc07s000o9vligup862hw" data-title="Mac Vimを導入してみた" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tech-memo/tags/Vim/" rel="tag">Vim</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/tech-memo/2020/02/2020-0222-CookieByUiPath/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">UiPathでCookie Clickerに挑戦する</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    <div class="widget-wrap">
+<h3 class="widget-title">About</h3>
+<div class="widget">
+	<img src="/tech-memo/css/images/author.png" alt="著者" class="author-img">
+	<a class="author-link" href="/tech-memo/about" >karintomania</a>
+	<p><p>イギリス在住のWeb開発者が日々学んだことを書き連ねています。<br> Java/PHP/Dockerに興味があります。</p>
+</p>
+</div>
+</div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/tech-memo/2020/02/2020-0225-macvim/">Mac Vimを導入してみた</a>
+          </li>
+        
+          <li>
+            <a href="/tech-memo/2020/02/2020-0222-CookieByUiPath/">UiPathでCookie Clickerに挑戦する</a>
+          </li>
+        
+          <li>
+            <a href="/tech-memo/2020/02/2020-0213-HowToUseAssetFolder/">HexoでAssetFolderを有効にする</a>
+          </li>
+        
+          <li>
+            <a href="/tech-memo/2020/02/2020-0204-OrchidStart/">Java製の静的サイトジェネレータ「Orchid」を解説する</a>
+          </li>
+        
+          <li>
+            <a href="/tech-memo/2019/11/2019-1120-vscode-project-update/">VSCodeでJavaのGradleプロジェクトの依存性を更新する方法</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/Github-Pages/" rel="tag">Github Pages</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/Heroku/" rel="tag">Heroku</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/Orchid/" rel="tag">Orchid</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/PostgreSQL/" rel="tag">PostgreSQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/Spring-Boot/" rel="tag">Spring Boot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/UiPath/" rel="tag">UiPath</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/VS-Code/" rel="tag">VS Code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/Vim/" rel="tag">Vim</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tech-memo/tags/Docker/" style="font-size: 17.5px;">Docker</a> <a href="/tech-memo/tags/Github-Pages/" style="font-size: 15px;">Github Pages</a> <a href="/tech-memo/tags/Heroku/" style="font-size: 12.5px;">Heroku</a> <a href="/tech-memo/tags/Hexo/" style="font-size: 20px;">Hexo</a> <a href="/tech-memo/tags/Java/" style="font-size: 17.5px;">Java</a> <a href="/tech-memo/tags/Orchid/" style="font-size: 10px;">Orchid</a> <a href="/tech-memo/tags/PostgreSQL/" style="font-size: 12.5px;">PostgreSQL</a> <a href="/tech-memo/tags/Spring-Boot/" style="font-size: 15px;">Spring Boot</a> <a href="/tech-memo/tags/UiPath/" style="font-size: 10px;">UiPath</a> <a href="/tech-memo/tags/VS-Code/" style="font-size: 10px;">VS Code</a> <a href="/tech-memo/tags/Vim/" style="font-size: 10px;">Vim</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/tech-memo/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/tech-memo/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/tech-memo/archives/2019/10/">October 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 karintomania<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/tech-memo/" class="mobile-nav-link">Home</a>
+  
+    <a href="/tech-memo/about" class="mobile-nav-link">About</a>
+  
+    <a href="/tech-memo/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="/tech-memo/js/jquery-3.4.1.min.js"></script>
+
+
+  <script src="/tech-memo/fancybox/jquery.fancybox.min.js"></script>
+
+
+<script src="/tech-memo/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
