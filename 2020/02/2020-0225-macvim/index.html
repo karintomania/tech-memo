@@ -17,7 +17,7 @@
 <meta property="og:image" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;2020&#x2F;02&#x2F;2020-0225-macvim&#x2F;01_download.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;2020&#x2F;02&#x2F;2020-0225-macvim&#x2F;02_origin.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;2020&#x2F;02&#x2F;2020-0225-macvim&#x2F;02_set.png">
-<meta property="og:updated_time" content="2020-02-25T18:22:48.190Z">
+<meta property="og:updated_time" content="2020-02-25T21:57:36.279Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;2020&#x2F;02&#x2F;2020-0225-macvim&#x2F;01_download.png">
   
@@ -111,9 +111,9 @@
 <h2 id="vimrcファイルの作成"><a href="#vimrcファイルの作成" class="headerlink" title="vimrcファイルの作成"></a>vimrcファイルの作成</h2><p>vimの設定はvimrcファイルというファイルに記述していきます。<br>GUIでの設定画面もあるにはあるんですが、わかりづらい上に設定は保存されません。<br>そんなんだからとっつきづらいんだよなーと思いつつも、<br>設定ファイルになっていることで先人の設定をコピペで丸パクリできる、なんてメリットもあります。  </p>
 <p>さて、まずはvimrcファイルを作ります。<br>root/User/{User名}配下に.vimrcと.gvimrcというファイルを作ってください。  </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">root/User/&#123;User名&#125;</span><br><span class="line"> ┣.vimrc</span><br><span class="line"> ┗.gvimrc</span><br></pre></td></tr></table></figure>
-<p>このgvimrcはguiに関する設定が入ります。<br>root/usr/share/vim配下にもvimrcというファイルがあるのですが、<br><del>そいつはフェイクだ！</del>編集できません。できるのかも知れなけど僕はできませんでした。<br>無難に自分の権限のあるところでやりましょう。  </p>
+<p>このgvimrcはguiに関する設定が入ります。<br>root/usr/share/vim配下にもvimrcというファイルがあるのですが、<br><del>そいつはフェイクだ！</del>編集できません。できるのかも知れませんが、僕はできませんでした。<br>無難に自分の権限のあるところでやりましょう。  </p>
 <h2 id="見た目系の変更"><a href="#見た目系の変更" class="headerlink" title="見た目系の変更"></a>見た目系の変更</h2><p>まずは分かりやすい見た目の変更から行きます。<br>そのままだとフォントが小さくてみづらいので、フォントを変えます。<br>Edit-&gt;Font-&gt;Show Fontsからフォントがプレビューできます。<br>適当に好きなフォントとサイズを選びましょう。<br>設定したフォントは以下のコマンドで表示できます。  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">guiコマンド</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:echo &amp;guifont</span><br></pre></td></tr></table></figure>
 
 <p>フォントの設定が分かったらそれを.gvimrcに記述します。  </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set guifont=Osaka-Mono:h18</span><br></pre></td></tr></table></figure>
@@ -121,9 +121,9 @@
 <p>ここからは.vimrcファイルの設定に入っていきます。<br>見た目系の設定で言うと、以下のあたりを設定すると良い感じに充実してきます。<br>ちなみにステータスラインとは、Vimを開いた時に下の方に見えている欄のことです。  </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&quot; 行番号表示</span><br><span class="line">set number</span><br><span class="line"></span><br><span class="line">&quot; Status Line系の充実</span><br><span class="line">&quot; ステータスラインを常に表示</span><br><span class="line">set laststatus=2 </span><br><span class="line">&quot; 現在のモードを表示</span><br><span class="line">set showmode </span><br><span class="line">&quot; 打ったコマンドをステータスラインの下に表示</span><br><span class="line">set showcmd </span><br><span class="line">&quot; ステータスラインの右側にカーソルの現在位置を表示する</span><br><span class="line">set ruler </span><br><span class="line">&quot; メニュー補完</span><br><span class="line">set wildmenu</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&quot; 不可視文字の可視化</span><br><span class="line">set list</span><br><span class="line">set listchars=tab:&gt;_,trail:·,eol:↲</span><br></pre></td></tr></table></figure>
 
-<h2 id="カラースキームの設定"><a href="#カラースキームの設定" class="headerlink" title="カラースキームの設定"></a>カラースキームの設定</h2><p>また、Vimはカラースキームを設定できます。<br>おそらくコードを書く時などはデフォルトもそれなりに使えるかも知れませんが、<br>僕の用途は（.txtと言う意味の）テキストを編集することが主な用途なので、<br>デフォルトだとちょっと薄暗くて見づらいので変えて見ます。</p>
+<h2 id="カラースキームの設定"><a href="#カラースキームの設定" class="headerlink" title="カラースキームの設定"></a>カラースキームの設定</h2><p>また、Vimはカラースキームを設定できます。<br>おそらくコードを書く時などはデフォルトもそれなりに使えるかも知れませんが、<br>僕の用途は（.txtと言う意味の）テキストを編集することが主な用途なので、<br>デフォルトだとちょっと薄暗くて見づらいので変えてみます。</p>
 <p>カラースキームを選ぶ際には、こちらのページを参考にしました。<br><a href="https://www.slant.co/topics/480/~best-vim-color-schemes" target="_blank" rel="noopener">vimカラースキームランキング</a><br>ここから選びたいスキームの.vimファイルをダウンロードしてきます。  </p>
-<p>僕はZenburnというテーマを設定して見ました。<br>ダウンロードした.vimファイルを<br>root/User/{User名}/vim/color/フォルダに配置します。  </p>
+<p>僕はZenburnというテーマを設定してみました。<br>ダウンロードした.vimファイルを<br>root/User/{User名}/vim/color/フォルダに配置します。  </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot; Color scheme</span><br><span class="line">syntax enable  &quot; シンタックスハイライトを有効にする</span><br><span class="line">colorscheme zenburn  &quot; zenburnをカラースキームに設定</span><br></pre></td></tr></table></figure>
 <p>これでVimを再起動するとだいぶ良い感じになっているかと思います。  </p>
 <h2 id="テキストエディタとして必要な設定"><a href="#テキストエディタとして必要な設定" class="headerlink" title="テキストエディタとして必要な設定"></a>テキストエディタとして必要な設定</h2><p>あとは、おすすめの設定を以下に書いておきます。<br>というか、クリップボードやエンコーディングについてはテキストエディタとしてないと使い物にならない系なので、設定しとくことをお勧めします。  </p>
@@ -138,7 +138,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://karintomania.github.io/tech-memo/2020/02/2020-0225-macvim/" data-id="ck72fc07s000o9vligup862hw" data-title="Mac Vimを導入してみた" class="article-share-link">Share</a>
+      <a data-url="https://karintomania.github.io/tech-memo/2020/02/2020-0225-macvim/" data-id="ck72fodcu000bjeliff3m38ko" data-title="Mac Vimを導入してみた" class="article-share-link">Share</a>
       
       
       
