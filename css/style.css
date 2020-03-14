@@ -590,6 +590,13 @@ a.article-title:hover {
   line-height: 1.1em;
   margin: 1.1em 0;
 }
+.article-entry h2,
+.article-entry h3,
+.article-entry h4,
+.article-entry h5,
+.article-entry h6 {
+  border-bottom: 1px solid #333;
+}
 .article-entry a {
   color: #258fb8;
   text-decoration: none;
