@@ -6,15 +6,15 @@
   
   <title>Javaで関数型プログラミング | ただの技術メモ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Javaでは、関数型プログラミングをするために、様々な機能が用意されています。それらの機能を用いた実装を紹介してみます。   関数型プログラミングとはJava8で関数型っぽい機能が多く導入されました。それを利用した実装として、この記事では以下を紹介します。    map、reduceの利用 関数型インターフェース パイプラインパターン  mapmapはListを引数にとって何かしら操作したリストを">
+  <meta name="description" content="Javaでは、関数型プログラミングをするために、様々な機能が用意されています。それらの機能を用いた実装を紹介してみます。   関数型プログラミングとはJava8で関数型っぽい機能が多く導入されました。それを利用した実装として、この記事では以下を紹介します。    map、reduceの利用  関数型インターフェース  パイプラインパターン">
 <meta name="keywords" content="Java,関数型プログラミング">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Javaで関数型プログラミング">
 <meta property="og:url" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;2020&#x2F;03&#x2F;2020-0314-functionalProgrammingInJava&#x2F;index.html">
 <meta property="og:site_name" content="ただの技術メモ">
-<meta property="og:description" content="Javaでは、関数型プログラミングをするために、様々な機能が用意されています。それらの機能を用いた実装を紹介してみます。   関数型プログラミングとはJava8で関数型っぽい機能が多く導入されました。それを利用した実装として、この記事では以下を紹介します。    map、reduceの利用 関数型インターフェース パイプラインパターン  mapmapはListを引数にとって何かしら操作したリストを">
+<meta property="og:description" content="Javaでは、関数型プログラミングをするために、様々な機能が用意されています。それらの機能を用いた実装を紹介してみます。   関数型プログラミングとはJava8で関数型っぽい機能が多く導入されました。それを利用した実装として、この記事では以下を紹介します。    map、reduceの利用  関数型インターフェース  パイプラインパターン">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-03-14T12:34:52.495Z">
+<meta property="og:updated_time" content="2020-03-14T12:42:45.098Z">
 <meta name="twitter:card" content="summary">
   
   
@@ -88,14 +88,18 @@
         <p>Javaでは、関数型プログラミングをするために、様々な機能が用意されています。<br>それらの機能を用いた実装を紹介してみます。  </p>
 <h2 id="関数型プログラミングとは"><a href="#関数型プログラミングとは" class="headerlink" title="関数型プログラミングとは"></a>関数型プログラミングとは</h2><p>Java8で関数型っぽい機能が多く導入されました。<br>それを利用した実装として、この記事では以下を紹介します。  </p>
 <ul>
-<li>map、reduceの利用</li>
-<li>関数型インターフェース</li>
-<li>パイプラインパターン</li>
-</ul>
+<li><p>map、reduceの利用</p>
+</li>
+<li><p>関数型インターフェース</p>
+</li>
+<li><p>パイプラインパターン</p>
+<a id="more"></a>
 <h2 id="map"><a href="#map" class="headerlink" title="map"></a>map</h2><p>mapはListを引数にとって何かしら操作したリストを返します。<br>ここではint型のリストに対して二乗した数の配列を求めて見ます。<br>まずは普通に実装した場合です。  </p>
- <figure class="highlight java"><figcaption><span>mapなしの場合</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">square</span><span class="params">()</span></span>&#123;</span><br><span class="line">	List&lt;Integer&gt; nums = Arrays.asList(<span class="keyword">new</span> Integer[]&#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;);</span><br><span class="line"></span><br><span class="line">	List&lt;Integer&gt; sqrs = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">	<span class="keyword">for</span>(Integer num : nums)&#123;</span><br><span class="line">		sqrs.add(num * num);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span>(Integer sqr : sqrs)&#123;</span><br><span class="line">		System.out.println(Integer.toString(sqr));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> <span class="comment">// 実行結果</span></span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">4</span></span><br><span class="line"><span class="number">9</span></span><br><span class="line"><span class="number">16</span></span><br><span class="line"> </span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><figcaption><span>mapなしの場合</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">square</span><span class="params">()</span></span>&#123;</span><br><span class="line">	List&lt;Integer&gt; nums = Arrays.asList(<span class="keyword">new</span> Integer[]&#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;);</span><br><span class="line"></span><br><span class="line">	List&lt;Integer&gt; sqrs = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">	<span class="keyword">for</span>(Integer num : nums)&#123;</span><br><span class="line">		sqrs.add(num * num);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span>(Integer sqr : sqrs)&#123;</span><br><span class="line">		System.out.println(Integer.toString(sqr));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> <span class="comment">// 実行結果</span></span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">4</span></span><br><span class="line"><span class="number">9</span></span><br><span class="line"><span class="number">16</span></span><br><span class="line"> </span><br></pre></td></tr></table></figure>
 
 
+</li>
+</ul>
 <p> 一回二乗したリストを作ってそれをループして表示しています。<br> それに対してmapを使った場合はどうでしょうか。  </p>
 <figure class="highlight java"><figcaption><span>map使用</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">squareFunc</span><span class="params">()</span></span>&#123;</span><br><span class="line">	List&lt;Integer&gt; nums = Arrays.asList(<span class="keyword">new</span> Integer[]&#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;);</span><br><span class="line"></span><br><span class="line">	nums.stream().map(x -&gt; x * x)</span><br><span class="line">			.forEach(System.out::println);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>えらくこざっぱりしました。<br>少し解説します。  </p>
@@ -143,7 +147,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://karintomania.github.io/tech-memo/2020/03/2020-0314-functionalProgrammingInJava/" data-id="ck7rlg9z60005vvli2mq6drwa" data-title="Javaで関数型プログラミング" class="article-share-link">Share</a>
+      <a data-url="https://karintomania.github.io/tech-memo/2020/03/2020-0314-functionalProgrammingInJava/" data-id="ck7rloqjl000l0alihb7caf6u" data-title="Javaで関数型プログラミング" class="article-share-link">Share</a>
       
       
       

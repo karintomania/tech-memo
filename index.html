@@ -86,62 +86,20 @@
         <p>Javaでは、関数型プログラミングをするために、様々な機能が用意されています。<br>それらの機能を用いた実装を紹介してみます。  </p>
 <h2 id="関数型プログラミングとは"><a href="#関数型プログラミングとは" class="headerlink" title="関数型プログラミングとは"></a>関数型プログラミングとは</h2><p>Java8で関数型っぽい機能が多く導入されました。<br>それを利用した実装として、この記事では以下を紹介します。  </p>
 <ul>
-<li>map、reduceの利用</li>
-<li>関数型インターフェース</li>
-<li>パイプラインパターン</li>
-</ul>
-<h2 id="map"><a href="#map" class="headerlink" title="map"></a>map</h2><p>mapはListを引数にとって何かしら操作したリストを返します。<br>ここではint型のリストに対して二乗した数の配列を求めて見ます。<br>まずは普通に実装した場合です。  </p>
- <figure class="highlight java"><figcaption><span>mapなしの場合</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">square</span><span class="params">()</span></span>&#123;</span><br><span class="line">	List&lt;Integer&gt; nums = Arrays.asList(<span class="keyword">new</span> Integer[]&#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;);</span><br><span class="line"></span><br><span class="line">	List&lt;Integer&gt; sqrs = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">	<span class="keyword">for</span>(Integer num : nums)&#123;</span><br><span class="line">		sqrs.add(num * num);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span>(Integer sqr : sqrs)&#123;</span><br><span class="line">		System.out.println(Integer.toString(sqr));</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> <span class="comment">// 実行結果</span></span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">4</span></span><br><span class="line"><span class="number">9</span></span><br><span class="line"><span class="number">16</span></span><br><span class="line"> </span><br></pre></td></tr></table></figure>
-
-
-<p> 一回二乗したリストを作ってそれをループして表示しています。<br> それに対してmapを使った場合はどうでしょうか。  </p>
-<figure class="highlight java"><figcaption><span>map使用</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">squareFunc</span><span class="params">()</span></span>&#123;</span><br><span class="line">	List&lt;Integer&gt; nums = Arrays.asList(<span class="keyword">new</span> Integer[]&#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;);</span><br><span class="line"></span><br><span class="line">	nums.stream().map(x -&gt; x * x)</span><br><span class="line">			.forEach(System.out::println);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>えらくこざっぱりしました。<br>少し解説します。  </p>
-<p>実質、一行で全てが表現できてしまいます。素敵。  </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nums.stream().map(x -&gt; x * x).forEach(System.out::println);</span><br></pre></td></tr></table></figure>
-
-<p>この<code>stream()</code>でstream型のオブジェクトを返しています。<br>これはmapなどするために必要ってくらいです。(適当)<br>次の<code>map(x -&gt; x * x)</code>が肝です。<br>このmap関数は引数にラムダ式を取ります。<br>なんとなく二乗している感じはするけど分かりづらいですね。<br>また、ラムダ式とかいう大層な名前からしてとっつきづらいのですが、実体はただの関数です。<br>map関数は関数を引数に取ることができるんですね。<br>これについては後ほど説明します。  </p>
-<p>また、その後にまた謎な記述が出てきます。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.forEach(System.out::println);</span><br></pre></td></tr></table></figure>
-<p>これもSystem.outクラスのprintlnメソッドを引数にしてくれ、という書き方です。<br>メソッド参照と呼ばれます。<br>このforeach()関数も引数に関数を取れる関数です。<br>このような関数を引数にとったり関数を返すような関数を高階関数と呼んだりするようです。  </p>
-<p>上記はintからintのListでしたが、違う型のListを返すこともできます。</p>
-<figure class="highlight java"><figcaption><span>List<String>からList<Integer>を返す例</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 名前の長さを取得</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">nameLengthFunc</span><span class="params">()</span></span>&#123;</span><br><span class="line">	List&lt;String&gt; names = Arrays.asList(<span class="keyword">new</span> String[]&#123;<span class="string">"Mary"</span>, <span class="string">"Isla"</span>, <span class="string">"Sam"</span>&#125;);</span><br><span class="line"></span><br><span class="line">	names.stream().map(x -&gt; x.length())</span><br><span class="line">					.forEach(System.out::println);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 出力結果</span></span><br><span class="line"><span class="number">4</span></span><br><span class="line"><span class="number">4</span></span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
-<h2 id="reduce"><a href="#reduce" class="headerlink" title="reduce"></a>reduce</h2><p>次にreduceを見ていきます。<br>こちらは集計のような処理をリストにしたい時に使用します。<br>シンプルにIntegerリストの合計を求める処理を書いてみます。<br>まずはfor文を使ったコードです。  </p>
-<figure class="highlight java"><figcaption><span>for文を使ったreduce</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">reduceSum</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	List&lt;Integer&gt; nums = Arrays.asList(<span class="keyword">new</span> Integer[] &#123; <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span> &#125;);</span><br><span class="line">	<span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span>(Integer num : nums)&#123;</span><br><span class="line">		sum += num;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	System.out.println(sum);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>reduceを使って書き換えてみます。  </p>
-<figure class="highlight java"><figcaption><span>reduce</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">reduceSum</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	List&lt;Integer&gt; nums = Arrays.asList(<span class="keyword">new</span> Integer[] &#123; <span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span> &#125;);</span><br><span class="line">	<span class="keyword">int</span> sum = nums.stream().reduce(<span class="number">0</span>, (t, x) -&gt; t + x);</span><br><span class="line"></span><br><span class="line">	System.out.println(sum);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 出力結果</span></span><br><span class="line"><span class="number">10</span></span><br></pre></td></tr></table></figure>
-
-<p>少し解説をすると、<br>reduce()関数は二つ引数をとっています。<br>最初の0は二つ目の引数で使用しているtの初期値です。<br>ラムダ式では引数をtとxを入れていますが、このtに合計値が入っていきます。<br>0で初期化されたtにList内の数をxとして一つ一つ足していくイメージです。  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reduce(0, (t, x) -&gt; t + x)</span><br></pre></td></tr></table></figure>
-
-<h2 id="関数型インターフェース"><a href="#関数型インターフェース" class="headerlink" title="関数型インターフェース"></a>関数型インターフェース</h2><p>関数型プログラミングの上で、この関数を変数として扱う、という考え方が大事だと思います。<br>初めてラムダ式を見た時意味わからなかったのですが、関数を変数として使っている、ということを理解すると意外とあっさり理解できた気がします。<br>そのための機能に関数型インターフェースがあります。  </p>
-<p>少し具体的に説明します。<br>mapで利用したコードはFunction型の変数を使ってこうも記載できます。  </p>
-<figure class="highlight java"><figcaption><span>変数に関数を入れる</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">squareFunc</span><span class="params">()</span></span>&#123;</span><br><span class="line">	List&lt;Integer&gt; nums = Arrays.asList(<span class="keyword">new</span> Integer[]&#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>&#125;);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 関数をsquare変数に代入</span></span><br><span class="line">	Function&lt;Integer, Integer&gt; square = (x) -&gt; &#123; <span class="keyword">return</span> x * x; &#125;; </span><br><span class="line"></span><br><span class="line">	nums.stream().map(square)</span><br><span class="line">				.forEach(System.out::println);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>これなら一般的な関数の定義に少し近い気がします。<br>また、このFunction&lt;引数の型, 返り値の型&gt;以外にも、返り値がない場合はConsumer、引数が二つあるときはBiFunctinoなどいくつかの型が用途に合わせて用意されています。<br>また、自作することも可能です。  </p>
-<figure class="highlight java"><figcaption><span>変数に関数を入れる</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">useOriginalFunc</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="comment">// 実際のoriginalFuncの実装</span></span><br><span class="line">	originalInterface originalImplement = (str1, str2, str3) -&gt; &#123;<span class="keyword">return</span> str1+str2+str3;&#125;; </span><br><span class="line"></span><br><span class="line">	System.out.println(originalImplement.originalFunc(<span class="string">"Hello "</span>, <span class="string">"World"</span>, <span class="string">"!"</span>));</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 自作の関数型インターフェース</span></span><br><span class="line"><span class="meta">@FunctionalInterface</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">originalInterface</span></span>&#123;</span><br><span class="line">	<span class="comment">// String三つを引数に取る関数を持つ</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">originalFunc</span><span class="params">(String str1, String str2, String str3)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="パイプラインパターン"><a href="#パイプラインパターン" class="headerlink" title="パイプラインパターン"></a>パイプラインパターン</h2><p>これらを使ったデザインパターンとしてパイプラインパターンというものがあります。<br>実装をみてもらったほうが早いと思うので、例を紹介します。<br>結成年代とボーカルが登録されたリストから、<br>2010年以降結成のものをBand名順でソートして返すようにします。<br>Bandクラスの定義は以下になります。  </p>
-<figure class="highlight java"><figcaption><span>Band.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Band</span> </span>&#123;</span><br><span class="line">	String name;</span><br><span class="line">	String vocal;</span><br><span class="line">	<span class="keyword">int</span> startYear;</span><br><span class="line"></span><br><span class="line">	Band( String name, String vocal, <span class="keyword">int</span> startYear)&#123;</span><br><span class="line">		<span class="keyword">this</span>.name=name;</span><br><span class="line">		<span class="keyword">this</span>.vocal=vocal;</span><br><span class="line">		<span class="keyword">this</span>.startYear=startYear;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">this</span>.name + <span class="string">" :"</span> + <span class="keyword">this</span>.vocal  + <span class="string">" :"</span> + Integer.toString(<span class="keyword">this</span>.startYear);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>まずは従来の実装で書いて見ます。  </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">printBandsAfter2000VocalSorted</span><span class="params">(List&lt;Band&gt; bands)</span></span>&#123;</span><br><span class="line">	List&lt;Band&gt; result = <span class="keyword">new</span> ArrayList&lt;Band&gt;();</span><br><span class="line">	<span class="comment">// 2000年以降結成のバンドをフィルター</span></span><br><span class="line">	<span class="keyword">for</span>(Band band :bands)&#123;</span><br><span class="line">		<span class="keyword">if</span>(band.startYear &gt;= <span class="number">2000</span>)&#123;</span><br><span class="line">			result.add(band);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	Comparator&lt;Band&gt; comparatorByName = <span class="keyword">new</span> Comparator&lt;Band&gt;() &#123;</span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Band band1, Band band2)</span></span>&#123;</span><br><span class="line">			<span class="keyword">return</span> band1.name.compareTo(band2.name);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;;</span><br><span class="line">	<span class="comment">// ソート</span></span><br><span class="line">	Collections.sort(result,comparatorByName);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 出力</span></span><br><span class="line">	<span class="keyword">for</span>(Band band : result)&#123;</span><br><span class="line">		System.out.println(band.toString());</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>実行させてみます。<br>（リスト内のバンド名は実在のバンドとは一切関係ありませんので、ご注意を。）  </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</span><br><span class="line">	List&lt;Band&gt; bands = Arrays.asList(<span class="keyword">new</span> Band[]&#123;</span><br><span class="line">							<span class="keyword">new</span> Band(<span class="string">"Lin to Shite Samidare"</span>, <span class="string">"PK"</span>, <span class="number">2039</span>),</span><br><span class="line">							<span class="keyword">new</span> Band(<span class="string">"Bump Of Beef"</span>, <span class="string">"Fujisan"</span>, <span class="number">1998</span>),</span><br><span class="line">							<span class="keyword">new</span> Band(<span class="string">"Gesu no Kiwami Oyaji"</span>, <span class="string">"Yamatani Enoki"</span>, <span class="number">2005</span>),</span><br><span class="line">							<span class="keyword">new</span> Band(<span class="string">"Creep pipe pattern"</span>, <span class="string">"Ozaki Datsuryokukan"</span>, <span class="number">2008</span>),</span><br><span class="line">							<span class="keyword">new</span> Band(<span class="string">"Osaka Jihen"</span>, <span class="string">"Shina Lemon"</span>, <span class="number">1980</span>),</span><br><span class="line">							&#125;);</span><br><span class="line">	printBandsAfter2000VocalSorted(bands);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 実行結果</span></span><br><span class="line">Creep pipe pattern :Ozaki Datsuryokukan :<span class="number">2008</span></span><br><span class="line">Gesu no Kiwami Oyaji :Yamatani Enoki :<span class="number">2005</span></span><br><span class="line">Lin to Shite Samidare :PK :<span class="number">2039</span></span><br></pre></td></tr></table></figure>
-
-<p>printBandsAfter2000VocalSortedは、少し冗長な感じがしますね。<br>それではこれを関数型っぽく書いてみます。  </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">printBandsAfter2000VocalSortedFunc</span><span class="params">(List&lt;Band&gt; bands)</span></span>&#123;</span><br><span class="line">	bands.stream()</span><br><span class="line">		.filter(band -&gt; band.getStartYear() &gt;= <span class="number">2000</span>)</span><br><span class="line">		.sorted(Comparator.comparing(Band::getName))</span><br><span class="line">		.forEach(System.out::println);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>そうです。ワンライナーです。<br>これは嬉しいですね。<br>パイプラインパターンはこんな感じで実行する関数をつなげていく実装です。<br>またこちらの方がリストに対して何をしているのか、読みやすいのではないでしょうか。  </p>
-<p>この<code>.sorted(Comparator.comparing(Band::getName))</code>は<code>Comparator.comparing()</code>を使用しています。<br>このcomparingはソートするキーを取得するメソッドを受け取って、適切なcomparatorを返してくれるメソッドです。<br>従来は自分で定義していたのが、この一文で済むのが嬉しいですね。<br>ちなみにマメですが、<code>sorted(Comparator.comparing(Band::getName).reversed())</code>とすると逆順で並べてくれます。便利。  </p>
-<h2 id="所感"><a href="#所感" class="headerlink" title="所感"></a>所感</h2><p>関数型プログラミングが流行っているので、調べてみました。<br>副作用だ、なんだとか色々言っているのですが、<br>Javaに関していうならば、関数型を利用するメリットは、コードがこざっぱりするというのが、大きいのではないでしょうか。<br>もっと詳しい人からしたら色々あるのかも知れませんが、僕的にはこれでも十分使用する理由になります。<br>皆様も取り入れてみてはいかがでしょうか。  </p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>この記事は以下の記事に触発されて書きました。<br>ですが、この記事は英語とPythonで書かれているため、<br>日本語とJavaでどうなるか確かめて見た次第です。<br><a href="">An introduction to functional programming</a></p>
-<p>また、こちらもパイプラインパターンについて、<br>もっと詳しく教えてくれています。<br>for文のデメリットみたいなことが分かりやすいです。<br><a href="">Function composition and the Collection Pipeline pattern</a></p>
-
+<li><p>map、reduceの利用</p>
+</li>
+<li><p>関数型インターフェース</p>
+</li>
+<li><p>パイプラインパターン</p>
+        
+          <p class="article-more-link">
+            <a href="/tech-memo/2020/03/2020-0314-functionalProgrammingInJava/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://karintomania.github.io/tech-memo/2020/03/2020-0314-functionalProgrammingInJava/" data-id="ck7rlg9z60005vvli2mq6drwa" data-title="Javaで関数型プログラミング" class="article-share-link">Share</a>
+      <a data-url="https://karintomania.github.io/tech-memo/2020/03/2020-0314-functionalProgrammingInJava/" data-id="ck7rloqjl000l0alihb7caf6u" data-title="Javaで関数型プログラミング" class="article-share-link">Share</a>
       
       
       
@@ -186,7 +144,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://karintomania.github.io/tech-memo/2020/02/2020-0225-macvim/" data-id="ck7rlg9zd0008vvliaagxba3w" data-title="Mac Vimを導入してみた" class="article-share-link">Share</a>
+      <a data-url="https://karintomania.github.io/tech-memo/2020/02/2020-0225-macvim/" data-id="ck7rloqjj000j0ali6g8z5v3g" data-title="Mac Vimを導入してみた" class="article-share-link">Share</a>
       
       
       
@@ -235,7 +193,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://karintomania.github.io/tech-memo/2020/02/2020-0222-CookieByUiPath/" data-id="ck7rlg9z40004vvli4zt93wii" data-title="UiPathでCookie Clickerに挑戦する" class="article-share-link">Share</a>
+      <a data-url="https://karintomania.github.io/tech-memo/2020/02/2020-0222-CookieByUiPath/" data-id="ck7rloqjc000e0alihpxh3mrh" data-title="UiPathでCookie Clickerに挑戦する" class="article-share-link">Share</a>
       
       
       
@@ -280,7 +238,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://karintomania.github.io/tech-memo/2020/02/2020-0213-HowToUseAssetFolder/" data-id="ck7rlg9z00002vvlieidq3dy5" data-title="HexoでAssetFolderを有効にする" class="article-share-link">Share</a>
+      <a data-url="https://karintomania.github.io/tech-memo/2020/02/2020-0213-HowToUseAssetFolder/" data-id="ck7rloqj9000c0ali2rrlhn0v" data-title="HexoでAssetFolderを有効にする" class="article-share-link">Share</a>
       
       
       
@@ -325,7 +283,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://karintomania.github.io/tech-memo/2020/02/2020-0204-OrchidStart/" data-id="ck7rlg9yw0001vvli4royefqo" data-title="Java製の静的サイトジェネレータ「Orchid」を解説する" class="article-share-link">Share</a>
+      <a data-url="https://karintomania.github.io/tech-memo/2020/02/2020-0204-OrchidStart/" data-id="ck7rloqjh000g0aliawuaejja" data-title="Java製の静的サイトジェネレータ「Orchid」を解説する" class="article-share-link">Share</a>
       
       
       
@@ -371,7 +329,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://karintomania.github.io/tech-memo/2019/11/2019-1120-vscode-project-update/" data-id="ck7rlg9zy000nvvli41yp3nz0" data-title="VSCodeでJavaのGradleプロジェクトの依存性を更新する方法" class="article-share-link">Share</a>
+      <a data-url="https://karintomania.github.io/tech-memo/2019/11/2019-1120-vscode-project-update/" data-id="ck7rloqj7000b0alifyry35x9" data-title="VSCodeでJavaのGradleプロジェクトの依存性を更新する方法" class="article-share-link">Share</a>
       
       
       
@@ -417,7 +375,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://karintomania.github.io/tech-memo/2019/11/2019-1101-heroku-springboot-postgres/" data-id="ck7rlg9zt000ivvli7h1ve9db" data-title="HerokuのPostgreSQLにSpringアプリケーションから接続する" class="article-share-link">Share</a>
+      <a data-url="https://karintomania.github.io/tech-memo/2019/11/2019-1101-heroku-springboot-postgres/" data-id="ck7rloqj300080ali6dxr60y7" data-title="HerokuのPostgreSQLにSpringアプリケーションから接続する" class="article-share-link">Share</a>
       
       
       
@@ -462,7 +420,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://karintomania.github.io/tech-memo/2019/11/2019-1101-psql-container/" data-id="ck7rlg9zv000lvvlifazdfcq5" data-title="PostgreSQLをコンテナ化する" class="article-share-link">Share</a>
+      <a data-url="https://karintomania.github.io/tech-memo/2019/11/2019-1101-psql-container/" data-id="ck7rloqj500090ali9wei9pa3" data-title="PostgreSQLをコンテナ化する" class="article-share-link">Share</a>
       
       
       
@@ -520,7 +478,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://karintomania.github.io/tech-memo/2019/10/2019-1031-vscode-spring-herok-deploy/" data-id="ck7rlg9zs000gvvliap9k09ei" data-title="VS CodeからSpring Bootプロジェクトを作成してHerokuにデプロイするまで" class="article-share-link">Share</a>
+      <a data-url="https://karintomania.github.io/tech-memo/2019/10/2019-1031-vscode-spring-herok-deploy/" data-id="ck7rloqj100060alifhey343m" data-title="VS CodeからSpring Bootプロジェクトを作成してHerokuにデプロイするまで" class="article-share-link">Share</a>
       
       
       
@@ -569,7 +527,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://karintomania.github.io/tech-memo/2019/10/2019-1030-hexo-add-about-widget/" data-id="ck7rlg9zp000dvvlig32mf1bz" data-title="Hexoでサイドバーにウィジェット(プロフィール)を追加する" class="article-share-link">Share</a>
+      <a data-url="https://karintomania.github.io/tech-memo/2019/10/2019-1030-hexo-add-about-widget/" data-id="ck7rloqj000050alicgja2xrh" data-title="Hexoでサイドバーにウィジェット(プロフィール)を追加する" class="article-share-link">Share</a>
       
       
       
