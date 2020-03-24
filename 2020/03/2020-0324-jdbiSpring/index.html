@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-161452704-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-161452704-1');
+</script>
+<!-- End Google Analytics -->
+
+  
+  <title>Spring BootでJDBIを使う | ただの技術メモ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="JDBIとはJDBIはJavaの様々あるORマッパーの一つです。軽量かつ直感的な使い勝手が人気だということで、使ってみました。今回はSpring Bootと一緒に使う方法を紹介します。">
+<meta name="keywords" content="Java,Spring Boot,OR Mapper">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring BootでJDBIを使う">
+<meta property="og:url" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;2020&#x2F;03&#x2F;2020-0324-jdbiSpring&#x2F;index.html">
+<meta property="og:site_name" content="ただの技術メモ">
+<meta property="og:description" content="JDBIとはJDBIはJavaの様々あるORマッパーの一つです。軽量かつ直感的な使い勝手が人気だということで、使ってみました。今回はSpring Bootと一緒に使う方法を紹介します。">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;2020&#x2F;03&#x2F;2020-0324-jdbiSpring&#x2F;h2-console.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;2020&#x2F;03&#x2F;2020-0324-jdbiSpring&#x2F;result.png">
+<meta property="og:updated_time" content="2020-03-24T00:54:08.836Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;2020&#x2F;03&#x2F;2020-0324-jdbiSpring&#x2F;h2-console.png">
+  
+  
+    <link rel="icon" href="/tech-memo/css/images/favicon.ico">
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+  
+  <link rel="stylesheet" href="/tech-memo/css/style.css">
+  
+    <link rel="stylesheet" href="/tech-memo/fancybox/jquery.fancybox.min.css">
+  
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/tech-memo/" id="logo">ただの技術メモ</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/tech-memo/">Home</a>
+        
+          <a class="main-nav-link" href="/tech-memo/about">About</a>
+        
+          <a class="main-nav-link" href="/tech-memo/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://karintomania.github.io/tech-memo"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2020-0324-jdbiSpring" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/tech-memo/2020/03/2020-0324-jdbiSpring/" class="article-date">
+  <time datetime="2020-03-24T00:53:54.000Z" itemprop="datePublished">2020-03-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Spring BootでJDBIを使う
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="JDBIとは"><a href="#JDBIとは" class="headerlink" title="JDBIとは"></a>JDBIとは</h2><p>JDBIはJavaの様々あるORマッパーの一つです。<br>軽量かつ直感的な使い勝手が人気だということで、使ってみました。<br>今回はSpring Bootと一緒に使う方法を紹介します。  </p>
+<a id="more"></a>
+
+<p>この記事で利用しているソースは以下に公開しています。<br><a href="https://github.com/karintomania/jdbi-test" target="_blank" rel="noopener">https://github.com/karintomania/jdbi-test</a></p>
+<h2 id="Spring-initializer"><a href="#Spring-initializer" class="headerlink" title="Spring initializer"></a>Spring initializer</h2><p>今日も元気にSpring initializrからスタートです。<br>適当なプロジェクト名をつけて、依存性は以下の三つを入れておいてください。  </p>
+<ul>
+<li>Spring web</li>
+<li>JDBC</li>
+<li>H2<br>もちろんH2以外でも色々なDBにつなげます。  </li>
+</ul>
+<h2 id="Build-Gradle"><a href="#Build-Gradle" class="headerlink" title="Build.Gradle"></a>Build.Gradle</h2><p>今回はGradleプロジェクトを使用しました。<br>Mavenでも、まあ大差ないのではないでしょうか。<br>JDBIのライブラリとして、<code>jdbi3-spring4</code>を、<br>プラグインとして、<code>jdbi3-sqlobject</code>を依存性に追加します。  </p>
+ <figure class="highlight groovy"><figcaption><span>Buiild.gradle</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">dependencies &#123;</span><br><span class="line">	implementation <span class="string">'org.springframework.boot:spring-boot-starter-jdbc'</span></span><br><span class="line">	implementation <span class="string">'org.springframework.boot:spring-boot-starter-web'</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">// jdbi関連を追加</span></span><br><span class="line">	implementation <span class="string">'org.jdbi:jdbi3-spring4:3.9.1'</span></span><br><span class="line">	implementation <span class="string">'org.jdbi:jdbi3-sqlobject:3.9.1'</span></span><br><span class="line"></span><br><span class="line">	runtimeOnly <span class="string">'com.h2database:h2'</span></span><br><span class="line">	testImplementation(<span class="string">'org.springframework.boot:spring-boot-starter-test'</span>) &#123;</span><br><span class="line">		exclude <span class="string">group:</span> <span class="string">'org.junit.vintage'</span>, <span class="string">module:</span> <span class="string">'junit-vintage-engine'</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> </span><br></pre></td></tr></table></figure>
+
+<h2 id="application-properties"><a href="#application-properties" class="headerlink" title="application.properties"></a>application.properties</h2><p>H2の設定をsrc/main/resources/applicaiton.propertiesにしておきます。<br>ここにDBの接続情報を記述します。  </p>
+ <figure class="highlight properties"><figcaption><span>application.properties</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># datasource</span></span><br><span class="line"><span class="meta">spring.datasource.driver-class-name</span>=<span class="string">org.h2.Driver</span></span><br><span class="line"><span class="meta">spring.datasource.url</span>=<span class="string">jdbc:h2:./h2/test</span></span><br><span class="line"><span class="meta">spring.datasource.username</span>=<span class="string">sa</span></span><br><span class="line"><span class="meta">spring.datasource.password</span>=<span class="string"></span></span><br><span class="line"></span><br><span class="line"><span class="comment"># h2 for debug tool</span></span><br><span class="line"><span class="meta">spring.h2.console.enabled</span>=<span class="string">true</span></span><br><span class="line"><span class="meta">spring.h2.console.path</span>=<span class="string">/h2</span></span><br><span class="line"> </span><br></pre></td></tr></table></figure>
+
+<p>一番下の二行はH2コンソール用の記述です。<br>Springアプリケーションを起動した状態で<br><a href="http://localhost:8080/h2" target="_blank" rel="noopener">http://localhost:8080/h2</a> にアクセスするとH2を管理する簡易的なアプリが起動します。<br>なんというか古き良きJavaって感じのUIで好感が持てますね。<br>結果などをチラ見するのに便利なので、入れておいて損はないと思います。  </p>
+<img src="/tech-memo/2020/03/2020-0324-jdbiSpring/h2-console.png" class="" title="[h2コンソールの画面]">
+
+<p>また、data.sqlという名前でSQLを<code>src/main/resources/data.sql</code>においておくと<br>勝手に読み込んで実行してくれるので、配置しておきます。  </p>
+ <figure class="highlight sql"><figcaption><span>data.sql</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> <span class="keyword">IF</span> <span class="keyword">EXISTS</span> TBL_EMPLOYEES;</span><br><span class="line">  </span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> TBL_EMPLOYEES (</span><br><span class="line">  <span class="keyword">id</span> <span class="built_in">INT</span> AUTO_INCREMENT  PRIMARY <span class="keyword">KEY</span>,</span><br><span class="line">  first_name <span class="built_in">VARCHAR</span>(<span class="number">250</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">  last_name <span class="built_in">VARCHAR</span>(<span class="number">250</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> TBL_EMPLOYEES (first_name, last_name) <span class="keyword">VALUES</span> (<span class="string">'tarou'</span>,<span class="string">'satou'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> TBL_EMPLOYEES (first_name, last_name) <span class="keyword">VALUES</span> (<span class="string">'jirou'</span>,<span class="string">'suzuki'</span>);</span><br><span class="line"> </span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Configurationファイル"><a href="#Configurationファイル" class="headerlink" title="Configurationファイル"></a>Configurationファイル</h2><p>さて、ようやくJavaです。<br>Configurationファイルにjdbiの設定をします。<br>こちらでjdbiインスタンスを生成します。<br>このjdbiを呼び出して各処理をしていくイメージです。<br>src/main/java/{ドメイン}/configuration/に配置しておきます。  </p>
+ <figure class="highlight java"><figcaption><span>JdbiConfig.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.jdbitest.configuration;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.sql.DataSource;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.jdbi.v3.core.Jdbi;</span><br><span class="line"><span class="keyword">import</span> org.jdbi.v3.sqlobject.SqlObjectPlugin;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.context.properties.ConfigurationProperties;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Bean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"><span class="keyword">import</span> org.springframework.jdbc.datasource.DataSourceTransactionManager;</span><br><span class="line"><span class="keyword">import</span> org.springframework.jdbc.datasource.DriverManagerDataSource;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JdbiConfig</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// applications.propertiesのspring.datasourceを読み込んでDatasourceを生成</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="meta">@ConfigurationProperties</span>(prefix = <span class="string">"spring.datasource"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> DataSource <span class="title">driverManagerDataSource</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> DriverManagerDataSource();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// TransactionManagerの生成</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> DataSourceTransactionManager <span class="title">dataSourceTransactionManager</span><span class="params">(DataSource dataSource)</span> </span>&#123;</span><br><span class="line">        DataSourceTransactionManager dataSourceTransactionManager = <span class="keyword">new</span> DataSourceTransactionManager();</span><br><span class="line">        dataSourceTransactionManager.setDataSource(dataSource);</span><br><span class="line">        <span class="keyword">return</span> dataSourceTransactionManager;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Jdbiインスタンスを生成</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Jdbi <span class="title">jdbi</span><span class="params">(DataSource dataSource)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Jdbi.create(dataSource)</span><br><span class="line">				<span class="comment">// SqlObjectプラグインを読み込む</span></span><br><span class="line">                .installPlugin(<span class="keyword">new</span> SqlObjectPlugin());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> </span><br></pre></td></tr></table></figure>
+
+<h2 id="Repository"><a href="#Repository" class="headerlink" title="Repository"></a>Repository</h2><p>長々と設定が続きましたが、やっと実装っぽい部分に入ります。<br>JdbiRepositoryを定義します。<br> <figure class="highlight java"><figcaption><span>EmployeeJdbiRepository.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.jdbitest.repository;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.example.jdbitest.entity.Employee;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.jdbi.v3.sqlobject.config.RegisterBeanMapper;</span><br><span class="line"><span class="keyword">import</span> org.jdbi.v3.sqlobject.customizer.Bind;</span><br><span class="line"><span class="keyword">import</span> org.jdbi.v3.sqlobject.customizer.BindBean;</span><br><span class="line"><span class="keyword">import</span> org.jdbi.v3.sqlobject.statement.GetGeneratedKeys;</span><br><span class="line"><span class="keyword">import</span> org.jdbi.v3.sqlobject.statement.SqlQuery;</span><br><span class="line"><span class="keyword">import</span> org.jdbi.v3.sqlobject.statement.SqlUpdate;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RegisterBeanMapper</span>(Employee.class)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">EmployeeJdbiRepository</span></span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// 一件挿入</span></span><br><span class="line">	<span class="comment">// @GetGeneratedKeysをつけると結果に自動生成されたキーを返してくれる</span></span><br><span class="line">	<span class="meta">@GetGeneratedKeys</span></span><br><span class="line">	<span class="comment">// @BindBeanアノテーションでEmployeeクラスのfirstName,lastNameプロパティを</span></span><br><span class="line">	<span class="comment">// @SqlUpdate内のプレースホルダ(:firstName,:lastName)に紐づけている</span></span><br><span class="line">	<span class="meta">@SqlUpdate</span>(<span class="string">"insert into TBL_EMPLOYEES (first_name, last_name) values(:firstName, :lastName)"</span>)</span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">insertEmployee</span><span class="params">(@BindBean Employee employee)</span></span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// idで検索</span></span><br><span class="line">	<span class="comment">// こちらも@Bindアノテーションでプレースホルダと引数を紐づけている</span></span><br><span class="line">	<span class="meta">@SqlQuery</span>(<span class="string">"select * from TBL_EMPLOYEES where id = :id"</span>)</span><br><span class="line">	<span class="function">Employee <span class="title">findById</span><span class="params">(@Bind(<span class="string">"id"</span>)</span> <span class="keyword">int</span> id)</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 全件選択</span></span><br><span class="line">	<span class="comment">// 検索結果とList&lt;Employee&gt;の紐付けは勝手にやってくれてる</span></span><br><span class="line">	<span class="meta">@SqlQuery</span>(<span class="string">"select * from TBL_EMPLOYEES"</span>)</span><br><span class="line">	<span class="function">List&lt;Employee&gt; <span class="title">findAll</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"> </span><br></pre></td></tr></table></figure></p>
+<p>そいつを呼び出すRepositoryクラスを作ります。<br> <figure class="highlight java"><figcaption><span>EmployeeRepository.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">package</span> com.example.jdbitest.repository;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.example.jdbitest.entity.Employee;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.jdbi.v3.core.Jdbi;</span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Component;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EmployeeRepository</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> EmployeeJdbiRepository ejr;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">EmployeeRepository</span><span class="params">(Jdbi jdbi)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.ejr = jdbi.onDemand(EmployeeJdbiRepository.class);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">insertEmployee</span><span class="params">(Employee employee)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> ejr.insertEmployee(employee);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Employee <span class="title">findById</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> ejr.findById(id);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;Employee&gt; <span class="title">findAll</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> ejr.findAll();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br></pre></td></tr></table></figure></p>
+<p>これで完成です！<br>とりあえずコントローラを作って使えるようにしてみます。  </p>
+ <figure class="highlight java"><figcaption><span>EmployeeController.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">package</span> com.example.jdbitest;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.example.jdbitest.entity.Employee;</span><br><span class="line"><span class="keyword">import</span> com.example.jdbitest.repository.EmployeeRepository;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.GetMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.PostMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestBody;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RestController;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/emp"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">EmployeeController</span></span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Autowired</span></span><br><span class="line">	<span class="keyword">private</span> EmployeeRepository er;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Getのときは全従業員リストを返す</span></span><br><span class="line">	<span class="meta">@GetMapping</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> List&lt;Employee&gt; <span class="title">get</span><span class="params">()</span></span>&#123;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">return</span> er.findAll();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Postのときは新規Employeeを登録,登録結果を返す</span></span><br><span class="line">	<span class="meta">@PostMapping</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> Employee <span class="title">post</span><span class="params">(@RequestBody Employee e)</span></span>&#123;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">int</span> id = er.insertEmployee(e);</span><br><span class="line">		<span class="keyword">return</span> er.findById(id);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br></pre></td></tr></table></figure>
+
+<p>Curlコマンドで呼び出してみましょう！</p>
+ <figure class="highlight bash"><figcaption><span>curl実行結果</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ curl  -X GET http://localhost:8080/emp</span><br><span class="line"></span><br><span class="line">// 実行結果</span><br><span class="line">$ [&#123;<span class="string">"id"</span>:1,<span class="string">"firstName"</span>:<span class="string">"tarou"</span>,<span class="string">"lastName"</span>:<span class="string">"satou"</span>&#125;,&#123;<span class="string">"id"</span>:2,<span class="string">"firstName"</span>:<span class="string">"jirou"</span>,<span class="string">"lastName"</span>:<span class="string">"suzuki"</span>&#125;]</span><br><span class="line"> </span><br></pre></td></tr></table></figure>
+
+<p> 続いてPOSTも。<br> <figure class="highlight bash"><figcaption><span>curl実行結果</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ curl -d <span class="string">'&#123;"firstName":"takeshi","lastName":"suzuki"&#125;'</span> -H <span class="string">"Content-Type: application/json"</span> -X POST http://localhost:8080/emp</span><br><span class="line"></span><br><span class="line">// 実行結果</span><br><span class="line">$ &#123;<span class="string">"id"</span>:3,<span class="string">"firstName"</span>:<span class="string">"takeshi"</span>,<span class="string">"lastName"</span>:<span class="string">"suzuki"</span>&#125;</span><br><span class="line"> </span><br></pre></td></tr></table></figure></p>
+<p> 古き良きJavaアプリケーション（言いたいだけ）H2コンソールでも<br> テーブルの状態を確かめてみます。  </p>
+<img src="/tech-memo/2020/03/2020-0324-jdbiSpring/result.png" class="" title="[結果確認]">
+
+<p>しっかり、データが登録されました。</p>
+<h2 id="所感"><a href="#所感" class="headerlink" title="所感"></a>所感</h2><p>恥ずかしながらこのスライドを見るまでORマッパーはJPA一択だと思っていました。<br><a href="https://www.slideshare.net/masatoshitada7/java-or-jsug" target="_blank" rel="noopener">Java ORマッパー選定のポイント</a><br>標準だからという理由だけで使っていたJPAですが、<br>高機能であるが故に、実装が複雑になりがちなことと、<br>SQLが自動生成なので、パフォーマンスの調整が難しくなることがあるので覚悟の上で使ってくれとのこと。<br>JDBIはそう言ったこともなさそうですね。ベタ書きですし。<br>個人的にはシンプルなものが好きなので、<br>このくらいの機能感がちょうど良いのかなと思っています。  </p>
+<p>この記事がお役に立てると幸いです。  </p>
+<p>それでは今日はこの辺で。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://karintomania.github.io/tech-memo/2020/03/2020-0324-jdbiSpring/" data-id="ck856tbu5001ixzli3leo7kgk" data-title="Spring BootでJDBIを使う" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tech-memo/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tech-memo/tags/OR-Mapper/" rel="tag">OR Mapper</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tech-memo/tags/Spring-Boot/" rel="tag">Spring Boot</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/tech-memo/2020/03/2020-0314-functionalProgrammingInJava/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Javaで関数型プログラミング</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    <div class="widget-wrap">
+<h3 class="widget-title">About</h3>
+<div class="widget">
+	<img src="/tech-memo/css/images/author.png" alt="著者" class="author-img">
+	<a class="author-link" href="/tech-memo/about" >karintomania</a>
+	<p><p>イギリス在住のWeb開発者が日々学んだことを書き連ねています。<br> Java/PHP/Dockerに興味があります。</p>
+</p>
+</div>
+</div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/tech-memo/2020/03/2020-0324-jdbiSpring/">Spring BootでJDBIを使う</a>
+          </li>
+        
+          <li>
+            <a href="/tech-memo/2020/03/2020-0314-functionalProgrammingInJava/">Javaで関数型プログラミング</a>
+          </li>
+        
+          <li>
+            <a href="/tech-memo/2020/02/2020-0225-macvim/">Mac Vimを導入してみた</a>
+          </li>
+        
+          <li>
+            <a href="/tech-memo/2020/02/2020-0222-CookieByUiPath/">UiPathでCookie Clickerに挑戦する</a>
+          </li>
+        
+          <li>
+            <a href="/tech-memo/2020/02/2020-0213-HowToUseAssetFolder/">HexoでAssetFolderを有効にする</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/Github-Pages/" rel="tag">Github Pages</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/Heroku/" rel="tag">Heroku</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/OR-Mapper/" rel="tag">OR Mapper</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/Orchid/" rel="tag">Orchid</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/PostgreSQL/" rel="tag">PostgreSQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/Spring-Boot/" rel="tag">Spring Boot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/UiPath/" rel="tag">UiPath</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/VS-Code/" rel="tag">VS Code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/Vim/" rel="tag">Vim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/%E9%96%A2%E6%95%B0%E5%9E%8B%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0/" rel="tag">関数型プログラミング</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tech-memo/tags/Docker/" style="font-size: 16px;">Docker</a> <a href="/tech-memo/tags/Github-Pages/" style="font-size: 14px;">Github Pages</a> <a href="/tech-memo/tags/Heroku/" style="font-size: 12px;">Heroku</a> <a href="/tech-memo/tags/Hexo/" style="font-size: 18px;">Hexo</a> <a href="/tech-memo/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tech-memo/tags/OR-Mapper/" style="font-size: 10px;">OR Mapper</a> <a href="/tech-memo/tags/Orchid/" style="font-size: 10px;">Orchid</a> <a href="/tech-memo/tags/PostgreSQL/" style="font-size: 12px;">PostgreSQL</a> <a href="/tech-memo/tags/Spring-Boot/" style="font-size: 16px;">Spring Boot</a> <a href="/tech-memo/tags/UiPath/" style="font-size: 10px;">UiPath</a> <a href="/tech-memo/tags/VS-Code/" style="font-size: 10px;">VS Code</a> <a href="/tech-memo/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tech-memo/tags/%E9%96%A2%E6%95%B0%E5%9E%8B%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0/" style="font-size: 10px;">関数型プログラミング</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/tech-memo/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/tech-memo/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/tech-memo/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/tech-memo/archives/2019/10/">October 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 karintomania<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/tech-memo/" class="mobile-nav-link">Home</a>
+  
+    <a href="/tech-memo/about" class="mobile-nav-link">About</a>
+  
+    <a href="/tech-memo/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="/tech-memo/js/jquery-3.4.1.min.js"></script>
+
+
+  <script src="/tech-memo/fancybox/jquery.fancybox.min.js"></script>
+
+
+<script src="/tech-memo/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
