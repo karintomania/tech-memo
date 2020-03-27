@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-161452704-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-161452704-1');
+</script>
+<!-- End Google Analytics -->
+
+  
+  <title>MyBatis Spring Bootを使ってみた | ただの技術メモ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="今回はJavaのORマッパー、Mybatisを使ってみます。">
+<meta name="keywords" content="Java,Spring Boot,OR Mapper,mybatis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MyBatis Spring Bootを使ってみた">
+<meta property="og:url" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;2020&#x2F;03&#x2F;2020-0327-mybatis&#x2F;index.html">
+<meta property="og:site_name" content="ただの技術メモ">
+<meta property="og:description" content="今回はJavaのORマッパー、Mybatisを使ってみます。">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-03-27T23:55:52.630Z">
+<meta name="twitter:card" content="summary">
+  
+  
+    <link rel="icon" href="/tech-memo/css/images/favicon.ico">
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+  
+  <link rel="stylesheet" href="/tech-memo/css/style.css">
+  
+    <link rel="stylesheet" href="/tech-memo/fancybox/jquery.fancybox.min.css">
+  
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/tech-memo/" id="logo">ただの技術メモ</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/tech-memo/">Home</a>
+        
+          <a class="main-nav-link" href="/tech-memo/about">About</a>
+        
+          <a class="main-nav-link" href="/tech-memo/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://karintomania.github.io/tech-memo"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2020-0327-mybatis" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/tech-memo/2020/03/2020-0327-mybatis/" class="article-date">
+  <time datetime="2020-03-27T23:55:34.000Z" itemprop="datePublished">2020-03-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      MyBatis Spring Bootを使ってみた
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今回はJavaのORマッパー、Mybatisを使ってみます。  </p>
+<a id="more"></a>
+<h2 id="Projectの作成"><a href="#Projectの作成" class="headerlink" title="Projectの作成"></a>Projectの作成</h2><p>MybatisはSpring Initializrに採用されていて、<br>依存性を設定すればそのまますぐに使えます。</p>
+<ul>
+<li>web</li>
+<li>jdbc</li>
+<li>mybatis<br>を入れてください。また、今回はDBとしてH2を使用するので、<br>H2も追加しましょう。<br>build.gradle は以下のようになります。  <figure class="highlight gradle"><figcaption><span>build.gradle</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">dependencies</span> &#123;</span><br><span class="line">	implementation <span class="string">'org.springframework.boot:spring-boot-starter-web'</span></span><br><span class="line">	implementation <span class="string">'org.springframework.boot:spring-boot-starter-jdbc'</span></span><br><span class="line">	implementation <span class="string">'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.2'</span></span><br><span class="line">	runtimeOnly <span class="string">'com.h2database:h2'</span></span><br><span class="line">	testImplementation(<span class="string">'org.springframework.boot:spring-boot-starter-test'</span>) &#123;</span><br><span class="line">		<span class="keyword">exclude</span> <span class="keyword">group</span>: <span class="string">'org.junit.vintage'</span>, module: <span class="string">'junit-vintage-engine'</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="設定"><a href="#設定" class="headerlink" title="設定"></a>設定</h2><p>mybatis spring bootを使って驚いたのが、<br>その設定の少なさです。<br>今日は、何と！！<br>面倒なapplication.propertiesを一行も書かずにコードが動きます。<br>javaだけ書きましょう！  </p>
+<p>ただ、テスト用にテーブルを作る必要があるので、<br>src/main以下のresourceフォルダにschema.sqlを作成します。<br>これもresourceフォルダに置くだけで勝手に実行してくれます。<br>超便利。  </p>
+<figure class="highlight sql"><figcaption><span>schema.sql</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> <span class="keyword">IF</span> <span class="keyword">EXISTS</span> BOOK_MASTER;</span><br><span class="line">  </span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> BOOK_MASTER (</span><br><span class="line">  <span class="keyword">id</span> <span class="built_in">INT</span> AUTO_INCREMENT PRIMARY <span class="keyword">KEY</span>,</span><br><span class="line">  title <span class="built_in">VARCHAR</span>(<span class="number">250</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">  author <span class="built_in">VARCHAR</span>(<span class="number">250</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> BOOK_MASTER (title, author) <span class="keyword">VALUES</span> (<span class="string">'kokoro'</span>,<span class="string">'Soseki Natsume'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> BOOK_MASTER (title, author) <span class="keyword">VALUES</span> (<span class="string">'rashoumon'</span>,<span class="string">'Ryunosuke Akutagawa'</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Entityの定義"><a href="#Entityの定義" class="headerlink" title="Entityの定義"></a>Entityの定義</h2><p>BOOK_MASTERに対応するEntityクラスを作ります。<br>特にアノテーションとかは不要です。  </p>
+<figure class="highlight java"><figcaption><span>Book.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.mybatis;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Book</span></span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> id;</span><br><span class="line">	String title;</span><br><span class="line">	String author;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// getter, setter</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Mapper定義"><a href="#Mapper定義" class="headerlink" title="Mapper定義"></a>Mapper定義</h2><p>次にMapperと呼ばれるクラスを作成します。<br>ここに実際のSQLを記載していきます。<br>Repositoryクラスみたいな感じです。  </p>
+<figure class="highlight java"><figcaption><span>.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.mybatis;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.annotations.Insert;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.annotations.Mapper;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.annotations.Options;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.annotations.Param;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.annotations.Select;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Mapper</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">BookMapper</span> </span>&#123;</span><br><span class="line">	<span class="comment">// 1件検索</span></span><br><span class="line">    <span class="meta">@Select</span>(<span class="string">"SELECT * FROM BOOK_MASTER WHERE id = #&#123;id&#125;"</span>)</span><br><span class="line">	<span class="function">Book <span class="title">findOneById</span><span class="params">(@Param(<span class="string">"id"</span>)</span> <span class="keyword">int</span> id)</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// 1件挿入</span></span><br><span class="line">	<span class="meta">@Insert</span>(<span class="string">"INSERT INTO BOOK_MASTER (title, author) VALUES (#&#123;title&#125;,#&#123;author&#125;)"</span>)</span><br><span class="line">	<span class="comment">// Auto Incrementに対応する</span></span><br><span class="line">	<span class="meta">@Options</span>(useGeneratedKeys=<span class="keyword">true</span>, keyProperty=<span class="string">"id"</span>)</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(Book book)</span></span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 全件選択</span></span><br><span class="line">    <span class="meta">@Select</span>(<span class="string">"SELECT * FROM BOOK_MASTER"</span>)</span><br><span class="line">	<span class="function">Book <span class="title">findAll</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>@Optionsアノテーションでは、Auto_incrementで生成されたIDを取得するように設定しています。<br>idが0のBookクラスを渡しても自動で値を更新してくれます。  </p>
+<p>Controllerを書いてみます。<br>GETで検索、POSTで挿入ですね。</p>
+<figure class="highlight java"><figcaption><span>.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.mybatis;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.GetMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.PostMapping;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestBody;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RequestParam;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.bind.annotation.RestController;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BookController</span></span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="meta">@Autowired</span></span><br><span class="line">	BookMapper bm;</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line">	<span class="meta">@GetMapping</span>(<span class="string">"/test"</span>)</span><br><span class="line">	<span class="function"><span class="keyword">public</span> Book <span class="title">get</span><span class="params">(@RequestParam <span class="keyword">int</span> id)</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span> bm.findOneById(id);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@PostMapping</span>(<span class="string">"/test"</span>)</span><br><span class="line">	<span class="function"><span class="keyword">public</span> Book <span class="title">post</span><span class="params">(@RequestBody Book book)</span></span>&#123;</span><br><span class="line">		bm.insert(book);</span><br><span class="line">		<span class="keyword">return</span> book;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>curlコマンドでテストしてみます。  </p>
+<figure class="highlight java"><figcaption><span>.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ curl -X GET http:<span class="comment">//localhost:8080/test?id=1</span></span><br><span class="line"><span class="comment">// 出力結果</span></span><br><span class="line">&#123;<span class="string">"id"</span>:<span class="number">1</span>,<span class="string">"title"</span>:<span class="string">"kokoro"</span>,<span class="string">"author"</span>:<span class="string">"Soseki Natsume"</span>&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">$ curl -X POST -H <span class="string">"Content-Type: application/json"</span> -d <span class="string">'&#123;"title":"ningen shikkaku", "author":"Osamu Dazai"&#125;'</span> http:<span class="comment">//localhost:8080/test</span></span><br><span class="line"><span class="comment">// 出力結果</span></span><br><span class="line">&#123;<span class="string">"id"</span>:<span class="number">3</span>,<span class="string">"title"</span>:<span class="string">"ningen shikkaku"</span>,<span class="string">"author"</span>:<span class="string">"Osamu Dazai"</span>&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>ちゃんと動きました！！！</p>
+<h2 id="所感"><a href="#所感" class="headerlink" title="所感"></a>所感</h2><p>設定が少なく動作するのがいいですね。<br>これまでJPA歯科使っていなかったのですが、<br>より軽量な代替案として使っていこうと思います。  </p>
+<p>それでは今日はこの辺で。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://karintomania.github.io/tech-memo/2020/03/2020-0327-mybatis/" data-id="ck8augw0x000p1pli50dmettk" data-title="MyBatis Spring Bootを使ってみた" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tech-memo/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tech-memo/tags/OR-Mapper/" rel="tag">OR Mapper</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tech-memo/tags/Spring-Boot/" rel="tag">Spring Boot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tech-memo/tags/mybatis/" rel="tag">mybatis</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/tech-memo/2020/03/2020-0324-jdbiSpring/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Spring BootでJDBIを使う</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    <div class="widget-wrap">
+<h3 class="widget-title">About</h3>
+<div class="widget">
+	<img src="/tech-memo/css/images/author.png" alt="著者" class="author-img">
+	<a class="author-link" href="/tech-memo/about" >karintomania</a>
+	<p><p>イギリス在住のWeb開発者が日々学んだことを書き連ねています。<br> Java/PHP/Dockerに興味があります。</p>
+</p>
+</div>
+</div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/tech-memo/2020/03/2020-0327-mybatis/">MyBatis Spring Bootを使ってみた</a>
+          </li>
+        
+          <li>
+            <a href="/tech-memo/2020/03/2020-0324-jdbiSpring/">Spring BootでJDBIを使う</a>
+          </li>
+        
+          <li>
+            <a href="/tech-memo/2020/03/2020-0314-functionalProgrammingInJava/">Javaで関数型プログラミング</a>
+          </li>
+        
+          <li>
+            <a href="/tech-memo/2020/02/2020-0225-macvim/">Mac Vimを導入してみた</a>
+          </li>
+        
+          <li>
+            <a href="/tech-memo/2020/02/2020-0222-CookieByUiPath/">UiPathでCookie Clickerに挑戦する</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/Github-Pages/" rel="tag">Github Pages</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/Heroku/" rel="tag">Heroku</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/OR-Mapper/" rel="tag">OR Mapper</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/Orchid/" rel="tag">Orchid</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/PostgreSQL/" rel="tag">PostgreSQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/Spring-Boot/" rel="tag">Spring Boot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/UiPath/" rel="tag">UiPath</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/VS-Code/" rel="tag">VS Code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/Vim/" rel="tag">Vim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/mybatis/" rel="tag">mybatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/%E9%96%A2%E6%95%B0%E5%9E%8B%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0/" rel="tag">関数型プログラミング</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tech-memo/tags/Docker/" style="font-size: 16px;">Docker</a> <a href="/tech-memo/tags/Github-Pages/" style="font-size: 14px;">Github Pages</a> <a href="/tech-memo/tags/Heroku/" style="font-size: 12px;">Heroku</a> <a href="/tech-memo/tags/Hexo/" style="font-size: 18px;">Hexo</a> <a href="/tech-memo/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tech-memo/tags/OR-Mapper/" style="font-size: 12px;">OR Mapper</a> <a href="/tech-memo/tags/Orchid/" style="font-size: 10px;">Orchid</a> <a href="/tech-memo/tags/PostgreSQL/" style="font-size: 12px;">PostgreSQL</a> <a href="/tech-memo/tags/Spring-Boot/" style="font-size: 18px;">Spring Boot</a> <a href="/tech-memo/tags/UiPath/" style="font-size: 10px;">UiPath</a> <a href="/tech-memo/tags/VS-Code/" style="font-size: 10px;">VS Code</a> <a href="/tech-memo/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tech-memo/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/tech-memo/tags/%E9%96%A2%E6%95%B0%E5%9E%8B%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0/" style="font-size: 10px;">関数型プログラミング</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/tech-memo/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/tech-memo/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/tech-memo/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/tech-memo/archives/2019/10/">October 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 karintomania<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/tech-memo/" class="mobile-nav-link">Home</a>
+  
+    <a href="/tech-memo/about" class="mobile-nav-link">About</a>
+  
+    <a href="/tech-memo/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="/tech-memo/js/jquery-3.4.1.min.js"></script>
+
+
+  <script src="/tech-memo/fancybox/jquery.fancybox.min.js"></script>
+
+
+<script src="/tech-memo/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
