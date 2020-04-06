@@ -93,3 +93,9 @@ deploy:
   type: git
   repo: https://github.com/karintomania/tech-memo.git
   branch: gh-pages
+
+# site map
+sitemap:
+    path: sitemap.xml
+    template: ./sitemap_template.xml
+    rel: false
