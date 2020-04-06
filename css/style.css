@@ -308,7 +308,7 @@ body {
   font-weight: bold;
 }
 #header {
-  height: 200px;
+  height: 250px;
   position: relative;
   border-bottom: 1px solid #ddd;
 }
@@ -381,6 +381,7 @@ body {
 }
 #subtitle-wrap {
   margin-top: 16px;
+  text-align: center;
 }
 #main-nav {
   float: left;
@@ -505,9 +506,9 @@ body {
   color: #777;
 }
 #logo-wrap {
+  text-align: center;
   background: rgba(0,0,0,0.5);
-  padding: 2em 3em;
-  margin: 0 4em;
+  padding: 1em 1em 1em 1em;
 }
 .article {
   margin: 50px 0;
