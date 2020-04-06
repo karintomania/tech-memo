@@ -13,6 +13,8 @@ hexo publish {draft名}
 諸々きれいにする  
 hexo clean
 
+まとめてやる
+hexo clean && hexo generate && hexo deploy
 
 
 # タグスクリプト
