@@ -26,3 +26,5 @@ hexo clean && hexo generate && hexo deploy
 [リンク文面](https://orchid.run/wiki/learn )
 
 https://karintomania.github.io/tech-memo/
+
+tags: [Java, PHP, Java script]
