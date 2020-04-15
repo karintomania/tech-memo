@@ -15,20 +15,20 @@
 <!-- End Google Analytics -->
 
   
-  <title>Dockerコンテナ上でHexoを導入してGithubPagesにデプロイする〜③デプロイ編〜 | 寝室コンピューティング</title>
+  <title>私流hexoチートシート | 寝室コンピューティング</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="めんどくさそうなデプロイですが、Hexoならコマンド一発で楽勝です。   Gitの設定デプロイにはGitを使うので、設定を済ませてしまいましょう。以下のコマンドでユーザ設定をします。   12&#x2F;app&#x2F;test # git config --global user.name &amp;quot;Your Name&amp;quot;&#x2F;app&#x2F;test # git config --global user.emai">
-<meta name="keywords" content="Docker,Hexo,Github Pages">
+  <meta name="description" content="背景普段Hexoを使ってこのブログを書いているのですが、よく使うコマンドをいちいち調べるのがめんどくさいので、ここにまとめます。">
+<meta name="keywords" content="Hexo">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Dockerコンテナ上でHexoを導入してGithubPagesにデプロイする〜③デプロイ編〜">
-<meta property="og:url" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;2019&#x2F;10&#x2F;2019-1029-start-hexo-deploy&#x2F;index.html">
+<meta property="og:title" content="私流hexoチートシート">
+<meta property="og:url" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;2020&#x2F;04&#x2F;2020-0415-hexoCheatsheet&#x2F;index.html">
 <meta property="og:site_name" content="寝室コンピューティング">
-<meta property="og:description" content="めんどくさそうなデプロイですが、Hexoならコマンド一発で楽勝です。   Gitの設定デプロイにはGitを使うので、設定を済ませてしまいましょう。以下のコマンドでユーザ設定をします。   12&#x2F;app&#x2F;test # git config --global user.name &amp;quot;Your Name&amp;quot;&#x2F;app&#x2F;test # git config --global user.emai">
+<meta property="og:description" content="背景普段Hexoを使ってこのブログを書いているのですが、よく使うコマンドをいちいち調べるのがめんどくさいので、ここにまとめます。">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;2019&#x2F;10&#x2F;2019-1029-start-hexo-deploy&#x2F;git_url.png">
-<meta property="og:updated_time" content="2020-02-13T08:24:09.197Z">
+<meta property="og:image" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;2020&#x2F;04&#x2F;2020-0415-hexoCheatsheet&#x2F;hexo.png">
+<meta property="og:updated_time" content="2020-04-15T20:02:30.366Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;2019&#x2F;10&#x2F;2019-1029-start-hexo-deploy&#x2F;git_url.png">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;2020&#x2F;04&#x2F;2020-0415-hexoCheatsheet&#x2F;hexo.png">
   
   
     <link rel="icon" href="/tech-memo/css/images/favicon.ico">
@@ -82,10 +82,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-2019-1029-start-hexo-deploy" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-2020-0415-hexoCheatsheet" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/tech-memo/2019/10/2019-1029-start-hexo-deploy/" class="article-date">
-  <time datetime="2019-10-29T19:44:48.000Z" itemprop="datePublished">2019-10-29</time>
+    <a href="/tech-memo/2020/04/2020-0415-hexoCheatsheet/" class="article-date">
+  <time datetime="2020-04-15T19:56:38.000Z" itemprop="datePublished">2020-04-15</time>
 </a>
     
   </div>
@@ -96,7 +96,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Dockerコンテナ上でHexoを導入してGithubPagesにデプロイする〜③デプロイ編〜
+      私流hexoチートシート
     </h1>
   
 
@@ -104,28 +104,35 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>めんどくさそうなデプロイですが、<br>Hexoならコマンド一発で楽勝です。  </p>
-<h2 id="Gitの設定"><a href="#Gitの設定" class="headerlink" title="Gitの設定"></a>Gitの設定</h2><p>デプロイにはGitを使うので、<br>設定を済ませてしまいましょう。<br>以下のコマンドでユーザ設定をします。  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/app/test # git config --global user.name &quot;Your Name&quot;</span><br><span class="line">/app/test # git config --global user.email &quot;you@example.com&quot;</span><br></pre></td></tr></table></figure>
+        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>普段Hexoを使ってこのブログを書いているのですが、<br>よく使うコマンドをいちいち調べるのがめんどくさいので、<br>ここにまとめます。  </p>
+<img src="/tech-memo/2020/04/2020-0415-hexoCheatsheet/hexo.png" class="" title="[hexo_logo]">
 <a id="more"></a>
-<h2 id="config-ymlの設定"><a href="#config-ymlの設定" class="headerlink" title="_config.ymlの設定"></a>_config.ymlの設定</h2><p>_config.ymlの設定をします。<br>その前に、対象リポジトリのURLを調べておきましょう。<br>GithubでWebサイト用に作成したリポジトリの Clone or Downloadボタンをクリックすると、<br>コミット用URLが表示されます。<br><img src="git_url.png" alt="コミット用URL"></p>
-<p>URLを取得したら_config.ymlを以下のように編集します。</p>
-<figure class="highlight yaml"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># URL</span></span><br><span class="line"><span class="comment">## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'</span></span><br><span class="line"><span class="attr">url:</span> <span class="attr">https://&#123;githubのusername&#125;.github.io/&#123;リポジトリ名&#125;/</span></span><br><span class="line"><span class="attr">root:</span> <span class="string">/&#123;リポジトリ名&#125;/</span></span><br><span class="line"><span class="attr">permalink:</span> <span class="string">:year/:month/:day/:title/</span></span><br><span class="line"><span class="attr">permalink_defaults:</span></span><br><span class="line"><span class="attr">pretty_urls:</span></span><br><span class="line"><span class="attr">  trailing_index:</span> <span class="literal">true</span> <span class="comment"># Set to false to remove trailing index.html from permalinks</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="comment">## Docs: https://hexo.io/docs/deployment.html</span></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line"><span class="attr">  type:</span> <span class="string">git</span></span><br><span class="line"><span class="attr">  repo:</span> <span class="string">&#123;先ほど取得したURLをここに貼り付ける&#125;</span></span><br><span class="line"><span class="attr">  branch:</span> <span class="string">gh-pages</span></span><br><span class="line">	</span><br></pre></td></tr></table></figure>
+<h2 id="ライブサーバ系"><a href="#ライブサーバ系" class="headerlink" title="ライブサーバ系"></a>ライブサーバ系</h2><p>サーバ起動<br><code>hexo server</code></p>
+<p>ドラフトも表示させる場合<br><code>hexo server --draft</code></p>
+<h2 id="サイト生成・デプロイ"><a href="#サイト生成・デプロイ" class="headerlink" title="サイト生成・デプロイ"></a>サイト生成・デプロイ</h2><p>サイト生成<br><code>hexo generate</code></p>
+<p>デプロイ<br><code>hexo deploy</code></p>
+<p>サイトをきれいにする<br><code>hexo clean</code></p>
+<p>上記三つをまとめてやる<br><code>hexo clean &amp;&amp; hexo generate &amp;&amp; hexo deploy</code></p>
+<h2 id="ページ生成系"><a href="#ページ生成系" class="headerlink" title="ページ生成系"></a>ページ生成系</h2><p>ドラフト生成<br><code>hexo new draft {draft名}</code> </p>
+<p>ドラフトのパブリッシュ<br><code>hexo publish {draft名}</code> </p>
+<h2 id="タグスクリプトなど"><a href="#タグスクリプトなど" class="headerlink" title="タグスクリプトなど"></a>タグスクリプトなど</h2><p>コードブロック(Javaの場合)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;% codeblock Hello.java lang:java %&#125;</span><br><span class="line">&#123;% endcodeblock %&#125;</span><br></pre></td></tr></table></figure>
 
-<p>設定ができたら以下のコマンドでデプロイします。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/app/test # hexo deploy</span><br></pre></td></tr></table></figure>
-<p>デプロイできたらGithubPagesへアクセスして確認してみましょう。<br>https://{githubのusername}.github.io/{リポジトリ名}/</p>
-<p>できたでしょうか。<br>これでサイトができました！！おめでとうございます。  </p>
-<p>ちなみにこのやり方だと、gh-pagesブランチに公開用ソースを格納して、<br>Masterブランチは使用しません。<br>なので、Masterブランチに下書きも含めたフォルダ全体を管理するリポジトリにしてしまうのがいいのかなと思います。  </p>
+<p>画像表示  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% asset_img title.png [代替テキストをここに記入] %&#125;</span><br></pre></td></tr></table></figure>
+
+<p>リンク<br><code>[リンク文面](https://example.com/ )</code></p>
+<h2 id="番外編"><a href="#番外編" class="headerlink" title="番外編"></a>番外編</h2><p>タグの付け方<br><code>tags: [Java, PHP, Java script]</code><br>これはよく忘れるので。。。</p>
+<p>今日はこの辺です。  </p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://karintomania.github.io/tech-memo/2019/10/2019-1029-start-hexo-deploy/" data-id="ck91rkz8j00056bli4ljoewfb" data-title="Dockerコンテナ上でHexoを導入してGithubPagesにデプロイする〜③デプロイ編〜" class="article-share-link">Share</a>
+      <a data-url="https://karintomania.github.io/tech-memo/2020/04/2020-0415-hexoCheatsheet/" data-id="ck91rkz9n000z6blia4k1hmdh" data-title="私流hexoチートシート" class="article-share-link">Share</a>
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tech-memo/tags/Docker/" rel="tag">Docker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tech-memo/tags/Github-Pages/" rel="tag">Github Pages</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tech-memo/tags/Hexo/" rel="tag">Hexo</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tech-memo/tags/Hexo/" rel="tag">Hexo</a></li></ul>
 
     </footer>
   </div>
@@ -133,19 +140,10 @@
     
 <nav id="article-nav">
   
-    <a href="/tech-memo/2019/10/2019-1029-start-hexo-generate-site/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Dockerコンテナ上でHexoを導入してGithubPagesにデプロイする〜②サイト生成編〜
-        
-      </div>
-    </a>
   
-  
-    <a href="/tech-memo/2019/10/2019-1029-start-hexo-container/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/tech-memo/2020/04/2020-0415-flexMessage/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Dockerコンテナ上でHexoを導入してGithubPagesにデプロイする〜①コンテナ作成編〜</div>
+      <div class="article-nav-title">LINE BotでFlex Messageを使う (with Spring Boot)</div>
     </a>
   
 </nav>
