@@ -591,12 +591,16 @@ a.article-title:hover {
   line-height: 1.1em;
   margin: 1.1em 0;
 }
-.article-entry h2,
-.article-entry h3,
-.article-entry h4,
-.article-entry h5,
-.article-entry h6 {
-  border-bottom: 1px solid #333;
+.article-entry h2 {
+  background: #f7f7f7;
+  border-left: solid #0074e8 5px;
+  padding: 10px 10px;
+  border-bottom: solid 3px #dadada;
+  clear: both;
+}
+.article-entry h3 {
+  border-left: solid #0074e8 3px;
+  padding: 4px 8px;
 }
 .article-entry a {
   color: #258fb8;
