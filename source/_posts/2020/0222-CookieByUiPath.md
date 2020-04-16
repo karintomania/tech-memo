@@ -106,6 +106,9 @@ delay time プロパティキターーーー
 
 {% asset_img 12_fastest.png [段違いに早い連打] %}
 段違いで早いです。  
+もう、嬉しかったのでGIFにしてみました。  
+{% asset_img cookie.gif [段違いに早い連打] %}
+
 
 というわけでUiPathに最速でクリック連打させるためには、  
 delay timeプロパティを設定しよう、ということでした。  
