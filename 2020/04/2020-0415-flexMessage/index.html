@@ -17,22 +17,23 @@
   
   <title>LINE BotでFlex Messageを使う (with Spring Boot) | 寝室コンピューティング</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="背景LINE Botを開発する際に必ずと言っていいほど(？)使うのがFlex Messageです。これはメッセージのレイアウトをJsonで記述したもので、Botから送信するメッセージの自由なレイアウトを可能にしてくれます。">
+  <meta name="description" content="背景LINE Botを開発する際に必ずと言っていいほど(？)使うのがFlex Messageです。これはメッセージのレイアウトをJsonで記述したもので、Botから送信するメッセージの自由なレイアウトを可能にしてくれます。私はこれを利用して、簡単な英単語クイズを作ってみました。    その中で学んだことを記事にしています。">
 <meta name="keywords" content="Java,Spring Boot,LINE Bot">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LINE BotでFlex Messageを使う (with Spring Boot)">
 <meta property="og:url" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;2020&#x2F;04&#x2F;2020-0415-flexMessage&#x2F;index.html">
 <meta property="og:site_name" content="寝室コンピューティング">
-<meta property="og:description" content="背景LINE Botを開発する際に必ずと言っていいほど(？)使うのがFlex Messageです。これはメッセージのレイアウトをJsonで記述したもので、Botから送信するメッセージの自由なレイアウトを可能にしてくれます。">
+<meta property="og:description" content="背景LINE Botを開発する際に必ずと言っていいほど(？)使うのがFlex Messageです。これはメッセージのレイアウトをJsonで記述したもので、Botから送信するメッセージの自由なレイアウトを可能にしてくれます。私はこれを利用して、簡単な英単語クイズを作ってみました。    その中で学んだことを記事にしています。">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;2020&#x2F;04&#x2F;2020-0415-flexMessage&#x2F;linebot.gif">
 <meta property="og:image" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;2020&#x2F;04&#x2F;2020-0415-flexMessage&#x2F;quiz.jpg">
 <meta property="og:image" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;2020&#x2F;04&#x2F;2020-0415-flexMessage&#x2F;word_result.jpg">
 <meta property="og:image" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;2020&#x2F;04&#x2F;2020-0415-flexMessage&#x2F;simulator.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;2020&#x2F;04&#x2F;2020-0415-flexMessage&#x2F;simu-example.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;2020&#x2F;04&#x2F;2020-0415-flexMessage&#x2F;answer.png">
-<meta property="og:updated_time" content="2020-04-15T19:40:19.494Z">
+<meta property="og:updated_time" content="2020-04-30T21:24:31.334Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;2020&#x2F;04&#x2F;2020-0415-flexMessage&#x2F;quiz.jpg">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;2020&#x2F;04&#x2F;2020-0415-flexMessage&#x2F;linebot.gif">
   
   
     <link rel="icon" href="/tech-memo/css/images/favicon.ico">
@@ -74,6 +75,8 @@
         
           <a class="main-nav-link" href="/tech-memo/archives">Archives</a>
         
+          <a class="main-nav-link" href="/tech-memo/portfolio">Portfolio</a>
+        
       </nav>
       <nav id="sub-nav">
         
@@ -108,9 +111,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>LINE Botを開発する際に必ずと言っていいほど(？)使うのがFlex Messageです。<br>これはメッセージのレイアウトをJsonで記述したもので、<br>Botから送信するメッセージの自由なレイアウトを可能にしてくれます。  </p>
+        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>LINE Botを開発する際に必ずと言っていいほど(？)使うのがFlex Messageです。<br>これはメッセージのレイアウトをJsonで記述したもので、<br>Botから送信するメッセージの自由なレイアウトを可能にしてくれます。<br>私はこれを利用して、簡単な英単語クイズを作ってみました。  </p>
+<img src="/tech-memo/2020/04/2020-0415-flexMessage/linebot.gif" class="">
+<p>その中で学んだことを記事にしています。  </p>
 <a id="more"></a>
-<p>私はこれを利用して、簡単な英単語クイズを作ってみました。<br>その中で学んだことを記事にしています。  </p>
 <h2 id="作ったもの"><a href="#作ったもの" class="headerlink" title="作ったもの"></a>作ったもの</h2><p>私はFlex Messageを利用して、以下の英単語クイズを作ってみました。  </p>
 <p>ユーザーが会話を始めると英単語と意味の選択肢が出てきます。<br>５問解答するとイラストと共に結果を教えてくれるというものです。  </p>
 <p><strong>クイズ画面</strong></p>
@@ -151,7 +155,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://karintomania.github.io/tech-memo/2020/04/2020-0415-flexMessage/" data-id="ck9n9lbmb000xvrliewda9k98" data-title="LINE BotでFlex Messageを使う (with Spring Boot)" class="article-share-link">Share</a>
+      <a data-url="https://karintomania.github.io/tech-memo/2020/04/2020-0415-flexMessage/" data-id="ck9nat5x4000xhfligm7z97ir" data-title="LINE BotでFlex Messageを使う (with Spring Boot)" class="article-share-link">Share</a>
       
       
       
@@ -283,6 +287,8 @@
     <a href="/tech-memo/about" class="mobile-nav-link">About</a>
   
     <a href="/tech-memo/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/tech-memo/portfolio" class="mobile-nav-link">Portfolio</a>
   
 </nav>
     

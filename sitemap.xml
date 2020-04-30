@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://karintomania.github.io/tech-memo/2020/03/2020-0327-mybatis/</loc>
+    
+    <lastmod>2020-04-30T21:45:19.361Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://karintomania.github.io/tech-memo/2020/04/2020-0415-flexMessage/</loc>
+    
+    <lastmod>2020-04-30T21:24:31.334Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://karintomania.github.io/tech-memo/2020/04/2020-0430-springboot-azure-2/</loc>
     
     <lastmod>2020-04-30T21:11:57.987Z</lastmod>
@@ -30,13 +44,6 @@
   </url>
   
   <url>
-    <loc>https://karintomania.github.io/tech-memo/2020/04/2020-0415-flexMessage/</loc>
-    
-    <lastmod>2020-04-15T19:40:19.494Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://karintomania.github.io/tech-memo/2020/04/2020-0408-linebot/</loc>
     
     <lastmod>2020-04-08T06:52:39.731Z</lastmod>
@@ -54,13 +61,6 @@
     <loc>https://karintomania.github.io/tech-memo/about/index.html</loc>
     
     <lastmod>2020-04-06T07:30:01.503Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://karintomania.github.io/tech-memo/2020/03/2020-0327-mybatis/</loc>
-    
-    <lastmod>2020-03-28T00:16:32.095Z</lastmod>
     
   </url>
   
