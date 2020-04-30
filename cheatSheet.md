@@ -19,9 +19,14 @@ hexo clean && hexo generate && hexo deploy
 
 # タグスクリプト
 ![](initializr.png) //　トップページでしくじる
+
  {% codeblock docker-compose.yml lang:yaml %}
  {% endcodeblock %}
+
 {% asset_img about_style.png [著者プロフィール] %}
+{% asset_img about_style.png %}
+
+[ブログ内のリンク](/tech-memo/2020/04/2020-0415-hexoCheatsheet/)
 
 [リンク文面](https://orchid.run/wiki/learn )
 
