@@ -15,18 +15,20 @@
 <!-- End Google Analytics -->
 
   
-  <title>Dockerコンテナ上でHexoを導入してGithubPagesにデプロイする〜①コンテナ作成編〜 | 寝室コンピューティング</title>
+  <title>Karintomania&#39;s Portfolio | 寝室コンピューティング</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="概要Dockerコンテナ上にHexoをインストールして静的WebサイトをGithubPageにローンチするまでの流れをまとめました。   Dockerコンテナ上で諸々を行うので、Dockerさえインストールされていれば、ローカルへのnodeおよびHexoのインストールが必要ありません。Hexoに興味があってちょっと試してみたい人などにおすすめです。   準備物 Git Pages用のリポジトリ D">
-<meta name="keywords" content="Docker,Hexo,Github Pages">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Dockerコンテナ上でHexoを導入してGithubPagesにデプロイする〜①コンテナ作成編〜">
-<meta property="og:url" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;2019&#x2F;10&#x2F;2019-1029-start-hexo-container&#x2F;index.html">
+  <meta name="description" content="個人で開発してきたプロジェクトを紹介します。&#x2F; This page is to introduce my individual projects. Word Teacher (LINE BOT)Word TeacherというLINE Botです。英単語のクイズとその採点をしてくれます。   &#x2F; Word Teacher is a LINE bot. It teaches you english w">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Karintomania&#39;s Portfolio">
+<meta property="og:url" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;portfolio&#x2F;index.html">
 <meta property="og:site_name" content="寝室コンピューティング">
-<meta property="og:description" content="概要Dockerコンテナ上にHexoをインストールして静的WebサイトをGithubPageにローンチするまでの流れをまとめました。   Dockerコンテナ上で諸々を行うので、Dockerさえインストールされていれば、ローカルへのnodeおよびHexoのインストールが必要ありません。Hexoに興味があってちょっと試してみたい人などにおすすめです。   準備物 Git Pages用のリポジトリ D">
+<meta property="og:description" content="個人で開発してきたプロジェクトを紹介します。&#x2F; This page is to introduce my individual projects. Word Teacher (LINE BOT)Word TeacherというLINE Botです。英単語のクイズとその採点をしてくれます。   &#x2F; Word Teacher is a LINE bot. It teaches you english w">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-02-13T08:23:42.875Z">
+<meta property="og:image" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;portfolio&#x2F;linebot.gif">
+<meta property="og:image" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;portfolio&#x2F;GET.gif">
+<meta property="og:updated_time" content="2020-04-30T23:37:30.949Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;portfolio&#x2F;linebot.gif">
   
   
     <link rel="icon" href="/tech-memo/css/images/favicon.ico">
@@ -82,10 +84,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-2019-1029-start-hexo-container" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="portfolio-" class="article article-type-portfolio" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/tech-memo/2019/10/2019-1029-start-hexo-container/" class="article-date">
-  <time datetime="2019-10-29T19:44:23.000Z" itemprop="datePublished">2019-10-29</time>
+    <a href="/tech-memo/portfolio/index.html" class="article-date">
+  <time datetime="2020-04-30T21:48:42.000Z" itemprop="datePublished">2020-04-30</time>
 </a>
     
   </div>
@@ -96,7 +98,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Dockerコンテナ上でHexoを導入してGithubPagesにデプロイする〜①コンテナ作成編〜
+      Karintomania&#39;s Portfolio
     </h1>
   
 
@@ -104,56 +106,46 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h2><p>Dockerコンテナ上にHexoをインストールして<br>静的WebサイトをGithubPageにローンチするまでの流れをまとめました。  </p>
-<p>Dockerコンテナ上で諸々を行うので、Dockerさえインストールされていれば、ローカルへのnodeおよびHexoのインストールが必要ありません。<br>Hexoに興味があってちょっと試してみたい人などにおすすめです。  </p>
-<h2 id="準備物"><a href="#準備物" class="headerlink" title="準備物"></a>準備物</h2><ul>
-<li>Git Pages用のリポジトリ</li>
-<li>Docker</li>
+        <p>個人で開発してきたプロジェクトを紹介します。<br>/ This page is to introduce my individual projects.</p>
+<h2 id="Word-Teacher-LINE-BOT"><a href="#Word-Teacher-LINE-BOT" class="headerlink" title="Word Teacher (LINE BOT)"></a>Word Teacher (LINE BOT)</h2><p>Word TeacherというLINE Botです。英単語のクイズとその採点をしてくれます。  </p>
+<p>/ Word Teacher is a LINE bot. It teaches you english words by quizzes and scoring.<br>(LINE is the most used messanger app in Japan.)  </p>
+<p><img src="linebot.gif" alt="Word Teacher"></p>
+<h3 id="Related-Tech"><a href="#Related-Tech" class="headerlink" title="Related Tech"></a>Related Tech</h3><ul>
+<li>Spring Boot (Java Framework)</li>
+<li>LINE Bot SDK <a href="https://github.com/line/line-bot-sdk-java" target="_blank" rel="noopener">(Link)</a></li>
+<li>Heroku (PaaS)</li>
+<li>Postgresql@Heroku (DB)</li>
 </ul>
-<a id="more"></a>
-
-<h2 id="コンテナの準備"><a href="#コンテナの準備" class="headerlink" title="コンテナの準備"></a>コンテナの準備</h2><p>コンテナを作ります。<br>DockerfileとDocker-compose用のymlファイルを作成します。<br>nodeイメージをベースにDockerfile内のRUNコマンドでHexo運用に必要なツールをインストールしています。</p>
-<figure class="highlight dockerfile"><figcaption><span>Dockerfile</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># node:10.13-alpineイメージを使用</span></span><br><span class="line"><span class="keyword">FROM</span> node:<span class="number">10.13</span>-alpine</span><br><span class="line"></span><br><span class="line"><span class="comment"># よくわかってないです笑。要調査</span></span><br><span class="line"><span class="keyword">WORKDIR</span><span class="bash"> /app</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># git, hexo, hexoのgithub pagesデプロイ用ツールをインストールするコマンド</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> apk add git</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> npm install -g hexo-cli</span></span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> npm install -g hexo-deployer-git</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 4000ポートを開く</span></span><br><span class="line"><span class="comment"># Hexoではサイトプレビュー用にローカルサーバを立てられるのですが、</span></span><br><span class="line"><span class="comment"># そこでlocalhost:4000を使用するので開けておきます。</span></span><br><span class="line"><span class="keyword">EXPOSE</span> <span class="number">4000</span></span><br></pre></td></tr></table></figure>
-
-
-<figure class="highlight yaml"><figcaption><span>docker-compose.yml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">'3'</span></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line"><span class="attr">  app:</span></span><br><span class="line"><span class="attr">    build:</span> <span class="string">.</span></span><br><span class="line"><span class="attr">    image:</span> <span class="string">hexo_app</span></span><br><span class="line"><span class="attr">    container_name:</span> <span class="string">hexo_app</span></span><br><span class="line"><span class="attr">    volumes:</span> </span><br><span class="line"><span class="bullet">      -</span> <span class="string">./app:/app</span></span><br><span class="line"><span class="attr">    ports:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="number">4000</span><span class="string">:4000</span></span><br><span class="line"><span class="attr">    tty:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-
-<p>こいつらを適当なフォルダに配置して以下のコマンドを実行しましょう。  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># docker-compose up -d</span><br><span class="line"># docker exec -it hexo_app /bin/sh</span><br></pre></td></tr></table></figure>
-
-<p>上手くいっていたらbash画面が開くはずです。<br>nodeのバージョン確認をしてみませう。  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/app node -v</span><br><span class="line">v10.13.0</span><br></pre></td></tr></table></figure>
-
-<p>できたっぽいっすね。  </p>
-<p>次回はHexoの導入とサイトの生成をローカルでやってみます。  </p>
+<h3 id="More-Info"><a href="#More-Info" class="headerlink" title="More Info"></a>More Info</h3><p>関連記事です。  </p>
+<p>/ There are articles about Word Teacher.(Japanese Only)<br><a href="/tech-memo/2020/04/2020-0408-linebot/">Spring BootでLINE Botのサンプルを動かす 〜おうむ返しのその先へ〜</a><br><a href="/tech-memo/2020/04/2020-0415-flexMessage/">LINE BotでFlex Messageを使う (with Spring Boot)</a></p>
+<h2 id="Quote-API"><a href="#Quote-API" class="headerlink" title="Quote API"></a>Quote API</h2><p>Quote APIはプログラマによるプログラマのための名言を取得できるAPIです。  </p>
+<p>/ Quote API is an API from which you can get quotes by programmers, for programmers.</p>
+<p><img src="GET.gif" alt="Quote API"></p>
+<h3 id="Related-Tech-1"><a href="#Related-Tech-1" class="headerlink" title="Related Tech"></a>Related Tech</h3><ul>
+<li>Spring Boot</li>
+<li>Azure App Service (PaaS)</li>
+<li>Cosmos DB (NoSQL by Azure)</li>
+</ul>
+<h3 id="More-Info-1"><a href="#More-Info-1" class="headerlink" title="More Info"></a>More Info</h3><p>関連記事です。  </p>
+<p>/ There are articles about Word Teacher. (Japanese Only)  </p>
+<p><a href="/tech-memo/2020/04/2020-0430-springboot-azure-1/">Spring Boot + Azure App Engine +Cosmos DBでAPIを無料で爆速開発する - その１</a><br><a href="/tech-memo/2020/04/2020-0430-springboot-azure-2/">Spring Boot + Azure App Engine +Cosmos DBでAPIを無料で爆速開発する - その２</a></p>
+<h2 id="Tech-Blog"><a href="#Tech-Blog" class="headerlink" title="Tech Blog"></a>Tech Blog</h2><p>個人開発で学んだことをブログとしてアウトプットしています。<br>/ I have this blog to output what I learn.</p>
+<h3 id="Related-Tech-2"><a href="#Related-Tech-2" class="headerlink" title="Related Tech"></a>Related Tech</h3><ul>
+<li>Hexo (Static Site Generater)</li>
+<li>GitHub Pages (Hosting)</li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://karintomania.github.io/tech-memo/2019/10/2019-1029-start-hexo-container/" data-id="ck9nesm8a0003kbli367xc41k" data-title="Dockerコンテナ上でHexoを導入してGithubPagesにデプロイする〜①コンテナ作成編〜" class="article-share-link">Share</a>
+      <a data-url="https://karintomania.github.io/tech-memo/portfolio/index.html" data-id="ck9nesm6o0002kbliclq6gixj" data-title="Karintomania&#39;s Portfolio" class="article-share-link">Share</a>
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tech-memo/tags/Docker/" rel="tag">Docker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tech-memo/tags/Github-Pages/" rel="tag">Github Pages</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tech-memo/tags/Hexo/" rel="tag">Hexo</a></li></ul>
-
     </footer>
   </div>
   
     
-<nav id="article-nav">
-  
-    <a href="/tech-memo/2019/10/2019-1029-start-hexo-deploy/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Dockerコンテナ上でHexoを導入してGithubPagesにデプロイする〜③デプロイ編〜
-        
-      </div>
-    </a>
-  
-  
-</nav>
-
   
 </article>
 

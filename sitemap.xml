@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://karintomania.github.io/tech-memo/portfolio/index.html</loc>
+    
+    <lastmod>2020-04-30T23:37:30.949Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://karintomania.github.io/tech-memo/2020/04/2020-0430-springboot-azure-1/</loc>
+    
+    <lastmod>2020-04-30T23:31:46.145Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://karintomania.github.io/tech-memo/2020/03/2020-0327-mybatis/</loc>
     
     <lastmod>2020-04-30T21:45:19.361Z</lastmod>
@@ -19,13 +33,6 @@
     <loc>https://karintomania.github.io/tech-memo/2020/04/2020-0430-springboot-azure-2/</loc>
     
     <lastmod>2020-04-30T21:11:57.987Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://karintomania.github.io/tech-memo/2020/04/2020-0430-springboot-azure-1/</loc>
-    
-    <lastmod>2020-04-30T21:10:58.259Z</lastmod>
     
   </url>
   
