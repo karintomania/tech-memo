@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-161452704-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-161452704-1');
+</script>
+<!-- End Google Analytics -->
+
+  
+  <title>Spring Boot + Azure App Engine +Cosmos DBでAPIを無料で爆速開発する - その２ | 寝室コンピューティング</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="この記事はこちらの記事の続きです。Spring Boot + Azure App Engine +Cosmos DBでAPIを無料で爆速開発する - その１ 前回はSpring bootで作ったプロジェクトをazureにデプロイするところまで行いました。   今回はCosmosDBに接続してAPIを完成させます。しかし、ロゴがダさい… 作るもの改めて、成果物の確認です。   プログラマに刺さるよ">
+<meta name="keywords" content="Java,Spring Boot,Azure,Cosmos DB">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring Boot + Azure App Engine +Cosmos DBでAPIを無料で爆速開発する - その２">
+<meta property="og:url" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;2020&#x2F;04&#x2F;2020-0430-springboot-azure-2&#x2F;index.html">
+<meta property="og:site_name" content="寝室コンピューティング">
+<meta property="og:description" content="この記事はこちらの記事の続きです。Spring Boot + Azure App Engine +Cosmos DBでAPIを無料で爆速開発する - その１ 前回はSpring bootで作ったプロジェクトをazureにデプロイするところまで行いました。   今回はCosmosDBに接続してAPIを完成させます。しかし、ロゴがダさい… 作るもの改めて、成果物の確認です。   プログラマに刺さるよ">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;2020&#x2F;04&#x2F;2020-0430-springboot-azure-2&#x2F;cosmos.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;2020&#x2F;04&#x2F;2020-0430-springboot-azure-2&#x2F;GET.gif">
+<meta property="og:image" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;2020&#x2F;04&#x2F;2020-0430-springboot-azure-2&#x2F;cosmos01.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;2020&#x2F;04&#x2F;2020-0430-springboot-azure-2&#x2F;new_container.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;2020&#x2F;04&#x2F;2020-0430-springboot-azure-2&#x2F;new_container2.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;2020&#x2F;04&#x2F;2020-0430-springboot-azure-2&#x2F;post.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;2020&#x2F;04&#x2F;2020-0430-springboot-azure-2&#x2F;post2.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;2020&#x2F;04&#x2F;2020-0430-springboot-azure-2&#x2F;insert_gui.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;2020&#x2F;04&#x2F;2020-0430-springboot-azure-2&#x2F;inserted.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;2020&#x2F;04&#x2F;2020-0430-springboot-azure-2&#x2F;get_local.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;2020&#x2F;04&#x2F;2020-0430-springboot-azure-2&#x2F;get_cloud.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;2020&#x2F;04&#x2F;2020-0430-springboot-azure-2&#x2F;GET.gif">
+<meta property="og:updated_time" content="2020-04-30T21:11:57.987Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;2020&#x2F;04&#x2F;2020-0430-springboot-azure-2&#x2F;cosmos.png">
+  
+  
+    <link rel="icon" href="/tech-memo/css/images/favicon.ico">
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+  
+  <link rel="stylesheet" href="/tech-memo/css/style.css">
+  
+    <link rel="stylesheet" href="/tech-memo/fancybox/jquery.fancybox.min.css">
+  
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+	  <div id="logo-wrap">
+      <h1>
+        <a href="/tech-memo/" id="logo">寝室コンピューティング</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/tech-memo/" id="subtitle">オフィスでするほどでもない開発を寝室から</a>
+		</h2>
+	</div>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/tech-memo/">Home</a>
+        
+          <a class="main-nav-link" href="/tech-memo/about">About</a>
+        
+          <a class="main-nav-link" href="/tech-memo/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://karintomania.github.io/tech-memo"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2020-0430-springboot-azure-2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/tech-memo/2020/04/2020-0430-springboot-azure-2/" class="article-date">
+  <time datetime="2020-04-30T21:11:05.000Z" itemprop="datePublished">2020-04-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Spring Boot + Azure App Engine +Cosmos DBでAPIを無料で爆速開発する - その２
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <img src="/tech-memo/2020/04/2020-0430-springboot-azure-2/cosmos.png" class="">
+<p><strong>この記事はこちらの記事の続きです。</strong><br><a href="/tech-memo/2020/04/2020-0430-springboot-azure-1/">Spring Boot + Azure App Engine +Cosmos DBでAPIを無料で爆速開発する - その１</a></p>
+<p>前回はSpring bootで作ったプロジェクトをazureにデプロイするところまで行いました。  </p>
+<p>今回はCosmosDBに接続してAPIを完成させます。<br><del>しかし、ロゴがダさい…</del></p>
+<h2 id="作るもの"><a href="#作るもの" class="headerlink" title="作るもの"></a>作るもの</h2><p>改めて、成果物の確認です。  </p>
+<p>プログラマに刺さるような名言を教えてくれるAPIを作成します。<br>イメージはこんな感じです。  </p>
+<img src="/tech-memo/2020/04/2020-0430-springboot-azure-2/GET.gif" class="">
+<a id="more"></a>
+<h2 id="CosmosDBに接続する"><a href="#CosmosDBに接続する" class="headerlink" title="CosmosDBに接続する"></a>CosmosDBに接続する</h2><p>まずはcosmos DBをazureポータルから作ります。<br>ホーム＞新規作成＞CosmosDBで作成してください。  </p>
+<img src="/tech-memo/2020/04/2020-0430-springboot-azure-2/cosmos01.png" class="">
+
+<p>APIは<strong>Core(SQL)</strong>を選んでください。<br>他は適当で大丈夫です。  </p>
+
+
+<p>次にDBとコンテナを作ります。<br>データエクスプローラー画面から作れると思います。<br>コンテナというのはRDBでいうテーブルです。<br>コンテナの作成画面はこんな感じです。  </p>
+<img src="/tech-memo/2020/04/2020-0430-springboot-azure-2/new_container.png" class="">
+
+<p>コンテナidをquoteとしました。  </p>
+<img src="/tech-memo/2020/04/2020-0430-springboot-azure-2/new_container2.png" class="">
+
+<p>パーティションキーというのが必須項目ですね。<br>これは普通にPrimaryキーとして使うidとは、また別みたいです。  </p>
+<p>本来DBをリージョンごとで割りたいとか、<br>高度なことができるらしいのですが、今回は良く分からないので（爆）、<br>とりあえずquoteIdとしてidと同じ値を入れておくようにします。  </p>
+<p>余談ですが、この辺の高度な感じがCosmosDBを名乗る由来で、<br>宇宙レベルのアプリが作成できるとかなんとか。  </p>
+<p>これでCosmos側の設定は完了です。  </p>
+<h2 id="Spring-bootの設定"><a href="#Spring-bootの設定" class="headerlink" title="Spring bootの設定"></a>Spring bootの設定</h2><p>それではSpring boot側での設定をしていきます。  </p>
+<h3 id="pom-xmlの編集"><a href="#pom-xmlの編集" class="headerlink" title="pom.xmlの編集"></a>pom.xmlの編集</h3><p>pomにdependencyを追加します。  </p>
+<figure class="highlight xml"><figcaption><span>pom.xml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.microsoft.azure<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>azure-cosmosdb-spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="application-properties"><a href="#application-properties" class="headerlink" title="application.properties"></a>application.properties</h3><p>application.propertiesを編集して、<br>CosmosDBの情報を設定します。  </p>
+<p>これらの情報はAzureポータルでDBのページから見ることができます。<br>設定＞キーってところです。<br>このキーはプライマリーキーを使ってください。  </p>
+<figure class="highlight xml"><figcaption><span>pom.xml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># Specify the DNS URI of your Azure Cosmos DB.</span><br><span class="line">azure.cosmosdb.uri=URI</span><br><span class="line"></span><br><span class="line"># Specify the access key for your database.</span><br><span class="line">azure.cosmosdb.key=キー</span><br><span class="line"></span><br><span class="line"># Specify the name of your database.</span><br><span class="line">azure.cosmosdb.database=DB名</span><br></pre></td></tr></table></figure>
+
+<h2 id="実装"><a href="#実装" class="headerlink" title="実装"></a>実装</h2><p>それでは、DBに名言を追加・取得するような実装をしていきます。<br>と言っても大した事はする必要がなく、<br>SpringのCRUD Repositoryを継承したRepositoryを作ると、<br>基本的なメソッドは実装する必要なく呼び出せてしまいます。  </p>
+<p>大変便利ですね。  </p>
+<h3 id="Entity"><a href="#Entity" class="headerlink" title="Entity"></a>Entity</h3><p>名言を格納するクラス、Quoteを作成します。<br>ここで大事なのはDocumentアノテーションでCollection名を指定する事ですね。<br><code>@Document(collection = &quot;quote&quot;)</code><br>また、PartitionKeyにもアノテーションをつけています。  </p>
+<p>Getter ,Setterとかがめんどくさいので、Lombokの<code>@Data</code>アノテーションを使用しています。  </p>
+<figure class="highlight java"><figcaption><span>Quote.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> com.microsoft.azure.spring.data.cosmosdb.core.mapping.Document;</span><br><span class="line"><span class="keyword">import</span> com.microsoft.azure.spring.data.cosmosdb.core.mapping.PartitionKey;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@Document</span>(collection = <span class="string">"quote"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Quote</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Id</span></span><br><span class="line">	<span class="keyword">private</span> String id;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@PartitionKey</span></span><br><span class="line">	<span class="keyword">private</span> String quoteId;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> String author;</span><br><span class="line">	<span class="keyword">private</span> String content;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Repository作る"><a href="#Repository作る" class="headerlink" title="Repository作る"></a>Repository作る</h3><p>RepositoryにはCosmosRepositoryを継承したinterfaceを作ります。  </p>
+<figure class="highlight java"><figcaption><span>QuoteRepository.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Repository</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">QuoteRepository</span> <span class="keyword">extends</span> <span class="title">CosmosRepository</span>&lt;<span class="title">Quote</span>, <span class="title">String</span>&gt;</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Cotroller作る"><a href="#Cotroller作る" class="headerlink" title="Cotroller作る"></a>Cotroller作る</h3><p>PostでRepositoryの<code>save()</code>メソッド、<br>Getで<code>findById()</code>メソッドを使用しています。<br>(Getで３をベタうちしているのは見逃してください…)  </p>
+<figure class="highlight java"><figcaption><span>QuoteController.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">QuoteController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	Random rnd = <span class="keyword">new</span> Random();</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Autowired</span></span><br><span class="line">	QuoteRepository qr;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@GetMapping</span>(<span class="string">"/"</span>)</span><br><span class="line">	<span class="function"><span class="keyword">public</span> Quote <span class="title">get</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">final</span> <span class="keyword">int</span> r = rnd.nextInt(<span class="number">3</span>) + <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">final</span> String id = Integer.toString(r);</span><br><span class="line">		<span class="keyword">final</span> Optional&lt;Quote&gt; q = qr.findById(id);</span><br><span class="line">		<span class="keyword">return</span> q.get();</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@PostMapping</span>(<span class="string">"/"</span>)</span><br><span class="line">	<span class="function"><span class="keyword">public</span> Quote <span class="title">post</span><span class="params">(@RequestBody Quote q)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">		qr.save(q);</span><br><span class="line">		<span class="keyword">return</span> q;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="ローカルでのテスト"><a href="#ローカルでのテスト" class="headerlink" title="ローカルでのテスト"></a>ローカルでのテスト</h3><p>それでは以下のコマンドでまずはローカルから動作確認します。<br><code>mvn spring-boot:run</code></p>
+<p>まずはPOSTです<br>JSONにQuoteの内容を入れてPOSTします。登録された場合、そのQuoteがそのまま返ってきます。  </p>
+<img src="/tech-memo/2020/04/2020-0430-springboot-azure-2/post.png" class="">
+
+<p>無事に登録されたようです。<br>登録されたデータはazure上のデータエクスプローラから確認できます。  </p>
+<img src="/tech-memo/2020/04/2020-0430-springboot-azure-2/post2.png" class="">
+
+<p>あと２件はWEBポータル上でGUIから登録てみます。<br>JSONを貼り付けてSaveを押すだけで登録されます。  </p>
+<img src="/tech-memo/2020/04/2020-0430-springboot-azure-2/insert_gui.png" class="">
+<p>_ridなどのアンダーバーから始まるカラムは自動で生成されます。  </p>
+<img src="/tech-memo/2020/04/2020-0430-springboot-azure-2/inserted.png" class="">
+
+<p>簡単ですね。<br>今回はこの３つを登録してみました。  </p>
+<figure class="highlight json"><figcaption><span>心に刺さる名言達.json</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"id"</span>: <span class="string">"1"</span>,</span><br><span class="line">    <span class="attr">"quoteId"</span>: <span class="string">"1"</span>,</span><br><span class="line">	<span class="attr">"author"</span>: <span class="string">"Edward V Berard"</span>,</span><br><span class="line">    <span class="attr">"content"</span>: <span class="string">"Walking on water and developing software from a specification are easy if both are frozen."</span></span><br><span class="line">&#125;</span><br><span class="line">&#123;</span><br><span class="line">    <span class="attr">"id"</span>: <span class="string">"2"</span>,</span><br><span class="line">    <span class="attr">"quoteId"</span>: <span class="string">"1"</span>,</span><br><span class="line">    <span class="attr">"author"</span>: <span class="string">"pixadel"</span>,</span><br><span class="line">    <span class="attr">"content"</span>: <span class="string">"Fine, Java MIGHT be a good example of what a programming language should be like. But Java applications are good examples of what applications SHOULDN’T be like."</span></span><br><span class="line">&#125;</span><br><span class="line">&#123;</span><br><span class="line">    <span class="attr">"id"</span>: <span class="string">"3"</span>,</span><br><span class="line">    <span class="attr">"quoteId"</span>: <span class="string">"1"</span>,</span><br><span class="line">    <span class="attr">"author"</span>: <span class="string">"Larry Wall"</span>,</span><br><span class="line">    <span class="attr">"content"</span>: <span class="string">"Most of you are familiar with the virtues of a programmer. There are three, of course: laziness, impatience, and hubris."</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>それではGETで名言を取得してみましょう。<br>こんな感じでランダムに一つQuoteが返ってきます。  </p>
+<img src="/tech-memo/2020/04/2020-0430-springboot-azure-2/get_local.png" class="">
+
+<h2 id="デプロイ"><a href="#デプロイ" class="headerlink" title="デプロイ"></a>デプロイ</h2><p>それではこのAPIをデプロイしてみましょう。<br>デプロイは<code>mvn clean package &amp;&amp; mvn azure-webapp:deploy</code>です。  </p>
+<p>GETを飛ばしてみます<br>返ってきました。  </p>
+<img src="/tech-memo/2020/04/2020-0430-springboot-azure-2/get_cloud.png" class="">
+
+<p>これでいつでもどこでも先人の名言に触れることができます。<br>全く意味がないですが、嬉しかったので、GIFにしてみました。  </p>
+<img src="/tech-memo/2020/04/2020-0430-springboot-azure-2/GET.gif" class="">
+
+<h2 id="最後に"><a href="#最後に" class="headerlink" title="最後に"></a>最後に</h2><p>いかがだったでしょうか。<br>このように簡単にAPIが作れるので個人開発が捗りそうですね。<br>このサンプルはGitHubに上げているので、<br>これを参考にSpring boot界隈が盛り上がったら良いなと思っています。  </p>
+<p>それでは今日はこの辺で。  </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://karintomania.github.io/tech-memo/2020/04/2020-0430-springboot-azure-2/" data-id="ck9n9lbmh0014vrli2hky6jw4" data-title="Spring Boot + Azure App Engine +Cosmos DBでAPIを無料で爆速開発する - その２" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tech-memo/tags/Azure/" rel="tag">Azure</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tech-memo/tags/Cosmos-DB/" rel="tag">Cosmos DB</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tech-memo/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tech-memo/tags/Spring-Boot/" rel="tag">Spring Boot</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/tech-memo/2020/04/2020-0430-springboot-azure-1/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Spring Boot + Azure App Engine +Cosmos DBでAPIを無料で爆速開発する - その１</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    <div class="widget-wrap">
+<h3 class="widget-title">About</h3>
+<div class="widget">
+	<img src="/tech-memo/css/images/author.png" alt="著者" class="author-img">
+	<a class="author-link" href="/tech-memo/about" >karintomania</a>
+	<p><p>イギリス在住のWeb開発者が日々学んだことを書き連ねています。<br> Java/PHP/Dockerに興味があります。</p>
+</p>
+</div>
+</div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/tech-memo/2020/04/2020-0430-springboot-azure-2/">Spring Boot + Azure App Engine +Cosmos DBでAPIを無料で爆速開発する - その２</a>
+          </li>
+        
+          <li>
+            <a href="/tech-memo/2020/04/2020-0430-springboot-azure-1/">Spring Boot + Azure App Engine +Cosmos DBでAPIを無料で爆速開発する - その１</a>
+          </li>
+        
+          <li>
+            <a href="/tech-memo/2020/04/2020-0415-hexoCheatsheet/">私流hexoチートシート</a>
+          </li>
+        
+          <li>
+            <a href="/tech-memo/2020/04/2020-0415-flexMessage/">LINE BotでFlex Messageを使う (with Spring Boot)</a>
+          </li>
+        
+          <li>
+            <a href="/tech-memo/2020/04/2020-0408-linebot/">Spring BootでLINE Botのサンプルを動かす 〜おうむ返しのその先へ〜</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/Azure/" rel="tag">Azure</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/Cosmos-DB/" rel="tag">Cosmos DB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/Github-Pages/" rel="tag">Github Pages</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/Heroku/" rel="tag">Heroku</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/LINE-Bot/" rel="tag">LINE Bot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/OR-Mapper/" rel="tag">OR Mapper</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/Orchid/" rel="tag">Orchid</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/PostgreSQL/" rel="tag">PostgreSQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/Spring-Boot/" rel="tag">Spring Boot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/UiPath/" rel="tag">UiPath</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/VS-Code/" rel="tag">VS Code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/Vim/" rel="tag">Vim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/mybatis/" rel="tag">mybatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/%E9%96%A2%E6%95%B0%E5%9E%8B%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0/" rel="tag">関数型プログラミング</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tech-memo/tags/Azure/" style="font-size: 12px;">Azure</a> <a href="/tech-memo/tags/Cosmos-DB/" style="font-size: 12px;">Cosmos DB</a> <a href="/tech-memo/tags/Docker/" style="font-size: 14px;">Docker</a> <a href="/tech-memo/tags/Github-Pages/" style="font-size: 14px;">Github Pages</a> <a href="/tech-memo/tags/Heroku/" style="font-size: 12px;">Heroku</a> <a href="/tech-memo/tags/Hexo/" style="font-size: 16px;">Hexo</a> <a href="/tech-memo/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tech-memo/tags/LINE-Bot/" style="font-size: 12px;">LINE Bot</a> <a href="/tech-memo/tags/OR-Mapper/" style="font-size: 12px;">OR Mapper</a> <a href="/tech-memo/tags/Orchid/" style="font-size: 10px;">Orchid</a> <a href="/tech-memo/tags/PostgreSQL/" style="font-size: 12px;">PostgreSQL</a> <a href="/tech-memo/tags/Spring-Boot/" style="font-size: 18px;">Spring Boot</a> <a href="/tech-memo/tags/UiPath/" style="font-size: 10px;">UiPath</a> <a href="/tech-memo/tags/VS-Code/" style="font-size: 10px;">VS Code</a> <a href="/tech-memo/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tech-memo/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/tech-memo/tags/%E9%96%A2%E6%95%B0%E5%9E%8B%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0/" style="font-size: 10px;">関数型プログラミング</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/tech-memo/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/tech-memo/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/tech-memo/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/tech-memo/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/tech-memo/archives/2019/10/">October 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 karintomania<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/tech-memo/" class="mobile-nav-link">Home</a>
+  
+    <a href="/tech-memo/about" class="mobile-nav-link">About</a>
+  
+    <a href="/tech-memo/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="/tech-memo/js/jquery-3.4.1.min.js"></script>
+
+
+  <script src="/tech-memo/fancybox/jquery.fancybox.min.js"></script>
+
+
+<script src="/tech-memo/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
