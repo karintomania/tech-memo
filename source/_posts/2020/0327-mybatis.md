@@ -9,16 +9,23 @@ date: 2020-03-27 23:55:34
 ---
 
 今回はJavaのORマッパー、Mybatisを使ってみます。  
+
+{% asset_img mybatislog.png %}
 <!-- more -->
 ## Projectの作成
-MybatisはSpring Initializrに採用されていて、
-依存性を設定すればそのまますぐに使えます。
+MybatisはSpring Initializrに採用されているため、簡単に使えます。  
+[SpringInitializr](https://start.spring.io/)
 
+Initializrでは以下をDependencyとして入れてください。  
+今回はDBとしてH2を使用するので、H2も追加しましょう。  
 - web
 - jdbc
 - mybatis
-を入れてください。また、今回はDBとしてH2を使用するので、
-H2も追加しましょう。  
+- H2
+ビルドツールはGradleを使いますが、Mavenを使いたい人は適宜、読み替えてください。  
+{% asset_img initializr.png %}
+
+
 build.gradle は以下のようになります。  
 {% codeblock build.gradle lang:gradle %}
 dependencies {
@@ -35,13 +42,12 @@ dependencies {
 ## 設定
 mybatis spring bootを使って驚いたのが、  
 その設定の少なさです。  
-今日は、何と！！  
-面倒なapplication.propertiesを一行も書かずにコードが動きます。  
-javaだけ書きましょう！  
+今日は、何とapplication.propertiesを一行も書かずにコードが動きます。  
+Javaだけ書きましょう！  
 
 ただ、テスト用にテーブルを作る必要があるので、  
 src/main以下のresourceフォルダにschema.sqlを作成します。  
-これもresourceフォルダに置くだけで勝手に実行してくれます。  
+これもSpring Bootなら空気を読んで、resourceフォルダに置くだけで勝手に実行してくれます。  
 超便利。  
 {% codeblock schema.sql lang:sql %}
 DROP TABLE IF EXISTS BOOK_MASTER;
@@ -147,16 +153,25 @@ class BookController{
 
 curlコマンドでテストしてみます。  
 {% codeblock lang:bash %}
+// 全件選択
 $ curl -X GET http://localhost:8080/test/all
+
 // 出力結果
 [{"id":1,"title":"kokoro","author":"Soseki Natsume"},{"id":2,"title":"rashoumon","author":"Ryunosuke Akutagawa"}]
 
+
+
+// idでのSELECT
 $ curl -X GET http://localhost:8080/test?id=1
+
 // 出力結果
 {"id":1,"title":"kokoro","author":"Soseki Natsume"}
 
 
+
+// INSERT
 $ curl -X POST -H "Content-Type: application/json" -d '{"title":"ningen shikkaku", "author":"Osamu Dazai"}' http://localhost:8080/test
+
 // 出力結果
 {"id":3,"title":"ningen shikkaku","author":"Osamu Dazai"}
 {% endcodeblock %}
@@ -166,7 +181,7 @@ $ curl -X POST -H "Content-Type: application/json" -d '{"title":"ningen shikkaku
 
 ## 所感
 設定が少なく動作するのがいいですね。  
-これまでJPA歯科使っていなかったのですが、  
+これまでJPAしか使っていなかったのですが、  
 より軽量な代替案として使っていこうと思います。  
 
 それでは今日はこの辺で。
