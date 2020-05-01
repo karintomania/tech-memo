@@ -222,7 +222,14 @@ GETを飛ばしてみます
 
 いかがだったでしょうか。  
 このように簡単にAPIが作れるので個人開発が捗りそうですね。  
-このサンプルはGitHubに上げているので、  
 これを参考にSpring boot界隈が盛り上がったら良いなと思っています。  
+
+## 参考
+この記事を書くにあたって、以下を参考にしました。  
+Azure公式のSpring Boot関連記事
+https://docs.microsoft.com/ja-jp/azure/developer/java/spring-framework/deploy-spring-boot-java-app-with-maven-plugin
+
+Azure公式のCosmos DB記事
+https://docs.microsoft.com/en-us/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db
 
 それでは今日はこの辺で。  
