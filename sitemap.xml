@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://karintomania.github.io/tech-memo/2020/04/2020-0430-springboot-azure-2/</loc>
+    
+    <lastmod>2020-04-30T23:55:52.078Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://karintomania.github.io/tech-memo/portfolio/index.html</loc>
     
-    <lastmod>2020-04-30T23:43:31.719Z</lastmod>
+    <lastmod>2020-04-30T23:51:47.524Z</lastmod>
     
   </url>
   
@@ -26,13 +33,6 @@
     <loc>https://karintomania.github.io/tech-memo/2020/04/2020-0415-flexMessage/</loc>
     
     <lastmod>2020-04-30T21:24:31.334Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://karintomania.github.io/tech-memo/2020/04/2020-0430-springboot-azure-2/</loc>
-    
-    <lastmod>2020-04-30T21:11:57.987Z</lastmod>
     
   </url>
   

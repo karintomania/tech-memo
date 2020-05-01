@@ -593,13 +593,13 @@ a.article-title:hover {
 }
 .article-entry h2 {
   background: #f7f7f7;
-  border-left: solid #0074e8 5px;
+  border-left: solid #5eabf7 5px;
   padding: 10px 10px;
   border-bottom: solid 3px #dadada;
   clear: both;
 }
 .article-entry h3 {
-  border-left: solid #0074e8 3px;
+  border-left: solid #5eabf7 3px;
   padding: 4px 8px;
 }
 .article-entry a {
