@@ -602,6 +602,13 @@ a.article-title:hover {
   border-left: solid #5eabf7 3px;
   padding: 4px 8px;
 }
+.article-entry u {
+  text-decoration: none;
+  background: -webkit-linear-gradient(transparent 70%, #ff0 70%);
+  background: -moz-linear-gradient(transparent 70%, #ff0 70%);
+  background: -ms-linear-gradient(transparent 70%, #ff0 70%);
+  background: linear-gradient(transparent 70%, #ff0 70%);
+}
 .article-entry a {
   color: #258fb8;
   text-decoration: none;
