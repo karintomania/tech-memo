@@ -4,6 +4,7 @@ tags:
   - Java
   - VS Code
 date: 2019-11-20 23:19:08
+categories: 技術
 ---
 
 Gradleを変更した際にどうしたら変更がプロジェクトに反映されるのか  

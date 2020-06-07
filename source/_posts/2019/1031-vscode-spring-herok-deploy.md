@@ -5,6 +5,7 @@ tags:
   - Heroku
   - Spring Boot
 date: 2019-10-31 00:56:06
+categories: 技術
 ---
 
 

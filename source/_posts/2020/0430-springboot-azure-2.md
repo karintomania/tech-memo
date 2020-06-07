@@ -5,6 +5,7 @@ tags:
   - Spring Boot
   - Azure
   - Cosmos DB
+categories: 技術
 date: 2020-04-30 22:11:05
 ---
 

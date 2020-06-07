@@ -1,6 +1,7 @@
 ---
 title: UiPathでCookie Clickerに挑戦する
 tags: UiPath
+categories: 技術
 date: 2020-02-22 21:44:56
 ---
 

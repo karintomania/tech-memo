@@ -3,6 +3,7 @@ title: Hexoでサイドバーにウィジェット(プロフィール)を追加�
 tags:
   - Hexo
 date: 2019-10-30 17:42:03
+categories: 技術
 ---
 
 

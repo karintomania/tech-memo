@@ -3,6 +3,7 @@ title: Java製の静的サイトジェネレータ「Orchid」を解説する
 tags:
   - Orchid
   - Java
+categories: 技術
 date: 2020-02-12 18:22:54
 ---
 

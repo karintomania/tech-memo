@@ -2,6 +2,7 @@
 title: Dockerコンテナ上でHexoを導入してGithubPagesにデプロイする〜③デプロイ編〜
 date: 2019-10-29 19:44:48
 tags: [Docker, Hexo, Github Pages]
+categories: 技術
 ---
 
 

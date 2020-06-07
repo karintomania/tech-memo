@@ -3,6 +3,7 @@ title: GitHub Pagesで作ったブログをGoogle検索にヒットさせる
 tags:
   - Hexo
   - Github Pages
+categories: 技術
 date: 2020-04-08 07:44:35
 ---
 

@@ -5,6 +5,7 @@ tags:
   - Java
   - OR Mapper
   - Spring Boot
+categories: 技術
 date: 2020-03-27 23:55:34
 ---
 

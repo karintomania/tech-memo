@@ -2,6 +2,7 @@
 title: HexoでAssetFolderを有効にする
 tags:
   - Hexo
+categories: 技術
 date: 2020-02-13 08:32:39
 ---
 

@@ -3,6 +3,7 @@ title: Javaで関数型プログラミング
 tags:
   - Java
   - 関数型プログラミング
+categories: 技術
 date: 2020-03-14 12:34:34
 ---
 

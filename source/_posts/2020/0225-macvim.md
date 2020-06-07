@@ -1,6 +1,7 @@
 ---
 title: Mac Vimを導入してみた
 tags: Vim
+categories: 技術
 date: 2020-02-25 18:22:36
 ---
 

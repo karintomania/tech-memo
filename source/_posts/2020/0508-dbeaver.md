@@ -3,6 +3,7 @@ title: Macの無料SQLクライアントDBeaverを紹介する
 tags:
   - DB
   - OSS
+categories: 技術
 date: 2020-05-08 16:31:06
 ---
 

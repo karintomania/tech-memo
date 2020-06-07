@@ -5,6 +5,7 @@ tags:
   - PostgreSQL
   - Spring Boot
 date: 2019-11-01 11:25:28
+categories: 技術
 ---
 
  PostgreSQLをDockerコンテナにします。

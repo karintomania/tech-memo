@@ -4,6 +4,7 @@ tags:
   - Java
   - Spring Boot
   - LINE Bot
+categories: 技術
 date: 2020-04-15 20:40:01
 ---
 
