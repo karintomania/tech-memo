@@ -21,21 +21,21 @@
 <meta name="keywords" content="Java,Heroku,Spring Boot">
 <meta property="og:type" content="article">
 <meta property="og:title" content="VS CodeからSpring Bootプロジェクトを作成してHerokuにデプロイするまで">
-<meta property="og:url" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;2019&#x2F;10&#x2F;2019-1031-vscode-spring-herok-deploy&#x2F;index.html">
+<meta property="og:url" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2019&#x2F;10&#x2F;2019-1031-vscode-spring-herok-deploy&#x2F;index.html">
 <meta property="og:site_name" content="寝室コンピューティング">
 <meta property="og:description" content="概要タイトルの通り、VS CodeからSpring Bootプロジェクトを作成してHerokuにデプロイするまでを備忘録として残しました。 前提 以下がインストール済みであること VS Code JDK   Herokuのアカウントを作成済みであること  Spring関連のExtention導入VS Codeに以下のExtentionをインストールします。  Language Support fo">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;2019&#x2F;10&#x2F;2019-1031-vscode-spring-herok-deploy&#x2F;initializr.png">
-<meta property="og:image" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;2019&#x2F;10&#x2F;2019-1031-vscode-spring-herok-deploy&#x2F;language.png">
-<meta property="og:image" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;2019&#x2F;10&#x2F;2019-1031-vscode-spring-herok-deploy&#x2F;package.png">
-<meta property="og:image" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;2019&#x2F;10&#x2F;2019-1031-vscode-spring-herok-deploy&#x2F;project.png">
-<meta property="og:image" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;2019&#x2F;10&#x2F;2019-1031-vscode-spring-herok-deploy&#x2F;version.png">
-<meta property="og:image" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;2019&#x2F;10&#x2F;2019-1031-vscode-spring-herok-deploy&#x2F;dependency.png">
-<meta property="og:image" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;2019&#x2F;10&#x2F;2019-1031-vscode-spring-herok-deploy&#x2F;hello.png">
-<meta property="og:image" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;2019&#x2F;10&#x2F;2019-1031-vscode-spring-herok-deploy&#x2F;hello.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2019&#x2F;10&#x2F;2019-1031-vscode-spring-herok-deploy&#x2F;initializr.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2019&#x2F;10&#x2F;2019-1031-vscode-spring-herok-deploy&#x2F;language.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2019&#x2F;10&#x2F;2019-1031-vscode-spring-herok-deploy&#x2F;package.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2019&#x2F;10&#x2F;2019-1031-vscode-spring-herok-deploy&#x2F;project.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2019&#x2F;10&#x2F;2019-1031-vscode-spring-herok-deploy&#x2F;version.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2019&#x2F;10&#x2F;2019-1031-vscode-spring-herok-deploy&#x2F;dependency.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2019&#x2F;10&#x2F;2019-1031-vscode-spring-herok-deploy&#x2F;hello.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2019&#x2F;10&#x2F;2019-1031-vscode-spring-herok-deploy&#x2F;hello.png">
 <meta property="og:updated_time" content="2020-02-13T08:26:45.573Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https:&#x2F;&#x2F;karintomania.github.io&#x2F;tech-memo&#x2F;2019&#x2F;10&#x2F;2019-1031-vscode-spring-herok-deploy&#x2F;initializr.png">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2019&#x2F;10&#x2F;2019-1031-vscode-spring-herok-deploy&#x2F;initializr.png">
   
   
     <link rel="icon" href="/tech-memo/css/images/favicon.ico">
@@ -85,7 +85,7 @@
         <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://karintomania.github.io/tech-memo"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://www.bedroomcomputing.com"></form>
       </div>
     </div>
   </div>
@@ -172,7 +172,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://karintomania.github.io/tech-memo/2019/10/2019-1031-vscode-spring-herok-deploy/" data-id="ckarx6mr60008ujli2qus2iqo" data-title="VS CodeからSpring Bootプロジェクトを作成してHerokuにデプロイするまで" class="article-share-link">Share</a>
+      <a data-url="https://www.bedroomcomputing.com/2019/10/2019-1031-vscode-spring-herok-deploy/" data-id="ckb53phtl0008sxli0bfs6eu0" data-title="VS CodeからSpring Bootプロジェクトを作成してHerokuにデプロイするまで" class="article-share-link">Share</a>
       
       
       
