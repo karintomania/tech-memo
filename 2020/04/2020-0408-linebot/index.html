@@ -25,24 +25,24 @@
 <meta property="og:site_name" content="寝室コンピューティング">
 <meta property="og:description" content="目的JavaでLine Botを作る記事を検索したときに、Herokuデプロイボタン押させて、はい、オウム返しBotができました！！みたいな記事が多かったので、いや、そっから先はどうしたらいいんだよ、という試行錯誤を記事にしました。">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;tech-memo&#x2F;2020&#x2F;04&#x2F;2020-0408-linebot&#x2F;rice.png">
-<meta property="og:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;tech-memo&#x2F;2020&#x2F;04&#x2F;2020-0408-linebot&#x2F;spring.png">
-<meta property="og:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;tech-memo&#x2F;2020&#x2F;04&#x2F;2020-0408-linebot&#x2F;ngrok.png">
-<meta property="og:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;tech-memo&#x2F;2020&#x2F;04&#x2F;2020-0408-linebot&#x2F;webhook.png">
-<meta property="og:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;tech-memo&#x2F;2020&#x2F;04&#x2F;2020-0408-linebot&#x2F;kitchensink.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;04&#x2F;2020-0408-linebot&#x2F;rice.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;04&#x2F;2020-0408-linebot&#x2F;spring.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;04&#x2F;2020-0408-linebot&#x2F;ngrok.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;04&#x2F;2020-0408-linebot&#x2F;webhook.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;04&#x2F;2020-0408-linebot&#x2F;kitchensink.png">
 <meta property="og:updated_time" content="2020-04-08T06:52:39.731Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;tech-memo&#x2F;2020&#x2F;04&#x2F;2020-0408-linebot&#x2F;rice.png">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;04&#x2F;2020-0408-linebot&#x2F;rice.png">
   
   
-    <link rel="icon" href="/tech-memo/css/images/favicon.ico">
+    <link rel="icon" href="/css/images/favicon.ico">
   
   
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
   
-  <link rel="stylesheet" href="/tech-memo/css/style.css">
+  <link rel="stylesheet" href="/css/style.css">
   
-    <link rel="stylesheet" href="/tech-memo/fancybox/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
   
 </head>
 
@@ -55,11 +55,11 @@
     <div id="header-title" class="inner">
 	  <div id="logo-wrap">
       <h1>
-        <a href="/tech-memo/" id="logo">寝室コンピューティング</a>
+        <a href="/" id="logo">寝室コンピューティング</a>
       </h1>
       
         <h2 id="subtitle-wrap">
-          <a href="/tech-memo/" id="subtitle">オフィスでするほどでもない開発を寝室から</a>
+          <a href="/" id="subtitle">オフィスでするほどでもない開発を寝室から</a>
 		</h2>
 	</div>
       
@@ -68,13 +68,13 @@
       <nav id="main-nav">
         <a id="main-nav-toggle" class="nav-icon"></a>
         
-          <a class="main-nav-link" href="/tech-memo/">Home</a>
+          <a class="main-nav-link" href="/">Home</a>
         
-          <a class="main-nav-link" href="/tech-memo/about">About</a>
+          <a class="main-nav-link" href="/about">About</a>
         
-          <a class="main-nav-link" href="/tech-memo/archives">Archives</a>
+          <a class="main-nav-link" href="/archives">Archives</a>
         
-          <a class="main-nav-link" href="/tech-memo/portfolio">Portfolio</a>
+          <a class="main-nav-link" href="/portfolio">Portfolio</a>
         
       </nav>
       <nav id="sub-nav">
@@ -90,7 +90,7 @@
       <div class="outer">
         <section id="main"><article id="post-2020-0408-linebot" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/tech-memo/2020/04/2020-0408-linebot/" class="article-date">
+    <a href="/2020/04/2020-0408-linebot/" class="article-date">
   <time datetime="2020-04-08T06:52:27.000Z" itemprop="datePublished">2020-04-08</time>
 </a>
     
@@ -120,7 +120,7 @@
 </ul>
 <p>この記事通りに進めばKitchenSinkと名付けられた（命名の由来は謎）サンプルを動かせるようになります。  </p>
 <p>このKitchenSink Bot君は色んなメッセージの返信方法（画像やボタンなど）を一通り実装してくれています。<br>例えばimageとメッセージを送信すると画像を送信してくれます。<br>他にもbuttonsと送信するとボタンが送られてくるのですが、<br>ボタンを押すと、rice=米という謎のメッセージが発信されるという、<br>粋なギミックがあったりします。  </p>
-<img src="/tech-memo/2020/04/2020-0408-linebot/rice.png" class="" title="[rice=米という粋なメッセージ]">
+<img src="/2020/04/2020-0408-linebot/rice.png" class="" title="[rice=米という粋なメッセージ]">
 <h2 id="LINE-Dev登録"><a href="#LINE-Dev登録" class="headerlink" title="LINE Dev登録"></a>LINE Dev登録</h2><p>LINE Botを作る下準備として、Bot用のアカウント(=チャネル)が必要です。<br>チャネルの作り方は公式が丁寧なので、そちらに譲ります。<br><a href="https://developers.line.biz/ja/docs/messaging-api/getting-started/#%E3%83%81%E3%83%A3%E3%83%8D%E3%83%AB%E3%81%AE%E4%BD%9C%E6%88%90" target="_blank" rel="noopener">https://developers.line.biz/ja/docs/messaging-api/getting-started/#%E3%83%81%E3%83%A3%E3%83%8D%E3%83%AB%E3%81%AE%E4%BD%9C%E6%88%90</a></p>
 <p>チャネルができたらチャネルシークレットとチャネルトークンを控えておいてください。<br>また、Auto-replyを無効にしておかないとBotのメッセージではなく、デフォルトの自動返信メッセージが送信されてしまうので、<br>こちらをDisableにしておきます。  </p>
 
@@ -161,16 +161,16 @@
 
 
 <h2 id="ngrokでテスト"><a href="#ngrokでテスト" class="headerlink" title="ngrokでテスト"></a>ngrokでテスト</h2><p>さて、プロジェクトを実行してみましょう。<br>僕はVS Codeを利用しているので、Debug実行(F5)をするだけです。<br>他のIDEを使っている人もSpring boot実行用の操作があるはずなので、<br>実行してみてください。  </p>
-<img src="/tech-memo/2020/04/2020-0408-linebot/spring.png" class="" title="[Springが起動した]">
+<img src="/2020/04/2020-0408-linebot/spring.png" class="" title="[Springが起動した]">
 <p>動きました！</p>
 <p>とはいえ、このままだと全然LINEと関係ないので、<br>ngrokで公開したいと思います。<br>ngrokはローカルホストをhttpsで公開できるようにしてくれるツールです。<br>LINE botを開発するならめちゃくちゃオススメです。<br>Macであればbrewでインストールできるらしいのですが、<br>僕の環境ではなぜかbrewできなかったので、npmからインストールしました。<br>インストールできたら以下のコマンドで実行します。<br><code>ngrok http 8080</code></p>
-<img src="/tech-memo/2020/04/2020-0408-linebot/ngrok.png" class="" title="[ngrok]">
+<img src="/2020/04/2020-0408-linebot/ngrok.png" class="" title="[ngrok]">
 
 <p>このhttpsのアドレスをLINE Botの設定ページでWebhook URLとして指定してあげます。</p>
-<img src="/tech-memo/2020/04/2020-0408-linebot/webhook.png" class="" title="[webhook urlの設定]">
+<img src="/2020/04/2020-0408-linebot/webhook.png" class="" title="[webhook urlの設定]">
 <p><strong>注意</strong><br>URLの末尾に/callbackを入れるのを忘れないようにしてください。<br>Verifyボタンからテストもできるので、Localhostとつながっている事を確認しましょう。  </p>
 <h2 id="動作確認"><a href="#動作確認" class="headerlink" title="動作確認"></a>動作確認</h2><p>さて、ここまでできたらLINE Botが使えるようになっているはずです。<br>何かメッセージを送ってみましょう。<br>このBotは送信したメッセージで分岐していて、<br>imageなど打つとimageのサンプルが返ってきます。</p>
-<img src="/tech-memo/2020/04/2020-0408-linebot/kitchensink.png" class="" title="[Kitchen Sink Botの動作イメージ]">
+<img src="/2020/04/2020-0408-linebot/kitchensink.png" class="" title="[Kitchen Sink Botの動作イメージ]">
 
 <p>実装が確認できるメッセージ一覧</p>
 <ul>
@@ -192,11 +192,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.bedroomcomputing.com/2020/04/2020-0408-linebot/" data-id="ckb573tlf000w0xli8w3j7vwc" data-title="Spring BootでLINE Botのサンプルを動かす 〜おうむ返しのその先へ〜" class="article-share-link">Share</a>
+      <a data-url="https://www.bedroomcomputing.com/2020/04/2020-0408-linebot/" data-id="ckb578frn000v51lig4nsbkqf" data-title="Spring BootでLINE Botのサンプルを動かす 〜おうむ返しのその先へ〜" class="article-share-link">Share</a>
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tech-memo/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tech-memo/tags/LINE-Bot/" rel="tag">LINE Bot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tech-memo/tags/Spring-Boot/" rel="tag">Spring Boot</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LINE-Bot/" rel="tag">LINE Bot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spring-Boot/" rel="tag">Spring Boot</a></li></ul>
 
     </footer>
   </div>
@@ -204,7 +204,7 @@
     
 <nav id="article-nav">
   
-    <a href="/tech-memo/2020/04/2020-0415-flexMessage/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/04/2020-0415-flexMessage/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
@@ -214,7 +214,7 @@
     </a>
   
   
-    <a href="/tech-memo/2020/04/2020-0408-googleconsole/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2020/04/2020-0408-googleconsole/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
       <div class="article-nav-title">GitHub Pagesで作ったブログをGoogle検索にヒットさせる</div>
     </a>
@@ -232,8 +232,8 @@
     <div class="widget-wrap">
 <h3 class="widget-title">About</h3>
 <div class="widget">
-	<img src="/tech-memo/css/images/author.png" alt="著者" class="author-img">
-	<a class="author-link" href="/tech-memo/about" >karintomania</a>
+	<img src="/css/images/author.png" alt="著者" class="author-img">
+	<a class="author-link" href="/about" >karintomania</a>
 	<p><p>イギリス在住のWeb開発者が日々学んだことを書き連ねています。<br> Java/PHP/Dockerに興味があります。</p>
 </p>
 </div>
@@ -247,23 +247,23 @@
       <ul>
         
           <li>
-            <a href="/tech-memo/2020/05/2020-0529-grepTwoWords/">grepコマンドでAND検索をする</a>
+            <a href="/2020/05/2020-0529-grepTwoWords/">grepコマンドでAND検索をする</a>
           </li>
         
           <li>
-            <a href="/tech-memo/2020/05/2020-0508-dbeaver/">Macの無料SQLクライアントDBeaverを紹介する</a>
+            <a href="/2020/05/2020-0508-dbeaver/">Macの無料SQLクライアントDBeaverを紹介する</a>
           </li>
         
           <li>
-            <a href="/tech-memo/2020/04/2020-0430-springboot-azure-2/">Spring Boot + Azure App Engine +Cosmos DBでAPIを無料で爆速開発する - その２</a>
+            <a href="/2020/04/2020-0430-springboot-azure-2/">Spring Boot + Azure App Engine +Cosmos DBでAPIを無料で爆速開発する - その２</a>
           </li>
         
           <li>
-            <a href="/tech-memo/2020/04/2020-0430-springboot-azure-1/">Spring Boot + Azure App Engine +Cosmos DBでAPIを無料で爆速開発する - その１</a>
+            <a href="/2020/04/2020-0430-springboot-azure-1/">Spring Boot + Azure App Engine +Cosmos DBでAPIを無料で爆速開発する - その１</a>
           </li>
         
           <li>
-            <a href="/tech-memo/2020/04/2020-0415-hexoCheatsheet/">私流hexoチートシート</a>
+            <a href="/2020/04/2020-0415-hexoCheatsheet/">私流hexoチートシート</a>
           </li>
         
       </ul>
@@ -278,7 +278,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/Azure/" rel="tag">Azure</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/Cosmos-DB/" rel="tag">Cosmos DB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/DB/" rel="tag">DB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/Github-Pages/" rel="tag">Github Pages</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/Heroku/" rel="tag">Heroku</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/LINE-Bot/" rel="tag">LINE Bot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/Linux-Command/" rel="tag">Linux Command</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/OR-Mapper/" rel="tag">OR Mapper</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/OSS/" rel="tag">OSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/Orchid/" rel="tag">Orchid</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/PostgreSQL/" rel="tag">PostgreSQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/Spring-Boot/" rel="tag">Spring Boot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/UiPath/" rel="tag">UiPath</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/VS-Code/" rel="tag">VS Code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/Vim/" rel="tag">Vim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/mybatis/" rel="tag">mybatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tech-memo/tags/%E9%96%A2%E6%95%B0%E5%9E%8B%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0/" rel="tag">関数型プログラミング</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Azure/" rel="tag">Azure</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cosmos-DB/" rel="tag">Cosmos DB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DB/" rel="tag">DB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github-Pages/" rel="tag">Github Pages</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Heroku/" rel="tag">Heroku</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LINE-Bot/" rel="tag">LINE Bot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-Command/" rel="tag">Linux Command</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OR-Mapper/" rel="tag">OR Mapper</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OSS/" rel="tag">OSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Orchid/" rel="tag">Orchid</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PostgreSQL/" rel="tag">PostgreSQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-Boot/" rel="tag">Spring Boot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UiPath/" rel="tag">UiPath</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VS-Code/" rel="tag">VS Code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/" rel="tag">Vim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mybatis/" rel="tag">mybatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%96%A2%E6%95%B0%E5%9E%8B%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0/" rel="tag">関数型プログラミング</a></li></ul>
     </div>
   </div>
 
@@ -288,7 +288,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tech-memo/tags/Azure/" style="font-size: 12px;">Azure</a> <a href="/tech-memo/tags/Cosmos-DB/" style="font-size: 12px;">Cosmos DB</a> <a href="/tech-memo/tags/DB/" style="font-size: 10px;">DB</a> <a href="/tech-memo/tags/Docker/" style="font-size: 14px;">Docker</a> <a href="/tech-memo/tags/Github-Pages/" style="font-size: 14px;">Github Pages</a> <a href="/tech-memo/tags/Heroku/" style="font-size: 12px;">Heroku</a> <a href="/tech-memo/tags/Hexo/" style="font-size: 16px;">Hexo</a> <a href="/tech-memo/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tech-memo/tags/LINE-Bot/" style="font-size: 12px;">LINE Bot</a> <a href="/tech-memo/tags/Linux-Command/" style="font-size: 10px;">Linux Command</a> <a href="/tech-memo/tags/OR-Mapper/" style="font-size: 12px;">OR Mapper</a> <a href="/tech-memo/tags/OSS/" style="font-size: 10px;">OSS</a> <a href="/tech-memo/tags/Orchid/" style="font-size: 10px;">Orchid</a> <a href="/tech-memo/tags/PostgreSQL/" style="font-size: 12px;">PostgreSQL</a> <a href="/tech-memo/tags/Spring-Boot/" style="font-size: 18px;">Spring Boot</a> <a href="/tech-memo/tags/UiPath/" style="font-size: 10px;">UiPath</a> <a href="/tech-memo/tags/VS-Code/" style="font-size: 10px;">VS Code</a> <a href="/tech-memo/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tech-memo/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/tech-memo/tags/%E9%96%A2%E6%95%B0%E5%9E%8B%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0/" style="font-size: 10px;">関数型プログラミング</a>
+      <a href="/tags/Azure/" style="font-size: 12px;">Azure</a> <a href="/tags/Cosmos-DB/" style="font-size: 12px;">Cosmos DB</a> <a href="/tags/DB/" style="font-size: 10px;">DB</a> <a href="/tags/Docker/" style="font-size: 14px;">Docker</a> <a href="/tags/Github-Pages/" style="font-size: 14px;">Github Pages</a> <a href="/tags/Heroku/" style="font-size: 12px;">Heroku</a> <a href="/tags/Hexo/" style="font-size: 16px;">Hexo</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/LINE-Bot/" style="font-size: 12px;">LINE Bot</a> <a href="/tags/Linux-Command/" style="font-size: 10px;">Linux Command</a> <a href="/tags/OR-Mapper/" style="font-size: 12px;">OR Mapper</a> <a href="/tags/OSS/" style="font-size: 10px;">OSS</a> <a href="/tags/Orchid/" style="font-size: 10px;">Orchid</a> <a href="/tags/PostgreSQL/" style="font-size: 12px;">PostgreSQL</a> <a href="/tags/Spring-Boot/" style="font-size: 18px;">Spring Boot</a> <a href="/tags/UiPath/" style="font-size: 10px;">UiPath</a> <a href="/tags/VS-Code/" style="font-size: 10px;">VS Code</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/tags/%E9%96%A2%E6%95%B0%E5%9E%8B%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0/" style="font-size: 10px;">関数型プログラミング</a>
     </div>
   </div>
 
@@ -297,7 +297,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/tech-memo/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/tech-memo/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/tech-memo/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/tech-memo/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/tech-memo/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/tech-memo/archives/2019/10/">October 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li></ul>
     </div>
   </div>
 
@@ -319,24 +319,24 @@
     </div>
     <nav id="mobile-nav">
   
-    <a href="/tech-memo/" class="mobile-nav-link">Home</a>
+    <a href="/" class="mobile-nav-link">Home</a>
   
-    <a href="/tech-memo/about" class="mobile-nav-link">About</a>
+    <a href="/about" class="mobile-nav-link">About</a>
   
-    <a href="/tech-memo/archives" class="mobile-nav-link">Archives</a>
+    <a href="/archives" class="mobile-nav-link">Archives</a>
   
-    <a href="/tech-memo/portfolio" class="mobile-nav-link">Portfolio</a>
+    <a href="/portfolio" class="mobile-nav-link">Portfolio</a>
   
 </nav>
     
 
-<script src="/tech-memo/js/jquery-3.4.1.min.js"></script>
+<script src="/js/jquery-3.4.1.min.js"></script>
 
 
-  <script src="/tech-memo/fancybox/jquery.fancybox.min.js"></script>
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
 
 
-<script src="/tech-memo/js/script.js"></script>
+<script src="/js/script.js"></script>
 
 
 
