@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-161452704-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-161452704-1');
+</script>
+<!-- End Google Analytics -->
+
+  
+  <title>androidでpop up toを使いこなす | 寝室コンピューティング</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="背景 こんにちは。karintomania(twitter)です。androidアプリ開発の際に戻るボタンの挙動を制御する際に、popuptoというプロパティを設定する必要がありますが、分かりづらかったので、解説を少々。">
+<meta name="keywords" content="android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="androidでpop up toを使いこなす">
+<meta property="og:url" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;06&#x2F;2020-0608-popupto&#x2F;index.html">
+<meta property="og:site_name" content="寝室コンピューティング">
+<meta property="og:description" content="背景 こんにちは。karintomania(twitter)です。androidアプリ開発の際に戻るボタンの挙動を制御する際に、popuptoというプロパティを設定する必要がありますが、分かりづらかったので、解説を少々。">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;06&#x2F;2020-0608-popupto&#x2F;01_pop.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;06&#x2F;2020-0608-popupto&#x2F;01_pop.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;06&#x2F;2020-0608-popupto&#x2F;02_b2c.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;06&#x2F;2020-0608-popupto&#x2F;04_c2a.png">
+<meta property="og:updated_time" content="2020-06-08T18:08:29.084Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;06&#x2F;2020-0608-popupto&#x2F;01_pop.png">
+  
+  
+    <link rel="icon" href="/css/images/favicon.ico">
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+  
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+	  <div id="logo-wrap">
+      <h1>
+        <a href="/" id="logo">寝室コンピューティング</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">オフィスでするほどでもない開発を寝室から</a>
+		</h2>
+	</div>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/portfolio">Portfolio</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://www.bedroomcomputing.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2020-0608-popupto" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/2020-0608-popupto/" class="article-date">
+  <time datetime="2020-06-08T18:07:24.000Z" itemprop="datePublished">2020-06-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%8A%80%E8%A1%93/">技術</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      androidでpop up toを使いこなす
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><img src="/2020/06/2020-0608-popupto/01_pop.png" class="">
+<p>こんにちは。<a href="https://twitter.com/karintozuki" target="_blank" rel="noopener">karintomania(twitter)</a>です。<br>androidアプリ開発の際に戻るボタンの挙動を制御する際に、popuptoというプロパティを設定する必要がありますが、<br>分かりづらかったので、解説を少々。  </p>
+<a id="more"></a>
+<h2 id="Back-Stackについて"><a href="#Back-Stackについて" class="headerlink" title="Back Stackについて"></a>Back Stackについて</h2><p>androidアプリでは画面遷移のたびに、戻るボタンを押した際に遷移するページをバックスタックとして保存しています。  </p>
+<p>以下のようなゲームアプリを想定してみます。<br>a: タイトル<br>b: ゲーム画面<br>c: 結果</p>
+<img src="/2020/06/2020-0608-popupto/01_pop.png" class="">
+
+<p>普通にタイトルから、<br>ゲーム開始、結果確認、タイトルに戻り再プレイ・・・<br>と画面遷移を繰り返すと、<br>a - b - c - a - b - c -…<br>と無限にバックスタックが積まれていってしまいます・</p>
+<p>ですが、理想的な動きとしては、<br>c - aに戻った際にバックスタックをクリア</p>
+<p>また、考慮が漏れがちですが、b - cに画面遷移をする際に<br>bをバックスタックから削除しておかないと結果画面から直接プレイ画面に戻ってしまいます。<br>もちろんアプリの仕様によってはそれもありかもしれませんが、今回はそれを許容しないことにします。  </p>
+<h2 id="Popup-to"><a href="#Popup-to" class="headerlink" title="Popup to"></a>Popup to</h2><p>b - cの実装を先にします。  </p>
+<img src="/2020/06/2020-0608-popupto/02_b2c.png" class="">
+<p>navigation.xmlをandroid studioで開きます。  </p>
+<p>b - c の画面遷移をクリックするとattribute欄にpopup toがあると思います。  </p>
+
+
+<p>ここにaを指定するとa以降にバックスタックに積まれたものが削除されます。  </p>
+<p>今回の例では、バックスタックは<br>a - b - c<br>となっていたので、bが削除され、<br>a-c<br>となります。これで結果確認画面で戻るボタンを押した際には、タイトル画面に戻り流ようになりました。  </p>
+<h2 id="popUpToInclusive"><a href="#popUpToInclusive" class="headerlink" title="popUpToInclusive"></a>popUpToInclusive</h2><p>c - aの実装もやってみます。  </p>
+<img src="/2020/06/2020-0608-popupto/04_c2a.png" class="">
+
+<p>先ほど同様、c - a の画面遷移をクリックし、popUpToにAを指定します。<br>これによって画面遷移前には<br>c - a<br>だったバックスタックがaを残して削除されます。<br>しかし、その後にaに画面遷移すると2回目のaもバックスタックに積まれることになり、<br>a - a<br>となってしまいます。  </p>
+<p>つまり、画面遷移の際に初回のaも削除する必要があります。<br>その際にpopUpToInclusiveを指定します。<br>こうすることでc - aのが面遷移の際にバックスタックが全て削除されます。  </p>
+<h2 id="まとめ"><a href="#まとめ" class="headerlink" title="まとめ"></a>まとめ</h2><p><strong>popUpTo</strong><br>指定した画面までのバックスタックを削除する</p>
+<p><strong>popUpToInclusive</strong><br>指定した画面を含めてバックスタックを削除する</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>やはり公式が参考になりますね。<br><a href="https://developer.android.com/guide/navigation/navigation-navigate#pop" target="_blank" rel="noopener">https://developer.android.com/guide/navigation/navigation-navigate#pop</a></p>
+<p>それでは今日はこの辺で。  </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.bedroomcomputing.com/2020/06/2020-0608-popupto/" data-id="ckb6t74to001qg1lihtbngajm" data-title="androidでpop up toを使いこなす" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/" rel="tag">android</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/05/2020-0529-grepTwoWords/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">grepコマンドでAND検索をする</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    <div class="widget-wrap">
+<h3 class="widget-title">About</h3>
+<div class="widget">
+	<img src="/css/images/author.png" alt="著者" class="author-img">
+	<a class="author-link" href="/about" >karintomania</a>
+	<p><p>イギリス在住のWeb開発者が日々学んだことを書き連ねています。<br> Java/PHP/Dockerに興味があります。</p>
+</p>
+</div>
+</div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/06/2020-0608-popupto/">androidでpop up toを使いこなす</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/2020-0529-grepTwoWords/">grepコマンドでAND検索をする</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/2020-0508-dbeaver/">Macの無料SQLクライアントDBeaverを紹介する</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/2020-0430-springboot-azure-2/">Spring Boot + Azure App Engine +Cosmos DBでAPIを無料で爆速開発する - その２</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/2020-0430-springboot-azure-1/">Spring Boot + Azure App Engine +Cosmos DBでAPIを無料で爆速開発する - その１</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E8%A1%93/">技術</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Azure/" rel="tag">Azure</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cosmos-DB/" rel="tag">Cosmos DB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DB/" rel="tag">DB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github-Pages/" rel="tag">Github Pages</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Heroku/" rel="tag">Heroku</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LINE-Bot/" rel="tag">LINE Bot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-Command/" rel="tag">Linux Command</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OR-Mapper/" rel="tag">OR Mapper</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OSS/" rel="tag">OSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Orchid/" rel="tag">Orchid</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PostgreSQL/" rel="tag">PostgreSQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-Boot/" rel="tag">Spring Boot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UiPath/" rel="tag">UiPath</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VS-Code/" rel="tag">VS Code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/" rel="tag">Vim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/" rel="tag">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mybatis/" rel="tag">mybatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%96%A2%E6%95%B0%E5%9E%8B%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0/" rel="tag">関数型プログラミング</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Azure/" style="font-size: 12px;">Azure</a> <a href="/tags/Cosmos-DB/" style="font-size: 12px;">Cosmos DB</a> <a href="/tags/DB/" style="font-size: 10px;">DB</a> <a href="/tags/Docker/" style="font-size: 14px;">Docker</a> <a href="/tags/Github-Pages/" style="font-size: 14px;">Github Pages</a> <a href="/tags/Heroku/" style="font-size: 12px;">Heroku</a> <a href="/tags/Hexo/" style="font-size: 16px;">Hexo</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/LINE-Bot/" style="font-size: 12px;">LINE Bot</a> <a href="/tags/Linux-Command/" style="font-size: 10px;">Linux Command</a> <a href="/tags/OR-Mapper/" style="font-size: 12px;">OR Mapper</a> <a href="/tags/OSS/" style="font-size: 10px;">OSS</a> <a href="/tags/Orchid/" style="font-size: 10px;">Orchid</a> <a href="/tags/PostgreSQL/" style="font-size: 12px;">PostgreSQL</a> <a href="/tags/Spring-Boot/" style="font-size: 18px;">Spring Boot</a> <a href="/tags/UiPath/" style="font-size: 10px;">UiPath</a> <a href="/tags/VS-Code/" style="font-size: 10px;">VS Code</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/tags/%E9%96%A2%E6%95%B0%E5%9E%8B%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0/" style="font-size: 10px;">関数型プログラミング</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 karintomania<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/portfolio" class="mobile-nav-link">Portfolio</a>
+  
+</nav>
+    
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

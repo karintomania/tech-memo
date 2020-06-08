@@ -2,16 +2,170 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://www.bedroomcomputing.com/2020/05/2020-0529-grepTwoWords/</loc>
+    <loc>https://www.bedroomcomputing.com/2020/06/2020-0608-popupto/</loc>
     
-    <lastmod>2020-05-29T08:02:12.447Z</lastmod>
+    <lastmod>2020-06-08T18:08:29.084Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.bedroomcomputing.com/2020/02/2020-0204-OrchidStart/</loc>
+    
+    <lastmod>2020-06-08T18:06:30.358Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.bedroomcomputing.com/2020/02/2020-0213-HowToUseAssetFolder/</loc>
+    
+    <lastmod>2020-06-08T18:06:29.469Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.bedroomcomputing.com/2020/02/2020-0222-CookieByUiPath/</loc>
+    
+    <lastmod>2020-06-08T18:06:27.568Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.bedroomcomputing.com/2020/02/2020-0225-macvim/</loc>
+    
+    <lastmod>2020-06-08T18:06:26.840Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.bedroomcomputing.com/2020/03/2020-0314-functionalProgrammingInJava/</loc>
+    
+    <lastmod>2020-06-08T18:06:26.044Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.bedroomcomputing.com/2020/03/2020-0324-jdbiSpring/</loc>
+    
+    <lastmod>2020-06-08T18:06:25.305Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.bedroomcomputing.com/2020/03/2020-0327-mybatis/</loc>
+    
+    <lastmod>2020-06-08T18:06:24.600Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.bedroomcomputing.com/2020/04/2020-0408-googleconsole/</loc>
+    
+    <lastmod>2020-06-08T18:06:23.881Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.bedroomcomputing.com/2020/04/2020-0408-linebot/</loc>
+    
+    <lastmod>2020-06-08T18:06:23.195Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.bedroomcomputing.com/2020/04/2020-0415-flexMessage/</loc>
+    
+    <lastmod>2020-06-08T18:06:22.451Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.bedroomcomputing.com/2020/04/2020-0415-hexoCheatsheet/</loc>
+    
+    <lastmod>2020-06-08T18:06:21.621Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.bedroomcomputing.com/2020/04/2020-0430-springboot-azure-1/</loc>
+    
+    <lastmod>2020-06-08T18:06:20.847Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.bedroomcomputing.com/2020/04/2020-0430-springboot-azure-2/</loc>
+    
+    <lastmod>2020-06-08T18:06:20.111Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://www.bedroomcomputing.com/2020/05/2020-0508-dbeaver/</loc>
     
-    <lastmod>2020-05-08T15:32:21.329Z</lastmod>
+    <lastmod>2020-06-08T18:06:19.399Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.bedroomcomputing.com/2020/05/2020-0529-grepTwoWords/</loc>
+    
+    <lastmod>2020-06-08T18:06:17.062Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.bedroomcomputing.com/2019/10/2019-1029-start-hexo-deploy/</loc>
+    
+    <lastmod>2020-06-08T18:04:29.937Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.bedroomcomputing.com/2019/10/2019-1029-start-hexo-generate-site/</loc>
+    
+    <lastmod>2020-06-08T18:04:28.768Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.bedroomcomputing.com/2019/10/2019-1030-hexo-add-about-widget/</loc>
+    
+    <lastmod>2020-06-08T18:04:26.688Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.bedroomcomputing.com/2019/10/2019-1031-vscode-spring-herok-deploy/</loc>
+    
+    <lastmod>2020-06-08T18:04:25.075Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.bedroomcomputing.com/2019/11/2019-1101-heroku-springboot-postgres/</loc>
+    
+    <lastmod>2020-06-08T18:04:23.562Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.bedroomcomputing.com/2019/11/2019-1101-psql-container/</loc>
+    
+    <lastmod>2020-06-08T18:04:20.935Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.bedroomcomputing.com/2019/11/2019-1120-vscode-project-update/</loc>
+    
+    <lastmod>2020-06-08T18:04:19.629Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.bedroomcomputing.com/2019/10/2019-1029-start-hexo-container/</loc>
+    
+    <lastmod>2020-06-08T18:03:54.589Z</lastmod>
     
   </url>
   
@@ -23,156 +177,9 @@
   </url>
   
   <url>
-    <loc>https://www.bedroomcomputing.com/2020/04/2020-0430-springboot-azure-2/</loc>
-    
-    <lastmod>2020-04-30T23:55:52.078Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://www.bedroomcomputing.com/portfolio/index.html</loc>
     
     <lastmod>2020-04-30T23:51:47.524Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.bedroomcomputing.com/2020/04/2020-0430-springboot-azure-1/</loc>
-    
-    <lastmod>2020-04-30T23:31:46.145Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.bedroomcomputing.com/2020/03/2020-0327-mybatis/</loc>
-    
-    <lastmod>2020-04-30T21:45:19.361Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.bedroomcomputing.com/2020/04/2020-0415-flexMessage/</loc>
-    
-    <lastmod>2020-04-30T21:24:31.334Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.bedroomcomputing.com/2020/02/2020-0222-CookieByUiPath/</loc>
-    
-    <lastmod>2020-04-16T16:50:59.189Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.bedroomcomputing.com/2020/04/2020-0415-hexoCheatsheet/</loc>
-    
-    <lastmod>2020-04-15T20:02:30.366Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.bedroomcomputing.com/2020/04/2020-0408-linebot/</loc>
-    
-    <lastmod>2020-04-08T06:52:39.731Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.bedroomcomputing.com/2020/04/2020-0408-googleconsole/</loc>
-    
-    <lastmod>2020-04-08T06:45:33.843Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.bedroomcomputing.com/2020/03/2020-0324-jdbiSpring/</loc>
-    
-    <lastmod>2020-03-24T00:54:08.836Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.bedroomcomputing.com/2020/03/2020-0314-functionalProgrammingInJava/</loc>
-    
-    <lastmod>2020-03-14T12:42:45.098Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.bedroomcomputing.com/2020/02/2020-0225-macvim/</loc>
-    
-    <lastmod>2020-02-25T21:57:36.279Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.bedroomcomputing.com/2020/02/2020-0213-HowToUseAssetFolder/</loc>
-    
-    <lastmod>2020-02-22T21:11:40.898Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.bedroomcomputing.com/2019/11/2019-1120-vscode-project-update/</loc>
-    
-    <lastmod>2020-02-13T08:28:57.300Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.bedroomcomputing.com/2020/02/2020-0204-OrchidStart/</loc>
-    
-    <lastmod>2020-02-13T08:27:29.674Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.bedroomcomputing.com/2019/10/2019-1031-vscode-spring-herok-deploy/</loc>
-    
-    <lastmod>2020-02-13T08:26:45.573Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.bedroomcomputing.com/2019/10/2019-1029-start-hexo-generate-site/</loc>
-    
-    <lastmod>2020-02-13T08:24:38.346Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.bedroomcomputing.com/2019/10/2019-1029-start-hexo-deploy/</loc>
-    
-    <lastmod>2020-02-13T08:24:09.197Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.bedroomcomputing.com/2019/10/2019-1029-start-hexo-container/</loc>
-    
-    <lastmod>2020-02-13T08:23:42.875Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.bedroomcomputing.com/2019/11/2019-1101-psql-container/</loc>
-    
-    <lastmod>2020-02-13T08:23:24.286Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.bedroomcomputing.com/2019/10/2019-1030-hexo-add-about-widget/</loc>
-    
-    <lastmod>2020-02-13T08:22:54.062Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.bedroomcomputing.com/2019/11/2019-1101-heroku-springboot-postgres/</loc>
-    
-    <lastmod>2020-02-13T08:22:36.618Z</lastmod>
     
   </url>
   
