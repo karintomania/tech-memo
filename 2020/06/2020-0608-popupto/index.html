@@ -17,19 +17,19 @@
   
   <title>androidでpop up toを使いこなす | 寝室コンピューティング</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="背景 こんにちは。karintomania(twitter)です。androidアプリ開発の際に戻るボタンの挙動を制御する際に、popuptoというプロパティを設定する必要がありますが、分かりづらかったので、解説を少々。">
+  <meta name="description" content="背景こんにちは。karintomania(twitter)です。   androidアプリ開発の際に戻るボタンの挙動を制御するため、popuptoというプロパティを設定する必要がありますが、分かりづらかったので、解説を少々。">
 <meta name="keywords" content="android">
 <meta property="og:type" content="article">
 <meta property="og:title" content="androidでpop up toを使いこなす">
 <meta property="og:url" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;06&#x2F;2020-0608-popupto&#x2F;index.html">
 <meta property="og:site_name" content="寝室コンピューティング">
-<meta property="og:description" content="背景 こんにちは。karintomania(twitter)です。androidアプリ開発の際に戻るボタンの挙動を制御する際に、popuptoというプロパティを設定する必要がありますが、分かりづらかったので、解説を少々。">
+<meta property="og:description" content="背景こんにちは。karintomania(twitter)です。   androidアプリ開発の際に戻るボタンの挙動を制御するため、popuptoというプロパティを設定する必要がありますが、分かりづらかったので、解説を少々。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;06&#x2F;2020-0608-popupto&#x2F;01_pop.png">
-<meta property="og:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;06&#x2F;2020-0608-popupto&#x2F;01_pop.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;06&#x2F;2020-0608-popupto&#x2F;02_b2c.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;06&#x2F;2020-0608-popupto&#x2F;03_popupto.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;06&#x2F;2020-0608-popupto&#x2F;04_c2a.png">
-<meta property="og:updated_time" content="2020-06-08T18:08:29.084Z">
+<meta property="og:updated_time" content="2020-06-08T18:23:40.973Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;06&#x2F;2020-0608-popupto&#x2F;01_pop.png">
   
@@ -113,38 +113,40 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><img src="/2020/06/2020-0608-popupto/01_pop.png" class="">
-<p>こんにちは。<a href="https://twitter.com/karintozuki" target="_blank" rel="noopener">karintomania(twitter)</a>です。<br>androidアプリ開発の際に戻るボタンの挙動を制御する際に、popuptoというプロパティを設定する必要がありますが、<br>分かりづらかったので、解説を少々。  </p>
+        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>こんにちは。<a href="https://twitter.com/karintozuki" target="_blank" rel="noopener">karintomania(twitter)</a>です。  </p>
+<p>androidアプリ開発の際に戻るボタンの挙動を制御するため、<br>popuptoというプロパティを設定する必要がありますが、<br>分かりづらかったので、解説を少々。  </p>
 <a id="more"></a>
-<h2 id="Back-Stackについて"><a href="#Back-Stackについて" class="headerlink" title="Back Stackについて"></a>Back Stackについて</h2><p>androidアプリでは画面遷移のたびに、戻るボタンを押した際に遷移するページをバックスタックとして保存しています。  </p>
+<h2 id="Back-Stackについて"><a href="#Back-Stackについて" class="headerlink" title="Back Stackについて"></a>Back Stackについて</h2><p>androidアプリでは画面遷移のたびに、<br>戻るボタンを押した際に遷移するページをバックスタックとして保存しています。  </p>
 <p>以下のようなゲームアプリを想定してみます。<br>a: タイトル<br>b: ゲーム画面<br>c: 結果</p>
 <img src="/2020/06/2020-0608-popupto/01_pop.png" class="">
 
-<p>普通にタイトルから、<br>ゲーム開始、結果確認、タイトルに戻り再プレイ・・・<br>と画面遷移を繰り返すと、<br>a - b - c - a - b - c -…<br>と無限にバックスタックが積まれていってしまいます・</p>
-<p>ですが、理想的な動きとしては、<br>c - aに戻った際にバックスタックをクリア</p>
-<p>また、考慮が漏れがちですが、b - cに画面遷移をする際に<br>bをバックスタックから削除しておかないと結果画面から直接プレイ画面に戻ってしまいます。<br>もちろんアプリの仕様によってはそれもありかもしれませんが、今回はそれを許容しないことにします。  </p>
+<p>普通にタイトルから、<br>ゲーム開始、結果確認、タイトルに戻り再プレイ・・・<br>と画面遷移を繰り返すと、<br><code>a - b - c - a - b - c -...</code><br>と無限にバックスタックが積まれていってしまいます・</p>
+<p>ですが、理想的な動きとしては、<br><u>c - aに戻った際にバックスタックをクリアして欲しい</u>ところです。</p>
+<p>また、考慮が漏れがちですが、b - cに画面遷移をする際に<br><u>bをバックスタックから削除しておかないと結果画面から直接プレイ画面に戻ってしまいます。</u><br>もちろんアプリの仕様によってはそれもありかもしれませんが、今回はそれを許容しないことにします。  </p>
 <h2 id="Popup-to"><a href="#Popup-to" class="headerlink" title="Popup to"></a>Popup to</h2><p>b - cの実装を先にします。  </p>
 <img src="/2020/06/2020-0608-popupto/02_b2c.png" class="">
 <p>navigation.xmlをandroid studioで開きます。  </p>
-<p>b - c の画面遷移をクリックするとattribute欄にpopup toがあると思います。  </p>
-
-
-<p>ここにaを指定するとa以降にバックスタックに積まれたものが削除されます。  </p>
-<p>今回の例では、バックスタックは<br>a - b - c<br>となっていたので、bが削除され、<br>a-c<br>となります。これで結果確認画面で戻るボタンを押した際には、タイトル画面に戻り流ようになりました。  </p>
+<p>b - c の画面遷移をクリックし、<br>attribute欄の<code>popup to</code>プロパティを設定します。  </p>
+<img src="/2020/06/2020-0608-popupto/03_popupto.png" class="">
+<p>*画像ではpopUpToInclusiveがTrueになっていますが、Falseになっているのが正しい設定です。<br>ここに関しては後述します。  </p>
+<p>ここにはバックスタックでどこの画面まで削除したいかを指定します。<br>今回の場合、<u>aを指定するとa以降にバックスタックに積まれたものが削除されます。</u>  </p>
+<p>今回の例では、バックスタックは<br><code>a - b - c</code><br>となっていたので、bが削除され、<br><code>a - c</code><br>となります。これで結果確認画面で戻るボタンを押した際には、タイトル画面に戻り流ようになりました。  </p>
 <h2 id="popUpToInclusive"><a href="#popUpToInclusive" class="headerlink" title="popUpToInclusive"></a>popUpToInclusive</h2><p>c - aの実装もやってみます。  </p>
 <img src="/2020/06/2020-0608-popupto/04_c2a.png" class="">
 
-<p>先ほど同様、c - a の画面遷移をクリックし、popUpToにAを指定します。<br>これによって画面遷移前には<br>c - a<br>だったバックスタックがaを残して削除されます。<br>しかし、その後にaに画面遷移すると2回目のaもバックスタックに積まれることになり、<br>a - a<br>となってしまいます。  </p>
-<p>つまり、画面遷移の際に初回のaも削除する必要があります。<br>その際にpopUpToInclusiveを指定します。<br>こうすることでc - aのが面遷移の際にバックスタックが全て削除されます。  </p>
+<p>先ほど同様、c - a の画面遷移をクリックし、popUpToにAを指定します。<br>これによって画面遷移前には<br><code>c - a</code><br>だったバックスタックがaを残して削除されます。  </p>
+<p>しかし、<u>初回のaは削除されないままのため、</u><br>その後にaに画面遷移すると2回目のaもバックスタックに積まれることになり、<br><code>a - a</code><br>となってしまいます。  </p>
+<p>つまり、<u>画面遷移の際に初回のaも削除する必要があります。</u>  </p>
+<p>その際に<code>popUpToInclusive</code>を指定します。<br>こうすることでc - aの画面遷移の際に<br><u>バックスタックが全て削除されます。</u>  </p>
 <h2 id="まとめ"><a href="#まとめ" class="headerlink" title="まとめ"></a>まとめ</h2><p><strong>popUpTo</strong><br>指定した画面までのバックスタックを削除する</p>
 <p><strong>popUpToInclusive</strong><br>指定した画面を含めてバックスタックを削除する</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>やはり公式が参考になりますね。<br><a href="https://developer.android.com/guide/navigation/navigation-navigate#pop" target="_blank" rel="noopener">https://developer.android.com/guide/navigation/navigation-navigate#pop</a></p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>ぜひ公式も参考にしてください。<br><a href="https://developer.android.com/guide/navigation/navigation-navigate#pop" target="_blank" rel="noopener">https://developer.android.com/guide/navigation/navigation-navigate#pop</a></p>
 <p>それでは今日はこの辺で。  </p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.bedroomcomputing.com/2020/06/2020-0608-popupto/" data-id="ckb6t7uxj001rioli1i0gfaig" data-title="androidでpop up toを使いこなす" class="article-share-link">Share</a>
+      <a data-url="https://www.bedroomcomputing.com/2020/06/2020-0608-popupto/" data-id="ckb6trs1p0014z2lidknx2rq5" data-title="androidでpop up toを使いこなす" class="article-share-link">Share</a>
       
       
       
