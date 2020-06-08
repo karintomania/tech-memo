@@ -8,6 +8,7 @@ date: 2020-03-14 12:34:34
 ---
 
 
+こんにちは。[karintomania(twitter)](https://twitter.com/karintozuki)です。  
 Javaでは、関数型プログラミングをするために、様々な機能が用意されています。  
 それらの機能を用いた実装を紹介してみます。  
 

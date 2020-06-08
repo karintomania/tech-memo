@@ -10,6 +10,7 @@ date: 2020-03-24 00:53:54
 
 
 ## JDBIとは
+こんにちは。[karintomania(twitter)](https://twitter.com/karintozuki)です。  
 JDBIはJavaの様々あるORマッパーの一つです。  
 軽量かつ直感的な使い勝手が人気だということで、使ってみました。
 今回はSpring Bootと一緒に使う方法を紹介します。  

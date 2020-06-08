@@ -7,6 +7,7 @@ date: 2019-11-20 23:19:08
 categories: 技術
 ---
 
+こんにちは。[karintomania(twitter)](https://twitter.com/karintozuki)です。  
 Gradleを変更した際にどうしたら変更がプロジェクトに反映されるのか  
 分からずハマったので、解決方法を書きます。  
 

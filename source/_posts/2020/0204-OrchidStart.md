@@ -8,7 +8,7 @@ date: 2020-02-12 18:22:54
 ---
 
 ## Orchidとは
-
+こんにちは。[karintomania(twitter)](https://twitter.com/karintozuki)です。  
 OrchidはJavaで作られた静的サイトジェネレータです。  
 [Orchid公式](https://orchid.run/)
 本記事ではその[公式チュートリアル](https://orchid.run/wiki/learn )に沿って簡単なサイトを作ってみます。  

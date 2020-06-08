@@ -7,6 +7,7 @@ categories: 技術
 ---
 
 
+こんにちは。[karintomania(twitter)](https://twitter.com/karintozuki)です。  
 Hexoで作ったブログにウィジェットを追加する方法を紹介します。  
 サイドバーにこんな感じの著者プロフィールウィジェットを追加してみます。 
 landscapeをテーマに使用している前提で記載していますので、別のテーマを使用している場合は適宜読み替えてください。  

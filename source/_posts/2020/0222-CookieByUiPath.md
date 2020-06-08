@@ -6,6 +6,7 @@ date: 2020-02-22 21:44:56
 ---
 
 
+こんにちは。[karintomania(twitter)](https://twitter.com/karintozuki)です。  
 UiPathは通常、業務の効率化に使われますが、  
 今回はCookieの生産性向上に使ってみます。  
 

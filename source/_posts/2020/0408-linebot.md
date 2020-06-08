@@ -10,6 +10,7 @@ date: 2020-04-08 07:52:27
 
 
 ## 目的
+こんにちは。[karintomania(twitter)](https://twitter.com/karintozuki)です。  
 JavaでLine Botを作る記事を検索したときに、  
 Herokuデプロイボタン押させて、  
 はい、オウム返しBotができました！！みたいな記事が多かったので、  

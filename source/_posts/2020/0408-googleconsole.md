@@ -9,6 +9,7 @@ date: 2020-04-08 07:44:35
 
 
 ## 背景
+こんにちは。[karintomania(twitter)](https://twitter.com/karintozuki)です。  
 このブログはGitHub Pagesにホスティングしているのですが、  
 なかなかGoogle検索に表示されるようにならず、悩んでいました。
 色々調べた結果今は検索で出るようになったので、  

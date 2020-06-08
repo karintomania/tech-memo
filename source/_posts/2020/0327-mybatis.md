@@ -9,6 +9,7 @@ categories: 技術
 date: 2020-03-27 23:55:34
 ---
 
+こんにちは。[karintomania(twitter)](https://twitter.com/karintozuki)です。  
 今回はJavaのORマッパー、Mybatisを使ってみます。  
 
 {% asset_img mybatislog.png %}

@@ -10,6 +10,7 @@ date: 2020-04-15 20:40:01
 
 
 ## 背景
+こんにちは。[karintomania(twitter)](https://twitter.com/karintozuki)です。  
 LINE Botを開発する際に必ずと言っていいほど(？)使うのがFlex Messageです。
 これはメッセージのレイアウトをJsonで記述したもので、  
 Botから送信するメッセージの自由なレイアウトを可能にしてくれます。  

@@ -7,6 +7,7 @@ categories: 技術
 
 
 
+こんにちは。[karintomania(twitter)](https://twitter.com/karintozuki)です。  
 めんどくさそうなデプロイですが、  
 Hexoならコマンド一発で楽勝です。  
 

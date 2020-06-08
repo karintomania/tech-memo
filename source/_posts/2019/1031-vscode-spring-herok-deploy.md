@@ -10,6 +10,7 @@ categories: 技術
 
 
 ## 概要
+こんにちは。[karintomania(twitter)](https://twitter.com/karintozuki)です。  
 タイトルの通り、VS CodeからSpring Bootプロジェクトを作成してHerokuにデプロイするまでを備忘録として残しました。
 
 ## 前提

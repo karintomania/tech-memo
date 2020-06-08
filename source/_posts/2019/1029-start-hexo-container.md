@@ -7,6 +7,7 @@ categories: 技術
 
 
 ## 概要
+こんにちは。[karintomania(twitter)](https://twitter.com/karintozuki)です。  
 Dockerコンテナ上にHexoをインストールして  
 静的WebサイトをGithubPageにローンチするまでの流れをまとめました。  
 

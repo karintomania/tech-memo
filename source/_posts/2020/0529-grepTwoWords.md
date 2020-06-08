@@ -8,6 +8,7 @@ date: 2020-05-29 08:59:35
 
 
 ## 背景
+こんにちは。[karintomania(twitter)](https://twitter.com/karintozuki)です。  
 grepコマンドってAND検索みたいなオプションがあると思いきや、  
 そんなオプションはなかったんですね。  
 そこでAND検索っぽく複数キーワードを検索する方法です。  

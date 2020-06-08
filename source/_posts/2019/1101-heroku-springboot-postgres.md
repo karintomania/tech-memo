@@ -10,6 +10,7 @@ categories: 技術
 ---
 
 
+こんにちは。[karintomania(twitter)](https://twitter.com/karintozuki)です。  
 Spring bootで作成したアプリケーションをHerokuにアップロードする際に、  
 データベースを使用したいですよね。  
 

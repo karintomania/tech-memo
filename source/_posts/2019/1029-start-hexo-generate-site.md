@@ -8,6 +8,7 @@ categories: 技術
 
 
 ## Hexoサイト生成
+こんにちは。[karintomania(twitter)](https://twitter.com/karintozuki)です。  
 前回でコンテナが準備できたので  
 以下のコマンドを実行してサイトを生成しましょう。
 

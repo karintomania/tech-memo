@@ -8,6 +8,7 @@ date: 2019-11-01 11:25:28
 categories: 技術
 ---
 
+こんにちは。[karintomania(twitter)](https://twitter.com/karintozuki)です。  
  PostgreSQLをDockerコンテナにします。
  今までMySQLしか使ったことなかったのですが、  
  Herokuにアプリケーションをデプロイする際にポスグレを使う必要があったので、  

@@ -13,6 +13,7 @@ date: 2020-04-30 22:11:05
 **この記事はこちらの記事の続きです。**  
 [Spring Boot + Azure App Engine +Cosmos DBでAPIを無料で爆速開発する - その１](/tech-memo/2020/04/2020-0430-springboot-azure-1/)
 
+こんにちは。[karintomania(twitter)](https://twitter.com/karintozuki)です。  
 前回はSpring bootで作ったプロジェクトをazureにデプロイするところまで行いました。  
 
 今回はCosmosDBに接続してAPIを完成させます。  

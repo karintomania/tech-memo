@@ -9,6 +9,7 @@ date: 2020-05-08 16:31:06
 
 
 {% asset_img Logo.png %}
+こんにちは。[karintomania(twitter)](https://twitter.com/karintozuki)です。  
 Macユーザのみなさま、こんにちは。
 突然ですが、DBのGUIクライアントは何を使っていますか？
 

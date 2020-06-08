@@ -6,6 +6,7 @@ categories: 技術
 date: 2020-02-13 08:32:39
 ---
 
+こんにちは。[karintomania(twitter)](https://twitter.com/karintozuki)です。  
 Hexoで写真などを使いたい時は、source/imagesフォルダを使うこともできますが、  
 ページごとに管理したい時があるかと思います。  
 その時にする設定です。   

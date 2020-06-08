@@ -7,6 +7,7 @@ date: 2020-04-15 20:56:38
 ---
 
 ## 背景
+こんにちは。[karintomania(twitter)](https://twitter.com/karintozuki)です。  
 普段Hexoを使ってこのブログを書いているのですが、  
 よく使うコマンドをいちいち調べるのがめんどくさいので、  
 ここにまとめます。  

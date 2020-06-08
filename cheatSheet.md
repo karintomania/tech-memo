@@ -28,6 +28,7 @@ hexo clean && hexo generate && hexo deploy
 
 [ブログ内のリンク](/tech-memo/2020/04/2020-0415-hexoCheatsheet/)
 
+こんにちは。[karintomania](https://twitter.com/karintozuki)です。
 [リンク文面](https://orchid.run/wiki/learn )
 
 https://karintomania.github.io/tech-memo/
