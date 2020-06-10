@@ -43,12 +43,14 @@ dependencies {
 
 ## 設定
 mybatis spring bootを使って驚いたのが、  
-その設定の少なさです。  
+<u>その設定の少なさです。</u>  
 今日は、何とapplication.propertiesを一行も書かずにコードが動きます。  
+
 Javaだけ書きましょう！  
 
 ただ、テスト用にテーブルを作る必要があるので、  
 src/main以下のresourceフォルダにschema.sqlを作成します。  
+
 これもSpring Bootなら空気を読んで、resourceフォルダに置くだけで勝手に実行してくれます。  
 超便利。  
 {% codeblock schema.sql lang:sql %}
@@ -118,7 +120,8 @@ public interface BookMapper {
 idが0のBookクラスを渡しても自動で値を更新してくれます。  
 
 さて、BookMapperを呼び出すControllerを書いてみます。  
-GETで検索、POSTで挿入ですね。
+<u>GETで検索、POSTで挿入</u>ですね。
+
 BookMapperはAutowiredでDIすることができます。  
 {% codeblock .java lang:java %}
 package com.example.mybatis;
@@ -187,3 +190,9 @@ $ curl -X POST -H "Content-Type: application/json" -d '{"title":"ningen shikkaku
 より軽量な代替案として使っていこうと思います。  
 
 それでは今日はこの辺で。
+
+
+## 関連記事
+こちらの記事もおすすめです。  
+[Macの無料SQLクライアントDBeaverを紹介する](/2020/05/2020-0508-dbeaver/)
+[Spring BootでJDBIを使う](/2020/03/2020-0324-jdbiSpring/)
