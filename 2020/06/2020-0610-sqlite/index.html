@@ -18,19 +18,19 @@
   <title>sqliteとは？特徴と使い方を解説する | 寝室コンピューティング</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="背景 android開発を始めた際に、DBとしてSQLiteが使用されている、ということでSQLiteとの付き合いが始まった。   何となく使っているのもあれなので、調べてみることにした。">
-<meta name="keywords" content="sqlite,OSS,DB">
+<meta name="keywords" content="DB,OSS,sqlite">
 <meta property="og:type" content="article">
 <meta property="og:title" content="sqliteとは？特徴と使い方を解説する">
-<meta property="og:url" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;06&#x2F;sqlite&#x2F;index.html">
+<meta property="og:url" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;06&#x2F;2020-0610-sqlite&#x2F;index.html">
 <meta property="og:site_name" content="寝室コンピューティング">
 <meta property="og:description" content="背景 android開発を始めた際に、DBとしてSQLiteが使用されている、ということでSQLiteとの付き合いが始まった。   何となく使っているのもあれなので、調べてみることにした。">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;06&#x2F;sqlite&#x2F;logo.gif">
-<meta property="og:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;06&#x2F;sqlite&#x2F;page.png">
-<meta property="og:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;06&#x2F;sqlite&#x2F;dbeaver.png">
-<meta property="og:updated_time" content="2020-06-09T23:53:26.200Z">
+<meta property="og:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;06&#x2F;2020-0610-sqlite&#x2F;logo.gif">
+<meta property="og:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;06&#x2F;2020-0610-sqlite&#x2F;page.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;06&#x2F;2020-0610-sqlite&#x2F;dbeaver.png">
+<meta property="og:updated_time" content="2020-06-10T00:28:06.367Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;06&#x2F;sqlite&#x2F;logo.gif">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;06&#x2F;2020-0610-sqlite&#x2F;logo.gif">
   
   
     <link rel="icon" href="/css/images/favicon.ico">
@@ -86,9 +86,9 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-sqlite" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-2020-0610-sqlite" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/06/sqlite/" class="article-date">
+    <a href="/2020/06/2020-0610-sqlite/" class="article-date">
   <time datetime="2020-06-09T23:36:24.000Z" itemprop="datePublished">2020-06-10</time>
 </a>
     
@@ -112,7 +112,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><img src="/2020/06/sqlite/logo.gif" class="">
+        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><img src="/2020/06/2020-0610-sqlite/logo.gif" class="">
 <p>android開発を始めた際に、<br>DBとしてSQLiteが使用されている、<br>ということでSQLiteとの付き合いが始まった。  </p>
 <p>何となく使っているのもあれなので、調べてみることにした。  </p>
 <a id="more"></a>
@@ -133,7 +133,7 @@
 <h3 id="フル機能のDB"><a href="#フル機能のDB" class="headerlink" title="フル機能のDB"></a>フル機能のDB</h3><p>いくら軽量で設定不要でもDBとして使えなければ意味がない。<br>SQLiteはDBとして必要な機能は一通り揃えているよう。  </p>
 <p>機能も全然ライトじゃない。  </p>
 <h3 id="余談"><a href="#余談" class="headerlink" title="余談"></a>余談</h3><p>ちなみに公式サイトはすごくライト。<br>画像もロゴくらいしか使われていない。  </p>
-<img src="/2020/06/sqlite/page.png" class="">
+<img src="/2020/06/2020-0610-sqlite/page.png" class="">
 
 <h2 id="使ってみよう"><a href="#使ってみよう" class="headerlink" title="使ってみよう"></a>使ってみよう</h2><p>少し使いたくなってきません？<br>導入は本当に簡単で５分くらいしか掛からなかった。<br>興味があれば、ぜひ。  </p>
 <p>以下、導入方法。  </p>
@@ -163,7 +163,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ls -lh</span><br><span class="line">-rw-------  1     12K  6  9 23:13 test.db</span><br></pre></td></tr></table></figure>
 <p>12KB。。。まさかの二桁KB。<br>このサイズにフル機能のDBが詰まっていると思うと胸が熱い。  </p>
 <h2 id="余談-1"><a href="#余談-1" class="headerlink" title="余談"></a>余談</h2><p>DBeaverを使うとGUIで中身が見られる。  </p>
-<img src="/2020/06/sqlite/dbeaver.png" class="">
+<img src="/2020/06/2020-0610-sqlite/dbeaver.png" class="">
 
 <p>この記事も参考になるかも。<br><a href="/2020/05/2020-0508-dbeaver/">Macの無料SQLクライアントDBeaverを紹介する</a></p>
 <h2 id="まとめ"><a href="#まとめ" class="headerlink" title="まとめ"></a>まとめ</h2><p>個人的に軽量と名がつくものが結構好きで、<br>例えば、PHPのフレームワークだったらLaravelよりCodeIgniter派、みたいな。  </p>
@@ -173,7 +173,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.bedroomcomputing.com/2020/06/sqlite/" data-id="ckb8kynws0003uzli17a9bdlv" data-title="sqliteとは？特徴と使い方を解説する" class="article-share-link">Share</a>
+      <a data-url="https://www.bedroomcomputing.com/2020/06/2020-0610-sqlite/" data-id="ckb8m71x6004jccli2hhl8po7" data-title="sqliteとは？特徴と使い方を解説する" class="article-share-link">Share</a>
       
       
       
@@ -219,7 +219,7 @@
       <ul>
         
           <li>
-            <a href="/2020/06/sqlite/">sqliteとは？特徴と使い方を解説する</a>
+            <a href="/2020/06/2020-0610-sqlite/">sqliteとは？特徴と使い方を解説する</a>
           </li>
         
           <li>
