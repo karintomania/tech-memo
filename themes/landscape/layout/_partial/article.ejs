@@ -11,11 +11,9 @@
       </header>
 	<% } %>
     <div class="article-entry" itemprop="articleBody">
-	<% if (post.thumbnail){ %>
-		<img src="<%- post.thumbnail %>">
+	<% if (post.featured_image){ %>
+		<img src="<%- post.featured_image %>">
 	<% } %>
-	<h2>目次</h2>
-	<%- toc(post.content,{list_number: false}) %>
       <% if (post.excerpt && index){ %>
         <%- post.excerpt %>
         <% if (theme.excerpt_link){ %>
@@ -24,6 +22,8 @@
           </p>
         <% } %>
       <% } else { %>
+		<h2>目次</h2>
+		<%- toc(post.content,{list_number: false}) %>
         <%- post.content %>
       <% } %>
     </div>
