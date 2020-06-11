@@ -1,11 +1,15 @@
 ---
 title: {{ title }}
 tags:
+thumbnail: 
 ---
 
 ## 背景
 こんにちは。[karintomania(twitter)](https://twitter.com/karintozuki)です。  
 
+## まとめ
+
+それじゃ今日はこの辺で。
 
 ## 関連記事
 こちらの記事もおすすめです。  
