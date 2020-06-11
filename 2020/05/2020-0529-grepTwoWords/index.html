@@ -110,6 +110,8 @@
     <div class="article-entry" itemprop="articleBody">
 	
       
+		<h2>目次</h2>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景"><span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#結論"><span class="toc-text">結論</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解説"><span class="toc-text">解説</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三つ以上のキーワードを検索したいとき"><span class="toc-text">三つ以上のキーワードを検索したいとき</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#おまけ"><span class="toc-text">おまけ</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#まとめ"><span class="toc-text">まとめ</span></a></li></ol>
         <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>こんにちは。<a href="https://twitter.com/karintozuki" target="_blank" rel="noopener">karintomania(twitter)</a>です。<br>grepコマンドってAND検索みたいなオプションがあると思いきや、<br>そんなオプションはなかったんですね。<br>そこでAND検索っぽく複数キーワードを検索する方法です。  </p>
 <h2 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h2><p><u>パイプとxargsを使うことで解決です。</u><br>fooとbarを含むファイルを検索したいときは以下の通りです。<br><code>grep -l foo * |xargs grep -l bar</code></p>
 <a id="more"></a>
@@ -129,7 +131,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.bedroomcomputing.com/2020/05/2020-0529-grepTwoWords/" data-id="ckb9n5db1001tyflig63r19f7" data-title="grepコマンドでAND検索をする" class="article-share-link">Share</a>
+      <a data-url="https://www.bedroomcomputing.com/2020/05/2020-0529-grepTwoWords/" data-id="ckbb4mj480014pqlidbv45kcv" data-title="grepコマンドでAND検索をする" class="article-share-link">Share</a>
       
       
       

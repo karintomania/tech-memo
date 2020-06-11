@@ -2,23 +2,58 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://www.bedroomcomputing.com/2020/04/2020-0430-springboot-azure-1/</loc>
+    <loc>https://www.bedroomcomputing.com/2020/04/2020-0430-springboot-azure-2/</loc>
     
-    <lastmod>2020-06-10T07:57:38.735Z</lastmod>
+    <lastmod>2020-06-11T18:39:23.061Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://www.bedroomcomputing.com/2020/06/2020-0610-sqlite/</loc>
+    <loc>https://www.bedroomcomputing.com/2020/04/2020-0430-springboot-azure-1/</loc>
     
-    <lastmod>2020-06-10T07:57:38.735Z</lastmod>
+    <lastmod>2020-06-11T18:33:02.805Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.bedroomcomputing.com/2020/04/2020-0415-flexMessage/</loc>
+    
+    <lastmod>2020-06-11T18:31:52.055Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://www.bedroomcomputing.com/2020/03/2020-0327-mybatis/</loc>
     
-    <lastmod>2020-06-10T07:57:38.734Z</lastmod>
+    <lastmod>2020-06-11T18:30:09.141Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.bedroomcomputing.com/2020/04/2020-0408-googleconsole/</loc>
+    
+    <lastmod>2020-06-11T18:29:47.558Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.bedroomcomputing.com/2020/04/2020-0408-linebot/</loc>
+    
+    <lastmod>2020-06-11T18:29:18.580Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.bedroomcomputing.com/2020/05/2020-0508-dbeaver/</loc>
+    
+    <lastmod>2020-06-11T18:24:29.911Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.bedroomcomputing.com/2020/06/2020-0610-sqlite/</loc>
+    
+    <lastmod>2020-06-11T18:22:09.431Z</lastmod>
     
   </url>
   
@@ -72,44 +107,9 @@
   </url>
   
   <url>
-    <loc>https://www.bedroomcomputing.com/2020/04/2020-0408-googleconsole/</loc>
-    
-    <lastmod>2020-06-08T18:06:23.881Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.bedroomcomputing.com/2020/04/2020-0408-linebot/</loc>
-    
-    <lastmod>2020-06-08T18:06:23.195Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.bedroomcomputing.com/2020/04/2020-0415-flexMessage/</loc>
-    
-    <lastmod>2020-06-08T18:06:22.451Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://www.bedroomcomputing.com/2020/04/2020-0415-hexoCheatsheet/</loc>
     
     <lastmod>2020-06-08T18:06:21.621Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.bedroomcomputing.com/2020/04/2020-0430-springboot-azure-2/</loc>
-    
-    <lastmod>2020-06-08T18:06:20.111Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.bedroomcomputing.com/2020/05/2020-0508-dbeaver/</loc>
-    
-    <lastmod>2020-06-08T18:06:19.399Z</lastmod>
     
   </url>
   
