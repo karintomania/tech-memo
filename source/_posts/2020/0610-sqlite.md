@@ -7,7 +7,6 @@ tags:
 categories: 技術
 date: 2020-06-10 00:36:24
 featured_image: logo.gif
-thumbnail: logo.gif
 ---
 
 ## 背景

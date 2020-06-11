@@ -6,6 +6,7 @@ tags:
   - LINE Bot
 categories: 技術
 date: 2020-04-15 20:40:01
+featured_image: feature-line-flex-message.png
 ---
 
 

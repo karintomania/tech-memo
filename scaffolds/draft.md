@@ -1,7 +1,7 @@
 ---
 title: {{ title }}
 tags:
-thumbnail: 
+featured_image: 
 ---
 
 ## 背景

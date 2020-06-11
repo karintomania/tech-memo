@@ -6,6 +6,7 @@ tags:
   - LINE Bot
 categories: 技術
 date: 2020-04-08 07:52:27
+featured_image: spring.png
 ---
 
 

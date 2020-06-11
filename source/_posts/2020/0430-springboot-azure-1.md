@@ -7,11 +7,11 @@ tags:
   - Cosmos DB
 categories: 技術
 date: 2020-04-30 22:10:40
+featured_image: title.png
 ---
 
 ## 背景
 こんにちは。[karintomania(twitter)](https://twitter.com/karintozuki)です。  
-{% asset_img title.png [title] %}
 今まで個人開発で使ってきたHerokuの無料枠に制限が増えて、  
 一日に6時間以上サーバーをスリープさせないといけなくなってしまいました。  
 

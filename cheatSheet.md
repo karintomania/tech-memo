@@ -34,3 +34,7 @@ hexo clean && hexo generate && hexo deploy
 https://karintomania.github.io/tech-memo/
 
 tags: [Java, PHP, Java script]
+
+
+## 画像
+feature は10 x 5くらいでOK
