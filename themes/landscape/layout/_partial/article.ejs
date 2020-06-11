@@ -14,6 +14,8 @@
 	<% if (post.thumbnail){ %>
 		<img src="<%- post.thumbnail %>">
 	<% } %>
+	<h2>目次</h2>
+	<%- toc(post.content,{list_number: false}) %>
       <% if (post.excerpt && index){ %>
         <%- post.excerpt %>
         <% if (theme.excerpt_link){ %>
