@@ -15,18 +15,22 @@
 <!-- End Google Analytics -->
 
   
-  <title>HexoでAssetFolderを有効にする | 寝室コンピューティング</title>
+  <title>androidアプリで多言語対応するには | 寝室コンピューティング</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="こんにちは。karintomania(twitter)です。Hexoで写真などを使いたい時は、source&#x2F;imagesフォルダを使うこともできますが、ページごとに管理したい時があるかと思います。その時にする設定です。">
-<meta name="keywords" content="Hexo">
+  <meta name="description" content="背景こんにちは。にわかandroiderkarintomania(twitter)です。   個人開発でアプリを作るのは楽しい。でも、たくさんの人に自分の作ったアプリが使ってもらえたらもっと楽しいはず。   じゃあどうしたら良いんだ、という時に、">
+<meta name="keywords" content="android">
 <meta property="og:type" content="article">
-<meta property="og:title" content="HexoでAssetFolderを有効にする">
-<meta property="og:url" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;02&#x2F;2020-0213-HowToUseAssetFolder&#x2F;index.html">
+<meta property="og:title" content="androidアプリで多言語対応するには">
+<meta property="og:url" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;06&#x2F;2020-0615-multilanguage&#x2F;index.html">
 <meta property="og:site_name" content="寝室コンピューティング">
-<meta property="og:description" content="こんにちは。karintomania(twitter)です。Hexoで写真などを使いたい時は、source&#x2F;imagesフォルダを使うこともできますが、ページごとに管理したい時があるかと思います。その時にする設定です。">
+<meta property="og:description" content="背景こんにちは。にわかandroiderkarintomania(twitter)です。   個人開発でアプリを作るのは楽しい。でも、たくさんの人に自分の作ったアプリが使ってもらえたらもっと楽しいはず。   じゃあどうしたら良いんだ、という時に、">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-06-08T18:06:29.469Z">
+<meta property="og:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;06&#x2F;2020-0615-multilanguage&#x2F;01-new-file.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;06&#x2F;2020-0615-multilanguage&#x2F;02-enter-name-android-%E5%A4%9A%E8%A8%80%E8%AA%9E.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;06&#x2F;2020-0615-multilanguage&#x2F;03-ja.png">
+<meta property="og:updated_time" content="2020-06-14T23:10:42.895Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;06&#x2F;2020-0615-multilanguage&#x2F;01-new-file.png">
   
   
     <link rel="icon" href="/css/images/favicon.ico">
@@ -83,10 +87,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-2020-0213-HowToUseAssetFolder" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-2020-0615-multilanguage" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2020/02/2020-0213-HowToUseAssetFolder/" class="article-date">
-  <time datetime="2020-02-13T08:32:39.000Z" itemprop="datePublished">2020-02-13</time>
+    <a href="/2020/06/2020-0615-multilanguage/" class="article-date">
+  <time datetime="2020-06-14T23:10:22.000Z" itemprop="datePublished">2020-06-15</time>
 </a>
     
   <div class="article-category">
@@ -101,7 +105,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      HexoでAssetFolderを有効にする
+      androidアプリで多言語対応するには
     </h1>
   
 
@@ -109,30 +113,60 @@
 	
     <div class="article-entry" itemprop="articleBody">
 	
+		<img src="https://www.bedroomcomputing.com/2020/06/2020-0615-multilanguage/00_thumb.png">
+	
       
 		<h2>目次</h2>
-		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#config-ymlの設定"><span class="toc-text">config.ymlの設定</span></a></li></ol>
-        <p>こんにちは。<a href="https://twitter.com/karintozuki" target="_blank" rel="noopener">karintomania(twitter)</a>です。<br>Hexoで写真などを使いたい時は、source/imagesフォルダを使うこともできますが、<br>ページごとに管理したい時があるかと思います。<br>その時にする設定です。   </p>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景"><span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#概要"><span class="toc-text">概要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#日本語用のstrings-xmlの作成"><span class="toc-text">日本語用のstrings.xmlの作成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#言語を変える"><span class="toc-text">言語を変える</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#まとめ"><span class="toc-text">まとめ</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#関連記事"><span class="toc-text">関連記事</span></a></li></ol>
+        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>こんにちは。<br>にわかandroider<a href="https://twitter.com/karintozuki" target="_blank" rel="noopener">karintomania(twitter)</a>です。  </p>
+<p><u>個人開発でアプリを作るのは楽しい</u>。<br>でも、たくさんの人に自分の作ったアプリが使ってもらえたら<br>もっと楽しいはず。  </p>
+<p>じゃあどうしたら良いんだ、という時に、  </p>
 <a id="more"></a>
-<h2 id="config-ymlの設定"><a href="#config-ymlの設定" class="headerlink" title="config.ymlの設定"></a>config.ymlの設定</h2><p>設定としては、config.ymlのpost_asset_folderプロパティをtrueにするだけです。  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">post_asset_folder: true</span><br></pre></td></tr></table></figure>
+<p>色々方法はあるんだろうけど、<br>一つ上げられるのは多言語に対応すること。  </p>
+<p><u>日本語が読める人は1億2千万人とかだけど、<br>英語だったら大体15億人</u>くらいいるそうだ。  </p>
+<p>日本語の10倍のチャンスがある。クールだね。  </p>
+<p>もし、あなたが語学堪能で中国語もできるよっていうことだったら、<br>(もしくは翻訳を外注する余裕があれば。個人開発でそこまで気合入っている人は少ないだろう。)<br>潜在顧客はさらに14億人も増える。  </p>
+<p>というわけで、15億人にリーチするための最初の一歩、<br>多言語対応するための手順を説明してみる。  </p>
+<h2 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h2><p>今回はテキストを多言語対応する方法を紹介するけど、<br>おそらく、画像とかを言語によって変えたい場合も同じような手順になるかと思う。  </p>
+<p>androidは、<br>プロジェクト配下の<code>res/values/strings.xml</code><br>にテキストを格納するようになっている。<br>(ソースにテキストベタ打ちなんてしてる開発者は<br>多言語化うんぬん以前にリファクタリングしろというandroidからのメッセージだ。きっと。)</p>
+<p><u>多言語対応する際は、他の言語用にvaluesフォルダを新調する。</u>  </p>
+<p><code>res/values-(国コード)</code><br>というフォルダを作成し、その中に他の言語を格納したstrings.xmlを格納することになる。  </p>
+<p>例えば、日本語を作成した場合はこんな感じ。<br>res/<br> ┣value<br> ┃┗strings.xml<br> ┃<br> ┗value-ja<br> 　┗strings.xml</p>
+<p>これでandroid自体の設定で<br>日本語を選択している場合は日本語、<br>それ以外の言語が選ばれていれば、デフォルト言語の英語が出てくるというわけ。  </p>
+<p><strong>注意</strong><br>この例では、デフォルト言語を英語にしてるけど、<br>value/strings.xmlに日本語を書いたら、<br>当然、デフォルトは日本語、何か特別に言語が指定されていたらそちらを表示する、<br>という挙動になる。  </p>
+<h2 id="日本語用のstrings-xmlの作成"><a href="#日本語用のstrings-xmlの作成" class="headerlink" title="日本語用のstrings.xmlの作成"></a>日本語用のstrings.xmlの作成</h2><p>android studioにてapp/res/valueを右クリックして、<br>New &gt; Value Resource fileをクリック。  </p>
+<img src="/2020/06/2020-0615-multilanguage/01-new-file.png" class="">
+<p>ファイル作成画面が開くので、<br>File Nameは<code>strings.xml</code>でOK。  </p>
+<p>もう一つ、画面下のAvailable qualiersから<br>Locale &gt; ja: Japanese &gt; Any: region<br>を選択し、OK押下。  </p>
+<img src="/2020/06/2020-0615-multilanguage/02-enter-name-android-%E5%A4%9A%E8%A8%80%E8%AA%9E.png" class="">
 
-<p>こうすると、次回以降 hexo new などでページを生成する際に同階層にAssetフォルダも作成されます。<br>Assetフォルダ内のファイルはリンクが可能です。<br>例として、sample.pngをフォルダ内に配置したら、以下のように参照できます。  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![サンプル画像](sample.png)</span><br></pre></td></tr></table></figure>
-<p>ちなみにこの書き方だと、トップページにアーカイブとして<br>表示される時リンク切れになってしまいます。<br>そこで以下のタグスクリプトを使います。  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% asset_img sample.png サンプル画像 %&#125;</span><br></pre></td></tr></table></figure>
+<p>すると、プロジェクト画面に<br>strings.xml (ja)<br>が作成される。  </p>
+<img src="/2020/06/2020-0615-multilanguage/03-ja.png" class="">
 
-<p>こうすることでリンク切れの心配がありません。  </p>
-<p>今日はこの辺で。</p>
+<p>あとはstrings.xmlに英語と日本語でテキストを記載していくだけ。<br>こんな感じってサンプルを記載しておく。  </p>
+<figure class="highlight xml"><figcaption><span>strings.xml</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">resources</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">string</span> <span class="attr">name</span>=<span class="string">"app_name"</span>&gt;</span>bedroom computing<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">resources</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><figcaption><span>strings.xml(ja)</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">resources</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">string</span> <span class="attr">name</span>=<span class="string">"app_name"</span>&gt;</span>寝室コンピューティング<span class="tag">&lt;/<span class="name">string</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">resources</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>これだけでandroidの設定を勝手に読み込んで<br>日本語だったら「寝室コンピューティング」<br>それ以外の言語だったら「bedroom computing」<br>と、適切な言語の方を表示してくれる。  </p>
+<h2 id="言語を変える"><a href="#言語を変える" class="headerlink" title="言語を変える"></a>言語を変える</h2><p>Androidで対応言語を変える際は、<br><u>設定 &gt; システム &gt; 言語と入力 &gt; 言語</u><br>から変更できる。  </p>
+<h2 id="まとめ"><a href="#まとめ" class="headerlink" title="まとめ"></a>まとめ</h2><p>多言語化するときは</p>
+<ul>
+<li>テキストをstrings.xmlに外出しする</li>
+<li>strings.xmlを言語ごとに作成する</li>
+</ul>
+<p>英語に翻訳することは難しいかもしれないけど、<br><u>英語対応の実装自体はさして難しくないよ</u>、ということでした。  </p>
+<p>それでは今日はこの辺で。  </p>
+<h2 id="関連記事"><a href="#関連記事" class="headerlink" title="関連記事"></a>関連記事</h2><p>こちらの記事もおすすめ！<br><a href="/2020/06/2020-0610-sqlite/">sqliteとは？特徴と使い方を解説する</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.bedroomcomputing.com/2020/02/2020-0213-HowToUseAssetFolder/" data-id="ckbfompbd000mh3lihxtx7rea" data-title="HexoでAssetFolderを有効にする" class="article-share-link">Share</a>
+      <a data-url="https://www.bedroomcomputing.com/2020/06/2020-0615-multilanguage/" data-id="ckbfompcz0024h3lidegobcbs" data-title="androidアプリで多言語対応するには" class="article-share-link">Share</a>
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/" rel="tag">android</a></li></ul>
 
     </footer>
   </div>
@@ -140,19 +174,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2020/02/2020-0222-CookieByUiPath/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          UiPathでCookie Clickerに挑戦する
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/02/2020-0204-OrchidStart/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2020/06/2020-0610-sqlite/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Java製の静的サイトジェネレータ「Orchid」を解説する</div>
+      <div class="article-nav-title">sqliteとは？特徴と使い方を解説する</div>
     </a>
   
 </nav>
