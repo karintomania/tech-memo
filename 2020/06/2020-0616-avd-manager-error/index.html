@@ -15,14 +15,21 @@
 <!-- End Google Analytics -->
 
   
-  <title>Tag: Heroku | 寝室コンピューティング</title>
+  <title>AVD Mangerエラーを解決する | 寝室コンピューティング</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="寝室コンピューティング">
-<meta property="og:url" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;tags&#x2F;Heroku&#x2F;index.html">
+  <meta name="description" content="背景こんにちは。karintomania(twitter)です。   今日はandroid開発中につまづいたエラーを紹介したい。 ある日突然、このエラーが発生した。">
+<meta name="keywords" content="android">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AVD Mangerエラーを解決する">
+<meta property="og:url" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;06&#x2F;2020-0616-avd-manager-error&#x2F;index.html">
 <meta property="og:site_name" content="寝室コンピューティング">
+<meta property="og:description" content="背景こんにちは。karintomania(twitter)です。   今日はandroid開発中につまづいたエラーを紹介したい。 ある日突然、このエラーが発生した。">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;06&#x2F;2020-0616-avd-manager-error&#x2F;avd-manager.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;06&#x2F;2020-0616-avd-manager-error&#x2F;developer-option.png">
+<meta property="og:updated_time" content="2020-06-15T23:12:49.514Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;06&#x2F;2020-0616-avd-manager-error&#x2F;avd-manager.png">
   
   
     <link rel="icon" href="/css/images/favicon.ico">
@@ -79,60 +86,84 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-	  <a href="/2019/11/2019-1101-heroku-springboot-postgres/" class="archive-article-date">
-  <time datetime="2019-11-04T22:29:39.000Z" itemprop="datePublished">Nov 4</time>
+        <section id="main"><article id="post-2020-0616-avd-manager-error" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/2020-0616-avd-manager-error/" class="article-date">
+  <time datetime="2020-06-15T23:11:21.000Z" itemprop="datePublished">2020-06-16</time>
 </a>
-	  
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%8A%80%E8%A1%93/">技術</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/2019-1101-heroku-springboot-postgres/">HerokuのPostgreSQLにSpringアプリケーションから接続する</a>
+    <h1 class="article-title" itemprop="name">
+      AVD Mangerエラーを解決する
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-	  <a href="/2019/10/2019-1031-vscode-spring-herok-deploy/" class="archive-article-date">
-  <time datetime="2019-10-31T00:56:06.000Z" itemprop="datePublished">Oct 31</time>
-</a>
-	  
+      </header>
+	
+    <div class="article-entry" itemprop="articleBody">
+	
+		<img src="https://www.bedroomcomputing.com/2020/06/2020-0616-avd-manager-error/01_thumb.png">
+	
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/10/2019-1031-vscode-spring-herok-deploy/">VS CodeからSpring Bootプロジェクトを作成してHerokuにデプロイするまで</a>
-    </h1>
-  
+		<h2>目次</h2>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景"><span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解決方法"><span class="toc-text">解決方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#まとめ"><span class="toc-text">まとめ</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#関連記事"><span class="toc-text">関連記事</span></a></li></ol>
+        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>こんにちは。<a href="https://twitter.com/karintozuki" target="_blank" rel="noopener">karintomania(twitter)</a>です。  </p>
+<p>今日はandroid開発中につまづいたエラーを紹介したい。</p>
+<p>ある日突然、このエラーが発生した。</p>
+<a id="more"></a>
+<img src="/2020/06/2020-0616-avd-manager-error/avd-manager.png" class="">
 
-    </header>
+<p>なんぞこれ。<br>メッセージを見ると何かファイルを削除しろと言っているようだ。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">AVD Manager</span><br><span class="line">AVD Pixel_2_API_R is already running.</span><br><span class="line">If that is not the case, delete the files at </span><br><span class="line">/User/&#123;user名&#125;/.android/avd/Pixel_2_API_R.avd/*.lock and try again.</span><br></pre></td></tr></table></figure>
+
+
+<p>このエラーが出てアプリが起動しない。<br>大変困った。</p>
+<p>同じエラーが出た人へ。<br><u>このメッセージ通りに.lock拡張子のファイルを削除しても何も解決しない！！</u><br>私もめちゃめちゃ時間をかけてファイルを削除したり再起動したりしたが解決しなかった。</p>
+<p>あなたの時間を無駄にしないために解決方法を紹介しよう。</p>
+<h2 id="解決方法"><a href="#解決方法" class="headerlink" title="解決方法"></a>解決方法</h2><p>色々いじった結果、androidの設定が原因だった。<br><u>USBデバッグがオフになっている</u>とこのエラーが出るらしい。</p>
+<img src="/2020/06/2020-0616-avd-manager-error/developer-option.png" class="">
+
+<p>開発者オプションをいじって遊んでいたら、<br>気づかないうちにオフにしてしまっていたらしい。<br>なんという時間の無駄。。。</p>
+<h2 id="まとめ"><a href="#まとめ" class="headerlink" title="まとめ"></a>まとめ</h2><p>ちょっと間抜けな原因で、<br>ググってもすぐに解決できなかった。  </p>
+<p>同じように困っている人が救われるといいなと思いながら。</p>
+<p>それじゃ今日はこの辺で。</p>
+<h2 id="関連記事"><a href="#関連記事" class="headerlink" title="関連記事"></a>関連記事</h2><p>こちらの記事もおすすめ。<br><a href="/2020/04/2020-0408-linebot/">Spring BootでLINE Botのサンプルを動かす 〜おうむ返しのその先へ〜</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.bedroomcomputing.com/2020/06/2020-0616-avd-manager-error/" data-id="ckbh45sfs00261cligcwjbwys" data-title="AVD Mangerエラーを解決する" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/" rel="tag">android</a></li></ul>
+
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/06/2020-0615-multilanguage/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">androidアプリで多言語対応するには</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
 
 
 </section>
