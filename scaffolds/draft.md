@@ -1,6 +1,7 @@
 ---
 title: {{ title }}
 tags:
+categories: 技術
 featured_image: 
 ---
 
