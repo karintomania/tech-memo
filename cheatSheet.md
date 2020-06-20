@@ -20,8 +20,8 @@ hexo clean && hexo generate && hexo deploy
 # タグスクリプト
 ![](initializr.png) //　トップページでしくじる
 
- {% codeblock docker-compose.yml lang:yaml %}
- {% endcodeblock %}
+{% codeblock docker-compose.yml lang:yaml %}
+{% endcodeblock %}
 
 {% asset_img about_style.png [著者プロフィール] %}
 {% asset_img about_style.png %}
