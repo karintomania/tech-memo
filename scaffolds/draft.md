@@ -6,7 +6,7 @@ featured_image:
 ---
 
 ## 背景
-こんにちは。[karintomania(twitter)](https://twitter.com/karintozuki)です。  
+こんにちは。 [karintomania(@karintozuki)](https://twitter.com/karintozuki)です。  
 
 ## まとめ
 
