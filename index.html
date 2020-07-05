@@ -117,95 +117,19 @@
 		<img src="https://www.bedroomcomputing.com/2020/07/2020-0705-teams-bot/thumb.png">
 	
       
-		<h2>目次</h2>
-		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景"><span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#前提条件"><span class="toc-text">前提条件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#大まかな流れ"><span class="toc-text">大まかな流れ</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Connectorを作る"><span class="toc-text">Connectorを作る</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#実装"><span class="toc-text">実装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#通知をしたい"><span class="toc-text">通知をしたい</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#絵文字を使いたい"><span class="toc-text">絵文字を使いたい</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#定期実行したい"><span class="toc-text">定期実行したい</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#まとめ"><span class="toc-text">まとめ</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#関連記事"><span class="toc-text">関連記事</span></a></li></ol>
         <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>こんにちは。 <a href="https://twitter.com/karintozuki" target="_blank" rel="noopener">karintomania(@karintozuki)</a>です。  </p>
 <p>Miccrosoft Teamsを職場で使っている。  </p>
 <p><u> こういったコミュニケーションツールを見ると、</u><br><u>Botを作ってみたくなるのは開発者の性である。</u></p>
 <p>今回はそんな記事。  </p>
-<p>この記事ではnode.jsを使ったが、POSTさえできれば何でもいいので、<br>色々なサービスと組み合わせて遊べる気がする。  </p>
-<p><strong>注意</strong><br>今回作るのはBotではなく、Botもどき。<br>（ちなみにBotもどきという言葉は多分ない。私が勝手に言っているだけ）</p>
-<p>何が違うかというと、<u>こいつができるのは一方的な通知のみである。</u><br>人間からのメッセージを取得して、それを処理するとかはできない。  </p>
-<p>それでも、それなりに使い方はあるかと思う。<br>・他のプログラムと組み合わせて、処理完了/エラーを通知<br>・Webスクレイピングと組み合わせて、毎日、最新情報を教えてくれる</p>
-<h2 id="前提条件"><a href="#前提条件" class="headerlink" title="前提条件"></a>前提条件</h2><ul>
-<li>Teamsがインストール済み</li>
-<li>node.js インストール済み</li>
-</ul>
-<p>今回の記事ではこの２点が必要。<br>ただし、繰り返しになるけども、nodeである必要はない。  </p>
-<h2 id="大まかな流れ"><a href="#大まかな流れ" class="headerlink" title="大まかな流れ"></a>大まかな流れ</h2><p>Teamsの作業と実装の2パートがある。  </p>
-<p>Teams側では、Connectorを作成する。<br>これはBotが発言するためのガワとなるアカウントみたいなもの。  </p>
-<p>実装は、Teamsで作ったConnectorにPOSTを投げる処理を実装する。  </p>
-<p>それでは一つずつ解説する。  </p>
-<h2 id="Connectorを作る"><a href="#Connectorを作る" class="headerlink" title="Connectorを作る"></a>Connectorを作る</h2><p>Botを作りたいチームの設定ボタンを押して、<br>Connectorsを選択。  </p>
-<img src="/2020/07/2020-0705-teams-bot/01_connector.png" class="">
-
-<p>Connectorの中から、<br>incoming webhookを選択。  </p>
-<img src="/2020/07/2020-0705-teams-bot/02_incommingwebhook.png" class="">
-
-<p>設定画面が開くので、Botの名前と画像を設定する。<br>設定したらCreateボタンを押す。  </p>
-<img src="/2020/07/2020-0705-teams-bot/03_settings.png" class="">
-
-
-<p>作成できたら、<u>URLが表示されるので控えておく。</u>  </p>
-<img src="/2020/07/2020-0705-teams-bot/04_callbackUrl.png" class="">
-
-<p>これでTeams側の設定は完了。<br>多分10分くらいしか経っていないかと思う。  </p>
-<h2 id="実装"><a href="#実装" class="headerlink" title="実装"></a>実装</h2><p>実装も実装で簡単に終わる。  </p>
-<p>適当なフォルダ作って、フォルダ内で以下コマンドを実行。<br>一応だけどコマンドプロンプトで実行ってことね。  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm init -y</span><br></pre></td></tr></table></figure>
-
-<p>-yオプションは設定とか諸々すっとばすオプション。（と私は思っている）<br>ちゃんとしたい人はちゃんと設定してあげてください。  </p>
-<p>今回はHTTPリクエストを飛ばすのに、axiosというライブラリを使う。<br>引き続き、同じフォルダ内で以下のコマンドを実行。  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install axios</span><br></pre></td></tr></table></figure>
-
-<p>次に、フォルダにindex.jsというファイルを作成する。  </p>
-<p>中身はこんな感じで実装する。まあシンプルにHTTPリクエストを送信しているだけ。  </p>
-<figure class="highlight javascript"><figcaption><span>index.js</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> axios = <span class="built_in">require</span>(<span class="string">'axios'</span>) </span><br><span class="line"></span><br><span class="line">axios.post(<span class="string">'ここに先ほどのURLをいれる'</span>,</span><br><span class="line">&#123;</span><br><span class="line">  title: <span class="string">'From Bot'</span>,</span><br><span class="line">  text: <span class="string">'Hello, world!!'</span></span><br><span class="line">&#125;)</span><br><span class="line">.then(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`statusCode: <span class="subst">$&#123;res.statusCode&#125;</span>`</span>)</span><br><span class="line">  <span class="built_in">console</span>.log(res)</span><br><span class="line">&#125;)</span><br><span class="line">.catch(<span class="function">(<span class="params">error</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.error(error)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<p>特に解説すべきところはない笑</p>
-<p>メッセージはjsonで記述するのだけど、<br><u>今回はシンプルにtextとtitleだけとした。</u><br>もちろんtextだけでもOK。  </p>
-<p>本当はもっとキラキラしたメッセージも送れるみたいだから、<br>興味ある人は調べてみるといいかも。  </p>
-<p>さて、index.jsファイルが完成したら、おもむろに実行する。  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node index.js</span><br></pre></td></tr></table></figure>
-
-<p>うまく実装できていれば、Botから通知が来るはず。  </p>
-<img src="/2020/07/2020-0705-teams-bot/05_send.png" class="">
-
-<p>すごく簡単。<br>何ならちょっと感動したくらい簡単。  </p>
-<p>このままだと記事としてそっけないので、<br>開発時に知っておくと良いことを追記しておく。  </p>
-<h2 id="通知をしたい"><a href="#通知をしたい" class="headerlink" title="通知をしたい"></a>通知をしたい</h2><p><u>@を使用したメンションは今のところ使えない</u>とのこと。  </p>
-<p>Bot専用のTeamを作って、通知をAll activityにするくらいしかなさそう。  </p>
-<img src="/2020/07/2020-0705-teams-bot/06_notification.png" class=""> 
-
-<h2 id="絵文字を使いたい"><a href="#絵文字を使いたい" class="headerlink" title="絵文字を使いたい"></a>絵文字を使いたい</h2><p>絵文字を使いたい時は文字コードを利用する。  </p>
-<p>コードはここで確認できる。<br><a href="https://unicode.org/emoji/charts/full-emoji-list.html" target="_blank" rel="noopener">https://unicode.org/emoji/charts/full-emoji-list.html</a></p>
-<p>Codeの欄を見て、<code>U+</code>を抜いた文字列を&amp;#x{コード};って感じにすると使える<br>ニコニコマークを付けたければ、こんな感じ。  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  title: &apos;From Bot&apos;,</span><br><span class="line">  text: &apos;Hello, world&amp;#x1F600;!!&apos;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>絵文字を使った例: </p>
-<img src="/2020/07/2020-0705-teams-bot/07_emoji.png" class=""> 
-
-<h2 id="定期実行したい"><a href="#定期実行したい" class="headerlink" title="定期実行したい"></a>定期実行したい</h2><p>Windowsであれば、タスクスケジューラを使うのがおすすめ。  </p>
-<p>タスクとして実行させるためにこんな感じのbatファイルを作っておく。</p>
-<figure class="highlight shell"><figcaption><span>bot.bat</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd "index.jsのあるフォルダパス"</span><br><span class="line">node index.js</span><br></pre></td></tr></table></figure>
-
-<p>1分おきに起動するようにしたら怖い感じになった。<br>9割アイコンのせいだけども。  </p>
-<img src="/2020/07/2020-0705-teams-bot/08_task.png" class=""> 
-
-<h2 id="まとめ"><a href="#まとめ" class="headerlink" title="まとめ"></a>まとめ</h2><p>このアイデアは、職場である業務を自動化したくて調べ始めたのがきっかけ。  </p>
-<p>自動化自体のスクリプトはできたけど、通知を実装しておらず、<br>処理が完了しているかどうかは、ログを見ないと分からないという、<br>自動なんだか手動なんだか分からない状態だった。  </p>
-<p>とはいえ、メール処理書くのはだるいなーと思ってTeamsならどうかと調べたところ、<br>簡単だったので、今回その部分だけ記事にしてみた。  </p>
-<p>実は業務では、同僚のPCでも余計なインストールなしで動くように、VBScriptを使用しての実装だった。<br>ただ、VBSは言語仕様が古くてつらいことと、VBSでやっても需要ないだろうから爆<br>ブログ記事ではnodeでやってみた。  </p>
-<p>nodeは素敵なライブラリがあるので助かる。  </p>
-<p>それじゃ今日はこの辺で。  </p>
-<h2 id="関連記事"><a href="#関連記事" class="headerlink" title="関連記事"></a>関連記事</h2><p>こちらの記事もおすすめ。  </p>
-<p><a href="/2020/04/2020-0408-linebot/">Spring BootでLINE Botのサンプルを動かす 〜おうむ返しのその先へ〜</a></p>
-
+        
+          <p class="article-more-link">
+            <a href="/2020/07/2020-0705-teams-bot/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.bedroomcomputing.com/2020/07/2020-0705-teams-bot/" data-id="ckc8zwgjc002knfli57x11u0u" data-title="【Microsoft Teams】Botもどきをnode.jsを使って30分で実装する" class="article-share-link">Share</a>
+      <a data-url="https://www.bedroomcomputing.com/2020/07/2020-0705-teams-bot/" data-id="ckc8zx0ny002nqkli9mgwb3g7" data-title="【Microsoft Teams】Botもどきをnode.jsを使って30分で実装する" class="article-share-link">Share</a>
       
       
       
@@ -259,7 +183,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.bedroomcomputing.com/2020/07/2020-0705-admob/" data-id="ckc8zwgjd002onflif30c5zdn" data-title="【アプリ収益化】Admobの登録方法を画像付きで紹介する" class="article-share-link">Share</a>
+      <a data-url="https://www.bedroomcomputing.com/2020/07/2020-0705-admob/" data-id="ckc8zx0nu002gqklif88vhvon" data-title="【アプリ収益化】Admobの登録方法を画像付きで紹介する" class="article-share-link">Share</a>
       
       
       
@@ -312,7 +236,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.bedroomcomputing.com/2020/06/2020-0627-db-prepopulate/" data-id="ckc8zwgjb002hnfli9rwneah2" data-title="【Android開発】Roomを使う際にデータをあらかじめ設定(Prepopulate)する方法" class="article-share-link">Share</a>
+      <a data-url="https://www.bedroomcomputing.com/2020/06/2020-0627-db-prepopulate/" data-id="ckc8zx0nt002dqklif1978k0t" data-title="【Android開発】Roomを使う際にデータをあらかじめ設定(Prepopulate)する方法" class="article-share-link">Share</a>
       
       
       
@@ -366,7 +290,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.bedroomcomputing.com/2020/06/2020-0622-release/" data-id="ckc8zwgj9002dnfli8nv14ibe" data-title="【androidアプリ】Google　Play Consoleでアプリをリリースする方法" class="article-share-link">Share</a>
+      <a data-url="https://www.bedroomcomputing.com/2020/06/2020-0622-release/" data-id="ckc8zx0ns002bqklihve90esd" data-title="【androidアプリ】Google　Play Consoleでアプリをリリースする方法" class="article-share-link">Share</a>
       
       
       
@@ -420,7 +344,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.bedroomcomputing.com/2020/06/2020-0622-createApk/" data-id="ckc8zwgj8002anflihdl80q54" data-title="【androidアプリ】リリース用のBundle(APK)を作成する方法" class="article-share-link">Share</a>
+      <a data-url="https://www.bedroomcomputing.com/2020/06/2020-0622-createApk/" data-id="ckc8zx0nq0028qklif94a0ycm" data-title="【androidアプリ】リリース用のBundle(APK)を作成する方法" class="article-share-link">Share</a>
       
       
       
@@ -474,7 +398,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.bedroomcomputing.com/2020/06/2020-0622-createAndroidDeveloperAccount/" data-id="ckc8zwgj60027nfli590p181e" data-title="【androidアプリ】リリースに向けてGoogle Playデベロッパーアカウントを作成する" class="article-share-link">Share</a>
+      <a data-url="https://www.bedroomcomputing.com/2020/06/2020-0622-createAndroidDeveloperAccount/" data-id="ckc8zx0no0026qklihwgpfgly" data-title="【androidアプリ】リリースに向けてGoogle Playデベロッパーアカウントを作成する" class="article-share-link">Share</a>
       
       
       
@@ -528,7 +452,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.bedroomcomputing.com/2020/06/2020-0616-avd-manager-error/" data-id="ckc8zwgj50025nfli2d15bvh8" data-title="AVD Mangerエラーを解決する" class="article-share-link">Share</a>
+      <a data-url="https://www.bedroomcomputing.com/2020/06/2020-0616-avd-manager-error/" data-id="ckc8zx0nl0024qkli1zeb0by1" data-title="AVD Mangerエラーを解決する" class="article-share-link">Share</a>
       
       
       
@@ -582,7 +506,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.bedroomcomputing.com/2020/06/2020-0615-multilanguage/" data-id="ckc8zwgj20022nfli3vyo506z" data-title="androidアプリで多言語対応するには" class="article-share-link">Share</a>
+      <a data-url="https://www.bedroomcomputing.com/2020/06/2020-0615-multilanguage/" data-id="ckc8zx0nj0020qkli3bm0fpss" data-title="androidアプリで多言語対応するには" class="article-share-link">Share</a>
       
       
       
@@ -635,7 +559,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.bedroomcomputing.com/2020/06/2020-0610-sqlite/" data-id="ckc8zwgj0001xnfli4hl118bk" data-title="sqliteとは？特徴と使い方を解説する" class="article-share-link">Share</a>
+      <a data-url="https://www.bedroomcomputing.com/2020/06/2020-0610-sqlite/" data-id="ckc8zx0ni001xqkli9cr35pjr" data-title="sqliteとは？特徴と使い方を解説する" class="article-share-link">Share</a>
       
       
       
@@ -686,7 +610,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.bedroomcomputing.com/2020/06/2020-0608-popupto/" data-id="ckc8zwgj10020nfli9xgmbax3" data-title="androidでpop up toを使いこなす" class="article-share-link">Share</a>
+      <a data-url="https://www.bedroomcomputing.com/2020/06/2020-0608-popupto/" data-id="ckc8zx0nh001tqkliem3tf3rb" data-title="androidでpop up toを使いこなす" class="article-share-link">Share</a>
       
       
       
