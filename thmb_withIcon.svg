@@ -8,7 +8,7 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   sodipodi:docname="thmb.svg"
+   sodipodi:docname="thmb_withIcon.svg"
    inkscape:version="1.0rc1 (09960d6, 2020-04-09)"
    inkscape:export-ydpi="96"
    inkscape:export-xdpi="96"
@@ -20,6 +20,18 @@
    width="399.72357">
   <defs
      id="defs2">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient877">
+      <stop
+         id="stop875"
+         offset="0"
+         style="stop-color:#333333;stop-opacity:0;" />
+      <stop
+         id="stop873"
+         offset="1"
+         style="stop-color:#333333;stop-opacity:1;" />
+    </linearGradient>
     <linearGradient
        gradientTransform="matrix(5.3544656,0,0,5.3544656,0,0.0055747)"
        id="SVGID_1_"
@@ -138,6 +150,17 @@
        id="linearGradient1626"
        xlink:href="#SVGID_1_"
        inkscape:collect="always" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient877"
+       id="radialGradient879"
+       cx="-8.0766392"
+       cy="-37.22298"
+       fx="-8.0766392"
+       fy="-37.22298"
+       r="52.880096"
+       gradientTransform="matrix(0.47120316,0.3379664,-0.29238484,0.40765251,-15.154329,12.404691)"
+       gradientUnits="userSpaceOnUse" />
   </defs>
   <sodipodi:namedview
      inkscape:window-maximized="1"
@@ -148,10 +171,10 @@
      units="px"
      showgrid="false"
      inkscape:document-rotation="0"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="layer2"
      inkscape:document-units="mm"
-     inkscape:cy="155.65008"
-     inkscape:cx="200.19579"
+     inkscape:cy="34.196165"
+     inkscape:cx="171.61839"
      inkscape:zoom="1.5396786"
      inkscape:pageshadow="2"
      inkscape:pageopacity="0.0"
@@ -180,8 +203,18 @@
      id="layer2"
      inkscape:label="haikei">
     <rect
+       inkscape:export-ydpi="96"
+       inkscape:export-xdpi="96"
+       y="-0.090962708"
+       x="0.34483704"
+       height="53.056366"
+       width="105.76019"
+       id="rect1476"
+       style="fill:#ffffff;stroke-width:1.22678;stroke-dasharray:0, 13.49460000000000015;paint-order:markers fill stroke;fill-opacity:1"
+       inkscape:export-filename="/Users/shimizu/rect833.png" />
+    <rect
        inkscape:export-filename="/Users/shimizu/rect833.png"
-       style="fill:#333333;stroke-width:1.22678;stroke-dasharray:0, 13.4946;paint-order:markers fill stroke"
+       style="fill:url(#radialGradient879);stroke-width:1.22678;stroke-dasharray:0, 13.49460000000000015;paint-order:markers fill stroke;fill-opacity:1"
        id="rect833"
        width="105.76019"
        height="53.056366"
