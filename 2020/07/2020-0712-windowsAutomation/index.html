@@ -31,7 +31,7 @@
 <meta property="og:description" content="背景こんにちは。 karintomania(@karintozuki)です。   面倒な入力や計算が発生する業務はデスクワーカーなら誰でも経験すると思う。そんな時にこいつら自動化できないかなと思ったことがあるんではないだろうか。特にエンジニアであれば、そういった業務を自動化したみたいな経験はあるのではないだろうか。 今回はそんなちょろっと自動化プロジェクトに使える手法を紹介する。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;07&#x2F;2020-0712-windowsAutomation&#x2F;01_excel.png">
-<meta property="og:updated_time" content="2020-07-12T10:54:12.849Z">
+<meta property="og:updated_time" content="2020-07-12T10:56:36.613Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;07&#x2F;2020-0712-windowsAutomation&#x2F;01_excel.png">
   
@@ -120,7 +120,7 @@
 	
       
 		<h2>目次</h2>
-		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景"><span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#自動化手法一覧"><span class="toc-text">自動化手法一覧</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Excel"><span class="toc-text">Excel</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#バッチ、もしくはPowerShell"><span class="toc-text">バッチ、もしくはPowerShell</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#バッチ"><span class="toc-text">バッチ</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PowerShell"><span class="toc-text">PowerShell</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Shell-Script"><span class="toc-text">Shell Script</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#マクロ"><span class="toc-text">マクロ</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VBS"><span class="toc-text">VBS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#普通にプログラム書く"><span class="toc-text">普通にプログラム書く</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RPA"><span class="toc-text">RPA</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#その他もろもろ"><span class="toc-text">その他もろもろ</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Google-App-Script"><span class="toc-text">Google App Script</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Google-Chrome拡張"><span class="toc-text">Google Chrome拡張</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Javascript-api-for-office"><span class="toc-text">Javascript api for office</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最後に"><span class="toc-text">最後に</span></a></li></ol>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景"><span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#自動化手法一覧"><span class="toc-text">自動化手法一覧</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Excel"><span class="toc-text">Excel</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#バッチ、もしくはPowerShell"><span class="toc-text">バッチ、もしくはPowerShell</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#バッチ"><span class="toc-text">バッチ</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PowerShell"><span class="toc-text">PowerShell</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Shell-Script"><span class="toc-text">Shell Script</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#マクロ"><span class="toc-text">マクロ</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VBS"><span class="toc-text">VBS</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#普通にプログラム書く"><span class="toc-text">普通にプログラム書く</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RPA"><span class="toc-text">RPA</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#その他もろもろ"><span class="toc-text">その他もろもろ</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Google-App-Script"><span class="toc-text">Google App Script</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Google-Chrome拡張"><span class="toc-text">Google Chrome拡張</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Javascript-api-for-office"><span class="toc-text">Javascript api for office</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最後に"><span class="toc-text">最後に</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#関連記事"><span class="toc-text">関連記事</span></a></li></ol>
         <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>こんにちは。 <a href="https://twitter.com/karintozuki" target="_blank" rel="noopener">karintomania(@karintozuki)</a>です。  </p>
 <p>面倒な入力や計算が発生する業務はデスクワーカーなら誰でも経験すると思う。<br>そんな時にこいつら自動化できないかなと思ったことがあるんではないだろうか。<br>特にエンジニアであれば、そういった業務を自動化したみたいな経験はあるのではないだろうか。</p>
 <p>今回はそんなちょろっと自動化プロジェクトに使える手法を紹介する。</p>
@@ -232,12 +232,14 @@
 </tbody></table>
 <p>これ、プログラミング言語にJavascriptを選べば、<br>全部Javascriptでやることも可能だったりする。コスパ高い。</p>
 <p>改めてまとめて見ると、<br>SIerで育ったせいか、レガシーな感じの技術が多くてちょっと残念。<br>もっとイケイケなのを知っている人は教えてください。</p>
-<p>それでは今日はこの辺で。 </p>
+<p>それでは今日はこの辺で。</p>
+<h2 id="関連記事"><a href="#関連記事" class="headerlink" title="関連記事"></a>関連記事</h2><p>こちらの記事もおすすめ。  </p>
+<p><a href="/2020/02/2020-0222-CookieByUiPath/">UiPathでCookie Clickerに挑戦する</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.bedroomcomputing.com/2020/07/2020-0712-windowsAutomation/" data-id="ckciynmj8002q3hl1gbbp91bd" data-title="エンジニアが業務を自動化してきた手法７つ+αを紹介【Windows編】" class="article-share-link">Share</a>
+      <a data-url="https://www.bedroomcomputing.com/2020/07/2020-0712-windowsAutomation/" data-id="ckciyqowb002s88l1ax3b6sya" data-title="エンジニアが業務を自動化してきた手法７つ+αを紹介【Windows編】" class="article-share-link">Share</a>
       
       
       
