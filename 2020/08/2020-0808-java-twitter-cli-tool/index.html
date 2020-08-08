@@ -15,17 +15,27 @@
 <!-- End Google Analytics -->
 
   
-  <title>寝室コンピューティング</title>
+  <title>Twitter APIをJavaで触る！Twitter4jを使ってみた | 寝室コンピューティング</title>
   
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- OGP settings -->
 	
-  <meta property="og:type" content="website">
-<meta property="og:title" content="寝室コンピューティング">
-<meta property="og:url" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;index.html">
+		<meta property="og:image" content="https://www.bedroomcomputing.com/2020/08/2020-0808-java-twitter-cli-tool/tweet.gif" /> 
+	
+  <meta name="description" content="背景こんにちは。 karintomania(@karintozuki)です。   JavaでTwitter APIを触る方法を調べたところ、Twitter4jというライブラリが良いらしい。今回はそれを使って、ターミナルからTwitterを触るツールを作ってみたので、少しソースを解説したいと思う。 環境・必要事項 Java8以上 MacOS  Twitterデベロッパーアカウントが必要。 使い方プロ">
+<meta name="keywords" content="Java,Twitter">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Twitter APIをJavaで触る！Twitter4jを使ってみた">
+<meta property="og:url" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;08&#x2F;2020-0808-java-twitter-cli-tool&#x2F;index.html">
 <meta property="og:site_name" content="寝室コンピューティング">
+<meta property="og:description" content="背景こんにちは。 karintomania(@karintozuki)です。   JavaでTwitter APIを触る方法を調べたところ、Twitter4jというライブラリが良いらしい。今回はそれを使って、ターミナルからTwitterを触るツールを作ってみたので、少しソースを解説したいと思う。 環境・必要事項 Java8以上 MacOS  Twitterデベロッパーアカウントが必要。 使い方プロ">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;08&#x2F;2020-0808-java-twitter-cli-tool&#x2F;login.gif">
+<meta property="og:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;08&#x2F;2020-0808-java-twitter-cli-tool&#x2F;timeline.gif">
+<meta property="og:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;08&#x2F;2020-0808-java-twitter-cli-tool&#x2F;tweet.gif">
+<meta property="og:updated_time" content="2020-08-08T22:19:59.581Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;08&#x2F;2020-0808-java-twitter-cli-tool&#x2F;login.gif">
   
   
     <link rel="icon" href="/css/images/favicon.ico">
@@ -82,9 +92,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-2020-0808-java-twitter-cli-tool" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-2020-0808-java-twitter-cli-tool" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/08/2020-0808-java-twitter-cli-tool/" class="article-date">
   <time datetime="2020-08-08T22:19:49.000Z" itemprop="datePublished">2020-08-08</time>
@@ -101,8 +109,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/2020-0808-java-twitter-cli-tool/">Twitter APIをJavaで触る！Twitter4jを使ってみた</a>
+    <h1 class="article-title" itemprop="name">
+      Twitter APIをJavaで触る！Twitter4jを使ってみた
     </h1>
   
 
@@ -204,501 +212,20 @@
     </footer>
   </div>
   
-</article>
-
-
-
-  
-    <article id="post-2020-0801-android-selftaught" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/08/2020-0801-android-selftaught/" class="article-date">
-  <time datetime="2020-08-01T22:48:09.000Z" itemprop="datePublished">2020-08-01</time>
-</a>
     
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%8A%80%E8%A1%93/">技術</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/2020-0801-android-selftaught/">アプリ未経験エンジニアが独学で個人開発Androidアプリを公開するまでにやったこと</a>
-    </h1>
   
+    <a href="/2020/08/2020-0801-android-selftaught/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">アプリ未経験エンジニアが独学で個人開発Androidアプリを公開するまでにやったこと</div>
+    </a>
+  
+</nav>
 
-      </header>
-	
-    <div class="article-entry" itemprop="articleBody">
-	
-		<img src="https://www.bedroomcomputing.com/2020/08/2020-0801-android-selftaught/thumb.png">
-	
-      
-        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>こんにちは。 <a href="https://twitter.com/karintozuki" target="_blank" rel="noopener">karintomania(@karintozuki)</a>と申します。  </p>
-<p>この記事では、Webアプリの開発しかしたことがなかったエンジニアが、<br>Android開発を始めてアプリをリリースするまでにやったことを紹介するよ。</p>
-        
-          <p class="article-more-link">
-            <a href="/2020/08/2020-0801-android-selftaught/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://www.bedroomcomputing.com/2020/08/2020-0801-android-selftaught/" data-id="ckdm81iu2002xrel16du72twj" data-title="アプリ未経験エンジニアが独学で個人開発Androidアプリを公開するまでにやったこと" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/" rel="tag">Android</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%80%8B%E4%BA%BA%E9%96%8B%E7%99%BA/" rel="tag">個人開発</a></li></ul>
-
-    </footer>
-  </div>
   
 </article>
 
-
-
-  
-    <article id="post-2020-0726-open-folder" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/07/2020-0726-open-folder/" class="article-date">
-  <time datetime="2020-07-26T12:19:27.000Z" itemprop="datePublished">2020-07-26</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%8A%80%E8%A1%93/">技術</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/2020-0726-open-folder/">【Windows】コピーしたファイルパスをエクスプローラーで開くのがめんどくさいので、ショートカット一発にした話</a>
-    </h1>
-  
-
-      </header>
-	
-    <div class="article-entry" itemprop="articleBody">
-	
-		<img src="https://www.bedroomcomputing.com/2020/07/2020-0726-open-folder/thumb.png">
-	
-      
-        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>こんにちは。Javaで便利ツールつくるおじさんの <a href="https://twitter.com/karintozuki" target="_blank" rel="noopener">karintomania(@karintozuki)</a>です。  </p>
-<p><u>ファイルパスを開くのが面倒だ</u>、と感じたことはないだろうか。</p>
-        
-          <p class="article-more-link">
-            <a href="/2020/07/2020-0726-open-folder/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://www.bedroomcomputing.com/2020/07/2020-0726-open-folder/" data-id="ckdm81itw002srel1grpo2ymr" data-title="【Windows】コピーしたファイルパスをエクスプローラーで開くのがめんどくさいので、ショートカット一発にした話" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Windwos/" rel="tag">Windwos</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%87%AA%E5%8B%95%E5%8C%96/" rel="tag">自動化</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-2020-0712-windowsAutomation" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/07/2020-0712-windowsAutomation/" class="article-date">
-  <time datetime="2020-07-12T10:53:40.000Z" itemprop="datePublished">2020-07-12</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%8A%80%E8%A1%93/">技術</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/2020-0712-windowsAutomation/">現役エンジニアが業務を自動化してきた手法７つ+αを紹介【Windows編】</a>
-    </h1>
-  
-
-      </header>
-	
-    <div class="article-entry" itemprop="articleBody">
-	
-		<img src="https://www.bedroomcomputing.com/2020/07/2020-0712-windowsAutomation/thumb.png">
-	
-      
-        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>こんにちは。 <a href="https://twitter.com/karintozuki" target="_blank" rel="noopener">karintomania(@karintozuki)</a>です。  </p>
-<p>面倒な入力や計算が発生する業務はデスクワーカーなら誰でも経験すると思う。<br>そんな時にこいつら自動化できないかなと思ったことがあるんではないだろうか。<br>特にエンジニアであれば、そういった業務を自動化したみたいな経験はあるのではないだろうか。</p>
-<p>今回はそんなちょろっと自動化プロジェクトに使える手法を紹介する。</p>
-        
-          <p class="article-more-link">
-            <a href="/2020/07/2020-0712-windowsAutomation/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://www.bedroomcomputing.com/2020/07/2020-0712-windowsAutomation/" data-id="ckdm81ity002urel1ebu6gtrw" data-title="現役エンジニアが業務を自動化してきた手法７つ+αを紹介【Windows編】" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Excel/" rel="tag">Excel</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PowerShell/" rel="tag">PowerShell</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RPA/" rel="tag">RPA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Shell-Script/" rel="tag">Shell Script</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VBS/" rel="tag">VBS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Windows/" rel="tag">Windows</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E3%83%90%E3%83%83%E3%83%81/" rel="tag">バッチ</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E3%83%9E%E3%82%AF%E3%83%AD/" rel="tag">マクロ</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%87%AA%E5%8B%95%E5%8C%96/" rel="tag">自動化</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-2020-0705-teams-bot" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/07/2020-0705-teams-bot/" class="article-date">
-  <time datetime="2020-07-05T11:31:09.000Z" itemprop="datePublished">2020-07-05</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%8A%80%E8%A1%93/">技術</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/2020-0705-teams-bot/">【Microsoft Teams】Botもどきをnode.jsを使って30分で実装する</a>
-    </h1>
-  
-
-      </header>
-	
-    <div class="article-entry" itemprop="articleBody">
-	
-		<img src="https://www.bedroomcomputing.com/2020/07/2020-0705-teams-bot/thumb.png">
-	
-      
-        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>こんにちは。 <a href="https://twitter.com/karintozuki" target="_blank" rel="noopener">karintomania(@karintozuki)</a>です。  </p>
-<p>Miccrosoft Teamsを職場で使っている。  </p>
-<p><u> こういったコミュニケーションツールを見ると、</u><br><u>Botを作ってみたくなるのは開発者の性である。</u></p>
-<p>今回はそんな記事。  </p>
-        
-          <p class="article-more-link">
-            <a href="/2020/07/2020-0705-teams-bot/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://www.bedroomcomputing.com/2020/07/2020-0705-teams-bot/" data-id="ckdm81itt002nrel13b3f06yf" data-title="【Microsoft Teams】Botもどきをnode.jsを使って30分で実装する" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Bot/" rel="tag">Bot</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node/" rel="tag">node</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node-js/" rel="tag">node.js</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-2020-0705-admob" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/07/2020-0705-admob/" class="article-date">
-  <time datetime="2020-07-05T08:15:14.000Z" itemprop="datePublished">2020-07-05</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%8A%80%E8%A1%93/">技術</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/2020-0705-admob/">【アプリ収益化】Admobの登録方法を画像付きで紹介する</a>
-    </h1>
-  
-
-      </header>
-	
-    <div class="article-entry" itemprop="articleBody">
-	
-		<img src="https://www.bedroomcomputing.com/2020/07/2020-0705-admob/thumb.png">
-	
-      
-        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>こんにちは。 <a href="https://twitter.com/karintozuki" target="_blank" rel="noopener">karintomania(@karintozuki)</a>です。  </p>
-<p>個人開発でアプリを作っている人なら、<br>誰でもアプリで稼ぐことを考えたことがあるかと思う。  </p>
-<p>作るだけで満足、あるいはユーザーに使ってもらうだけで満足という人もいるかもしれないけど、<br>私はそれじゃ物足りないと思ってしまう俗っぽい開発者なのだ。  </p>
-        
-          <p class="article-more-link">
-            <a href="/2020/07/2020-0705-admob/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://www.bedroomcomputing.com/2020/07/2020-0705-admob/" data-id="ckdm81itq002krel14id460eq" data-title="【アプリ収益化】Admobの登録方法を画像付きで紹介する" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/admob/" rel="tag">admob</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/" rel="tag">android</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-2020-0627-db-prepopulate" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/06/2020-0627-db-prepopulate/" class="article-date">
-  <time datetime="2020-06-27T13:36:09.000Z" itemprop="datePublished">2020-06-27</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%8A%80%E8%A1%93/">技術</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/2020-0627-db-prepopulate/">【Android開発】Roomを使う際にデータをあらかじめ設定(Prepopulate)する方法</a>
-    </h1>
-  
-
-      </header>
-	
-    <div class="article-entry" itemprop="articleBody">
-	
-		<img src="https://www.bedroomcomputing.com/2020/06/2020-0627-db-prepopulate/thumb.png">
-	
-      
-        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>こんにちは。 <a href="https://twitter.com/karintozuki" target="_blank" rel="noopener">karintomania(@karintozuki)</a>です。  </p>
-<p>Androidアプリを開発していると、<br>DBにあらかじめデータをセットしておきたいケースが多いと思う。</p>
-        
-          <p class="article-more-link">
-            <a href="/2020/06/2020-0627-db-prepopulate/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://www.bedroomcomputing.com/2020/06/2020-0627-db-prepopulate/" data-id="ckdm81itn002drel132np3sz2" data-title="【Android開発】Roomを使う際にデータをあらかじめ設定(Prepopulate)する方法" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Room/" rel="tag">Room</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/" rel="tag">android</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-2020-0622-release" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/06/2020-0622-release/" class="article-date">
-  <time datetime="2020-06-22T07:01:42.000Z" itemprop="datePublished">2020-06-22</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%8A%80%E8%A1%93/">技術</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/2020-0622-release/">【androidアプリ】Google　Play Consoleでアプリをリリースする方法</a>
-    </h1>
-  
-
-      </header>
-	
-    <div class="article-entry" itemprop="articleBody">
-	
-		<img src="https://www.bedroomcomputing.com/2020/06/2020-0622-release/thumb.png">
-	
-      
-        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>こんにちは。<a href="https://twitter.com/karintozuki" target="_blank" rel="noopener">karintomania(@karintozuki)</a>です。  </p>
-<p>先日、個人開発のandroidアプリをリリースした。  </p>
-<p>Play Consoleでの操作やアプリの情報入力に手間取ったため、<br>手順をメモに残す。  </p>
-        
-          <p class="article-more-link">
-            <a href="/2020/06/2020-0622-release/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://www.bedroomcomputing.com/2020/06/2020-0622-release/" data-id="ckdm81itp002hrel11y87dpuq" data-title="【androidアプリ】Google　Play Consoleでアプリをリリースする方法" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/" rel="tag">android</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-2020-0622-createApk" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/06/2020-0622-createApk/" class="article-date">
-  <time datetime="2020-06-22T07:01:31.000Z" itemprop="datePublished">2020-06-22</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%8A%80%E8%A1%93/">技術</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/2020-0622-createApk/">【androidアプリ】リリース用のBundle(APK)を作成する方法</a>
-    </h1>
-  
-
-      </header>
-	
-    <div class="article-entry" itemprop="articleBody">
-	
-		<img src="https://www.bedroomcomputing.com/2020/06/2020-0622-createApk/thumb.png">
-	
-      
-        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>こんにちは。<a href="https://twitter.com/karintozuki" target="_blank" rel="noopener">karintomania(twitter)</a>です。  </p>
-<p>androidアプリの公開を公開する際には、<br>公開用にBundleファイル（もしくはapk）を作成する必要がある。  </p>
-<p>出てくる用語を解説しながら、(Bundleって何？とか)<br>その手順をまとめる。  </p>
-        
-          <p class="article-more-link">
-            <a href="/2020/06/2020-0622-createApk/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://www.bedroomcomputing.com/2020/06/2020-0622-createApk/" data-id="ckdm81itm002arel1h6zdhyjn" data-title="【androidアプリ】リリース用のBundle(APK)を作成する方法" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/" rel="tag">android</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-2020-0622-createAndroidDeveloperAccount" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/06/2020-0622-createAndroidDeveloperAccount/" class="article-date">
-  <time datetime="2020-06-22T07:01:23.000Z" itemprop="datePublished">2020-06-22</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%8A%80%E8%A1%93/">技術</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/2020-0622-createAndroidDeveloperAccount/">【androidアプリ】リリースに向けてGoogle Playデベロッパーアカウントを作成する</a>
-    </h1>
-  
-
-      </header>
-	
-    <div class="article-entry" itemprop="articleBody">
-	
-		<img src="https://www.bedroomcomputing.com/2020/06/2020-0622-createAndroidDeveloperAccount/thumb.png">
-	
-      
-        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>こんにちは。 <a href="https://twitter.com/karintozuki" target="_blank" rel="noopener">karintomania(twitter)</a>です。  </p>
-<p>先日、個人開発のandroidアプリをリリースしました。<br><a href="https://www.regex.bedroomcomputing.com/" target="_blank" rel="noopener">正規表現クエスト</a></p>
-<p>アプリをリリースするためには、<br>Google Playにデベロッパーアカウントを作成しないといけない。<br>今回、それを作成した手順を紹介したい。  </p>
-        
-          <p class="article-more-link">
-            <a href="/2020/06/2020-0622-createAndroidDeveloperAccount/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://www.bedroomcomputing.com/2020/06/2020-0622-createAndroidDeveloperAccount/" data-id="ckdm81itk0027rel1bihd705a" data-title="【androidアプリ】リリースに向けてGoogle Playデベロッパーアカウントを作成する" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/android/" rel="tag">android</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-
-
-  <nav id="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next</a>
-  </nav>
 
 </section>
         
