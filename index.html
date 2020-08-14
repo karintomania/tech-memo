@@ -113,89 +113,17 @@
 		<img src="https://www.bedroomcomputing.com/2020/08/2020-0808-java-twitter-cli-tool/tweet.gif">
 	
       
-		<h2>目次</h2>
-		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景"><span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#環境・必要事項"><span class="toc-text">環境・必要事項</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使い方"><span class="toc-text">使い方</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#プロジェクトをダウンロード"><span class="toc-text">プロジェクトをダウンロード</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Consumerキーを設定"><span class="toc-text">Consumerキーを設定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ユーザ名を変更"><span class="toc-text">ユーザ名を変更</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#起動コマンド"><span class="toc-text">起動コマンド</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ソース解説"><span class="toc-text">ソース解説</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Twitter-4jについて"><span class="toc-text">Twitter 4jについて</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OAuthを使ったログイン処理"><span class="toc-text">OAuthを使ったログイン処理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#タイムラインの取得"><span class="toc-text">タイムラインの取得</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ツイート"><span class="toc-text">ツイート</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#まとめ"><span class="toc-text">まとめ</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#関連記事"><span class="toc-text">関連記事</span></a></li></ol>
         <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>こんにちは。 <a href="https://twitter.com/karintozuki" target="_blank" rel="noopener">karintomania(@karintozuki)</a>です。  </p>
 <p>JavaでTwitter APIを触る方法を調べたところ、<br><u>Twitter4jというライブラリが良いらしい。</u><br>今回はそれを使って、ターミナルからTwitterを触るツールを作ってみたので、<br>少しソースを解説したいと思う。</p>
-<h2 id="環境・必要事項"><a href="#環境・必要事項" class="headerlink" title="環境・必要事項"></a>環境・必要事項</h2><ul>
-<li>Java8以上</li>
-<li>MacOS</li>
-</ul>
-<p><u>Twitterデベロッパーアカウント</u>が必要。</p>
-<h2 id="使い方"><a href="#使い方" class="headerlink" title="使い方"></a>使い方</h2><h3 id="プロジェクトをダウンロード"><a href="#プロジェクトをダウンロード" class="headerlink" title="プロジェクトをダウンロード"></a>プロジェクトをダウンロード</h3><p><a href="https://github.com/karintomania/twitter-cli-java" target="_blank" rel="noopener">Githubはこちら。</a><br>適当なフォルダで<code>git clone</code>するなり<br>zipでダウンロードするなりしてほしい。</p>
-<p>いくつか初期設定が必要です。</p>
-<h3 id="Consumerキーを設定"><a href="#Consumerキーを設定" class="headerlink" title="Consumerキーを設定"></a>Consumerキーを設定</h3><p><code>resource/twitter4j.properties</code>内の以下二つのプロパティを設定する。<br>これらの値はTwitterデベロッパーアカウントを作成すると取得できる。</p>
-<figure class="highlight properties"><figcaption><span>twitter4j.properties</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">//</span> <span class="string">コンシューマーキーを設定</span></span><br><span class="line"><span class="meta">oauth.consumerKey</span>=<span class="string">put-your-consumer-key</span></span><br><span class="line"><span class="meta">//</span> <span class="string">コンシューマーシークレットを設定</span></span><br><span class="line"><span class="meta">oauth.consumerSecret</span>=<span class="string">put-your-consumer-secret</span></span><br></pre></td></tr></table></figure>
-
-
-<h3 id="ユーザ名を変更"><a href="#ユーザ名を変更" class="headerlink" title="ユーザ名を変更"></a>ユーザ名を変更</h3><p>ユーザ名(使用したいアカウントの@xxxxのxxxx部分)を<br><code>Authenticator.java</code>の以下の箇所に入れる。<br>ソースベタうちでごめんなさい。</p>
-<figure class="highlight java"><figcaption><span>Authenticator.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// ユーザー名(@xxxのxxx)を適宜変えてください</span></span><br><span class="line">	Auth auth = ar.getAuth(<span class="string">"put-user-name-here"</span>);</span><br></pre></td></tr></table></figure>
-
-
-<h3 id="起動コマンド"><a href="#起動コマンド" class="headerlink" title="起動コマンド"></a>起動コマンド</h3><p>以下コマンドをプロジェクトルートフォルダで実行すると、<br>ツールが起動する。<br><code>./gradlew run --console=plain</code></p>
-<p>–console=plainオプションをつけているのは、<br>Gradleのメッセージがちょっとうるさいから。</p>
-<p>起動したら以下のコマンドが使える。<br>最初はloginコマンドを打ってログインする必要がある。</p>
-<table>
-<thead>
-<tr>
-<th>コマンド</th>
-<th>意味</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>login</td>
-<td>ログインできる</td>
-</tr>
-<tr>
-<td>tl</td>
-<td>タイムラインを５件ずつ表示する。nを押すと次の5件を表示する</td>
-</tr>
-<tr>
-<td>tw</td>
-<td>ツイートです。素のままだと改行もできないので、実用的じゃない爆</td>
-</tr>
-<tr>
-<td>help</td>
-<td>ヘルプが申し訳程度に出る</td>
-</tr>
-</tbody></table>
-<h2 id="ソース解説"><a href="#ソース解説" class="headerlink" title="ソース解説"></a>ソース解説</h2><h3 id="Twitter-4jについて"><a href="#Twitter-4jについて" class="headerlink" title="Twitter 4jについて"></a>Twitter 4jについて</h3><p>このツールでは<u>Twitter4jというライブラリを使っている。</u><br>公式サンプルがだいぶ参考になるので、そちらも合わせてみていただきたい。<br><a href="http://twitter4j.org/ja/" target="_blank" rel="noopener">http://twitter4j.org/ja/</a></p>
-<h3 id="OAuthを使ったログイン処理"><a href="#OAuthを使ったログイン処理" class="headerlink" title="OAuthを使ったログイン処理"></a>OAuthを使ったログイン処理</h3><p>OAuth処理はAuthenticator.javaで行っている。<br><code>authenticate()</code>メソッドを少し紹介する。</p>
-<figure class="highlight java"><figcaption><span>.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// OAuth認証</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">authenticate</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">// The factory instance is re-useable and thread safe.</span></span><br><span class="line">    Twitter twitter = TwitterFactory.getSingleton();</span><br><span class="line">	<span class="keyword">try</span>&#123;</span><br><span class="line">		RequestToken requestToken = twitter.getOAuthRequestToken();</span><br><span class="line">		AccessToken accessToken = <span class="keyword">null</span>;</span><br><span class="line">		BufferedReader br = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(System.in));</span><br><span class="line">		<span class="keyword">while</span> (<span class="keyword">null</span> == accessToken) &#123;</span><br><span class="line">			System.out.println(<span class="string">"Open the following URL and grant access to your account:"</span>);</span><br><span class="line">			System.out.println(requestToken.getAuthorizationURL());</span><br><span class="line">			System.out.print(<span class="string">"Enter the PIN(if aviailable) or just hit enter.[PIN]:"</span>);</span><br><span class="line">			String pin = br.readLine();</span><br><span class="line">		<span class="keyword">try</span>&#123;</span><br><span class="line">			<span class="keyword">if</span>(pin.length() &gt; <span class="number">0</span>)&#123;</span><br><span class="line">				accessToken = twitter.getOAuthAccessToken(requestToken, pin);</span><br><span class="line">			&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">				accessToken = twitter.getOAuthAccessToken();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">catch</span> (TwitterException te) &#123;</span><br><span class="line">			<span class="keyword">if</span>(<span class="number">401</span> == te.getStatusCode())&#123;</span><br><span class="line">				System.out.println(<span class="string">"Unable to get the access token."</span>);</span><br><span class="line">			&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">				te.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">//persist to the accessToken for future reference.</span></span><br><span class="line">		storeAccessToken(twitter.verifyCredentials().getScreenName(),accessToken);</span><br><span class="line">	&#125;<span class="keyword">catch</span>(TwitterException te)&#123;</span><br><span class="line">		te.printStackTrace();</span><br><span class="line">	&#125;<span class="keyword">catch</span>(IOException ioe)&#123;</span><br><span class="line">		ioe.printStackTrace();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-
-<p>実際に動作させると、<br>以下の流れで成功するとトークンが取得できる。</p>
-<ol>
-<li>認証用のURL表示　requestToken.getAuthorizationURL()使用</li>
-<li>認証画面をブラウザで開き、コードを取得</li>
-<li>コードをターミナルに入力してもらい、トークン取得 twitter.getOAuthAccessToken(requestToken, pin);</li>
-</ol>
-<p>このGIFをみてもらうと分かりやすいと思う。</p>
-<img src="/2020/08/2020-0808-java-twitter-cli-tool/login.gif" class="">
-
-<p>トークンは取得すると、アクセストークンとアクセストークンシークレットが取得できる。<br>このプログラム内ではMyBatisとSQLiteを使って永続化している。興味があればDTOフォルダ内を参照して欲しい。</p>
-<h3 id="タイムラインの取得"><a href="#タイムラインの取得" class="headerlink" title="タイムラインの取得"></a>タイムラインの取得</h3><p>タイムラインの取得はTwitterServiceクラス内のshowTimeLine()メソッドで行っている。</p>
-<figure class="highlight java"><figcaption><span>TwitterService.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// タイムライン表示</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showTimeLine</span><span class="params">()</span></span>&#123;</span><br><span class="line">		Scanner in = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">		String s = <span class="string">""</span>;</span><br><span class="line">		<span class="keyword">int</span> page = <span class="number">1</span>;</span><br><span class="line">		String commandMode = <span class="string">"TimeLine Mode (next:n, back:b, quit:q)&gt;"</span>;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// タイムライン表示</span></span><br><span class="line">		showPagedTimeLine(page);</span><br><span class="line"></span><br><span class="line">		<span class="keyword">do</span>&#123;</span><br><span class="line">			System.out.print(commandMode);</span><br><span class="line">			s = in.nextLine();</span><br><span class="line">			<span class="keyword">switch</span> (s)&#123;</span><br><span class="line">				<span class="comment">// タイムラインを終了</span></span><br><span class="line">				<span class="keyword">case</span> <span class="string">"q"</span>:</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">				<span class="comment">//　次のページを表示</span></span><br><span class="line">				<span class="keyword">case</span> <span class="string">"n"</span>:</span><br><span class="line">					showPagedTimeLine(++page);</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">				<span class="comment">//　前のページを表示</span></span><br><span class="line">				<span class="keyword">case</span> <span class="string">"b"</span>:</span><br><span class="line">					showPagedTimeLine((page &gt; <span class="number">1</span>) ? --page : <span class="number">0</span>);</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">				<span class="keyword">default</span>: </span><br><span class="line">					System.out.println(s + <span class="string">" command is not found."</span>);</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">		&#125;<span class="keyword">while</span>(!s.equals(<span class="string">"q"</span>));</span><br><span class="line"></span><br><span class="line">		<span class="comment">// Dont close the scanner.</span></span><br><span class="line">		<span class="comment">// It will close the scanner of App.java as well</span></span><br><span class="line">		<span class="comment">// in.close();</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// ツイートを5件ずつ表示</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showPagedTimeLine</span><span class="params">(<span class="keyword">int</span> page)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">		Paging paging = <span class="keyword">new</span> Paging(page, <span class="number">5</span>);</span><br><span class="line">		<span class="keyword">try</span>&#123;</span><br><span class="line">			<span class="comment">// タイムライン取得</span></span><br><span class="line">			List&lt;Status&gt; statuses = twitter.getHomeTimeline(paging);</span><br><span class="line">			statuses.stream().forEach(status -&gt; System.out.println(formatTweet(status)));</span><br><span class="line">		&#125;<span class="keyword">catch</span>(TwitterException te)&#123;</span><br><span class="line">			te.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 表示用に整形</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">formatTweet</span><span class="params">(Status s)</span></span>&#123;</span><br><span class="line">		String tweetText = s.getUser().getName() + <span class="string">" :\n\n"</span> + s.getText();</span><br><span class="line">		tweetText += <span class="string">"\n----------------------------"</span>;</span><br><span class="line">		<span class="keyword">return</span> tweetText;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>twitter.getHomeTimeline()</code>メソッドでタイムラインを取得できる。<br>このメソッドはページネーションに対応しているため、<br>このプログラム内では５件ずつ取得するようにしている。</p>
-<p>こちらも動作イメージとしてGIFを用意した。</p>
-<img src="/2020/08/2020-0808-java-twitter-cli-tool/timeline.gif" class="">
-
-<h3 id="ツイート"><a href="#ツイート" class="headerlink" title="ツイート"></a>ツイート</h3><p>ツイートには<code>twitter.updateStatus()</code>メソッドを使う。<br>普通に標準入力を読み込んでメソッドに文字列を渡しているだけ。</p>
-<figure class="highlight java"><figcaption><span>TwitterService.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ツイートする</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">tweet</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">		Scanner in = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">		String tweetMode = <span class="string">"Tweet Mode &gt;"</span>;</span><br><span class="line">		System.out.print(tweetMode);</span><br><span class="line"></span><br><span class="line">		String s = in.nextLine();</span><br><span class="line"></span><br><span class="line">		<span class="keyword">try</span>&#123;</span><br><span class="line">			<span class="comment">// ツイートを送信</span></span><br><span class="line">			twitter.updateStatus(s);</span><br><span class="line">		&#125;<span class="keyword">catch</span>(TwitterException te)&#123;</span><br><span class="line">			te.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		System.out.println(s);</span><br><span class="line"></span><br><span class="line">		<span class="comment">// Dont close the scanner.</span></span><br><span class="line">		<span class="comment">// It will close the scanner of App.java as well</span></span><br><span class="line">		<span class="comment">// in.close();</span></span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>こちらも動作イメージとしてGIFを用意した。</p>
-<img src="/2020/08/2020-0808-java-twitter-cli-tool/tweet.gif" class="">
-
-<h2 id="まとめ"><a href="#まとめ" class="headerlink" title="まとめ"></a>まとめ</h2><p>Twitter周りの実装は全部Twitter4j任せで簡単にできた。<br>しかし、<u>利用したいAPIによっては対応していないのもあるようなので、注意が必要。</u><br>例えばいいねやインプレッション数が取得できるEngagement APIには対応していないようだった。</p>
-<p>また、CLIツールとして動作するようなものを作るのが初めてだったので、<br>そこに結構苦戦した。</p>
-<p>それじゃ今日はこの辺で。</p>
-<h2 id="関連記事"><a href="#関連記事" class="headerlink" title="関連記事"></a>関連記事</h2><p>こちらの記事もおすすめ。  </p>
-<p><a href="/2020/04/2020-0408-linebot/">Spring BootでLINE Botのサンプルを動かす 〜おうむ返しのその先へ〜</a></p>
-
+        
+          <p class="article-more-link">
+            <a href="/2020/08/2020-0808-java-twitter-cli-tool/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.bedroomcomputing.com/2020/08/2020-0808-java-twitter-cli-tool/" data-id="ckdm81itv002prel1hjgb7i1e" data-title="Twitter APIをJavaで触る！Twitter4jを使ってみた" class="article-share-link">Share</a>
+      <a data-url="https://www.bedroomcomputing.com/2020/08/2020-0808-java-twitter-cli-tool/" data-id="ckdurdb160068uwl1g4ri40qj" data-title="Twitter APIをJavaで触る！Twitter4jを使ってみた" class="article-share-link">Share</a>
       
       
       
@@ -248,7 +176,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.bedroomcomputing.com/2020/08/2020-0801-android-selftaught/" data-id="ckdm81iu2002xrel16du72twj" data-title="アプリ未経験エンジニアが独学で個人開発Androidアプリを公開するまでにやったこと" class="article-share-link">Share</a>
+      <a data-url="https://www.bedroomcomputing.com/2020/08/2020-0801-android-selftaught/" data-id="ckdurdazs002vuwl10prmb8ep" data-title="アプリ未経験エンジニアが独学で個人開発Androidアプリを公開するまでにやったこと" class="article-share-link">Share</a>
       
       
       
@@ -301,7 +229,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.bedroomcomputing.com/2020/07/2020-0726-open-folder/" data-id="ckdm81itw002srel1grpo2ymr" data-title="【Windows】コピーしたファイルパスをエクスプローラーで開くのがめんどくさいので、ショートカット一発にした話" class="article-share-link">Share</a>
+      <a data-url="https://www.bedroomcomputing.com/2020/07/2020-0726-open-folder/" data-id="ckdurdazq002suwl1gzi5davv" data-title="【Windows】コピーしたファイルパスをエクスプローラーで開くのがめんどくさいので、ショートカット一発にした話" class="article-share-link">Share</a>
       
       
       
@@ -355,7 +283,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.bedroomcomputing.com/2020/07/2020-0712-windowsAutomation/" data-id="ckdm81ity002urel1ebu6gtrw" data-title="現役エンジニアが業務を自動化してきた手法７つ+αを紹介【Windows編】" class="article-share-link">Share</a>
+      <a data-url="https://www.bedroomcomputing.com/2020/07/2020-0712-windowsAutomation/" data-id="ckdurdazn002luwl1ej5qhzyk" data-title="現役エンジニアが業務を自動化してきた手法７つ+αを紹介【Windows編】" class="article-share-link">Share</a>
       
       
       
@@ -410,7 +338,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.bedroomcomputing.com/2020/07/2020-0705-teams-bot/" data-id="ckdm81itt002nrel13b3f06yf" data-title="【Microsoft Teams】Botもどきをnode.jsを使って30分で実装する" class="article-share-link">Share</a>
+      <a data-url="https://www.bedroomcomputing.com/2020/07/2020-0705-teams-bot/" data-id="ckdurdazm002iuwl11oj018e6" data-title="【Microsoft Teams】Botもどきをnode.jsを使って30分で実装する" class="article-share-link">Share</a>
       
       
       
@@ -464,7 +392,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.bedroomcomputing.com/2020/07/2020-0705-admob/" data-id="ckdm81itq002krel14id460eq" data-title="【アプリ収益化】Admobの登録方法を画像付きで紹介する" class="article-share-link">Share</a>
+      <a data-url="https://www.bedroomcomputing.com/2020/07/2020-0705-admob/" data-id="ckdurdazl002fuwl1gk4dci8h" data-title="【アプリ収益化】Admobの登録方法を画像付きで紹介する" class="article-share-link">Share</a>
       
       
       
@@ -517,7 +445,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.bedroomcomputing.com/2020/06/2020-0627-db-prepopulate/" data-id="ckdm81itn002drel132np3sz2" data-title="【Android開発】Roomを使う際にデータをあらかじめ設定(Prepopulate)する方法" class="article-share-link">Share</a>
+      <a data-url="https://www.bedroomcomputing.com/2020/06/2020-0627-db-prepopulate/" data-id="ckdurdb180069uwl17fmg0pen" data-title="【Android開発】Roomを使う際にデータをあらかじめ設定(Prepopulate)する方法" class="article-share-link">Share</a>
       
       
       
@@ -571,7 +499,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.bedroomcomputing.com/2020/06/2020-0622-release/" data-id="ckdm81itp002hrel11y87dpuq" data-title="【androidアプリ】Google　Play Consoleでアプリをリリースする方法" class="article-share-link">Share</a>
+      <a data-url="https://www.bedroomcomputing.com/2020/06/2020-0622-release/" data-id="ckdurdazp002puwl1bgz4ckmr" data-title="【androidアプリ】Google　Play Consoleでアプリをリリースする方法" class="article-share-link">Share</a>
       
       
       
@@ -625,7 +553,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.bedroomcomputing.com/2020/06/2020-0622-createApk/" data-id="ckdm81itm002arel1h6zdhyjn" data-title="【androidアプリ】リリース用のBundle(APK)を作成する方法" class="article-share-link">Share</a>
+      <a data-url="https://www.bedroomcomputing.com/2020/06/2020-0622-createApk/" data-id="ckdurdazj002cuwl1htegbdtq" data-title="【androidアプリ】リリース用のBundle(APK)を作成する方法" class="article-share-link">Share</a>
       
       
       
@@ -679,7 +607,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.bedroomcomputing.com/2020/06/2020-0622-createAndroidDeveloperAccount/" data-id="ckdm81itk0027rel1bihd705a" data-title="【androidアプリ】リリースに向けてGoogle Playデベロッパーアカウントを作成する" class="article-share-link">Share</a>
+      <a data-url="https://www.bedroomcomputing.com/2020/06/2020-0622-createAndroidDeveloperAccount/" data-id="ckdurdazi0028uwl15k21d8ph" data-title="【androidアプリ】リリースに向けてGoogle Playデベロッパーアカウントを作成する" class="article-share-link">Share</a>
       
       
       

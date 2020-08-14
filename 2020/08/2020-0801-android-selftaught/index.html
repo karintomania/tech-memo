@@ -30,8 +30,11 @@
 <meta property="og:site_name" content="寝室コンピューティング">
 <meta property="og:description" content="背景こんにちは。 karintomania(@karintozuki)と申します。   この記事では、Webアプリの開発しかしたことがなかったエンジニアが、Android開発を始めてアプリをリリースするまでにやったことを紹介するよ。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-08-01T23:07:08.333Z">
+<meta property="og:image" content="https:&#x2F;&#x2F;www26.a8.net&#x2F;svt&#x2F;bgt?aid=200810563742&amp;wid=001&amp;eno=01&amp;mid=s00000000018015048000&amp;mc=1">
+<meta property="og:image" content="https:&#x2F;&#x2F;www16.a8.net&#x2F;0.gif?a8mat=3BK2F7+C9RNN6+50+2HLB41">
+<meta property="og:updated_time" content="2020-08-14T21:28:42.108Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;www26.a8.net&#x2F;svt&#x2F;bgt?aid=200810563742&amp;wid=001&amp;eno=01&amp;mid=s00000000018015048000&amp;mc=1">
   
   
     <link rel="icon" href="/css/images/favicon.ico">
@@ -118,7 +121,7 @@
 	
       
 		<h2>目次</h2>
-		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景"><span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#作ったもの"><span class="toc-text">作ったもの</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#開発ロードマップ"><span class="toc-text">開発ロードマップ</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#大前提"><span class="toc-text">大前提</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#モチベの確認"><span class="toc-text">モチベの確認</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#技術編"><span class="toc-text">技術編</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#技術選定"><span class="toc-text">技術選定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#勉強"><span class="toc-text">勉強</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#開発"><span class="toc-text">開発</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#プロダクト編"><span class="toc-text">プロダクト編</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#アイデア出し"><span class="toc-text">アイデア出し</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#拡散力強化"><span class="toc-text">拡散力強化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LP作成"><span class="toc-text">LP作成</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#まとめ"><span class="toc-text">まとめ</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#関連記事"><span class="toc-text">関連記事</span></a></li></ol>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景"><span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#作ったもの"><span class="toc-text">作ったもの</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#開発ロードマップ"><span class="toc-text">開発ロードマップ</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#大前提"><span class="toc-text">大前提</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#モチベの確認"><span class="toc-text">モチベの確認</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#技術編"><span class="toc-text">技術編</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#技術選定"><span class="toc-text">技術選定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#勉強"><span class="toc-text">勉強</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#開発"><span class="toc-text">開発</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#プロダクト編"><span class="toc-text">プロダクト編</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#アイデア出し"><span class="toc-text">アイデア出し</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#拡散力強化"><span class="toc-text">拡散力強化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LP作成"><span class="toc-text">LP作成</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#まとめ"><span class="toc-text">まとめ</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#関連記事"><span class="toc-text">関連記事</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#PR"><span class="toc-text">PR</span></a></li></ol></li></ol>
         <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>こんにちは。 <a href="https://twitter.com/karintozuki" target="_blank" rel="noopener">karintomania(@karintozuki)</a>と申します。  </p>
 <p>この記事では、Webアプリの開発しかしたことがなかったエンジニアが、<br>Android開発を始めてアプリをリリースするまでにやったことを紹介するよ。</p>
 <a id="more"></a>
@@ -214,11 +217,16 @@
 <p>それじゃ今日はこのへんで。</p>
 <h2 id="関連記事"><a href="#関連記事" class="headerlink" title="関連記事"></a>関連記事</h2><p>こちらの記事もおすすめ。  </p>
 <p><a href="/2020/06/2020-0622-createAndroidDeveloperAccount/">【androidアプリ】リリースに向けてGoogle Playデベロッパーアカウントを作成する</a><br><a href="/2020/06/2020-0622-release/">【androidアプリ】Google　Play Consoleでアプリをリリースする方法</a></p>
+<h3 id="PR"><a href="#PR" class="headerlink" title="PR"></a>PR</h3><p>自作サービス用のドメインにはお名前ドットコムがおすすめです。</p>
+
+<a href="https://px.a8.net/svt/ejp?a8mat=3BK2F7+C9RNN6+50+2HLB41" target="_blank" rel="nofollow noopener">
+<img border="0" width="468" height="60" alt="" src="https://www26.a8.net/svt/bgt?aid=200810563742&wid=001&eno=01&mid=s00000000018015048000&mc=1"></a>
+<img border="0" width="1" height="1" src="https://www16.a8.net/0.gif?a8mat=3BK2F7+C9RNN6+50+2HLB41" alt="">
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.bedroomcomputing.com/2020/08/2020-0801-android-selftaught/" data-id="ckdm81iu2002xrel16du72twj" data-title="アプリ未経験エンジニアが独学で個人開発Androidアプリを公開するまでにやったこと" class="article-share-link">Share</a>
+      <a data-url="https://www.bedroomcomputing.com/2020/08/2020-0801-android-selftaught/" data-id="ckdurdazs002vuwl10prmb8ep" data-title="アプリ未経験エンジニアが独学で個人開発Androidアプリを公開するまでにやったこと" class="article-share-link">Share</a>
       
       
       

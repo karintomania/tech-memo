@@ -22,18 +22,18 @@
 	
 		<meta property="og:image" content="https://www.bedroomcomputing.com/2020/08/2020-0808-java-twitter-cli-tool/tweet.gif" /> 
 	
-  <meta name="description" content="背景こんにちは。 karintomania(@karintozuki)です。   JavaでTwitter APIを触る方法を調べたところ、Twitter4jというライブラリが良いらしい。今回はそれを使って、ターミナルからTwitterを触るツールを作ってみたので、少しソースを解説したいと思う。 環境・必要事項 Java8以上 MacOS  Twitterデベロッパーアカウントが必要。 使い方プロ">
+  <meta name="description" content="背景こんにちは。 karintomania(@karintozuki)です。   JavaでTwitter APIを触る方法を調べたところ、Twitter4jというライブラリが良いらしい。今回はそれを使って、ターミナルからTwitterを触るツールを作ってみたので、少しソースを解説したいと思う。">
 <meta name="keywords" content="Java,Twitter">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Twitter APIをJavaで触る！Twitter4jを使ってみた">
 <meta property="og:url" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;08&#x2F;2020-0808-java-twitter-cli-tool&#x2F;index.html">
 <meta property="og:site_name" content="寝室コンピューティング">
-<meta property="og:description" content="背景こんにちは。 karintomania(@karintozuki)です。   JavaでTwitter APIを触る方法を調べたところ、Twitter4jというライブラリが良いらしい。今回はそれを使って、ターミナルからTwitterを触るツールを作ってみたので、少しソースを解説したいと思う。 環境・必要事項 Java8以上 MacOS  Twitterデベロッパーアカウントが必要。 使い方プロ">
+<meta property="og:description" content="背景こんにちは。 karintomania(@karintozuki)です。   JavaでTwitter APIを触る方法を調べたところ、Twitter4jというライブラリが良いらしい。今回はそれを使って、ターミナルからTwitterを触るツールを作ってみたので、少しソースを解説したいと思う。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;08&#x2F;2020-0808-java-twitter-cli-tool&#x2F;login.gif">
 <meta property="og:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;08&#x2F;2020-0808-java-twitter-cli-tool&#x2F;timeline.gif">
 <meta property="og:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;08&#x2F;2020-0808-java-twitter-cli-tool&#x2F;tweet.gif">
-<meta property="og:updated_time" content="2020-08-08T22:19:59.581Z">
+<meta property="og:updated_time" content="2020-08-14T20:50:03.623Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;08&#x2F;2020-0808-java-twitter-cli-tool&#x2F;login.gif">
   
@@ -125,6 +125,8 @@
 		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景"><span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#環境・必要事項"><span class="toc-text">環境・必要事項</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使い方"><span class="toc-text">使い方</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#プロジェクトをダウンロード"><span class="toc-text">プロジェクトをダウンロード</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Consumerキーを設定"><span class="toc-text">Consumerキーを設定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ユーザ名を変更"><span class="toc-text">ユーザ名を変更</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#起動コマンド"><span class="toc-text">起動コマンド</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ソース解説"><span class="toc-text">ソース解説</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Twitter-4jについて"><span class="toc-text">Twitter 4jについて</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OAuthを使ったログイン処理"><span class="toc-text">OAuthを使ったログイン処理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#タイムラインの取得"><span class="toc-text">タイムラインの取得</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ツイート"><span class="toc-text">ツイート</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#まとめ"><span class="toc-text">まとめ</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#関連記事"><span class="toc-text">関連記事</span></a></li></ol>
         <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>こんにちは。 <a href="https://twitter.com/karintozuki" target="_blank" rel="noopener">karintomania(@karintozuki)</a>です。  </p>
 <p>JavaでTwitter APIを触る方法を調べたところ、<br><u>Twitter4jというライブラリが良いらしい。</u><br>今回はそれを使って、ターミナルからTwitterを触るツールを作ってみたので、<br>少しソースを解説したいと思う。</p>
+<a id="more"></a>
+
 <h2 id="環境・必要事項"><a href="#環境・必要事項" class="headerlink" title="環境・必要事項"></a>環境・必要事項</h2><ul>
 <li>Java8以上</li>
 <li>MacOS</li>
@@ -203,7 +205,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.bedroomcomputing.com/2020/08/2020-0808-java-twitter-cli-tool/" data-id="ckdm81itv002prel1hjgb7i1e" data-title="Twitter APIをJavaで触る！Twitter4jを使ってみた" class="article-share-link">Share</a>
+      <a data-url="https://www.bedroomcomputing.com/2020/08/2020-0808-java-twitter-cli-tool/" data-id="ckdurdb160068uwl1g4ri40qj" data-title="Twitter APIをJavaで触る！Twitter4jを使ってみた" class="article-share-link">Share</a>
       
       
       

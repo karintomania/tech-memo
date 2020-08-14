@@ -2,16 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://www.bedroomcomputing.com/2020/08/2020-0808-java-twitter-cli-tool/</loc>
+    <loc>https://www.bedroomcomputing.com/2020/06/2020-0610-sqlite/</loc>
     
-    <lastmod>2020-08-08T22:19:59.581Z</lastmod>
+    <lastmod>2020-08-14T21:39:30.744Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://www.bedroomcomputing.com/2020/08/2020-0801-android-selftaught/</loc>
     
-    <lastmod>2020-08-01T23:07:08.333Z</lastmod>
+    <lastmod>2020-08-14T21:28:42.108Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.bedroomcomputing.com/2020/08/2020-0808-java-twitter-cli-tool/</loc>
+    
+    <lastmod>2020-08-14T20:50:03.623Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.bedroomcomputing.com/2020/03/2020-0327-mybatis/</loc>
+    
+    <lastmod>2020-08-14T20:35:49.694Z</lastmod>
     
   </url>
   
@@ -93,13 +107,6 @@
   </url>
   
   <url>
-    <loc>https://www.bedroomcomputing.com/2020/06/2020-0610-sqlite/</loc>
-    
-    <lastmod>2020-06-14T22:54:24.396Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://www.bedroomcomputing.com/2020/06/2020-0608-popupto/</loc>
     
     <lastmod>2020-06-11T18:44:49.286Z</lastmod>
@@ -124,13 +131,6 @@
     <loc>https://www.bedroomcomputing.com/2020/04/2020-0415-flexMessage/</loc>
     
     <lastmod>2020-06-11T18:31:52.055Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.bedroomcomputing.com/2020/03/2020-0327-mybatis/</loc>
-    
-    <lastmod>2020-06-11T18:30:09.141Z</lastmod>
     
   </url>
   
