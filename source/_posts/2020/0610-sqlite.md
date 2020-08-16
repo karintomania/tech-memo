@@ -1,7 +1,7 @@
 ---
-title: sqliteとは？特徴と使い方を解説する
+title: SQLiteとは？特徴と使い方を解説する
 tags:
-  - sqlite
+  - SQLite
   - OSS
   - DB
 categories: 技術
