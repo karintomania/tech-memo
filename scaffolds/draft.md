@@ -2,11 +2,11 @@
 title: {{ title }}
 tags:
 categories: 技術
-featured_image: 
+featured_image: thumb.png
 ---
 
 ## 背景
-こんにちは。 [karintomania(@karintozuki)](https://twitter.com/karintozuki)です。  
+こんにちは。 [かりんとうマニア(@karintozuki)](https://twitter.com/karintozuki)です。  
 
 ## まとめ
 
