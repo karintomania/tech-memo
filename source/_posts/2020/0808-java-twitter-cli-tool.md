@@ -3,6 +3,7 @@ title: Twitter APIをJavaで触る！Twitter4jを使ってみた
 tags:
   - Java
   - Twitter
+  - Twitter API
 categories: 技術
 featured_image: tweet.gif
 date: 2020-08-08 23:19:49
