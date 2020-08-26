@@ -21,7 +21,7 @@
     <!-- OGP settings -->
 	
   <meta name="description" content="JDBIとはこんにちは。karintomania(twitter)です。JDBIはJavaの様々あるORマッパーの一つです。軽量かつ直感的な使い勝手が人気だということで、使ってみました。今回はSpring Bootと一緒に使う方法を紹介します。">
-<meta name="keywords" content="Spring Boot,Java,OR Mapper">
+<meta name="keywords" content="Java,Spring Boot,OR Mapper">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Spring BootでJDBIを使う">
 <meta property="og:url" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;03&#x2F;2020-0324-jdbiSpring&#x2F;index.html">
@@ -30,7 +30,8 @@
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;03&#x2F;2020-0324-jdbiSpring&#x2F;h2-console.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;03&#x2F;2020-0324-jdbiSpring&#x2F;result.png">
-<meta property="og:updated_time" content="2020-06-08T18:06:25.305Z">
+<meta property="og:image" content="https:&#x2F;&#x2F;thumbnail.image.rakuten.co.jp&#x2F;ran&#x2F;img&#x2F;2001&#x2F;0009&#x2F;784&#x2F;798&#x2F;053&#x2F;479&#x2F;20010009784798053479_1.jpg?_ex=320x320">
+<meta property="og:updated_time" content="2020-08-26T07:45:25.081Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;03&#x2F;2020-0324-jdbiSpring&#x2F;h2-console.png">
   
@@ -117,7 +118,7 @@
 	
       
 		<h2>目次</h2>
-		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#JDBIとは"><span class="toc-text">JDBIとは</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring-initializer"><span class="toc-text">Spring initializer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Build-Gradle"><span class="toc-text">Build.Gradle</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#application-properties"><span class="toc-text">application.properties</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Configurationファイル"><span class="toc-text">Configurationファイル</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Repository"><span class="toc-text">Repository</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#所感"><span class="toc-text">所感</span></a></li></ol>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#JDBIとは"><span class="toc-text">JDBIとは</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring-initializer"><span class="toc-text">Spring initializer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Build-Gradle"><span class="toc-text">Build.Gradle</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#application-properties"><span class="toc-text">application.properties</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Configurationファイル"><span class="toc-text">Configurationファイル</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Repository"><span class="toc-text">Repository</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#所感"><span class="toc-text">所感</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#【PR】おすすめ技術本"><span class="toc-text">【PR】おすすめ技術本</span></a></li></ol>
         <h2 id="JDBIとは"><a href="#JDBIとは" class="headerlink" title="JDBIとは"></a>JDBIとは</h2><p>こんにちは。<a href="https://twitter.com/karintozuki" target="_blank" rel="noopener">karintomania(twitter)</a>です。<br>JDBIはJavaの様々あるORマッパーの一つです。<br>軽量かつ直感的な使い勝手が人気だということで、使ってみました。<br>今回はSpring Bootと一緒に使う方法を紹介します。  </p>
 <a id="more"></a>
 
@@ -160,11 +161,14 @@
 <h2 id="所感"><a href="#所感" class="headerlink" title="所感"></a>所感</h2><p>恥ずかしながらこのスライドを見るまでORマッパーはJPA一択だと思っていました。<br><a href="https://www.slideshare.net/masatoshitada7/java-or-jsug" target="_blank" rel="noopener">Java ORマッパー選定のポイント</a><br>標準だからという理由だけで使っていたJPAですが、<br>高機能であるが故に、実装が複雑になりがちなことと、<br>SQLが自動生成なので、パフォーマンスの調整が難しくなることがあるので覚悟の上で使ってくれとのこと。<br>JDBIはそう言ったこともなさそうですね。ベタ書きですし。<br>個人的にはシンプルなものが好きなので、<br>このくらいの機能感がちょうど良いのかなと思っています。  </p>
 <p>この記事がお役に立てると幸いです。  </p>
 <p>それでは今日はこの辺で。</p>
+<h2 id="【PR】おすすめ技術本"><a href="#【PR】おすすめ技術本" class="headerlink" title="【PR】おすすめ技術本"></a>【PR】おすすめ技術本</h2><p>Spring Bootの勉強にはこちらがおすすめです。</p>
+
+<div class="kaerebalink-box" style="text-align:left;padding-bottom:20px;font-size:small;zoom: 1;overflow: hidden;"><div class="kaerebalink-image" style="float:left;margin:0 15px 10px 0;"><a href="https://rpx.a8.net/svt/ejp?a8mat=3BK2F7+C8KSFM+2HOM+BWGDT&rakuten=y&a8ejpredirect=http%3A%2F%2Fhb.afl.rakuten.co.jp%2Fhgc%2Fg00rd1d4.2bo114c4.g00rd1d4.2bo126fd%2Fa20081060992_3BK2F7_C8KSFM_2HOM_BWGDT%3Fpc%3Dhttp%253A%252F%252Fitem.rakuten.co.jp%252Fbooxstore%252Fbk-4798053473%252F%26m%3Dhttp%253A%252F%252Fm.rakuten.co.jp%252Fbooxstore%252Fi%252F12262146%252F" target="_blank"><img src="https://thumbnail.image.rakuten.co.jp/ran/img/2001/0009/784/798/053/479/20010009784798053479_1.jpg?_ex=320x320" style="border: none;"></a></div><div class="kaerebalink-info" style="line-height:120%;zoom: 1;overflow: hidden;"><div class="kaerebalink-name" style="margin-bottom:10px;line-height:120%"><a href="https://rpx.a8.net/svt/ejp?a8mat=3BK2F7+C8KSFM+2HOM+BWGDT&rakuten=y&a8ejpredirect=http%3A%2F%2Fhb.afl.rakuten.co.jp%2Fhgc%2Fg00rd1d4.2bo114c4.g00rd1d4.2bo126fd%2Fa20081060992_3BK2F7_C8KSFM_2HOM_BWGDT%3Fpc%3Dhttp%253A%252F%252Fitem.rakuten.co.jp%252Fbooxstore%252Fbk-4798053473%252F%26m%3Dhttp%253A%252F%252Fm.rakuten.co.jp%252Fbooxstore%252Fi%252F12262146%252F" target="_blank">Ｓｐｒｉｎｇ　Ｂｏｏｔ２プログラミング入門   /秀和システム/掌田津耶乃</a><div class="kaerebalink-powered-date" style="font-size:8pt;margin-top:5px;font-family:verdana;line-height:120%">posted with <a href="https://kaereba.com" rel="nofollow" target="_blank">カエレバ</a></div></div><div class="kaerebalink-detail" style="margin-bottom:5px;"></div><div class="kaerebalink-link1" style="margin-top:10px;"><div class="shoplinkrakuten" style="display:inline;margin-right:5px"><a href="https://rpx.a8.net/svt/ejp?a8mat=3BK2F7+C8KSFM+2HOM+BWGDT&rakuten=y&a8ejpredirect=http%3A%2F%2Fhb.afl.rakuten.co.jp%2Fhgc%2Fg00rd1d4.2bo114c4.g00rd1d4.2bo126fd%2Fa20081060992_3BK2F7_C8KSFM_2HOM_BWGDT%3Fpc%3Dhttp%253A%252F%252Fitem.rakuten.co.jp%252Fbooxstore%252Fbk-4798053473%252F%26m%3Dhttp%253A%252F%252Fm.rakuten.co.jp%252Fbooxstore%252Fi%252F12262146%252F" target="_blank">楽天市場</a></div><div class="shoplinkamazon" style="display:inline;margin-right:5px"><a href="https://px.a8.net/svt/ejp?a8mat=3BK5JU+7IW90Y+249K+BWGDT&a8ejpredirect=https%3A%2F%2Fwww.amazon.co.jp%2Fdp%2F4798053473%2F%3Ftag%3Da8-affi-307152-22" target="_blank">Amazon</a></div></div></div><div class="booklink-footer" style="clear: left"></div></div>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.bedroomcomputing.com/2020/03/2020-0324-jdbiSpring/" data-id="ckeb2af56000zg3l1gx1ebxd4" data-title="Spring BootでJDBIを使う" class="article-share-link">Share</a>
+      <a data-url="https://www.bedroomcomputing.com/2020/03/2020-0324-jdbiSpring/" data-id="ckeb32ckf000z36l1hbtqh4c8" data-title="Spring BootでJDBIを使う" class="article-share-link">Share</a>
       
       
       

@@ -23,7 +23,7 @@
 		<meta property="og:image" content="https://www.bedroomcomputing.com/2020/04/2020-0415-flexMessage/feature-line-flex-message.png" /> 
 	
   <meta name="description" content="背景こんにちは。karintomania(twitter)です。LINE Botを開発する際に必ずと言っていいほど(？)使うのがFlex Messageです。これはメッセージのレイアウトをJsonで記述したもので、Botから送信するメッセージの自由なレイアウトを可能にしてくれます。私はこれを利用して、簡単な英単語クイズを作ってみました。    その中で学んだことを記事にしています。">
-<meta name="keywords" content="Spring Boot,Java,LINE Bot">
+<meta name="keywords" content="Java,Spring Boot,LINE Bot">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LINE BotでFlex Messageを使う (with Spring Boot)">
 <meta property="og:url" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;04&#x2F;2020-0415-flexMessage&#x2F;index.html">
@@ -36,7 +36,8 @@
 <meta property="og:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;04&#x2F;2020-0415-flexMessage&#x2F;simulator.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;04&#x2F;2020-0415-flexMessage&#x2F;simu-example.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;04&#x2F;2020-0415-flexMessage&#x2F;answer.png">
-<meta property="og:updated_time" content="2020-06-11T18:31:52.055Z">
+<meta property="og:image" content="https:&#x2F;&#x2F;thumbnail.image.rakuten.co.jp&#x2F;ran&#x2F;img&#x2F;2001&#x2F;0009&#x2F;784&#x2F;798&#x2F;053&#x2F;479&#x2F;20010009784798053479_1.jpg?_ex=320x320">
+<meta property="og:updated_time" content="2020-08-26T07:53:47.301Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;04&#x2F;2020-0415-flexMessage&#x2F;linebot.gif">
   
@@ -125,7 +126,7 @@
 	
       
 		<h2>目次</h2>
-		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景"><span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#作ったもの"><span class="toc-text">作ったもの</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Flex-Messageを作る流れ"><span class="toc-text">Flex Messageを作る流れ</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#simulatorを使ってメッセージのデザイン"><span class="toc-text">simulatorを使ってメッセージのデザイン</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#要素の種類"><span class="toc-text">要素の種類</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#要素の追加"><span class="toc-text">要素の追加</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Jsonで保存"><span class="toc-text">Jsonで保存</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#実装"><span class="toc-text">実装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Boxの作り方"><span class="toc-text">Boxの作り方</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#まとめ"><span class="toc-text">まとめ</span></a></li></ol>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景"><span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#作ったもの"><span class="toc-text">作ったもの</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Flex-Messageを作る流れ"><span class="toc-text">Flex Messageを作る流れ</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#simulatorを使ってメッセージのデザイン"><span class="toc-text">simulatorを使ってメッセージのデザイン</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#要素の種類"><span class="toc-text">要素の種類</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#要素の追加"><span class="toc-text">要素の追加</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Jsonで保存"><span class="toc-text">Jsonで保存</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#実装"><span class="toc-text">実装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Boxの作り方"><span class="toc-text">Boxの作り方</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#まとめ"><span class="toc-text">まとめ</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#【PR】おすすめ技術本"><span class="toc-text">【PR】おすすめ技術本</span></a></li></ol>
         <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>こんにちは。<a href="https://twitter.com/karintozuki" target="_blank" rel="noopener">karintomania(twitter)</a>です。<br>LINE Botを開発する際に必ずと言っていいほど(？)使うのがFlex Messageです。<br>これはメッセージのレイアウトをJsonで記述したもので、<br>Botから送信するメッセージの自由なレイアウトを可能にしてくれます。<br>私はこれを利用して、簡単な英単語クイズを作ってみました。  </p>
 <img src="/2020/04/2020-0415-flexMessage/linebot.gif" class="">
 <p>その中で学んだことを記事にしています。  </p>
@@ -166,11 +167,14 @@
 
 <h2 id="まとめ"><a href="#まとめ" class="headerlink" title="まとめ"></a>まとめ</h2><p>Flex Messageに最初触った時は、若干クセがあって戸惑ったのですが、笑<br>今日紹介したようなことに慣れてしまえば<br>結構、簡単に作れるので、ぜひ挑戦してみてください。</p>
 <p>それでは今日はこの辺で。  </p>
+<h2 id="【PR】おすすめ技術本"><a href="#【PR】おすすめ技術本" class="headerlink" title="【PR】おすすめ技術本"></a>【PR】おすすめ技術本</h2><p>Spring Bootの勉強にはこちらがおすすめです。</p>
+
+<div class="kaerebalink-box" style="text-align:left;padding-bottom:20px;font-size:small;zoom: 1;overflow: hidden;"><div class="kaerebalink-image" style="float:left;margin:0 15px 10px 0;"><a href="https://rpx.a8.net/svt/ejp?a8mat=3BK2F7+C8KSFM+2HOM+BWGDT&rakuten=y&a8ejpredirect=http%3A%2F%2Fhb.afl.rakuten.co.jp%2Fhgc%2Fg00rd1d4.2bo114c4.g00rd1d4.2bo126fd%2Fa20081060992_3BK2F7_C8KSFM_2HOM_BWGDT%3Fpc%3Dhttp%253A%252F%252Fitem.rakuten.co.jp%252Fbooxstore%252Fbk-4798053473%252F%26m%3Dhttp%253A%252F%252Fm.rakuten.co.jp%252Fbooxstore%252Fi%252F12262146%252F" target="_blank"><img src="https://thumbnail.image.rakuten.co.jp/ran/img/2001/0009/784/798/053/479/20010009784798053479_1.jpg?_ex=320x320" style="border: none;"></a></div><div class="kaerebalink-info" style="line-height:120%;zoom: 1;overflow: hidden;"><div class="kaerebalink-name" style="margin-bottom:10px;line-height:120%"><a href="https://rpx.a8.net/svt/ejp?a8mat=3BK2F7+C8KSFM+2HOM+BWGDT&rakuten=y&a8ejpredirect=http%3A%2F%2Fhb.afl.rakuten.co.jp%2Fhgc%2Fg00rd1d4.2bo114c4.g00rd1d4.2bo126fd%2Fa20081060992_3BK2F7_C8KSFM_2HOM_BWGDT%3Fpc%3Dhttp%253A%252F%252Fitem.rakuten.co.jp%252Fbooxstore%252Fbk-4798053473%252F%26m%3Dhttp%253A%252F%252Fm.rakuten.co.jp%252Fbooxstore%252Fi%252F12262146%252F" target="_blank">Ｓｐｒｉｎｇ　Ｂｏｏｔ２プログラミング入門   /秀和システム/掌田津耶乃</a><div class="kaerebalink-powered-date" style="font-size:8pt;margin-top:5px;font-family:verdana;line-height:120%">posted with <a href="https://kaereba.com" rel="nofollow" target="_blank">カエレバ</a></div></div><div class="kaerebalink-detail" style="margin-bottom:5px;"></div><div class="kaerebalink-link1" style="margin-top:10px;"><div class="shoplinkrakuten" style="display:inline;margin-right:5px"><a href="https://rpx.a8.net/svt/ejp?a8mat=3BK2F7+C8KSFM+2HOM+BWGDT&rakuten=y&a8ejpredirect=http%3A%2F%2Fhb.afl.rakuten.co.jp%2Fhgc%2Fg00rd1d4.2bo114c4.g00rd1d4.2bo126fd%2Fa20081060992_3BK2F7_C8KSFM_2HOM_BWGDT%3Fpc%3Dhttp%253A%252F%252Fitem.rakuten.co.jp%252Fbooxstore%252Fbk-4798053473%252F%26m%3Dhttp%253A%252F%252Fm.rakuten.co.jp%252Fbooxstore%252Fi%252F12262146%252F" target="_blank">楽天市場</a></div><div class="shoplinkamazon" style="display:inline;margin-right:5px"><a href="https://px.a8.net/svt/ejp?a8mat=3BK5JU+7IW90Y+249K+BWGDT&a8ejpredirect=https%3A%2F%2Fwww.amazon.co.jp%2Fdp%2F4798053473%2F%3Ftag%3Da8-affi-307152-22" target="_blank">Amazon</a></div></div></div><div class="booklink-footer" style="clear: left"></div></div>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.bedroomcomputing.com/2020/04/2020-0415-flexMessage/" data-id="ckeb2af5d001bg3l1ggtpfkpd" data-title="LINE BotでFlex Messageを使う (with Spring Boot)" class="article-share-link">Share</a>
+      <a data-url="https://www.bedroomcomputing.com/2020/04/2020-0415-flexMessage/" data-id="ckeb32cki001436l16rb07bqm" data-title="LINE BotでFlex Messageを使う (with Spring Boot)" class="article-share-link">Share</a>
       
       
       

@@ -2,6 +2,48 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.bedroomcomputing.com/2020/04/2020-0430-springboot-azure-2/</loc>
+    
+    <lastmod>2020-08-26T07:54:15.133Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.bedroomcomputing.com/2020/04/2020-0430-springboot-azure-1/</loc>
+    
+    <lastmod>2020-08-26T07:53:58.608Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.bedroomcomputing.com/2020/04/2020-0408-linebot/</loc>
+    
+    <lastmod>2020-08-26T07:53:49.427Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.bedroomcomputing.com/2020/04/2020-0415-flexMessage/</loc>
+    
+    <lastmod>2020-08-26T07:53:47.301Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.bedroomcomputing.com/2020/03/2020-0324-jdbiSpring/</loc>
+    
+    <lastmod>2020-08-26T07:45:25.081Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.bedroomcomputing.com/2020/03/2020-0327-mybatis/</loc>
+    
+    <lastmod>2020-08-26T07:45:08.137Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.bedroomcomputing.com/2020/08/2020-0826-java-self-taught/</loc>
     
     <lastmod>2020-08-26T07:33:13.245Z</lastmod>
@@ -47,13 +89,6 @@
     <loc>https://www.bedroomcomputing.com/2020/08/2020-0815-engineer-static-site-gen-blog/</loc>
     
     <lastmod>2020-08-15T18:01:55.712Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.bedroomcomputing.com/2020/03/2020-0327-mybatis/</loc>
-    
-    <lastmod>2020-08-14T20:35:49.694Z</lastmod>
     
   </url>
   
@@ -142,37 +177,9 @@
   </url>
   
   <url>
-    <loc>https://www.bedroomcomputing.com/2020/04/2020-0430-springboot-azure-2/</loc>
-    
-    <lastmod>2020-06-11T18:39:23.061Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.bedroomcomputing.com/2020/04/2020-0430-springboot-azure-1/</loc>
-    
-    <lastmod>2020-06-11T18:33:02.805Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.bedroomcomputing.com/2020/04/2020-0415-flexMessage/</loc>
-    
-    <lastmod>2020-06-11T18:31:52.055Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://www.bedroomcomputing.com/2020/04/2020-0408-googleconsole/</loc>
     
     <lastmod>2020-06-11T18:29:47.558Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.bedroomcomputing.com/2020/04/2020-0408-linebot/</loc>
-    
-    <lastmod>2020-06-11T18:29:18.580Z</lastmod>
     
   </url>
   
@@ -208,13 +215,6 @@
     <loc>https://www.bedroomcomputing.com/2020/03/2020-0314-functionalProgrammingInJava/</loc>
     
     <lastmod>2020-06-08T18:06:26.044Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.bedroomcomputing.com/2020/03/2020-0324-jdbiSpring/</loc>
-    
-    <lastmod>2020-06-08T18:06:25.305Z</lastmod>
     
   </url>
   
