@@ -3,7 +3,7 @@ title: アプリ未経験エンジニアが独学で個人開発Androidアプリ
 tags:
   - Android
   - 個人開発
-categories: 技術
+categories: エンジニアライフ
 date: 2020-08-01 23:48:09
 featured_image: thumb.png
 ---
