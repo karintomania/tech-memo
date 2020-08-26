@@ -42,8 +42,8 @@ tags: [Java, PHP, Java script]
 |
 
 アフィリリンク用
-{% row %}
-{% endrow %}
+{% raw %}
+{% endraw %}
 
 ## 画像
 feature は10 x 5くらいでOK
