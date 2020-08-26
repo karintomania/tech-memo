@@ -9,7 +9,6 @@ featured_image: thumb.png
 date: 2020-08-26 08:33:02
 ---
 
-
 ## はじめに
 こんにちは。 [かりんとうマニア(@karintozuki)](https://twitter.com/karintozuki)です。  
 
@@ -227,9 +226,23 @@ Javaはどのように学べば良いのでしょうか。
 とはいえ、私は最速でJavaを学びたいんだ、という人もいると思います。
 Java好きとしては悲しいですが、<u>Javaを教えているスクールは意外と多くありません。</u>
 スクール選びの際にはJavaを教えてくれるかどうかしっかり調べましょう。
-<!-- 今回は私が調べた限りでJavaを教えてくれる貴重なスクールを二つ紹介します。 -->
+私が調べた限りでJavaを教えてくれる貴重なスクールを紹介します。
 
 
+#### Freeks
+{% asset_img 02_freeks.png %}
+Freeksは月額9800円でJavaが学べるスクールです。
+料金設定が他のプログラミングスクールに比べて良心的で、
+期間も無制限なので、自分のペースで進められるのが良いですね。
+
+興味があれば、以下のリンクから
+<u>無料の説明会が受講できます。</u>
+無料ですので受けてみてはいかがでしょうか。
+{% raw %}
+<a href="https://px.a8.net/svt/ejp?a8mat=3BKEXM+2G46B6+4KEM+5ZMCH" rel="nofollow">
+<img border="0" width="300" height="250" alt="" src="https://www27.a8.net/svt/bgt?aid=200826778148&wid=001&eno=01&mid=s00000021307001006000&mc=1"></a>
+<img border="0" width="1" height="1" src="https://www14.a8.net/0.gif?a8mat=3BKEXM+2G46B6+4KEM+5ZMCH" alt="">
+{% endraw %}
 
 ##  まとめ
 いかがでしたでしょうか。
