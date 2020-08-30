@@ -15,20 +15,20 @@
 <!-- End Google Analytics -->
 
   
-  <title>grepコマンドでAND検索をする | 寝室コンピューティング</title>
+  <title>Linuxのgrepコマンドで複数キーワードをAND検索をする方法 | 寝室コンピューティング</title>
   
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- OGP settings -->
 	
-  <meta name="description" content="背景こんにちは。karintomania(twitter)です。grepコマンドってAND検索みたいなオプションがあると思いきや、そんなオプションはなかったんですね。そこでAND検索っぽく複数キーワードを検索する方法です。   結論パイプとxargsを使うことで解決です。fooとbarを含むファイルを検索したいときは以下の通りです。grep -l foo * |xargs grep -l bar">
+  <meta name="description" content="背景こんにちは。 karintomania(@karintozuki)と申します。Linuxのgrepコマンドで複数キーワードをAND検索する方法を紹介します。 実はgrepコマンドには、複数キーワードを検索するようなオプションはなかったんですね。   そこで複数キーワードを検索する方法を二つ紹介します。">
 <meta name="keywords" content="Linux Command">
 <meta property="og:type" content="article">
-<meta property="og:title" content="grepコマンドでAND検索をする">
+<meta property="og:title" content="Linuxのgrepコマンドで複数キーワードをAND検索をする方法">
 <meta property="og:url" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;05&#x2F;2020-0529-grepTwoWords&#x2F;index.html">
 <meta property="og:site_name" content="寝室コンピューティング">
-<meta property="og:description" content="背景こんにちは。karintomania(twitter)です。grepコマンドってAND検索みたいなオプションがあると思いきや、そんなオプションはなかったんですね。そこでAND検索っぽく複数キーワードを検索する方法です。   結論パイプとxargsを使うことで解決です。fooとbarを含むファイルを検索したいときは以下の通りです。grep -l foo * |xargs grep -l bar">
+<meta property="og:description" content="背景こんにちは。 karintomania(@karintozuki)と申します。Linuxのgrepコマンドで複数キーワードをAND検索する方法を紹介します。 実はgrepコマンドには、複数キーワードを検索するようなオプションはなかったんですね。   そこで複数キーワードを検索する方法を二つ紹介します。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-06-08T18:06:17.062Z">
+<meta property="og:updated_time" content="2020-08-30T08:03:26.007Z">
 <meta name="twitter:card" content="summary">
   
   
@@ -104,7 +104,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      grepコマンドでAND検索をする
+      Linuxのgrepコマンドで複数キーワードをAND検索をする方法
     </h1>
   
 
@@ -114,27 +114,33 @@
 	
       
 		<h2>目次</h2>
-		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景"><span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#結論"><span class="toc-text">結論</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解説"><span class="toc-text">解説</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三つ以上のキーワードを検索したいとき"><span class="toc-text">三つ以上のキーワードを検索したいとき</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#おまけ"><span class="toc-text">おまけ</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#まとめ"><span class="toc-text">まとめ</span></a></li></ol>
-        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>こんにちは。<a href="https://twitter.com/karintozuki" target="_blank" rel="noopener">karintomania(twitter)</a>です。<br>grepコマンドってAND検索みたいなオプションがあると思いきや、<br>そんなオプションはなかったんですね。<br>そこでAND検索っぽく複数キーワードを検索する方法です。  </p>
-<h2 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h2><p><u>パイプとxargsを使うことで解決です。</u><br>fooとbarを含むファイルを検索したいときは以下の通りです。<br><code>grep -l foo * |xargs grep -l bar</code></p>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景"><span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#xargsを使って複数キーワードを検索する"><span class="toc-text">xargsを使って複数キーワードを検索する</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三つ以上のキーワードを検索したいとき"><span class="toc-text">三つ以上のキーワードを検索したいとき</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正規表現でやる場合"><span class="toc-text">正規表現でやる場合</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#まとめ"><span class="toc-text">まとめ</span></a></li></ol>
+        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>こんにちは。 <a href="https://twitter.com/karintozuki" target="_blank" rel="noopener">karintomania(@karintozuki)</a>と申します。<br>Linuxのgrepコマンドで複数キーワードを<br>AND検索する方法を紹介します。</p>
+<p>実はgrepコマンドには、<br>複数キーワードを検索するようなオプションはなかったんですね。  </p>
+<p>そこで複数キーワードを検索する方法を二つ紹介します。  </p>
 <a id="more"></a>
 
-<p>少し解説です。  </p>
-<h2 id="解説"><a href="#解説" class="headerlink" title="解説"></a>解説</h2><p><code>grep -l foo * |xargs grep -l bar</code><br>この方法は二回grepをしています。<br>手前のgrepで一度fooを含むテキストを検索し、その中からbarを検索しています。  </p>
-<p><code>grep -l foo *</code><br>１つ目のgrepについている-lは検索結果にファイル名のみを表示するオプションです。<br>fooを含んだファイルを列挙します。  </p>
+<h2 id="xargsを使って複数キーワードを検索する"><a href="#xargsを使って複数キーワードを検索する" class="headerlink" title="xargsを使って複数キーワードを検索する"></a>xargsを使って複数キーワードを検索する</h2><p><u>この方法ではxargsを使います。</u><br>fooとbarを含むファイルを検索したいときは以下の通りです。<br><code>grep -l foo * |xargs grep -l bar</code></p>
+<p>この方法は二回grepすることで、<br>以下の処理を実行しています。</p>
+<ul>
+<li>最初のgrepでfooを含むファイルを検索する</li>
+<li>xargsで最初のgrep結果を2回目のgrepに渡す</li>
+<li>2回目のgrepでbarを検索する</li>
+</ul>
+<p>一つずつ説明します。</p>
+<p><code>grep -l foo *</code><br>１つ目のgrepについている-lは検索結果にファイル名のみを表示するオプションです。<br>fooを含んだファイル名を列挙します。  </p>
 <p><code>|xargs grep -l bar</code><br>その後に|(パイプ)とxargsを使っています。<br>これにより２つ目のgrepの検索対象として、１つ目の検索結果を渡します。  </p>
-<p>パイプとxargsはgrep検索に限らず、処理した結果をさらに処理したいときに便利です。<br>使いこなせるようになると捗ります。  </p>
 <h2 id="三つ以上のキーワードを検索したいとき"><a href="#三つ以上のキーワードを検索したいとき" class="headerlink" title="三つ以上のキーワードを検索したいとき"></a>三つ以上のキーワードを検索したいとき</h2><p><code>grep -l foo * | xargs grep -l bar | xargs grep -l baz</code><br>xargs grep以降をつなげてってください。</p>
-<h2 id="おまけ"><a href="#おまけ" class="headerlink" title="おまけ"></a>おまけ</h2><p>正規表現でやるバージョンも書いておきます。<br><code>grep -e foo.*bar *</code></p>
-<p><code>-e</code>は正規表現のオプションです。<br>ただし、同一行にfoo,barの順番で出現することが分かっている場合でないとヒットしません。<br>改行してたりbar fooの順番で出てくるとダメと言うことですね。  </p>
-<p>順不同の正規表現を書くこともできますが、それくらいならxargsを使った方がシンプルな気がします。  </p>
+<h2 id="正規表現でやる場合"><a href="#正規表現でやる場合" class="headerlink" title="正規表現でやる場合"></a>正規表現でやる場合</h2><p>正規表現でやるバージョンも書いておきます。<br><code>grep -e foo.*bar *</code></p>
+<p><code>-e</code>は正規表現のオプションです。<br>ただし、<u>同一行にfoo,barの順番で出現する場合でないとヒットしません。</u><br>改行してたりbar fooの順番で出てくるとダメと言うことですね。  </p>
+<p>順不同の正規表現を書くこともできますが、<br>それくらいならxargsを使った方がシンプルな気がします。  </p>
 <h2 id="まとめ"><a href="#まとめ" class="headerlink" title="まとめ"></a>まとめ</h2><p>grepで複数キーワードを検索する方法を紹介しました。  </p>
 <p>お役に立てたなら幸いです。<br>それでは今日はこの辺で。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.bedroomcomputing.com/2020/05/2020-0529-grepTwoWords/" data-id="ckegsfli1001s5nl14iaw97eq" data-title="grepコマンドでAND検索をする" class="article-share-link">Share</a>
+      <a data-url="https://www.bedroomcomputing.com/2020/05/2020-0529-grepTwoWords/" data-id="ckegt4srb001pj9l117itc1af" data-title="Linuxのgrepコマンドで複数キーワードをAND検索をする方法" class="article-share-link">Share</a>
       
       
       
