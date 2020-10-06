@@ -15,24 +15,19 @@
 <!-- End Google Analytics -->
 
   
-  <title>Dockerコンテナ上でHexoを導入してGithubPagesにデプロイする〜②サイト生成編〜 | 寝室コンピューティング</title>
+  <title>Archives: 2020/10 | 寝室コンピューティング</title>
+  
+	<meta name="robots" content="noindex , nofollow" />
   
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- OGP settings -->
 	
-  <meta name="description" content="Hexoサイト生成こんにちは。karintomania(twitter)です。前回でコンテナが準備できたので以下のコマンドを実行してサイトを生成しましょう。 123456789&#x2F;app # hexo init test &amp;amp;&amp;amp; cd testINFO  Cloning hexo-starter https:&#x2F;&#x2F;github.com&#x2F;hexojs&#x2F;hexo-starter.gitClo">
-<meta name="keywords" content="Docker,Hexo,Github Pages">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Dockerコンテナ上でHexoを導入してGithubPagesにデプロイする〜②サイト生成編〜">
-<meta property="og:url" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2019&#x2F;10&#x2F;2019-1029-start-hexo-generate-site&#x2F;index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="寝室コンピューティング">
+<meta property="og:url" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;archives&#x2F;2020&#x2F;10&#x2F;index.html">
 <meta property="og:site_name" content="寝室コンピューティング">
-<meta property="og:description" content="Hexoサイト生成こんにちは。karintomania(twitter)です。前回でコンテナが準備できたので以下のコマンドを実行してサイトを生成しましょう。 123456789&#x2F;app # hexo init test &amp;amp;&amp;amp; cd testINFO  Cloning hexo-starter https:&#x2F;&#x2F;github.com&#x2F;hexojs&#x2F;hexo-starter.gitClo">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2019&#x2F;10&#x2F;2019-1029-start-hexo-generate-site&#x2F;sitePreview.png">
-<meta property="og:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2019&#x2F;10&#x2F;2019-1029-start-hexo-generate-site&#x2F;draft.png">
-<meta property="og:updated_time" content="2020-06-08T18:04:28.768Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2019&#x2F;10&#x2F;2019-1029-start-hexo-generate-site&#x2F;sitePreview.png">
   
   
     <link rel="icon" href="/css/images/favicon.ico">
@@ -89,100 +84,42 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-2019-1029-start-hexo-generate-site" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/10/2019-1029-start-hexo-generate-site/" class="article-date">
-  <time datetime="2019-10-29T19:45:15.000Z" itemprop="datePublished">2019-10-29</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%8A%80%E8%A1%93/">技術</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+        <section id="main">
   
-    <h1 class="article-title" itemprop="name">
-      Dockerコンテナ上でHexoを導入してGithubPagesにデプロイする〜②サイト生成編〜
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2020" class="archive-year">2020</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+	  <a href="/2020/10/2020-1006-kotlin-chronounit/" class="archive-article-date">
+  <time datetime="2020-10-06T21:17:44.000Z" itemprop="datePublished">Oct 6</time>
+</a>
+	  
+		<img src="https://www.bedroomcomputing.com/2020/10/2020-1006-kotlin-chronounit/thumb.png">
+	
+      
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2020/10/2020-1006-kotlin-chronounit/">Kotlinで日付の差分を計算する方法</a>
     </h1>
   
 
-      </header>
-	
-    <div class="article-entry" itemprop="articleBody">
-	
-      
-		<h2>目次</h2>
-		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Hexoサイト生成"><span class="toc-text">Hexoサイト生成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#記事の追加"><span class="toc-text">記事の追加</span></a></li></ol>
-        <h2 id="Hexoサイト生成"><a href="#Hexoサイト生成" class="headerlink" title="Hexoサイト生成"></a>Hexoサイト生成</h2><p>こんにちは。<a href="https://twitter.com/karintozuki" target="_blank" rel="noopener">karintomania(twitter)</a>です。<br>前回でコンテナが準備できたので<br>以下のコマンドを実行してサイトを生成しましょう。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">/app # hexo init test &amp;&amp; cd test</span><br><span class="line">INFO  Cloning hexo-starter https://github.com/hexojs/hexo-starter.git</span><br><span class="line">Cloning into &apos;/app/test&apos;...</span><br><span class="line">remote: Enumerating objects: 8, done.</span><br><span class="line">remote: Counting objects: 100% (8/8), done.</span><br><span class="line">(中略)</span><br><span class="line">Done in 51.11s.</span><br><span class="line">INFO  Start blogging with Hexo!</span><br><span class="line">/app/test #</span><br></pre></td></tr></table></figure>
-
-<a id="more"></a>
-<p>githubから雛形をクローンしてるみたいですね。  </p>
-<p>これでローカルに何やらフォルダができたはずです。  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">test</span><br><span class="line">-node_modules   // nodeの色々が入ってる。触らないのが吉</span><br><span class="line">-public         // 実際の静的サイトのソースがここに入る</span><br><span class="line">-scaffolds      // 謎です笑。要調査。</span><br><span class="line">-source</span><br><span class="line">  -_drafts      // 下書きがここに入ります。</span><br><span class="line">  -_posts       // 投稿した記事はここに入ります。</span><br><span class="line"></span><br><span class="line">-themes         // テーマがここに入ります。デフォルトから変えたいときはここをいじります。</span><br><span class="line">_config.yml     // 設定ファイル。これから色々いじるはずです。</span><br></pre></td></tr></table></figure>
-
-<p>この状態ですでにサイトをプレビューできます。<br>以下のコマンドを実行して <a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a> にアクセスしてみます。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/app/test # hexo server</span><br><span class="line">INFO  Start processing</span><br><span class="line">INFO  Hexo is running at http://localhost:4000 . Press Ctrl+C to stop.</span><br></pre></td></tr></table></figure>
-
-<p><img src="sitePreview.png" alt="プレビュー画面"></p>
-<h2 id="記事の追加"><a href="#記事の追加" class="headerlink" title="記事の追加"></a>記事の追加</h2><p>記事を追加するには以下のコマンドを叩きます。<br>hexo new {記事の種類} [タイトル名]</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new draft test</span><br></pre></td></tr></table></figure>
-
-<p>これでテストというタイトルの記事が作成されました。<br>source&gt;_drafts&gt;test.mdが作成されたはずです。<br>_draft内の記事は下書きとして扱われ、Hexoサーバ起動時にはプレビューされません。<br>下書きを編集する際にはdraftオプションをつけてサーバを起動します。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/app/test # hexo server --draft</span><br><span class="line">INFO  Start processing</span><br><span class="line">INFO  Hexo is running at http://localhost:4000 . Press Ctrl+C to stop.</span><br></pre></td></tr></table></figure>
-<p>testが追加されていますね。</p>
-<p><img src="draft.png" alt="test記事が追加されたはず"></p>
-<p>testはMarkdownで好きに編集してください。<br>ちなみにTitleはファイル名と同じじゃなくても問題ないみたいです。<br>ファイル名（hexo newコマンドで指定したもの)はURLとか内部的に使う、<br>Titleは記事内とか人が見るものに使う、って理解でいいのかなと思います。<br>また、そのままだとホーム画面に表示された時に全文が表示されてしまうので、以下のmoreを使います。  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- more --&gt;</span><br></pre></td></tr></table></figure>
-
-<p>そうすることでRead moreボタンが表示されるようになります。  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 旨いラーメンとは</span><br><span class="line">tags:</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">自由にMarkdownの編集をしてくださいな。</span><br><span class="line">## 章立ては＃で行う</span><br><span class="line"></span><br><span class="line">## スープ</span><br><span class="line">箇条書きとかは+,*,-らへん。個人的にはキーボードのポジション的に楽なので、＋をよく使う。</span><br><span class="line">+ コシ</span><br><span class="line">+ 太さ</span><br><span class="line">+ ちぢれ or ストレート</span><br><span class="line">+ 変わり種</span><br><span class="line">	- 箇条書きのネスト</span><br><span class="line">	- 川幅うどん</span><br><span class="line">	- ビャンビャン麺</span><br><span class="line">	- 刀削麺</span><br><span class="line">	</span><br><span class="line">&lt;!-- more --&gt;</span><br><span class="line">## スープ</span><br><span class="line">テーブルも作成可能</span><br><span class="line">|系統名|こってり度|好き|</span><br><span class="line">|---|---|---|</span><br><span class="line">|家系|★★|★★★|</span><br><span class="line">|二郎系|★★★|★★★|</span><br><span class="line">|つけ麺|★★★|★★★|</span><br><span class="line">|あっさりおしゃれ|★|★|</span><br></pre></td></tr></table></figure>
-
-<p>さて、Draftをプレビューしてこれで行くぜって状態になったら、パブリッシュです。<br>hexo publish (ドラフト内の記事タイトル)でドラフトからpostへ移動できます。  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/app/test # hexo publish test</span><br><span class="line">INFO  Published: /app/test/source/_posts/test.md</span><br></pre></td></tr></table></figure>
-
-<p>hexo serberコマンドでpostに移動されているか確認してみましょう！<br>できましたか？？</p>
-<p>次回はこのサイトをGithub Pageにデプロイしてみたいと思います。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://www.bedroomcomputing.com/2019/10/2019-1029-start-hexo-generate-site/" data-id="ckfygtahb0002l8l18d0o0x69" data-title="Dockerコンテナ上でHexoを導入してGithubPagesにデプロイする〜②サイト生成編〜" class="article-share-link">Share</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Github-Pages/" rel="tag">Github Pages</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li></ul>
-
-    </footer>
+    </header>
   </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2019/10/2019-1030-hexo-add-about-widget/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Hexoでサイドバーにウィジェット(プロフィール)を追加する
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2019/10/2019-1029-start-hexo-deploy/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Dockerコンテナ上でHexoを導入してGithubPagesにデプロイする〜③デプロイ編〜</div>
-    </a>
-  
-</nav>
-
-  
 </article>
+  
+  
+    </div></section>
+  
 
 
 </section>
