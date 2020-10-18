@@ -7,7 +7,7 @@ featured_image: thumb.png
 
 ## 背景
 こんにちは。 [かりんとうマニア(@karintozuki)](https://twitter.com/karintozuki)です。  
-
+<!-- more -->
 ## まとめ
 
 それじゃ今日はこの辺で。
