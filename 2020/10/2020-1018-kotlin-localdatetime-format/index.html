@@ -22,16 +22,16 @@
 	
 		<meta property="og:image" content="https://www.bedroomcomputing.com/2020/10/2020-1018-kotlin-localdatetime-format/thumb.png" /> 
 	
-  <meta name="description" content="背景こんにちは。 かりんとうマニア(@karintozuki)です。今回はKotlinで日時を好きなフォーマットで表示する方法を紹介します。 Kotlinで使える日時を扱うクラスKotlinの、と言いつつも、実際はJavaのクラスです。Javaには日時を扱うクラスがいくつかあります。（これらはより良い実装のために試行錯誤を重ねた結果だそうですが、新しくJavaを始める人にとってはややこしいだけです">
+  <meta name="description" content="背景こんにちは。 かりんとうマニア(@karintozuki)です。今回はKotlinで日時を好きなフォーマットで表示する方法を紹介します。">
 <meta name="keywords" content="Android,Kotlin">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Kotlinで日付をフォーマットする方法">
 <meta property="og:url" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;10&#x2F;2020-1018-kotlin-localdatetime-format&#x2F;index.html">
 <meta property="og:site_name" content="寝室コンピューティング">
-<meta property="og:description" content="背景こんにちは。 かりんとうマニア(@karintozuki)です。今回はKotlinで日時を好きなフォーマットで表示する方法を紹介します。 Kotlinで使える日時を扱うクラスKotlinの、と言いつつも、実際はJavaのクラスです。Javaには日時を扱うクラスがいくつかあります。（これらはより良い実装のために試行錯誤を重ねた結果だそうですが、新しくJavaを始める人にとってはややこしいだけです">
+<meta property="og:description" content="背景こんにちは。 かりんとうマニア(@karintozuki)です。今回はKotlinで日時を好きなフォーマットで表示する方法を紹介します。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https:&#x2F;&#x2F;thumbnail.image.rakuten.co.jp&#x2F;ran&#x2F;img&#x2F;2001&#x2F;0009&#x2F;784&#x2F;621&#x2F;066&#x2F;089&#x2F;20010009784621066089_1.jpg?_ex=320x320">
-<meta property="og:updated_time" content="2020-10-18T18:30:52.163Z">
+<meta property="og:updated_time" content="2020-10-18T18:35:45.517Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;thumbnail.image.rakuten.co.jp&#x2F;ran&#x2F;img&#x2F;2001&#x2F;0009&#x2F;784&#x2F;621&#x2F;066&#x2F;089&#x2F;20010009784621066089_1.jpg?_ex=320x320">
   
@@ -122,6 +122,8 @@
 		<h2>目次</h2>
 		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景"><span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Kotlinで使える日時を扱うクラス"><span class="toc-text">Kotlinで使える日時を扱うクラス</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#LocalDateTime型で書式を指定する"><span class="toc-text">LocalDateTime型で書式を指定する</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#実装例"><span class="toc-text">実装例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Date型で書式を指定する"><span class="toc-text">Date型で書式を指定する</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#実装例-1"><span class="toc-text">実装例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Calendar型で書式を指定する"><span class="toc-text">Calendar型で書式を指定する</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#実装例-2"><span class="toc-text">実装例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#パターン文字"><span class="toc-text">パターン文字</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#まとめ"><span class="toc-text">まとめ</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#関連記事"><span class="toc-text">関連記事</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#おすすめ書籍"><span class="toc-text">おすすめ書籍</span></a></li></ol>
         <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>こんにちは。 <a href="https://twitter.com/karintozuki" target="_blank" rel="noopener">かりんとうマニア(@karintozuki)</a>です。<br>今回はKotlinで日時を好きなフォーマットで表示する方法を紹介します。</p>
+<a id="more"></a>
+
 <h2 id="Kotlinで使える日時を扱うクラス"><a href="#Kotlinで使える日時を扱うクラス" class="headerlink" title="Kotlinで使える日時を扱うクラス"></a>Kotlinで使える日時を扱うクラス</h2><p>Kotlinの、と言いつつも、実際はJavaのクラスです。<br>Javaには日時を扱うクラスがいくつかあります。<br>（これらはより良い実装のために試行錯誤を重ねた結果だそうですが、<br>新しくJavaを始める人にとってはややこしいだけですね。）</p>
 <p>以下の表がKotlinで使える日時を扱うためのクラスです。<br>基本的にはLocalDateTimeが推奨されています。</p>
 <table>
@@ -209,7 +211,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.bedroomcomputing.com/2020/10/2020-1018-kotlin-localdatetime-format/" data-id="ckgfg9gtg003nl7l1563mevbs" data-title="Kotlinで日付をフォーマットする方法" class="article-share-link">Share</a>
+      <a data-url="https://www.bedroomcomputing.com/2020/10/2020-1018-kotlin-localdatetime-format/" data-id="ckgfgarib0086oll1b0nb6lht" data-title="Kotlinで日付をフォーマットする方法" class="article-share-link">Share</a>
       
       
       
