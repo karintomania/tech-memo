@@ -12,6 +12,9 @@ featured_image: feature-line-flex-message.png
 
 ## 背景
 こんにちは。[karintomania(twitter)](https://twitter.com/karintozuki)です。  
+
+この記事はこの記事の続きです。
+[Spring BootでLINE Botのサンプルを動かす 〜おうむ返しのその先へ〜](/2020/04/2020-0408-linebot/)
 LINE Botを開発する際に必ずと言っていいほど(？)使うのがFlex Messageです。
 これはメッセージのレイアウトをJsonで記述したもので、  
 Botから送信するメッセージの自由なレイアウトを可能にしてくれます。  
@@ -138,6 +141,11 @@ Flex Messageに最初触った時は、若干クセがあって戸惑ったの�
 
 それでは今日はこの辺で。  
 
+## 関連記事
+こちらの記事もおすすめ。  
+
+前回の記事→[Spring BootでLINE Botのサンプルを動かす 〜おうむ返しのその先へ〜](/2020/04/2020-0408-linebot/)
+[アプリ未経験エンジニアが独学で個人開発Androidアプリを公開するまでにやったこと](/2020/08/2020-0801-android-selftaught/)
 
 ## 【PR】おすすめ技術本
 
