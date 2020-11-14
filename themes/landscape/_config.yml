@@ -2,8 +2,9 @@
 menu:
   Home: /
   About: /about
-  Archives: /archives
-  Portfolio: /portfolio
+  # Archives: /archives
+  Dev: /categories/技術/
+  Engineer's life: /categories/エンジニアライフ/
 rss: 
 banner: "images/banner.png"
 
