@@ -15,19 +15,25 @@
 <!-- End Google Analytics -->
 
   
-  <title>Tag: 独学 | 寝室コンピューティング</title>
-  
-	<meta name="robots" content="noindex , nofollow" />
+  <title>Google Tech Dev Guideのコーディング問題解いてみた〜その5（ついでに日本語訳も） | 寝室コンピューティング</title>
   
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- OGP settings -->
 	
-  <meta property="og:type" content="website">
-<meta property="og:title" content="寝室コンピューティング">
-<meta property="og:url" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;tags&#x2F;%E7%8B%AC%E5%AD%A6&#x2F;index.html">
+		<meta property="og:image" content="https://www.bedroomcomputing.com/2020/12/2020-1210-google-dev-guide-6/thumb.png" /> 
+		<meta property="twitter:image" content="https://www.bedroomcomputing.com/2020/12/2020-1210-google-dev-guide-6/thumb.png" /> 
+	
+  <meta name="description" content="背景こんにちは。 かりんとうマニア(@karintozuki)です。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Google Tech Dev Guideのコーディング問題解いてみた〜その5（ついでに日本語訳も）">
+<meta property="og:url" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;12&#x2F;2020-1210-google-dev-guide-6&#x2F;index.html">
 <meta property="og:site_name" content="寝室コンピューティング">
+<meta property="og:description" content="背景こんにちは。 かりんとうマニア(@karintozuki)です。">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="https:&#x2F;&#x2F;thumbnail.image.rakuten.co.jp&#x2F;ran&#x2F;img&#x2F;2001&#x2F;0009&#x2F;784&#x2F;839&#x2F;960&#x2F;100&#x2F;20010009784839960100_1.jpg?_ex=320x320">
+<meta property="og:updated_time" content="2020-12-10T17:21:04.426Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;thumbnail.image.rakuten.co.jp&#x2F;ran&#x2F;img&#x2F;2001&#x2F;0009&#x2F;784&#x2F;839&#x2F;960&#x2F;100&#x2F;20010009784839960100_1.jpg?_ex=320x320">
   
   
     <link rel="icon" href="/css/images/favicon.ico">
@@ -84,42 +90,88 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-	  <a href="/2020/08/2020-0826-java-self-taught/" class="archive-article-date">
-  <time datetime="2020-08-26T07:33:02.000Z" itemprop="datePublished">Aug 26</time>
+        <section id="main"><article id="post-2020-1210-google-dev-guide-6" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/12/2020-1210-google-dev-guide-6/" class="article-date">
+  <time datetime="2020-12-10T17:20:56.000Z" itemprop="datePublished">2020-12-10</time>
 </a>
-	  
-		<img src="https://www.bedroomcomputing.com/2020/08/2020-0826-java-self-taught/thumb.png">
-	
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%8A%80%E8%A1%93/">技術</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/08/2020-0826-java-self-taught/">Javaは初心者には難しい？現役エンジニアが初心者向けのアドバイスをしてみる</a>
+    <h1 class="article-title" itemprop="name">
+      Google Tech Dev Guideのコーディング問題解いてみた〜その5（ついでに日本語訳も）
     </h1>
   
 
-    </header>
+      </header>
+	
+    <div class="article-entry" itemprop="articleBody">
+	
+		<img src="https://www.bedroomcomputing.com/2020/12/2020-1210-google-dev-guide-6/thumb.png">
+	
+      
+		<h2>目次</h2>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景"><span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#canBalance問題"><span class="toc-text">canBalance問題</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解答"><span class="toc-text">解答</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#o-n-になる方法"><span class="toc-text">o(n)になる方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#まとめ"><span class="toc-text">まとめ</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#関連記事"><span class="toc-text">関連記事</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#【PR】おすすめ技術本"><span class="toc-text">【PR】おすすめ技術本</span></a></li></ol>
+        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>こんにちは。 <a href="https://twitter.com/karintozuki" target="_blank" rel="noopener">かりんとうマニア(@karintozuki)</a>です。  </p>
+<a id="more"></a>
+<p>この記事は、Googleが提供するコーディング教材Google Tech Dev Guideの解説をする記事の第6弾です。<br>こちらから関連記事がまとめて見られます。<br><a href="/tags/Google-Tech-Dev-Guide/">Google Tech Dev Guideのコーディング問題解いてみた 記事一覧</a></p>
+<h2 id="canBalance問題"><a href="#canBalance問題" class="headerlink" title="canBalance問題"></a>canBalance問題</h2><p>今回の問題はcanBalanceと名付けられた問題です。</p>
+<p>問題はこちらです。（元のサイトはこちら：<a href="https://codingbat.com/prob/p158767" target="_blank" rel="noopener">https://codingbat.com/prob/p158767</a> ）</p>
+<blockquote>
+<p>Given a non-empty array, return true if there is a place to split the array so that the sum of the numbers on one side is equal to the sum of the numbers on the other side.</p>
+</blockquote>
+<p>和訳です。</p>
+<blockquote>
+<p>与えられた配列に対して、<br>左側にある数字の合計と右側にある数字の合計が等しくなるような位置が存在するかどうかを判定する関数を作ってください</p>
+</blockquote>
+<p>この関数は以下のような動きをします。<br>canBalance([1, 1, 1, 2, 1]) → true<br>canBalance([2, 1, 1, 2, 1]) → false<br>canBalance([10, 10]) → true</p>
+<p>最初の例だと、左側が1+1+1 = 3, 右側が2+1 = 3で、左右の合計が等しくなる位置があるので、<br>Trueを返しています。</p>
+<h2 id="解答"><a href="#解答" class="headerlink" title="解答"></a>解答</h2><p>シンプルに左から一つずつ数字を足していって、合計が等しくなる点を探します。<br>計算量はnを配列の長さとするとo(2n)ですかね。</p>
+<p>最初に配列全体の合計を出して、奇数だった場合はfalseを返すようにして<br>効率を上げています。</p>
+<figure class="highlight java"><figcaption><span>CanBalance.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">canBalance2</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> leftSum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> rightSum = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> num : nums)&#123;</span><br><span class="line">        rightSum += num;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 合計が奇数だったらfalse</span></span><br><span class="line">    <span class="keyword">if</span>(rightSum % <span class="number">2</span> != <span class="number">0</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// numsの左側の数字から一つずつleftSumに足していく</span></span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(i &lt; nums.length &amp;&amp; leftSum != rightSum)&#123;</span><br><span class="line">        leftSum += nums[i];</span><br><span class="line">        rightSum -= nums[i];</span><br><span class="line">        i++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> (leftSum == rightSum);</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="o-n-になる方法"><a href="#o-n-になる方法" class="headerlink" title="o(n)になる方法"></a>o(n)になる方法</h2><p>一番左、一番右の数を端から一つずつ足していく方法です。<br>この際、毎回左の合計と右の合計を比べて、<br>少なかったほうに足していきます。</p>
+<p>この方法だと計算量はo(n)となりますが、<br>負の数が含まれている場合はうまくいかないので、<br>今回の問題では不適ですが、そのような条件があるときは<br>こちらの方が良い気がします。</p>
+<figure class="highlight java"><figcaption><span>CanBalance.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">canBalance</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> leftSum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> rightSum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> leftIndex = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> rightIndex = nums.length - <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(leftIndex &lt;= rightIndex)&#123;</span><br><span class="line">        <span class="comment">// leftSumがrightSumより小さかったらleftSumを増やす</span></span><br><span class="line">        <span class="comment">// 逆の場合はrightSumを増やす</span></span><br><span class="line">        <span class="keyword">if</span>(leftSum &lt;= rightSum)&#123;</span><br><span class="line">            leftSum += nums[leftIndex];</span><br><span class="line">            leftIndex++;</span><br><span class="line"></span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            rightSum += nums[rightIndex];</span><br><span class="line">            rightIndex--;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> (leftSum == rightSum);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="まとめ"><a href="#まとめ" class="headerlink" title="まとめ"></a>まとめ</h2><p>配列の中から条件を満たす位置を探す問題でした。</p>
+<p>良い配列操作の練習になったかと思います。</p>
+<p>それじゃ今日はこの辺で。</p>
+<h2 id="関連記事"><a href="#関連記事" class="headerlink" title="関連記事"></a>関連記事</h2><p>こちらの記事もおすすめです。  </p>
+<p><a href="/tags/Google-Tech-Dev-Guide/">Google Tech Dev Guideのコーディング問題解いてみた 記事一覧</a></p>
+<h2 id="【PR】おすすめ技術本"><a href="#【PR】おすすめ技術本" class="headerlink" title="【PR】おすすめ技術本"></a>【PR】おすすめ技術本</h2><p>コーディング面接の勉強にはこちらがおすすめです。</p>
+<div class="kaerebalink-box" style="text-align:left;padding-bottom:20px;font-size:small;zoom: 1;overflow: hidden;"><div class="kaerebalink-image" style="float:left;margin:0 15px 10px 0;"><a href="https://rpx.a8.net/svt/ejp?a8mat=3BK2F7+C8KSFM+2HOM+BWGDT&rakuten=y&a8ejpredirect=https%3A%2F%2Fhb.afl.rakuten.co.jp%2Fhgc%2Fg00q0724.2bo11c45.g00q0724.2bo12179%2Fa20081060992_3BK2F7_C8KSFM_2HOM_BWGDT%3Fpc%3Dhttps%253A%252F%252Fitem.rakuten.co.jp%252Fbook%252F14398407%252F%26m%3Dhttp%253A%252F%252Fm.rakuten.co.jp%252Fbook%252Fi%252F18144152%252F" target="_blank"><img src="https://thumbnail.image.rakuten.co.jp/ran/img/2001/0009/784/839/960/100/20010009784839960100_1.jpg?_ex=320x320" style="border: none;"></a></div><div class="kaerebalink-info" style="line-height:120%;zoom: 1;overflow: hidden;"><div class="kaerebalink-name" style="margin-bottom:10px;line-height:120%"><a href="https://rpx.a8.net/svt/ejp?a8mat=3BK2F7+C8KSFM+2HOM+BWGDT&rakuten=y&a8ejpredirect=https%3A%2F%2Fhb.afl.rakuten.co.jp%2Fhgc%2Fg00q0724.2bo11c45.g00q0724.2bo12179%2Fa20081060992_3BK2F7_C8KSFM_2HOM_BWGDT%3Fpc%3Dhttps%253A%252F%252Fitem.rakuten.co.jp%252Fbook%252F14398407%252F%26m%3Dhttp%253A%252F%252Fm.rakuten.co.jp%252Fbook%252Fi%252F18144152%252F" target="_blank">世界で闘うプログラミング力を鍛える本 コ-ディング面接１８９問とその解法  /マイナビ出版/ゲイル・ラ-クマン・マクダウェル</a><div class="kaerebalink-powered-date" style="font-size:8pt;margin-top:5px;font-family:verdana;line-height:120%">posted with <a href="https://kaereba.com" rel="nofollow" target="_blank">カエレバ</a></div></div><div class="kaerebalink-detail" style="margin-bottom:5px;"></div><div class="kaerebalink-link1" style="margin-top:10px;"><div class="shoplinkrakuten" style="display:inline;margin-right:5px"><a href="https://rpx.a8.net/svt/ejp?a8mat=3BK2F7+C8KSFM+2HOM+BWGDT&rakuten=y&a8ejpredirect=https%3A%2F%2Fhb.afl.rakuten.co.jp%2Fhgc%2Fg00q0724.2bo11c45.g00q0724.2bo12179%2Fa20081060992_3BK2F7_C8KSFM_2HOM_BWGDT%3Fpc%3Dhttps%253A%252F%252Fitem.rakuten.co.jp%252Fbook%252F14398407%252F%26m%3Dhttp%253A%252F%252Fm.rakuten.co.jp%252Fbook%252Fi%252F18144152%252F" target="_blank">楽天市場</a></div><div class="shoplinkamazon" style="display:inline;margin-right:5px"><a href="https://px.a8.net/svt/ejp?a8mat=3BK5JU+7IW90Y+249K+BWGDT&a8ejpredirect=https%3A%2F%2Fwww.amazon.co.jp%2Fdp%2FB071GN3JN2%2F%3Ftag%3Da8-affi-307152-22" target="_blank">Amazon</a></div></div></div><div class="booklink-footer" style="clear: left"></div></div>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.bedroomcomputing.com/2020/12/2020-1210-google-dev-guide-6/" data-id="ckij3yznf004eqjl1aibuh9pf" data-title="Google Tech Dev Guideのコーディング問題解いてみた〜その5（ついでに日本語訳も）" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/12/2020-1209-open-folder-vbs/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">コピーしたパスをエクスプローラで開くショートカットを作った話(VBS)</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
 
 
 </section>
