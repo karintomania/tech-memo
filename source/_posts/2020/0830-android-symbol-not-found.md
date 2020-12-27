@@ -1,7 +1,7 @@
 ---
 title: 「シンボルを見つけられません」エラーが出た時の対処方法【Kotlin】
 tags:
-  - Android
+  - android
   - Kotlin
 categories: 技術
 featured_image: thumb.png

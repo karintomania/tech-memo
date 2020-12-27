@@ -1,7 +1,7 @@
 ---
 title: コピーしたパスをエクスプローラで開くショートカットを作った話(VBS)
 tags:
-  - Windwos
+  - Windows
   - 自動化
   - VBS
 categories: 技術

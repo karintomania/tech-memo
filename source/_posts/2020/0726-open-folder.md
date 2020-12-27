@@ -1,7 +1,7 @@
 ---
 title: 【Windows】コピーしたファイルパスをエクスプローラーで開くのがめんどくさいので、ショートカット一発にした話
 tags:
-  - Windwos
+  - Windows
   - 自動化
   - Java
 categories: 技術

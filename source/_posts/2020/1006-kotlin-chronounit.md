@@ -2,7 +2,7 @@
 title: Kotlinで日付の差分を計算する方法
 tags:
   - Kotlin
-  - Android
+  - android
 categories: 技術
 featured_image: thumb.png
 date: 2020-10-06 22:17:44

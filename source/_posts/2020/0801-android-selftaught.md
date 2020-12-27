@@ -1,7 +1,7 @@
 ---
 title: アプリ未経験エンジニアが独学で個人開発Androidアプリを公開するまでにやったこと
 tags:
-  - Android
+  - android
   - 個人開発
 categories: エンジニアライフ
 date: 2020-08-01 23:48:09

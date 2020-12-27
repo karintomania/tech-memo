@@ -1,7 +1,7 @@
 ---
 title: KotlinでTwitter4jを使ってTwitterのOauthログインを実装する
 tags:
-  - Android
+  - android
   - Twitter4j
   - Twitter API
 categories: 技術

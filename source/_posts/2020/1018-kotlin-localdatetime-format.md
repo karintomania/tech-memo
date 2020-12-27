@@ -2,7 +2,7 @@
 title: Kotlinで日付をフォーマットする方法
 tags:
   - Kotlin
-  - Android
+  - android
 categories: 技術
 featured_image: thumb.png
 date: 2020-10-18 19:30:39

@@ -11,34 +11,23 @@ date: 2020-11-03 00:11:23
 
 ## 背景
 こんにちは。 [かりんとうマニア(@karintozuki)](https://twitter.com/karintozuki)です。  
-この記事はこちらの続きです。
-前回を読んでない人は興味があれば読んでみてください。
-[Google Tech Dev Guideのコーディング問題解いてみた（ついでに日本語訳も](/2020/11/2020-1101-google-dev-guide-1/)
 
-## Google Tech Dev Guideとは
-Google Tech Dev GuideはGoogleがネットの海からかき集めてきた
-コーディング教材をひとまとめのコースにしたやつです（適当
+Google Tech Dev Guideは、Googleが公開しているコーディング教材です。
 <!-- more -->
 
-動画やテキストなど様々な資料があるのですが、
-その中からコーディングチャレンジを抜粋して、
-紹介していこうと思います。
-
+その中のコーディングチャレンジに挑戦していこうと思います。
+こちらから関連記事がまとめて見られます。
+[Google Tech Dev Guideのコーディング問題解いてみた 記事一覧](/tags/Google-Tech-Dev-Guide/)
 ## StringSplosion問題
 それでは問題です。
 
 StringSplosionと名付けられています。
-SplosionというのはExplosion(爆発)からきているらしく、
-文字列爆発みたいな和訳でしょうか笑
 
-空白でない文字列を渡した時に、
+> 空白でない文字列を渡した時に、
 以下の例のように変換する関数、`stringSplosion`を作ってください。
-
-```
 stringSplosion("Code") → "CCoCodCode"
 stringSplosion("abc") → "aababc"
 stringSplosion("ab") → "aab"
-```
 
 与えられた単語を一文字ずつ増やして足していく感じですね。
 
@@ -86,7 +75,6 @@ public static String stringSplosion1(String str){
 この場合の計算量は二重ループなので、`O(N^2)`になります。（Nは与えられた文字列の文字数）。
 文字列の長さが二倍になると、計算量はその4倍になってしまいます。
 
-これは良くないですね。
 改良していきましょう。
 
 ### 改良版
@@ -104,7 +92,7 @@ i = 3→ tmpStr = Code
 良く考えると、
 `tmpStr`は直前のループの`tmpStr`に次の文字を足しただけですね。
 わざわざ一文字目から生成しなくても
-前回のループのものを利用すれば良いわけです。
+前回のループの結果を利用すれば良いわけです。
 
 改良後の実装がこちらです。
 {% codeblock StringSplosion.java lang:java %}
@@ -248,9 +236,8 @@ StringBuilderを使いましょう、ということですね。
 
 
 ## 関連記事
-こちらの記事もおすすめ。  
-
-[クリエイティブになるための6つの方法！「Mastering Creativity」をエンジニアが読んだ感想](/2020/09/2020-0920-creativity/)
+こちらから関連記事がまとめて見られます。
+[Google Tech Dev Guideのコーディング問題解いてみた 記事一覧](/tags/Google-Tech-Dev-Guide/)
 
 ## 【PR】おすすめ技術本
 コーディング面接の勉強にはこちらがおすすめです。
