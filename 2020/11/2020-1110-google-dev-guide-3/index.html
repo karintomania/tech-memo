@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-161452704-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-161452704-1');
+</script>
+<!-- End Google Analytics -->
+
+  
+  <title>Google Tech Dev Guideのコーディング問題解いてみた〜その３（ついでに日本語訳も） | 寝室コンピューティング</title>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- OGP settings -->
+	
+  		<meta name="description" content="背景こんにちは。 かりんとうマニア(@karintozuki)です。   この記事は、Googleが提供するコーディング教材Google Tech Dev Guideの解説をする記事の第三弾です。こちらから関連記事がまとめて見られます。Google Tech Dev Guideのコーディング問題解いてみた 記事一覧 Max span問題今回の問題はMax Spanと名付けられた問題です。">
+<meta name="keywords" content="Google Tech Dev Guide,アルゴリズム">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Google Tech Dev Guideのコーディング問題解いてみた〜その３（ついでに日本語訳も）">
+<meta property="og:url" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;11&#x2F;2020-1110-google-dev-guide-3&#x2F;index.html">
+<meta property="og:site_name" content="寝室コンピューティング">
+<meta property="og:description" content="背景こんにちは。 かりんとうマニア(@karintozuki)です。   この記事は、Googleが提供するコーディング教材Google Tech Dev Guideの解説をする記事の第三弾です。こちらから関連記事がまとめて見られます。Google Tech Dev Guideのコーディング問題解いてみた 記事一覧 Max span問題今回の問題はMax Spanと名付けられた問題です。">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;11&#x2F;2020-1110-google-dev-guide-3&#x2F;thumb.png">
+<meta property="og:updated_time" content="2020-11-10T00:27:06.159Z">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;11&#x2F;2020-1110-google-dev-guide-3&#x2F;thumb.png">
+	
+  
+  
+    <link rel="icon" href="/css/images/favicon.ico">
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+  
+  <script data-ad-client="ca-pub-2164726777115826" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+	  <div id="logo-wrap">
+      <h1>
+        <a href="/" id="logo">寝室コンピューティング</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">オフィスでするほどでもない開発を寝室から</a>
+		</h2>
+	</div>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+          <a class="main-nav-link" href="/categories/%E6%8A%80%E8%A1%93/">Dev</a>
+        
+          <a class="main-nav-link" href="/categories/%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%83%A9%E3%82%A4%E3%83%95/">Engineer&#39;s life</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://www.bedroomcomputing.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2020-1110-google-dev-guide-3" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/11/2020-1110-google-dev-guide-3/" class="article-date">
+  <time datetime="2020-11-10T00:26:34.000Z" itemprop="datePublished">2020-11-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%8A%80%E8%A1%93/">技術</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Google Tech Dev Guideのコーディング問題解いてみた〜その３（ついでに日本語訳も）
+    </h1>
+  
+
+      </header>
+	
+    <div class="article-entry" itemprop="articleBody">
+	
+		<img src="https://www.bedroomcomputing.com/2020/11/2020-1110-google-dev-guide-3/thumb.png">
+	
+      
+		<h2>目次</h2>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景"><span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Max-span問題"><span class="toc-text">Max span問題</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#素直に解く"><span class="toc-text">素直に解く</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解法１の改良"><span class="toc-text">解法１の改良</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#計算量の考察"><span class="toc-text">計算量の考察</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#計算量の算出"><span class="toc-text">計算量の算出</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Mapを使う方法"><span class="toc-text">Mapを使う方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#実行時間の計測"><span class="toc-text">実行時間の計測</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#まとめ"><span class="toc-text">まとめ</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#関連記事"><span class="toc-text">関連記事</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#【PR】おすすめ技術本"><span class="toc-text">【PR】おすすめ技術本</span></a></li></ol>
+        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>こんにちは。 <a href="https://twitter.com/karintozuki" target="_blank" rel="noopener">かりんとうマニア(@karintozuki)</a>です。  </p>
+<p>この記事は、Googleが提供するコーディング教材Google Tech Dev Guideの解説をする記事の第三弾です。<br>こちらから関連記事がまとめて見られます。<br><a href="/tags/Google-Tech-Dev-Guide/">Google Tech Dev Guideのコーディング問題解いてみた 記事一覧</a></p>
+<h2 id="Max-span問題"><a href="#Max-span問題" class="headerlink" title="Max span問題"></a>Max span問題</h2><p>今回の問題はMax Spanと名付けられた問題です。</p>
+<a id="more"></a>
+
+<p>元ネタはこちら(<a href="https://codingbat.com/prob/p189576" target="_blank" rel="noopener">https://codingbat.com/prob/p189576</a>)</p>
+<blockquote>
+<p>Consider the leftmost and righmost appearances of some value in an array. We’ll say that the “span” is the number of elements between the two inclusive. A single value has a span of 1. Returns the largest span found in the given array. (Efficiency is not a priority.)</p>
+</blockquote>
+<p>ざっくり日本語にしてみます。</p>
+<blockquote>
+<p>配列の中で同じ数字が一番左（＝最初）に現れる場所と一番右（=最後）に現れる場所を考えます。<br>同じ数字に挟まれた要素の数(挟んでいる数字自体を含む)をスパンと定義します。<br>数字が一回しか現れない場合はスパンは１です。<br>与えられた配列から最大のスパンを返す関数 maxSpan() を作ってください。</p>
+</blockquote>
+<p>原文で最後に(Efficiency is not a priority.)とありますね。<br>これについては微妙に意図がわかってないのですが、自分なりの解釈を最後に書いてます。</p>
+<p>maxSpanの動作は以下のようになります。<br>maxSpan([1, 2, 1, 1, 3]) → 4<br>maxSpan([1, 4, 2, 1, 4, 1, 4]) → 6<br>maxSpan([1, 4, 2, 1, 4, 4, 4]) → 6<br>maxSpan([5]) → 1<br>maxSpan([]) → 0<br>最初の例であれば、最初の1と最後の1に挟まれた数字の数が1,2,1,1と４つなので、<br>スパンは４、ということですね。<br>配列が空ならmaxSpanは0を返します。</p>
+<h2 id="素直に解く"><a href="#素直に解く" class="headerlink" title="素直に解く"></a>素直に解く</h2><p>まずは素直に解いてみます。</p>
+<p>与えられた配列が<br><code>[1, 2, 1, 1, 3]</code>だったとします。</p>
+<p>まずは頭から配列をみると最初の数字は<code>1</code>ですね。<br>Spanを求めるには最後に登場する<code>1</code>を探せば良いので、<br>配列を後ろからみていけば良さそうです。</p>
+<p>その方針で実装すると以下のようになるでしょうか。</p>
+<figure class="highlight java"><figcaption><span>MaxSpan.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">maxSpan1</span><span class="params">(<span class="keyword">int</span>[] nums)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> span = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> maxSpan = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i ++)&#123;</span><br><span class="line">		<span class="comment">// 同じ数字を配列の後ろから探す</span></span><br><span class="line">		<span class="keyword">int</span> j = nums.length -<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">while</span>(nums[i] != nums[j])&#123;</span><br><span class="line">			j --;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// スパンを求める</span></span><br><span class="line">		span = j - i + <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// maxSpanの更新</span></span><br><span class="line">		<span class="keyword">if</span>(maxSpan &lt; span)&#123;</span><br><span class="line">			maxSpan = span;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> maxSpan;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="解法１の改良"><a href="#解法１の改良" class="headerlink" title="解法１の改良"></a>解法１の改良</h2><p>このままでも大丈夫ですが、<br>maxSpanと残りの配列の長さを比べることで、<br>処理を少なくできます。</p>
+<p>与えられた配列が<code>[1, 2, 1]</code>だったとすると、<br>はじめに<code>1</code>のスパンが3と求まった時点で、配列の長さ自体が3なので、<br>3がmaxSpanだと分かります。</p>
+<p>配列のi番目の数字が取りうるスパンの値の範囲を考えると、<br><code>配列のi番目の数字のスパン &lt;= 配列の長さ-i</code>なので、<br><code>maxSpan &gt;= 配列の長さ-i</code>となった際には処理を終了するようにします。</p>
+<figure class="highlight java"><figcaption><span>MaxSpan.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">maxSpan2</span><span class="params">(<span class="keyword">int</span>[] nums)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> span = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> maxSpan = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i ++)&#123;</span><br><span class="line">		<span class="comment">// maxSpanが残りの配列の長さより大きかったら終了</span></span><br><span class="line">		<span class="keyword">if</span>(maxSpan &gt;= nums.length - i)&#123;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 同じ数字を配列の後ろから探す</span></span><br><span class="line">		<span class="keyword">int</span> j = nums.length -<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">while</span>(nums[i] != nums[j])&#123;</span><br><span class="line">			j --;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// スパンを求める</span></span><br><span class="line">		span = j - i + <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// maxSpanの更新</span></span><br><span class="line">		<span class="keyword">if</span>(maxSpan &lt; span)&#123;</span><br><span class="line">			maxSpan = span;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> maxSpan;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="計算量の考察"><a href="#計算量の考察" class="headerlink" title="計算量の考察"></a>計算量の考察</h3><p>これらのアルゴリズムの計算量を考えてみます。<br><code>n</code>を配列の長さとすると、<br><u>二重ループになっているので、計算量は<code>O(n^2)</code>です。</u></p>
+<p>しかし、この問題では計算量<code>O(n)</code>(配列内の数字一個を一回ずつ処理するような)の<br>もっと良いアルゴリズムがありそうです。</p>
+<h3 id="計算量の算出"><a href="#計算量の算出" class="headerlink" title="計算量の算出"></a>計算量の算出</h3><p>興味があれば読んでみてください。</p>
+<p>先ほどのアルゴリズムで一番計算が多くなるパターンは、<br>[0,1,2,3]のように全要素が一度ずつしか現れない（全スパンが1である）パターンだと思います。</p>
+<p>この場合、<br>最初の0に対しては残りの数字1,2,3をチェック、<br>次の1に対して残りの数字2,3をチェック、<br>次の2に対して残りの数字3をチェック<br>というように計算回数は3+2+1=6回となります。</p>
+<p>このように全要素が一度ずつしか現れない配列の長さをnとしたときには、<br>計算回数は<code>(n^2)/2 + n/2</code>となります。</p>
+<p>よって計算量はO(n^2)です。<br>直感的に無駄がある気がしますよね。</p>
+<p>次からは全数字を一度ずつチェックすれば<br>結果がわかるアルゴリズムを考えてみます。</p>
+<h2 id="Mapを使う方法"><a href="#Mapを使う方法" class="headerlink" title="Mapを使う方法"></a>Mapを使う方法</h2><p>それでは計算量がO(n)となるようにするにはどうしたら良いでしょうか。</p>
+<p>前のアルゴリズムでは、同じ数字を</p>
+<ul>
+<li>一番右の数字として扱うとき（<code>nums[i]</code>として取り出されるとき）</li>
+<li>一番左の数字を探すとき（<code>nums[j]</code>として取り出されるとき）</li>
+</ul>
+<p>と複数回見ていたので、処理が増えているようです。</p>
+<p>それならば、数字を見る際に<br><u>一番右の数字である可能性と<br>一番左の数字である可能性を考慮して処理すれば、</u><br>全ての数字を一度ずつ処理する計算量O(n)のアルゴリズムになりそうです。</p>
+<p>今回はそのためにマップを使って、nums[i]の数字を見るときに、</p>
+<ul>
+<li>キーにその数字が存在すれば一番右の数字としてスパンを計算</li>
+<li>キーに数字が存在しなければ一番左の数字としてインデックスを登録</li>
+</ul>
+<p>としました。<br>それでは実装です。</p>
+<figure class="highlight java"><figcaption><span>MaxSpan.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">maxSpan3</span><span class="params">(<span class="keyword">int</span>[] nums)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">int</span> span = <span class="number">0</span>;</span><br><span class="line">	<span class="comment">// 配列が空だった際は0を返す</span></span><br><span class="line">	<span class="keyword">int</span> maxSpan = (nums.length &gt; <span class="number">0</span>) ? <span class="number">1</span>:<span class="number">0</span>;</span><br><span class="line">	<span class="comment">// key: 数字, value:最初に登場するIndexとする</span></span><br><span class="line">	Map&lt;Integer, Integer&gt; numFirstIndexMap = <span class="keyword">new</span> HashMap&lt;Integer, Integer&gt;();</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> num : nums)&#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span>(numFirstIndexMap.containsKey(num))&#123;</span><br><span class="line">			<span class="comment">// keyが存在すればspanを計算する</span></span><br><span class="line">			span =  i - numFirstIndexMap.get(num) + <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">if</span>(maxSpan &lt; span)&#123;maxSpan = span;&#125;</span><br><span class="line"></span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="comment">// 初登場のインデックスを登録</span></span><br><span class="line">			numFirstIndexMap.put(num, i);</span><br><span class="line">		&#125;</span><br><span class="line">		i++;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> maxSpan;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>この方法も最初のアルゴリズムと同様、配列の長さとmaxSpanを比べて効率化することが可能です。<br>ただ、最初のアルゴリズムと違い最後の数字を見るまでMaxSpanが確定しないので、<br>nums[i]の次にnums[nums.lenght-i+1]を見るなどループの順序を工夫する必要があるかと思います。</p>
+<h2 id="実行時間の計測"><a href="#実行時間の計測" class="headerlink" title="実行時間の計測"></a>実行時間の計測</h2><p>実行時間を計測してみました。<br>単位はマイクロ秒です。<br>配列の要素の数を変えて計測しています。</p>
+<table>
+<thead>
+<tr>
+<th>解法</th>
+<th>要素500個</th>
+<th>要素1000個</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>素直</td>
+<td>654</td>
+<td>1602</td>
+</tr>
+<tr>
+<td>Map</td>
+<td>16</td>
+<td>16</td>
+</tr>
+</tbody></table>
+<p>Mapは1000個くらいでは数が変わりませんでした。<br>要素を500個にしようとしたところエディタが死んでしまいました。。。</p>
+<p>こう見るとMapの実装が良さそうですが、<br>ぶっちゃけどちらの実装でも1ミリ秒前後の話なので、<br>どっちでも良い感じがします。</p>
+<p>これが問題文のEfficiency is not a priority.(訳：効率はそんな大事じゃないよ)の意味だったのかなー、とか<br>思ったりしました。</p>
+<h2 id="まとめ"><a href="#まとめ" class="headerlink" title="まとめ"></a>まとめ</h2><p>今回は配列操作の話でしたね。</p>
+<p>それじゃ今日はこの辺で。</p>
+<h2 id="関連記事"><a href="#関連記事" class="headerlink" title="関連記事"></a>関連記事</h2><p>こちらからGoogle Tech Dev Guide関記記事の一覧が読めます。<br><a href="/tags/Google-Tech-Dev-Guide/">Google Tech Dev Guideのコーディング問題解いてみた 記事一覧</a></p>
+<h2 id="【PR】おすすめ技術本"><a href="#【PR】おすすめ技術本" class="headerlink" title="【PR】おすすめ技術本"></a>【PR】おすすめ技術本</h2><p>コーディング面接の勉強にはこちらがおすすめです。</p>
+<div class="kaerebalink-box" style="text-align:left;padding-bottom:20px;font-size:small;zoom: 1;overflow: hidden;"><div class="kaerebalink-image" style="float:left;margin:0 15px 10px 0;"><a href="https://rpx.a8.net/svt/ejp?a8mat=3BK2F7+C8KSFM+2HOM+BWGDT&rakuten=y&a8ejpredirect=https%3A%2F%2Fhb.afl.rakuten.co.jp%2Fhgc%2Fg00q0724.2bo11c45.g00q0724.2bo12179%2Fa20081060992_3BK2F7_C8KSFM_2HOM_BWGDT%3Fpc%3Dhttps%253A%252F%252Fitem.rakuten.co.jp%252Fbook%252F14398407%252F%26m%3Dhttp%253A%252F%252Fm.rakuten.co.jp%252Fbook%252Fi%252F18144152%252F" target="_blank"><img src="https://thumbnail.image.rakuten.co.jp/ran/img/2001/0009/784/839/960/100/20010009784839960100_1.jpg?_ex=320x320" style="border: none;"></a></div><div class="kaerebalink-info" style="line-height:120%;zoom: 1;overflow: hidden;"><div class="kaerebalink-name" style="margin-bottom:10px;line-height:120%"><a href="https://rpx.a8.net/svt/ejp?a8mat=3BK2F7+C8KSFM+2HOM+BWGDT&rakuten=y&a8ejpredirect=https%3A%2F%2Fhb.afl.rakuten.co.jp%2Fhgc%2Fg00q0724.2bo11c45.g00q0724.2bo12179%2Fa20081060992_3BK2F7_C8KSFM_2HOM_BWGDT%3Fpc%3Dhttps%253A%252F%252Fitem.rakuten.co.jp%252Fbook%252F14398407%252F%26m%3Dhttp%253A%252F%252Fm.rakuten.co.jp%252Fbook%252Fi%252F18144152%252F" target="_blank">世界で闘うプログラミング力を鍛える本 コ-ディング面接１８９問とその解法  /マイナビ出版/ゲイル・ラ-クマン・マクダウェル</a><div class="kaerebalink-powered-date" style="font-size:8pt;margin-top:5px;font-family:verdana;line-height:120%">posted with <a href="https://kaereba.com" rel="nofollow" target="_blank">カエレバ</a></div></div><div class="kaerebalink-detail" style="margin-bottom:5px;"></div><div class="kaerebalink-link1" style="margin-top:10px;"><div class="shoplinkrakuten" style="display:inline;margin-right:5px"><a href="https://rpx.a8.net/svt/ejp?a8mat=3BK2F7+C8KSFM+2HOM+BWGDT&rakuten=y&a8ejpredirect=https%3A%2F%2Fhb.afl.rakuten.co.jp%2Fhgc%2Fg00q0724.2bo11c45.g00q0724.2bo12179%2Fa20081060992_3BK2F7_C8KSFM_2HOM_BWGDT%3Fpc%3Dhttps%253A%252F%252Fitem.rakuten.co.jp%252Fbook%252F14398407%252F%26m%3Dhttp%253A%252F%252Fm.rakuten.co.jp%252Fbook%252Fi%252F18144152%252F" target="_blank">楽天市場</a></div><div class="shoplinkamazon" style="display:inline;margin-right:5px"><a href="https://px.a8.net/svt/ejp?a8mat=3BK5JU+7IW90Y+249K+BWGDT&a8ejpredirect=https%3A%2F%2Fwww.amazon.co.jp%2Fdp%2FB071GN3JN2%2F%3Ftag%3Da8-affi-307152-22" target="_blank">Amazon</a></div></div></div><div class="booklink-footer" style="clear: left"></div></div>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.bedroomcomputing.com/2020/11/2020-1110-google-dev-guide-3/" data-id="ckjukat7t003zspl117tzfy93" data-title="Google Tech Dev Guideのコーディング問題解いてみた〜その３（ついでに日本語訳も）" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Google-Tech-Dev-Guide/" rel="tag">Google Tech Dev Guide</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0/" rel="tag">アルゴリズム</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/11/2020-1114-tabula/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Tabulaを使ってPDFからテーブルを抽出する
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/11/2020-1103-google-dev-guide-2/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Google Tech Dev Guideのコーディング問題解いてみた〜その２（ついでに日本語訳も）</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    <div class="widget-wrap">
+<h3 class="widget-title">About</h3>
+<div class="widget">
+	<img src="/css/images/author.png" alt="著者" class="author-img">
+	<a class="author-link" href="/about" >karintomania</a>
+	<p><p>イギリス在住のWeb開発者が日々学んだことを書き連ねています。<br> Java/Kotlinに興味があります。</p>
+</p>
+</div>
+</div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/01/2021-0112-debug-multi-php/">VS Codeで複数バージョンのPHPに対してXdebugを利用する</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/2021-0110-logcat/">【Android Studio】Logcatにログがでない時の対処方法</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/2021-0103-nav-preview/">【android】NavigationグラフのPreview Unavailableを解決する方法</a>
+          </li>
+        
+          <li>
+            <a href="/2020/12/2020-1227-android-rounded-button/">androidで角が丸いボタンを作る方法</a>
+          </li>
+        
+          <li>
+            <a href="/2020/12/2020-1210-google-dev-guide-6/">Google Tech Dev Guideのコーディング問題解いてみた〜その5（ついでに日本語訳も）</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%83%A9%E3%82%A4%E3%83%95/">エンジニアライフ</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E8%A1%93/">技術</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Azure/" rel="tag">Azure</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bot/" rel="tag">Bot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cosmos-DB/" rel="tag">Cosmos DB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DB/" rel="tag">DB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Excel/" rel="tag">Excel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github-Pages/" rel="tag">Github Pages</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Google-Tech-Dev-Guide/" rel="tag">Google Tech Dev Guide</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Heroku/" rel="tag">Heroku</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kotlin/" rel="tag">Kotlin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LINE-Bot/" rel="tag">LINE Bot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-Command/" rel="tag">Linux Command</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Logcat/" rel="tag">Logcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OR-Mapper/" rel="tag">OR Mapper</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OSS/" rel="tag">OSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Orchid/" rel="tag">Orchid</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PDF/" rel="tag">PDF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PostgreSQL/" rel="tag">PostgreSQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PowerShell/" rel="tag">PowerShell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RPA/" rel="tag">RPA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Room/" rel="tag">Room</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQLite/" rel="tag">SQLite</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Shell-Script/" rel="tag">Shell Script</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-Boot/" rel="tag">Spring Boot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tabula/" rel="tag">Tabula</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Twitter/" rel="tag">Twitter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Twitter-API/" rel="tag">Twitter API</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Twitter4j/" rel="tag">Twitter4j</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UiPath/" rel="tag">UiPath</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VBS/" rel="tag">VBS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VS-Code/" rel="tag">VS Code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/" rel="tag">Vim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Windows/" rel="tag">Windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xdebug/" rel="tag">Xdebug</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/admob/" rel="tag">admob</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/" rel="tag">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android-studio/" rel="tag">android studio</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mybatis/" rel="tag">mybatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/" rel="tag">node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0/" rel="tag">アルゴリズム</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%83%90%E3%83%83%E3%83%81/" rel="tag">バッチ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%83%96%E3%83%AD%E3%82%B0/" rel="tag">ブログ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%83%9E%E3%82%AF%E3%83%AD/" rel="tag">マクロ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%83%A2%E3%83%81%E3%83%99%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3/" rel="tag">モチベーション</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%80%8B%E4%BA%BA%E9%96%8B%E7%99%BA/" rel="tag">個人開発</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%9D%E5%BF%83%E8%80%85/" rel="tag">初心者</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%AD%A3%E8%A6%8F%E8%A1%A8%E7%8F%BE/" rel="tag">正規表現</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%8B%AC%E5%AD%A6/" rel="tag">独学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%87%AA%E5%8B%95%E5%8C%96/" rel="tag">自動化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%96%A2%E6%95%B0%E5%9E%8B%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0/" rel="tag">関数型プログラミング</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Azure/" style="font-size: 11.43px;">Azure</a> <a href="/tags/Bot/" style="font-size: 10px;">Bot</a> <a href="/tags/Cosmos-DB/" style="font-size: 11.43px;">Cosmos DB</a> <a href="/tags/DB/" style="font-size: 11.43px;">DB</a> <a href="/tags/Docker/" style="font-size: 14.29px;">Docker</a> <a href="/tags/Excel/" style="font-size: 10px;">Excel</a> <a href="/tags/Github-Pages/" style="font-size: 15.71px;">Github Pages</a> <a href="/tags/Google-Tech-Dev-Guide/" style="font-size: 15.71px;">Google Tech Dev Guide</a> <a href="/tags/Heroku/" style="font-size: 11.43px;">Heroku</a> <a href="/tags/Hexo/" style="font-size: 17.14px;">Hexo</a> <a href="/tags/Java/" style="font-size: 18.57px;">Java</a> <a href="/tags/Kotlin/" style="font-size: 14.29px;">Kotlin</a> <a href="/tags/LINE-Bot/" style="font-size: 11.43px;">LINE Bot</a> <a href="/tags/Linux-Command/" style="font-size: 10px;">Linux Command</a> <a href="/tags/Logcat/" style="font-size: 10px;">Logcat</a> <a href="/tags/OR-Mapper/" style="font-size: 11.43px;">OR Mapper</a> <a href="/tags/OSS/" style="font-size: 11.43px;">OSS</a> <a href="/tags/Orchid/" style="font-size: 10px;">Orchid</a> <a href="/tags/PDF/" style="font-size: 10px;">PDF</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/PostgreSQL/" style="font-size: 11.43px;">PostgreSQL</a> <a href="/tags/PowerShell/" style="font-size: 10px;">PowerShell</a> <a href="/tags/RPA/" style="font-size: 10px;">RPA</a> <a href="/tags/Room/" style="font-size: 10px;">Room</a> <a href="/tags/SQLite/" style="font-size: 10px;">SQLite</a> <a href="/tags/Shell-Script/" style="font-size: 10px;">Shell Script</a> <a href="/tags/Spring-Boot/" style="font-size: 17.14px;">Spring Boot</a> <a href="/tags/Tabula/" style="font-size: 10px;">Tabula</a> <a href="/tags/Twitter/" style="font-size: 11.43px;">Twitter</a> <a href="/tags/Twitter-API/" style="font-size: 12.86px;">Twitter API</a> <a href="/tags/Twitter4j/" style="font-size: 10px;">Twitter4j</a> <a href="/tags/UiPath/" style="font-size: 10px;">UiPath</a> <a href="/tags/VBS/" style="font-size: 11.43px;">VBS</a> <a href="/tags/VS-Code/" style="font-size: 11.43px;">VS Code</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/Windows/" style="font-size: 12.86px;">Windows</a> <a href="/tags/Xdebug/" style="font-size: 10px;">Xdebug</a> <a href="/tags/admob/" style="font-size: 10px;">admob</a> <a href="/tags/android/" style="font-size: 20px;">android</a> <a href="/tags/android-studio/" style="font-size: 10px;">android studio</a> <a href="/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0/" style="font-size: 15.71px;">アルゴリズム</a> <a href="/tags/%E3%83%90%E3%83%83%E3%83%81/" style="font-size: 10px;">バッチ</a> <a href="/tags/%E3%83%96%E3%83%AD%E3%82%B0/" style="font-size: 10px;">ブログ</a> <a href="/tags/%E3%83%9E%E3%82%AF%E3%83%AD/" style="font-size: 10px;">マクロ</a> <a href="/tags/%E3%83%A2%E3%83%81%E3%83%99%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3/" style="font-size: 10px;">モチベーション</a> <a href="/tags/%E5%80%8B%E4%BA%BA%E9%96%8B%E7%99%BA/" style="font-size: 12.86px;">個人開発</a> <a href="/tags/%E5%88%9D%E5%BF%83%E8%80%85/" style="font-size: 10px;">初心者</a> <a href="/tags/%E6%AD%A3%E8%A6%8F%E8%A1%A8%E7%8F%BE/" style="font-size: 10px;">正規表現</a> <a href="/tags/%E7%8B%AC%E5%AD%A6/" style="font-size: 10px;">独学</a> <a href="/tags/%E8%87%AA%E5%8B%95%E5%8C%96/" style="font-size: 14.29px;">自動化</a> <a href="/tags/%E9%96%A2%E6%95%B0%E5%9E%8B%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0/" style="font-size: 10px;">関数型プログラミング</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 karintomania<br>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+    <a href="/categories/%E6%8A%80%E8%A1%93/" class="mobile-nav-link">Dev</a>
+  
+    <a href="/categories/%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%83%A9%E3%82%A4%E3%83%95/" class="mobile-nav-link">Engineer&#39;s life</a>
+  
+</nav>
+    
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
