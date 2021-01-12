@@ -24,11 +24,12 @@
   <% } %>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- OGP settings -->
-	<% if (page.featured_image){ %>
-		<meta property="og:image" content="<%- page.featured_image %>" /> 
-		<meta property="twitter:image" content="<%- page.featured_image %>" /> 
+	<% if (page.featured_image){ 
+		var card = 'summary_large_image'%>
+  		<%- open_graph({image:page.featured_image,twitter_card: card, twitter_id: theme.twitter,twitter_site: theme.twitter, fb_admins: theme.fb_admins, fb_app_id: theme.fb_app_id}) %>
+	<% }else { %>
+  		<%- open_graph({twitter_card: card, twitter_id: theme.twitter, twitter_site: theme.twitter, fb_admins: theme.fb_admins, fb_app_id: theme.fb_app_id}) %>
 	<% } %>
-  <%- open_graph({twitter_id: theme.twitter, fb_admins: theme.fb_admins, fb_app_id: theme.fb_app_id}) %>
   <% if (theme.rss){ %>
     <link rel="alternate" href="<%= url_for(theme.rss) %>" title="<%= config.title %>" type="application/atom+xml">
   <% } %>
