@@ -31,10 +31,11 @@
 <meta property="og:site_name" content="寝室コンピューティング">
 <meta property="og:description" content="背景こんにちは。 かりんとうマニア(@karintozuki)です。今回はKotlinでの正規表現の使い方を紹介します。">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;09&#x2F;2020-0905-kotlin-regex&#x2F;regex.png">
 <meta property="og:image" content="https:&#x2F;&#x2F;thumbnail.image.rakuten.co.jp&#x2F;ran&#x2F;img&#x2F;2001&#x2F;0009&#x2F;784&#x2F;873&#x2F;116&#x2F;303&#x2F;20010009784873116303_1.jpg?_ex=320x320">
-<meta property="og:updated_time" content="2020-09-05T21:50:50.895Z">
+<meta property="og:updated_time" content="2021-01-12T00:42:09.171Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https:&#x2F;&#x2F;thumbnail.image.rakuten.co.jp&#x2F;ran&#x2F;img&#x2F;2001&#x2F;0009&#x2F;784&#x2F;873&#x2F;116&#x2F;303&#x2F;20010009784873116303_1.jpg?_ex=320x320">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;09&#x2F;2020-0905-kotlin-regex&#x2F;regex.png">
   
   
     <link rel="icon" href="/css/images/favicon.ico">
@@ -151,6 +152,12 @@
 <figure class="highlight kotlin"><figcaption><span>RegEx.kt</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">val</span> target = <span class="string">"090-1111-2222"</span></span><br><span class="line"><span class="keyword">val</span> regex = Regex(<span class="string">"""\d"""</span>)</span><br><span class="line"><span class="keyword">val</span> replaced = regex.replace(target, <span class="string">"x"</span>)</span><br><span class="line">print(replaced)</span><br><span class="line"><span class="comment">// 結果：xxx-xxxx-xxxx</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">val</span> firstRplaced = regex.replaceFirst(target, <span class="string">"x"</span>)</span><br><span class="line">print(replaced)</span><br><span class="line"><span class="comment">// 結果：x90-1111-2222</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">val</span> replacedWithOriginal = regex.replace(target, <span class="string">"$0x"</span>)</span><br><span class="line">print(replacedWithOriginal)</span><br><span class="line"><span class="comment">// 結果：0x9x0x-1x1x1x1x-2x2x2x2x</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="まとめ"><a href="#まとめ" class="headerlink" title="まとめ"></a>まとめ</h2><p>Kotlinの正規表現についてまとめました。<br>お役に立てれば幸いです。</p>
+<p>最後になりますが、<br>私は個人開発でアプリを作っています。</p>
+<p>クイズ感覚で正規表現が楽しめるアプリ、正規表現クエストを作りました。</p>
+<p>こんなKotlinの正規表現なんて<br>ニッチな記事を閲覧してくれる皆様なら笑<br>楽しんでいただけると思います。<br><a href="https://www.regex.bedroomcomputing.com/" target="_blank" rel="noopener">https://www.regex.bedroomcomputing.com/</a></p>
+<img src="/2020/09/2020-0905-kotlin-regex/regex.png" class="">
+
+
 <p>それじゃ今日はこの辺で。</p>
 <h2 id="関連記事"><a href="#関連記事" class="headerlink" title="関連記事"></a>関連記事</h2><p>こちらの記事もおすすめ。  </p>
 <p><a href="/2020/08/2020-0801-android-selftaught/">アプリ未経験エンジニアが独学で個人開発Androidアプリを公開するまでにやったこと</a></p>
@@ -160,7 +167,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.bedroomcomputing.com/2020/09/2020-0905-kotlin-regex/" data-id="ckjrlea33003rlil1foybfkg3" data-title="Kotlinの正規表現の使い方" class="article-share-link">Share</a>
+      <a data-url="https://www.bedroomcomputing.com/2020/09/2020-0905-kotlin-regex/" data-id="ckjt9u048003etd527y7bdlj3" data-title="Kotlinの正規表現の使い方" class="article-share-link">Share</a>
       
       
       
