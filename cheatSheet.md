@@ -15,6 +15,7 @@ hexo clean
 
 まとめてやる
 hexo clean && hexo generate && hexo deploy
+hexo clean && hexo generate
 
 
 # タグスクリプト

@@ -142,6 +142,18 @@ print(replacedWithOriginal)
 Kotlinの正規表現についてまとめました。
 お役に立てれば幸いです。
 
+最後になりますが、
+私は個人開発でアプリを作っています。
+
+クイズ感覚で正規表現が楽しめるアプリ、正規表現クエストを作りました。
+
+こんなKotlinの正規表現なんて
+ニッチな記事を閲覧してくれる皆様なら笑
+楽しんでいただけると思います。
+https://www.regex.bedroomcomputing.com/
+{% asset_img regex.png %}
+
+
 それじゃ今日はこの辺で。
 
 ## 関連記事
