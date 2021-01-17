@@ -2,16 +2,58 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.bedroomcomputing.com/2020/12/2020-1207-indiehacker/</loc>
+    
+    <lastmod>2021-01-17T01:59:20.517Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.bedroomcomputing.com/2020/11/2020-1118-twitter-login/</loc>
+    
+    <lastmod>2021-01-17T01:59:18.528Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.bedroomcomputing.com/2021/01/2021-0103-nav-preview/</loc>
+    
+    <lastmod>2021-01-17T01:59:13.201Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.bedroomcomputing.com/2021/01/2021-0112-debug-multi-php/</loc>
     
-    <lastmod>2021-01-12T19:01:54.394Z</lastmod>
+    <lastmod>2021-01-17T01:58:55.281Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://www.bedroomcomputing.com/2020/09/2020-0905-kotlin-regex/</loc>
     
-    <lastmod>2021-01-12T00:42:09.171Z</lastmod>
+    <lastmod>2021-01-17T01:58:29.776Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.bedroomcomputing.com/2020/03/2020-0327-mybatis/</loc>
+    
+    <lastmod>2021-01-17T01:58:03.152Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.bedroomcomputing.com/2020/08/2020-0815-engineer-static-site-gen-blog/</loc>
+    
+    <lastmod>2021-01-12T22:54:28.103Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.bedroomcomputing.com/2020/06/2020-0610-sqlite/</loc>
+    
+    <lastmod>2021-01-12T22:46:04.920Z</lastmod>
     
   </url>
   
@@ -19,13 +61,6 @@
     <loc>https://www.bedroomcomputing.com/2021/01/2021-0110-logcat/</loc>
     
     <lastmod>2021-01-10T20:27:22.753Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.bedroomcomputing.com/2021/01/2021-0103-nav-preview/</loc>
-    
-    <lastmod>2021-01-03T09:29:55.145Z</lastmod>
     
   </url>
   
@@ -54,13 +89,6 @@
     <loc>https://www.bedroomcomputing.com/2020/10/2020-1018-kotlin-localdatetime-format/</loc>
     
     <lastmod>2020-12-12T18:22:58.500Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.bedroomcomputing.com/2020/11/2020-1118-twitter-login/</loc>
-    
-    <lastmod>2020-12-12T18:22:00.133Z</lastmod>
     
   </url>
   
@@ -107,13 +135,6 @@
   </url>
   
   <url>
-    <loc>https://www.bedroomcomputing.com/2020/12/2020-1207-indiehacker/</loc>
-    
-    <lastmod>2020-12-07T21:29:03.582Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://www.bedroomcomputing.com/2020/11/2020-1123-hexo-github/</loc>
     
     <lastmod>2020-11-23T01:35:31.854Z</lastmod>
@@ -131,13 +152,6 @@
     <loc>https://www.bedroomcomputing.com/2020/11/2020-1118-google-dev-guide-4/</loc>
     
     <lastmod>2020-11-23T01:35:31.851Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.bedroomcomputing.com/2020/08/2020-0815-engineer-static-site-gen-blog/</loc>
-    
-    <lastmod>2020-11-23T01:35:31.850Z</lastmod>
     
   </url>
   
@@ -233,13 +247,6 @@
   </url>
   
   <url>
-    <loc>https://www.bedroomcomputing.com/2020/03/2020-0327-mybatis/</loc>
-    
-    <lastmod>2020-08-26T07:45:08.137Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://www.bedroomcomputing.com/2020/08/2020-0823-twitter-api-without-library/</loc>
     
     <lastmod>2020-08-23T09:08:07.155Z</lastmod>
@@ -250,13 +257,6 @@
     <loc>https://www.bedroomcomputing.com/about/index.html</loc>
     
     <lastmod>2020-08-22T11:50:38.594Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.bedroomcomputing.com/2020/06/2020-0610-sqlite/</loc>
-    
-    <lastmod>2020-08-15T18:17:34.425Z</lastmod>
     
   </url>
   

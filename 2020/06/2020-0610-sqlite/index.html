@@ -29,7 +29,7 @@
 <meta property="og:description" content="背景android開発を始めた際に、DBとしてSQLiteが使用されている、ということでSQLiteとの付き合いが始まった。   何となく使っているのもあれなので、調べてみることにした。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;06&#x2F;2020-0610-sqlite&#x2F;logo.gif">
-<meta property="og:updated_time" content="2020-08-15T18:17:34.425Z">
+<meta property="og:updated_time" content="2021-01-12T22:46:04.920Z">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;06&#x2F;2020-0610-sqlite&#x2F;logo.gif">
 	
@@ -119,7 +119,7 @@
 	
       
 		<h2>目次</h2>
-		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景"><span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SQLiteとは"><span class="toc-text">SQLiteとは</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#軽量"><span class="toc-text">軽量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一つのファイルに全部コミコミ-self-contained"><span class="toc-text">一つのファイルに全部コミコミ (self-contained)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#サーバレス"><span class="toc-text">サーバレス</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#設定不要。-zero-configuration"><span class="toc-text">設定不要。 (zero-configuration)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#高い信頼性。"><span class="toc-text">高い信頼性。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#フル機能のDB"><span class="toc-text">フル機能のDB</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#余談"><span class="toc-text">余談</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使ってみよう"><span class="toc-text">使ってみよう</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SQLite3のインストール"><span class="toc-text">SQLite3のインストール</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DB作成"><span class="toc-text">DB作成</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#もう少し試してみる。"><span class="toc-text">もう少し試してみる。</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#余談-1"><span class="toc-text">余談</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#まとめ"><span class="toc-text">まとめ</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#PR"><span class="toc-text">PR</span></a></li></ol></li></ol>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景"><span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SQLiteとは"><span class="toc-text">SQLiteとは</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#軽量"><span class="toc-text">軽量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一つのファイルに全部コミコミ-self-contained"><span class="toc-text">一つのファイルに全部コミコミ (self-contained)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#サーバレス"><span class="toc-text">サーバレス</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#インストール不要-amp-設定不要-zero-configuration"><span class="toc-text">インストール不要 &amp; 設定不要 (zero-configuration)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#高い信頼性。"><span class="toc-text">高い信頼性。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#フル機能のDB"><span class="toc-text">フル機能のDB</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#余談"><span class="toc-text">余談</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使ってみよう"><span class="toc-text">使ってみよう</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SQLite3のインストール"><span class="toc-text">SQLite3のインストール</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DB作成"><span class="toc-text">DB作成</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#もう少し試してみる。"><span class="toc-text">もう少し試してみる。</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#余談-1"><span class="toc-text">余談</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#まとめ"><span class="toc-text">まとめ</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#PR"><span class="toc-text">PR</span></a></li></ol></li></ol>
         <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>android開発を始めた際に、<br>DBとしてSQLiteが使用されている、<br>ということでSQLiteとの付き合いが始まった。  </p>
 <p>何となく使っているのもあれなので、調べてみることにした。  </p>
 <a id="more"></a>
@@ -133,7 +133,8 @@
 <p>実際、androidの中にはこのSQLiteのDBファイルが存在していて、<br>開いてデータを見たりできる。  </p>
 <p>また、そのファイル内にほとんど必要なものが入っている<br>= 外部のライブラリへの依存性が究極に少ないから、<br>クロスプラットフォームで動くようになっているとのこと。  </p>
 <h3 id="サーバレス"><a href="#サーバレス" class="headerlink" title="サーバレス"></a>サーバレス</h3><p>ファイルで存在してるからDBサーバとかそういう次元の話じゃない。<br>ファイルの読み書き権限があればOK。  </p>
-<h3 id="設定不要。-zero-configuration"><a href="#設定不要。-zero-configuration" class="headerlink" title="設定不要。 (zero-configuration)"></a>設定不要。 (zero-configuration)</h3><p>インストールとかしなくても動く。<br>プロセスとしてstart, stopしないといけない、とかもない。<br>初期設定とかもいらない。  </p>
+<h3 id="インストール不要-amp-設定不要-zero-configuration"><a href="#インストール不要-amp-設定不要-zero-configuration" class="headerlink" title="インストール不要 &amp; 設定不要 (zero-configuration)"></a>インストール不要 &amp; 設定不要 (zero-configuration)</h3><p>インストールとかしなくても動く。<br>ファイルがあればそれだけでDBとして機能する。  </p>
+<p>プロセスとしてstart, stopしないといけない、とかもない。<br>初期設定とかもいらない。  </p>
 <p>これはDBとしてはとても画期的なのでは。  </p>
 <h3 id="高い信頼性。"><a href="#高い信頼性。" class="headerlink" title="高い信頼性。"></a>高い信頼性。</h3><p>テストカバレッジが100%<br>ブランチカバレッジという、分岐の全ての条件を一度は通るようなテストで<br>カバレッジ100%。ブランチカバレッジの100%はかなり難しいらしい。  </p>
 <p>テストは全然ライトじゃない。  </p>
@@ -182,7 +183,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.bedroomcomputing.com/2020/06/2020-0610-sqlite/" data-id="ckjukat56001zspl1f2vldj9i" data-title="SQLiteとは？特徴と使い方を解説する" class="article-share-link">Share</a>
+      <a data-url="https://www.bedroomcomputing.com/2020/06/2020-0610-sqlite/" data-id="ckk0hs5qi001wuql1fp6adnsr" data-title="SQLiteとは？特徴と使い方を解説する" class="article-share-link">Share</a>
       
       
       
