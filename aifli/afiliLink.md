@@ -1,3 +1,5 @@
+https://docs.google.com/spreadsheets/d/1YFtP18BZF8I1rnOmi641gXokKKnoOu8dUlR4DrfthDE/edit#gid=0
+
 お名前ドットコム
 {% raw %}
 <a href="https://px.a8.net/svt/ejp?a8mat=3BK2F7+C9RNN6+50+2HLB41" rel="nofollow">

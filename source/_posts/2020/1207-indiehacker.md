@@ -1,5 +1,5 @@
 ---
-title: 開発のモチベーションがなくなったときに読みたい記事５選
+title: 個人開発のモチベーションがなくなったときに読みたい記事５選
 tags:
   - 個人開発
   - モチベーション
@@ -30,8 +30,8 @@ date: 2020-12-07 21:28:18
 それでは見ていきましょう。
 ちなみに順番は適当です。
 
-## Markdownエディタを作って月15万円稼ぐまでにやったこと — Inkdrop
-https://blog.craftz.dog/how-i-built-a-markdown-editor-earning-1300-mo-profit-inkdrop-c6691eca7091
+## 個人開発への愛が熱い！
+[Markdownエディタを作って月15万円稼ぐまでにやったこと — Inkdrop](https://blog.craftz.dog/how-i-built-a-markdown-editor-earning-1300-mo-profit-inkdrop-c6691eca7091 )
 Inkdropというマークダウンエディタを開発しているTakuyaさんのブログエントリです。
 
 このブログはとにかく個人開発への愛が伝わってくるブログです。
@@ -45,8 +45,8 @@ Inkdropは今では人気のソフトですが、
 それもこういった日常的な気づきから始まったのかと思うと
 感慨深いです。
 
-## スキル0、知識0、人脈0から3ヶ月で開発したサービスを運営2年半で企業に売却しました
-https://note.com/rubys8arks/n/n0b6e0dae6f07
+## サービス売却までの流れを紹介！
+[スキル0、知識0、人脈0から3ヶ月で開発したサービスを運営2年半で企業に売却しました](https://note.com/rubys8arks/n/n0b6e0dae6f07 )
 
 かしいさんという方のNoteです。
 元々コンサルをしていたところから会社を辞めてサービス開発をし、
@@ -60,8 +60,8 @@ https://note.com/rubys8arks/n/n0b6e0dae6f07
 それでも成功のコツは運と情熱と試行錯誤とのことです。
 
 
-## 日本人でも英語圏で戦えることを証明したい。28歳が会社を辞め、個人開発者としてカナダでひたすらもがき続けた一年間とこれから
-https://qiita.com/kanye__east/items/6ce521d08ca3a870b73e
+## 海外でも個人開発！
+[日本人でも英語圏で戦えることを証明したい。28歳が会社を辞め、個人開発者としてカナダでひたすらもがき続けた一年間とこれから](https://qiita.com/kanye__east/items/6ce521d08ca3a870b73e )
 関係ないけどタイトル長い。。。
 カナダで個人開発をしているカニエ　イーストさんのQiita記事です。
 
@@ -78,8 +78,8 @@ https://qiita.com/kanye__east/items/6ce521d08ca3a870b73e
 こういうことの積み重ねが大事なんだなーと考えさせられます。
 
 
-## 【プロにキク！】 アプリ量産エンジニアが明かす５つの大切な思考
-https://persol-tech-s.co.jp/i-engineer/human/nishimoto
+## プロダクトの数が成功の鍵！？
+[【プロにキク！】 アプリ量産エンジニアが明かす５つの大切な思考](https://persol-tech-s.co.jp/i-engineer/human/nishimoto )
 個人的に一番好きかも。
 100本以上アプリを作ったという西本さんのインタビュー記事。
 かなりぶっ飛んでいて読み物として単純に面白いです。
@@ -89,8 +89,8 @@ https://persol-tech-s.co.jp/i-engineer/human/nishimoto
 開発をピュアに楽しむ気持ちが伝わってきます。
 そうでもないと100本もアプリ作れないですよね。。。
 
-## 開設後３週間で収益１０万円を得た個人開発サイトでやったことの全部を公開する
-https://qiita.com/jabba/items/1a49e860a09a613b09d4
+## 収益が一番のバロメーター。
+[開設後３週間で収益１０万円を得た個人開発サイトでやったことの全部を公開する](https://qiita.com/jabba/items/1a49e860a09a613b09d4 )
 
 ベルリンで働くジャバ・ザ・ハットリさんのQiita記事。
 ここで紹介した記事の中では一番シビアな感じです。

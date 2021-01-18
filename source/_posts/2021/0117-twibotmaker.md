@@ -9,9 +9,9 @@ tags:
 
 ## はじめに
 こんにちは。 [かりんとうマニア(@karintozuki)](https://twitter.com/karintozuki)です。  
-<!-- more -->
 この記事にたどり着いたということは
 <u>Twitter Botを作りたい</u>と思っている方だと思います。
+<!-- more -->
 
 Twitter Botの作り方を解説しているサイトはたくさんありますが、
 こんな風に思ったりしませんでしたか？
