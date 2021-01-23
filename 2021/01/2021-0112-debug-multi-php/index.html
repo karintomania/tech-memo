@@ -29,7 +29,7 @@
 <meta property="og:description" content="背景こんにちは。 かりんとうマニア(@karintozuki)です。   仕事でVS CodeでPHPの開発をしているのですが、PHP5とPHP7のシステム両方の保守をしています。 普通にコーディングをする際は特に困らないのですが、Xdebugを利用する際に設定をする必要があったので、そのメモを残します。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2021&#x2F;01&#x2F;2021-0112-debug-multi-php&#x2F;thumb.png">
-<meta property="og:updated_time" content="2021-01-17T01:58:55.281Z">
+<meta property="og:updated_time" content="2021-01-23T02:05:41.159Z">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2021&#x2F;01&#x2F;2021-0112-debug-multi-php&#x2F;thumb.png">
 	
@@ -119,7 +119,7 @@
 	
       
 		<h2>目次</h2>
-		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景"><span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#前提"><span class="toc-text">前提</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#プロジェクトの作成"><span class="toc-text">プロジェクトの作成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PHP-Debugのインストール"><span class="toc-text">PHP Debugのインストール</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PHP7の設定"><span class="toc-text">PHP7の設定</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#settings-json"><span class="toc-text">settings.json</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#launch-json"><span class="toc-text">launch.json</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Xdebugの確認"><span class="toc-text">Xdebugの確認</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PHP5の設定"><span class="toc-text">PHP5の設定</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#php-iniの設定"><span class="toc-text">php.iniの設定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#settings-json-1"><span class="toc-text">settings.json</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#launch-json-1"><span class="toc-text">launch.json</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Xdebugの確認-1"><span class="toc-text">Xdebugの確認</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#まとめ"><span class="toc-text">まとめ</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ところで…"><span class="toc-text">ところで…</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Tech-Clips"><span class="toc-text">Tech Clips</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#関連記事"><span class="toc-text">関連記事</span></a></li></ol>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景"><span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#前提"><span class="toc-text">前提</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#プロジェクトの作成"><span class="toc-text">プロジェクトの作成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PHP-Debugのインストール"><span class="toc-text">PHP Debugのインストール</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PHP7の設定"><span class="toc-text">PHP7の設定</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#settings-json"><span class="toc-text">settings.json</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#launch-json"><span class="toc-text">launch.json</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Xdebugの確認"><span class="toc-text">Xdebugの確認</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PHP5の設定"><span class="toc-text">PHP5の設定</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#php-iniの設定"><span class="toc-text">php.iniの設定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#settings-json-1"><span class="toc-text">settings.json</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#launch-json-1"><span class="toc-text">launch.json</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Xdebugの確認-1"><span class="toc-text">Xdebugの確認</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#まとめ"><span class="toc-text">まとめ</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ところで…"><span class="toc-text">ところで…</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#関連記事"><span class="toc-text">関連記事</span></a></li></ol>
         <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>こんにちは。 <a href="https://twitter.com/karintozuki" target="_blank" rel="noopener">かりんとうマニア(@karintozuki)</a>です。  </p>
 <p>仕事でVS CodeでPHPの開発をしているのですが、<br>PHP5とPHP7のシステム両方の保守をしています。</p>
 <p>普通にコーディングをする際は特に困らないのですが、<br>Xdebugを利用する際に設定をする必要があったので、<br>そのメモを残します。</p>
@@ -186,7 +186,7 @@
 <p>転職することで、もっと成長できるかもしれません。</p>
 <p>いますぐ転職しない人でも、とりあえずエージェントに登録しておいて<br><u>案件や年収を眺めるだけでも市場の需要を知ることができ、</u>勉強になります。</p>
 <p>ここでエンジニアに人気の転職サイトを紹介します。</p>
-<h3 id="Tech-Clips"><a href="#Tech-Clips" class="headerlink" title="Tech Clips"></a>Tech Clips</h3><p>Tech Clipsは<u>年収500万以上＆自社サービスを持った会社</u>に特化した求人サイトです。<br>首都圏限定になってはしまいますが、<br>収入を増やしたい、自社サービスを持った企業への転職をしたい人におすすめです。</p>
+<p><strong>Tech Clips</strong><br>Tech Clipsは<u>年収500万以上＆自社サービスを持った会社</u>に特化した求人サイトです。<br>首都圏限定になってはしまいますが、<br>収入を増やしたい、自社サービスを持った企業への転職をしたい人におすすめです。</p>
 <p><a href="https://px.a8.net/svt/ejp?a8mat=3H3JXF+DE94S2+3SWM+61Z81" target="_blank" rel="noopener">▼Tech Clips 登録はこちら▼</a><br><a href="https://px.a8.net/svt/ejp?a8mat=3H3JXF+DE94S2+3SWM+61Z81" target="_blank" rel="nofollow noopener"><br><img border="0" width="300" height="250" alt="" src="https://www20.a8.net/svt/bgt?aid=210117795810&wid=001&eno=01&mid=s00000017743001017000&mc=1"></a><br><img border="0" width="1" height="1" src="https://www12.a8.net/0.gif?a8mat=3H3JXF+DE94S2+3SWM+61Z81" alt=""></p>
 <h2 id="関連記事"><a href="#関連記事" class="headerlink" title="関連記事"></a>関連記事</h2><p>こちらの記事もおすすめです。  </p>
 <p><a href="/2020/07/2020-0712-windowsAutomation/">現役エンジニアが業務を自動化してきた手法７つ+αを紹介【Windows編】</a></p>
@@ -194,7 +194,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.bedroomcomputing.com/2021/01/2021-0112-debug-multi-php/" data-id="ckk1i30n50052eol1amc6a0m0" data-title="VS Codeで複数バージョンのPHPに対してXdebugを利用する" class="article-share-link">Share</a>
+      <a data-url="https://www.bedroomcomputing.com/2021/01/2021-0112-debug-multi-php/" data-id="ckk92poir000rt4528s2c1xdz" data-title="VS Codeで複数バージョンのPHPに対してXdebugを利用する" class="article-share-link">Share</a>
       
       
       
