@@ -28,7 +28,7 @@
 <meta property="og:description" content="背景こんにちは。 かりんとうマニア(@karintozuki)です。   今日はだいぶニッチですが、Googleが提供しているSpreadsheetのAPIにandroidアプリからアクセスする方法を紹介します。 Google APIにandroidアプリで使ってみるGoogleはMapやGmailなど様々なサービスを提供していますが、それぞれにAPIがあったりします。 今回は例としてGoogle">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2021&#x2F;01&#x2F;2021-0123-spreadsheet-kotlin&#x2F;thumb.png">
-<meta property="og:updated_time" content="2021-01-23T02:09:33.093Z">
+<meta property="og:updated_time" content="2021-01-23T02:18:19.801Z">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2021&#x2F;01&#x2F;2021-0123-spreadsheet-kotlin&#x2F;thumb.png">
 	
@@ -201,6 +201,9 @@
 <p>関数を追加します。</p>
 <figure class="highlight kotlin"><figcaption><span>MainActivity.kt</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">fun</span> <span class="title">write</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">val</span> sheetsService = Sheets.Builder(AndroidHttp.newCompatibleTransport(), JacksonFactory.getDefaultInstance(), credential)</span><br><span class="line">            <span class="comment">// アプリケーション名を指定するのだが、適当でいいっぽい</span></span><br><span class="line">            .setApplicationName(<span class="string">"Test Project2"</span>)</span><br><span class="line">            .build();</span><br><span class="line"></span><br><span class="line">     <span class="comment">// 二次元配列で書き込む値を保持</span></span><br><span class="line">    <span class="keyword">val</span> values: List&lt;List&lt;Any&gt;&gt; = Arrays.asList(</span><br><span class="line">            Arrays.asList(<span class="string">"A"</span>,<span class="string">"B"</span>) ,</span><br><span class="line">            Arrays.asList(<span class="string">"C"</span>,<span class="string">"D"</span>) <span class="comment">// Additional rows ...</span></span><br><span class="line">    )</span><br><span class="line">    <span class="keyword">val</span> body = ValueRange().setValues(values)</span><br><span class="line"></span><br><span class="line">     <span class="comment">// 書き込み。</span></span><br><span class="line">     <span class="keyword">val</span> result: AppendValuesResponse =</span><br><span class="line">            sheetsService.spreadsheets().values()</span><br><span class="line">                    <span class="comment">// appendは一番下の行に追加していってくれる</span></span><br><span class="line">                    .append(<span class="string">"1XoRcqhbAkhYB8zh_k4_VTh3_V6TrJLeTz9NfW5mTY_8"</span>, <span class="string">"Sheet1!A:B"</span>, body)</span><br><span class="line">                    <span class="comment">// RAWを指定すると値がそのまま表示される。USER_ENTEREDだと数字や日付の書式が手入力時と同じになるらしい</span></span><br><span class="line">                    .setValueInputOption(<span class="string">"RAW"</span>)</span><br><span class="line">                    .execute()</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<p>うまく動くとこんな感じでボタンを押すとSpreadsheetに<br>データが書き込まれます。</p>
+<img src="/2021/01/2021-0123-spreadsheet-kotlin/write.gif" class="">
+
 <h2 id="サインアウト"><a href="#サインアウト" class="headerlink" title="サインアウト"></a>サインアウト</h2><p>ついでにサインアウトの機能をつけておきます。</p>
 <p>クリックリスナー追加</p>
 <figure class="highlight kotlin"><figcaption><span>MainActivity.kt</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// サインアウト</span></span><br><span class="line">findViewById&lt;Button&gt;(R.id.button_signout).setOnClickListener&#123;</span><br><span class="line">	signOut()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -224,7 +227,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.bedroomcomputing.com/2021/01/2021-0123-spreadsheet-kotlin/" data-id="ckk92wyxx00581v52g0j184ws" data-title="androidアプリからGoogle API(Spreadsheet)にアクセスする" class="article-share-link">Share</a>
+      <a data-url="https://www.bedroomcomputing.com/2021/01/2021-0123-spreadsheet-kotlin/" data-id="ckk9340qm000s80524yu9bdn0" data-title="androidアプリからGoogle API(Spreadsheet)にアクセスする" class="article-share-link">Share</a>
       
       
       
