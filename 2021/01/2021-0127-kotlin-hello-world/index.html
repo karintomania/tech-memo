@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-161452704-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-161452704-1');
+</script>
+<!-- End Google Analytics -->
+
+  
+  <title>未経験OK！最速Kotlin&amp;androidアプリ開発入門その２　Hello world!!はじめてのプログラミング | 寝室コンピューティング</title>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- OGP settings -->
+	
+  		<meta name="description" content="背景こんにちは。 かりんとうマニア(@karintozuki)です。   この入門はこんな方を対象にしています。  プログラミングはしたことがないけどandroidアプリを作りたい Kotlinで開発するのがいいとは聞いたけど、初心者向けのKotlin教材が見つからない">
+<meta name="keywords" content="最速Kotlin&amp;Androidアプリ開発入門">
+<meta property="og:type" content="article">
+<meta property="og:title" content="未経験OK！最速Kotlin&amp;androidアプリ開発入門その２　Hello world!!はじめてのプログラミング">
+<meta property="og:url" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2021&#x2F;01&#x2F;2021-0127-kotlin-hello-world&#x2F;index.html">
+<meta property="og:site_name" content="寝室コンピューティング">
+<meta property="og:description" content="背景こんにちは。 かりんとうマニア(@karintozuki)です。   この入門はこんな方を対象にしています。  プログラミングはしたことがないけどandroidアプリを作りたい Kotlinで開発するのがいいとは聞いたけど、初心者向けのKotlin教材が見つからない">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2021&#x2F;01&#x2F;2021-0127-kotlin-hello-world&#x2F;thumb.png">
+<meta property="og:updated_time" content="2021-01-27T00:41:26.958Z">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2021&#x2F;01&#x2F;2021-0127-kotlin-hello-world&#x2F;thumb.png">
+	
+  
+  
+    <link rel="icon" href="/css/images/favicon.ico">
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+  
+  <script data-ad-client="ca-pub-2164726777115826" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+	  <div id="logo-wrap">
+      <h1>
+        <a href="/" id="logo">寝室コンピューティング</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">オフィスでするほどでもない開発を寝室から</a>
+		</h2>
+	</div>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+          <a class="main-nav-link" href="/categories/%E6%8A%80%E8%A1%93/">Dev</a>
+        
+          <a class="main-nav-link" href="/categories/%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%83%A9%E3%82%A4%E3%83%95/">Engineer&#39;s life</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://www.bedroomcomputing.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2021-0127-kotlin-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/01/2021-0127-kotlin-hello-world/" class="article-date">
+  <time datetime="2021-01-27T00:29:22.000Z" itemprop="datePublished">2021-01-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%8A%80%E8%A1%93/">技術</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      未経験OK！最速Kotlin&amp;androidアプリ開発入門その２　Hello world!!はじめてのプログラミング
+    </h1>
+  
+
+      </header>
+	
+    <div class="article-entry" itemprop="articleBody">
+	
+		<img src="https://www.bedroomcomputing.com/2021/01/2021-0127-kotlin-hello-world/thumb.png">
+	
+      
+		<h2>目次</h2>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景"><span class="toc-text">背景</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#おすすめの勉強法"><span class="toc-text">おすすめの勉強法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一番最初のプログラム、Hello-world"><span class="toc-text">一番最初のプログラム、Hello world</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#コメント"><span class="toc-text">コメント</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#コメントを足してみる"><span class="toc-text">コメントを足してみる</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#画面に文字を出力する-println"><span class="toc-text">画面に文字を出力する(println)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#重要"><span class="toc-text">重要!!</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#まとめ"><span class="toc-text">まとめ</span></a></li></ol>
+        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>こんにちは。 <a href="https://twitter.com/karintozuki" target="_blank" rel="noopener">かりんとうマニア(@karintozuki)</a>です。  </p>
+<p>この入門はこんな方を対象にしています。</p>
+<ul>
+<li>プログラミングはしたことがないけどandroidアプリを作りたい</li>
+<li>Kotlinで開発するのがいいとは聞いたけど、初心者向けのKotlin教材が見つからない</li>
+</ul>
+<a id="more"></a>
+<p>前回を読んでいない人はこちらから<br><a href="/2021/01/2021-0127-what-is-kotlin/">未経験OK！最速Kotlin&amp;androidアプリ開発入門その１ Kotlinとは？</a></p>
+<h3 id="おすすめの勉強法"><a href="#おすすめの勉強法" class="headerlink" title="おすすめの勉強法"></a>おすすめの勉強法</h3><p>今回から実際にコードを書いていきます。</p>
+<p>このサイトには参考のコードを載せていますが、動作を確認するときは、<br>なるべく<u>コピーペーストせずに一文字ずつ打ちこんでみてください</u>。</p>
+<p>理由としては、コピペしてしまうと<br>実はコードを見間違えていたりしたとき、間違いに気付けません。<br>（<u>プログラミングは英語と記号なので、よく見間違いがあります。</u>マジです！）</p>
+<p>また、自分の指を動かして打ち込むことで、<br>ただコピペするよりも記憶に定着しやすい、ということもあります。</p>
+<p>めんどくさいかもしれませんが、<br>ぜひ打ち込んでみてください。</p>
+<h2 id="一番最初のプログラム、Hello-world"><a href="#一番最初のプログラム、Hello-world" class="headerlink" title="一番最初のプログラム、Hello world"></a>一番最初のプログラム、Hello world</h2><p>Kotlinで書かれたプログラムを動かすためには、<br>本当はいろいろなソフトをインストールする必要があるのですが、<br>それには結構手間がかかってしまいます。</p>
+<p>そこで最初のうちは、<br><u>Kotlinをブラウザから動かせるKotlin Playground(プレイグラウンド)</u>というサイトを使います。</p>
+<p>ここからアクセスしてみてください。<br><a href="https://play.kotlinlang.org/" target="_blank" rel="noopener">Kotlin Playground</a></p>
+<p>こんな画面が表示されましたか？<br>（右下に黒い怪しい画面が見えていたら<code>[Y]es, I agree</code>を押すと、コードを保存しておいてくれます。）</p>
+<img src="/2021/01/2021-0127-kotlin-hello-world/01-kotlin-pg.png" class="">
+
+<p>何やらいろいろ書いてありますね。<br>これがKotlinのコードです。</p>
+<p>それではおもむろに、<br><u>青い実行ボタンを押してください。</u></p>
+<p>画面下部に<code>Hello, world!!!</code>と表示されましたか？</p>
+<img src="/2021/01/2021-0127-kotlin-hello-world/02-result.png" class="">
+
+<p>おめでとうございます。Kotlinプログラミングに成功しました！</p>
+<p>と言っても何がなんだか分からないと思うので、<br>解説をしていきます。</p>
+<p>ここでは</p>
+<ul>
+<li>コメント</li>
+<li>画面に文字を出力する(println)</li>
+</ul>
+<p>について勉強します。</p>
+<h2 id="コメント"><a href="#コメント" class="headerlink" title="コメント"></a>コメント</h2><p>プログラミング言語にはコメントと呼ばれるものがあります。<br>その名の通り<u>コメントを残したい時に使います。</u></p>
+<p>また、<u>コメントには何を書いてもプログラムの動作は変わりません。</u></p>
+<p>この画面では緑色で書かれている<br>この部分がコメントです。</p>
+<img src="/2021/01/2021-0127-kotlin-hello-world/03-comment.png" class="">
+
+<h3 id="コメントを足してみる"><a href="#コメントを足してみる" class="headerlink" title="コメントを足してみる"></a>コメントを足してみる</h3><p>それではコメントを足してみます。<br>コメントの書き方には二種類あります。</p>
+<table>
+<thead>
+<tr>
+<th>種類</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>一行のコメント</td>
+<td>行の最初に<code>//</code>をつけるとその行は無視されます。</td>
+</tr>
+<tr>
+<td>複数行のコメント</td>
+<td><code>/*</code>と<code>*/</code>で文字を挟むと挟まれた文字は無視されます。</td>
+</tr>
+</tbody></table>
+<p>それでは、元々入っていたコメントを消して<br>以下のコメントを入れてみましょう。</p>
+<figure class="highlight kotlin"><figcaption><span>コメント</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 一行のコメント</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">   複数行に</span></span><br><span class="line"><span class="comment">   またがって</span></span><br><span class="line"><span class="comment">   コメントできます</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    println(<span class="string">"Hello, world!!!"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>できたら実行ボタンを押してみてください。</p>
+<p><u>コメントを追加しても結果は変わらないですね。</u></p>
+<h2 id="画面に文字を出力する-println"><a href="#画面に文字を出力する-println" class="headerlink" title="画面に文字を出力する(println)"></a>画面に文字を出力する(println)</h2><p>それでは次に<u>画面に文字を出力する方法</u>を勉強します。</p>
+<p><u>println(“Hello, world!!”)</u>と書かれている場所を見てみてください。</p>
+<p>これは<u>画面にHello, world!!と表示しろ</u>という命令として、<br>コンピュータに認識されます。</p>
+<p>それでは、<code>はじめてのKotlin</code>という文字を表示したいときは<br>どうしたらいいでしょうか？</p>
+<p>少し考えてみてください。</p>
+<p>分かりましたか？</p>
+<p>答えはこんな感じになります。</p>
+<figure class="highlight kotlin"><figcaption><span>コメント</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 一行のコメント</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">	複数行に</span></span><br><span class="line"><span class="comment">		渡って</span></span><br><span class="line"><span class="comment">			コメントできます!!</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    println(<span class="string">"はじめてのkotlin"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>このようにコードを変更して<br>実行してみてください。</p>
+<p>はじめてのKotlinという文字が表示されましたか？<br>それができたら<u>ぜひ自分の好きな文字を表示させてみてください。</u></p>
+<p>それでは次に先ほどのコードで、<br><code>println(&quot;はじめてのkotlin&quot;)</code>の下に<br>次の一行を追加してみてください。<br><code>println(&quot;2回目のkotlin&quot;)</code></p>
+<p>追加後のコードはこんな感じになります。</p>
+<figure class="highlight kotlin"><figcaption><span>コメント</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 一行のコメント</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">	複数行に</span></span><br><span class="line"><span class="comment">		渡って</span></span><br><span class="line"><span class="comment">			コメントできます!!</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    println(<span class="string">"はじめてのkotlin"</span>)</span><br><span class="line">    println(<span class="string">"2回目のkotlin"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>こんな結果になったでしょうか？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">はじめてのkotlin</span><br><span class="line">2回目のkotlin</span><br></pre></td></tr></table></figure>
+
+<p><code>println</code>のlnはLine（行）を意味しています。<br>なので、2回目に実行したときは改行されて二行目に文字が表示されます。</p>
+<h3 id="重要"><a href="#重要" class="headerlink" title="重要!!"></a>重要!!</h3><p>プログラミング学習の中で大事なのは、<br>何かを勉強したときにその機能を使って遊んでみることです。</p>
+<p>例えばコメントを勉強したら、<br>今回の例だとコードの一番上にコメントを追加しましたが、<br>もし一番下に追加したらどうなるだろう？<br><code>println(&quot;Hello, world!!!&quot;)</code>の横に追加したらどうなるだろう？<br>と言ったように自分で試行錯誤してみると理解が深まります。</p>
+<h2 id="まとめ"><a href="#まとめ" class="headerlink" title="まとめ"></a>まとめ</h2><p>今回はコメントと画面に文字を表示するprintlnを勉強しました。<br><u>はじめてコンピュータに指示をしてみた感じはどうでしょうか？</u><br>感動したという人はプログラマに向いてるかもしれませんね。</p>
+<p>そうじゃなかった人も(こっちの方が普通だと思います笑)<br>講座を進めるうちに面白さをわかってもらえると幸いです。</p>
+<p>それじゃ今日はこの辺で。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.bedroomcomputing.com/2021/01/2021-0127-kotlin-hello-world/" data-id="ckkeqegp90061z7l15sjf0pri" data-title="未経験OK！最速Kotlin&amp;androidアプリ開発入門その２　Hello world!!はじめてのプログラミング" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%80%E9%80%9FKotlin-Android%E3%82%A2%E3%83%97%E3%83%AA%E9%96%8B%E7%99%BA%E5%85%A5%E9%96%80/" rel="tag">最速Kotlin&Androidアプリ開発入門</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2021/01/2021-0127-what-is-kotlin/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">未経験OK！最速Kotlin&amp;androidアプリ開発入門その１ Kotlinとは？</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    <div class="widget-wrap">
+<h3 class="widget-title">About</h3>
+<div class="widget">
+	<img src="/css/images/author.png" alt="著者" class="author-img">
+	<a class="author-link" href="/about" >karintomania</a>
+	<p><p>イギリス在住のWeb開発者が日々学んだことを書き連ねています。<br> Java/Kotlinに興味があります。</p>
+</p>
+</div>
+</div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/01/2021-0127-kotlin-hello-world/">未経験OK！最速Kotlin&amp;androidアプリ開発入門その２　Hello world!!はじめてのプログラミング</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/2021-0127-what-is-kotlin/">未経験OK！最速Kotlin&amp;androidアプリ開発入門その１ Kotlinとは？</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/2021-0123-spreadsheet-kotlin/">androidアプリからGoogle API(Spreadsheet)にアクセスする</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/2021-0117-twibotmaker/">【誰でも無料で！】スマホアプリを使ったTwitter Botの作り方</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/2021-0112-debug-multi-php/">VS Codeで複数バージョンのPHPに対してXdebugを利用する</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%83%A9%E3%82%A4%E3%83%95/">エンジニアライフ</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E8%A1%93/">技術</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Azure/" rel="tag">Azure</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bot/" rel="tag">Bot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cosmos-DB/" rel="tag">Cosmos DB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DB/" rel="tag">DB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Excel/" rel="tag">Excel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github-Pages/" rel="tag">Github Pages</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Google-Tech-Dev-Guide/" rel="tag">Google Tech Dev Guide</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Heroku/" rel="tag">Heroku</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kotlin/" rel="tag">Kotlin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LINE-Bot/" rel="tag">LINE Bot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-Command/" rel="tag">Linux Command</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Logcat/" rel="tag">Logcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OR-Mapper/" rel="tag">OR Mapper</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OSS/" rel="tag">OSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Orchid/" rel="tag">Orchid</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PDF/" rel="tag">PDF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PostgreSQL/" rel="tag">PostgreSQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PowerShell/" rel="tag">PowerShell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RPA/" rel="tag">RPA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Room/" rel="tag">Room</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQLite/" rel="tag">SQLite</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Shell-Script/" rel="tag">Shell Script</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-Boot/" rel="tag">Spring Boot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tabula/" rel="tag">Tabula</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Twitter/" rel="tag">Twitter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Twitter-API/" rel="tag">Twitter API</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Twitter4j/" rel="tag">Twitter4j</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UiPath/" rel="tag">UiPath</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VBS/" rel="tag">VBS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VS-Code/" rel="tag">VS Code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/" rel="tag">Vim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Windows/" rel="tag">Windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xdebug/" rel="tag">Xdebug</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/admob/" rel="tag">admob</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/" rel="tag">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android-studio/" rel="tag">android studio</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mybatis/" rel="tag">mybatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/" rel="tag">node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0/" rel="tag">アルゴリズム</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%83%90%E3%83%83%E3%83%81/" rel="tag">バッチ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%83%96%E3%83%AD%E3%82%B0/" rel="tag">ブログ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%83%9E%E3%82%AF%E3%83%AD/" rel="tag">マクロ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%83%A2%E3%83%81%E3%83%99%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3/" rel="tag">モチベーション</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%80%8B%E4%BA%BA%E9%96%8B%E7%99%BA/" rel="tag">個人開発</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%9D%E5%BF%83%E8%80%85/" rel="tag">初心者</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%80%E9%80%9FKotlin-Android%E3%82%A2%E3%83%97%E3%83%AA%E9%96%8B%E7%99%BA%E5%85%A5%E9%96%80/" rel="tag">最速Kotlin&Androidアプリ開発入門</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%AD%A3%E8%A6%8F%E8%A1%A8%E7%8F%BE/" rel="tag">正規表現</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%8B%AC%E5%AD%A6/" rel="tag">独学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%87%AA%E5%8B%95%E5%8C%96/" rel="tag">自動化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%96%A2%E6%95%B0%E5%9E%8B%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0/" rel="tag">関数型プログラミング</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Azure/" style="font-size: 11.43px;">Azure</a> <a href="/tags/Bot/" style="font-size: 10px;">Bot</a> <a href="/tags/Cosmos-DB/" style="font-size: 11.43px;">Cosmos DB</a> <a href="/tags/DB/" style="font-size: 11.43px;">DB</a> <a href="/tags/Docker/" style="font-size: 14.29px;">Docker</a> <a href="/tags/Excel/" style="font-size: 10px;">Excel</a> <a href="/tags/Github-Pages/" style="font-size: 15.71px;">Github Pages</a> <a href="/tags/Google-Tech-Dev-Guide/" style="font-size: 15.71px;">Google Tech Dev Guide</a> <a href="/tags/Heroku/" style="font-size: 11.43px;">Heroku</a> <a href="/tags/Hexo/" style="font-size: 17.14px;">Hexo</a> <a href="/tags/Java/" style="font-size: 18.57px;">Java</a> <a href="/tags/Kotlin/" style="font-size: 14.29px;">Kotlin</a> <a href="/tags/LINE-Bot/" style="font-size: 11.43px;">LINE Bot</a> <a href="/tags/Linux-Command/" style="font-size: 10px;">Linux Command</a> <a href="/tags/Logcat/" style="font-size: 10px;">Logcat</a> <a href="/tags/OR-Mapper/" style="font-size: 11.43px;">OR Mapper</a> <a href="/tags/OSS/" style="font-size: 11.43px;">OSS</a> <a href="/tags/Orchid/" style="font-size: 10px;">Orchid</a> <a href="/tags/PDF/" style="font-size: 10px;">PDF</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/PostgreSQL/" style="font-size: 11.43px;">PostgreSQL</a> <a href="/tags/PowerShell/" style="font-size: 10px;">PowerShell</a> <a href="/tags/RPA/" style="font-size: 10px;">RPA</a> <a href="/tags/Room/" style="font-size: 10px;">Room</a> <a href="/tags/SQLite/" style="font-size: 10px;">SQLite</a> <a href="/tags/Shell-Script/" style="font-size: 10px;">Shell Script</a> <a href="/tags/Spring-Boot/" style="font-size: 17.14px;">Spring Boot</a> <a href="/tags/Tabula/" style="font-size: 10px;">Tabula</a> <a href="/tags/Twitter/" style="font-size: 11.43px;">Twitter</a> <a href="/tags/Twitter-API/" style="font-size: 12.86px;">Twitter API</a> <a href="/tags/Twitter4j/" style="font-size: 10px;">Twitter4j</a> <a href="/tags/UiPath/" style="font-size: 10px;">UiPath</a> <a href="/tags/VBS/" style="font-size: 11.43px;">VBS</a> <a href="/tags/VS-Code/" style="font-size: 11.43px;">VS Code</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/Windows/" style="font-size: 12.86px;">Windows</a> <a href="/tags/Xdebug/" style="font-size: 10px;">Xdebug</a> <a href="/tags/admob/" style="font-size: 10px;">admob</a> <a href="/tags/android/" style="font-size: 20px;">android</a> <a href="/tags/android-studio/" style="font-size: 10px;">android studio</a> <a href="/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0/" style="font-size: 15.71px;">アルゴリズム</a> <a href="/tags/%E3%83%90%E3%83%83%E3%83%81/" style="font-size: 10px;">バッチ</a> <a href="/tags/%E3%83%96%E3%83%AD%E3%82%B0/" style="font-size: 10px;">ブログ</a> <a href="/tags/%E3%83%9E%E3%82%AF%E3%83%AD/" style="font-size: 10px;">マクロ</a> <a href="/tags/%E3%83%A2%E3%83%81%E3%83%99%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3/" style="font-size: 10px;">モチベーション</a> <a href="/tags/%E5%80%8B%E4%BA%BA%E9%96%8B%E7%99%BA/" style="font-size: 12.86px;">個人開発</a> <a href="/tags/%E5%88%9D%E5%BF%83%E8%80%85/" style="font-size: 10px;">初心者</a> <a href="/tags/%E6%9C%80%E9%80%9FKotlin-Android%E3%82%A2%E3%83%97%E3%83%AA%E9%96%8B%E7%99%BA%E5%85%A5%E9%96%80/" style="font-size: 11.43px;">最速Kotlin&Androidアプリ開発入門</a> <a href="/tags/%E6%AD%A3%E8%A6%8F%E8%A1%A8%E7%8F%BE/" style="font-size: 10px;">正規表現</a> <a href="/tags/%E7%8B%AC%E5%AD%A6/" style="font-size: 10px;">独学</a> <a href="/tags/%E8%87%AA%E5%8B%95%E5%8C%96/" style="font-size: 14.29px;">自動化</a> <a href="/tags/%E9%96%A2%E6%95%B0%E5%9E%8B%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0/" style="font-size: 10px;">関数型プログラミング</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 karintomania<br>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+    <a href="/categories/%E6%8A%80%E8%A1%93/" class="mobile-nav-link">Dev</a>
+  
+    <a href="/categories/%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%83%A9%E3%82%A4%E3%83%95/" class="mobile-nav-link">Engineer&#39;s life</a>
+  
+</nav>
+    
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
