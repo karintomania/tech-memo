@@ -20,6 +20,9 @@ tags: [最速Kotlin&Androidアプリ開発入門]
 /2021/01/2021-0127-what-is-kotlin/
  )
 
+この入門の記事一覧はこちら
+[未経験OK！最速Kotlin&androidアプリ開発入門](/tags/%E6%9C%80%E9%80%9FKotlin-Android%E3%82%A2%E3%83%97%E3%83%AA%E9%96%8B%E7%99%BA%E5%85%A5%E9%96%80/ )
+
 ### おすすめの勉強法
 今回から実際にコードを書いていきます。
 
