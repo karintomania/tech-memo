@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-161452704-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-161452704-1');
+</script>
+<!-- End Google Analytics -->
+
+  
+  <title>未経験OK！最速Kotlin&amp;androidアプリ開発入門その４　変数とは② | 寝室コンピューティング</title>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- OGP settings -->
+	
+  		<meta name="description" content="背景こんにちは。 かりんとうマニア(@karintozuki)です。   前回は変数を勉強しましたが、今回は変数を使う上では欠かせない概念、型について説明していきます。">
+<meta name="keywords" content="最速Kotlin&amp;Androidアプリ開発入門">
+<meta property="og:type" content="article">
+<meta property="og:title" content="未経験OK！最速Kotlin&amp;androidアプリ開発入門その４　変数とは②">
+<meta property="og:url" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2021&#x2F;02&#x2F;2021-0203-kotlin-variable-2&#x2F;index.html">
+<meta property="og:site_name" content="寝室コンピューティング">
+<meta property="og:description" content="背景こんにちは。 かりんとうマニア(@karintozuki)です。   前回は変数を勉強しましたが、今回は変数を使う上では欠かせない概念、型について説明していきます。">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2021&#x2F;02&#x2F;2021-0203-kotlin-variable-2&#x2F;thumb.png">
+<meta property="og:updated_time" content="2021-02-03T08:51:53.566Z">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2021&#x2F;02&#x2F;2021-0203-kotlin-variable-2&#x2F;thumb.png">
+	
+  
+  
+    <link rel="icon" href="/css/images/favicon.ico">
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+  
+  <script data-ad-client="ca-pub-2164726777115826" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+	  <div id="logo-wrap">
+      <h1>
+        <a href="/" id="logo">寝室コンピューティング</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">オフィスでするほどでもない開発を寝室から</a>
+		</h2>
+	</div>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+          <a class="main-nav-link" href="/categories/%E6%8A%80%E8%A1%93/">Dev</a>
+        
+          <a class="main-nav-link" href="/categories/%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%83%A9%E3%82%A4%E3%83%95/">Engineer&#39;s life</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://www.bedroomcomputing.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2021-0203-kotlin-variable-2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/02/2021-0203-kotlin-variable-2/" class="article-date">
+  <time datetime="2021-02-03T08:31:03.000Z" itemprop="datePublished">2021-02-03</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%8A%80%E8%A1%93/">技術</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      未経験OK！最速Kotlin&amp;androidアプリ開発入門その４　変数とは②
+    </h1>
+  
+
+      </header>
+	
+    <div class="article-entry" itemprop="articleBody">
+	
+		<img src="https://www.bedroomcomputing.com/2021/02/2021-0203-kotlin-variable-2/thumb.png">
+	
+      
+		<h2>目次</h2>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#背景"><span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#型とは？"><span class="toc-text">型とは？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#型の種類"><span class="toc-text">型の種類</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#なぜ型があるのか"><span class="toc-text">なぜ型があるのか</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Kotlinでの型の使い方"><span class="toc-text">Kotlinでの型の使い方</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Int（整数型）"><span class="toc-text">Int（整数型）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#String型-文字列"><span class="toc-text">String型(文字列)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数字と文字列"><span class="toc-text">数字と文字列</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#余談"><span class="toc-text">余談</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#まとめ"><span class="toc-text">まとめ</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#関連記事"><span class="toc-text">関連記事</span></a></li></ol>
+        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>こんにちは。 <a href="https://twitter.com/karintozuki" target="_blank" rel="noopener">かりんとうマニア(@karintozuki)</a>です。  </p>
+<p>前回は変数を勉強しましたが、<br><u>今回は変数を使う上では欠かせない概念、型</u>について説明していきます。</p>
+<a id="more"></a>
+
+<h2 id="型とは？"><a href="#型とは？" class="headerlink" title="型とは？"></a>型とは？</h2><p>Kotlinに限らずプログラミング言語には<br><u>型、もしくはデータ型といわれる概念</u>があります。</p>
+<p>これは<u>変数がどんな種類のデータを扱っているか</u>を示したものになります。</p>
+<p>例えば、この変数は整数型だ、といったときは、<br>その変数の値は常に整数が入っている、ということになります。</p>
+<p>ちなみに英語ではタイプ（Type）といいます。<br>英語の方が変数のタイプということで意味的には分かりやすいかもしれません。</p>
+<h2 id="型の種類"><a href="#型の種類" class="headerlink" title="型の種類"></a>型の種類</h2><p>では型にはどんなものがあるのか見ていきましょう。</p>
+<p>代表的なものには以下のものがあります。</p>
+<ul>
+<li>文字列</li>
+<li>整数</li>
+<li>実数(少数点以下も扱える)</li>
+<li>日付</li>
+</ul>
+<p>このほかにもたくさん型はあるのですが、<br>この入門では上の４つをよく使うことになると思います。</p>
+<h2 id="なぜ型があるのか"><a href="#なぜ型があるのか" class="headerlink" title="なぜ型があるのか"></a>なぜ型があるのか</h2><p>型があるとなぜ良いのでしょうか？</p>
+<p>変数に型がついていることで、<br><u>その変数でできることとできないことがはっきりします。</u></p>
+<p>データの種類によってできることとできないことがある、というのは<br>プログラミングに限った話ではありません。</p>
+<p>例えば、「りんごの個数とみかんの個数を合わせて」と言われたら、<br><u>個数は数字なので、足し算をすれば良いんだな、と分かります</u>ね。</p>
+<p>でも「あなたの苗字と私の苗字を合わせて」と言われたら<br><u>文字は足し算なんてできませんから文字と文字をくっつける</u>ことになります。</p>
+<p>また、「数字の5と数字の3を掛け算して」と言われたら簡単にできますが、<br><u>「あなたの苗字と名前を掛け算して」と言われたら、答えに困りますよね？</u></p>
+<p>コンピュータからしても同じで、プログラミングをするときは<br>このデータは文字、このデータは数字、と決めておくことで、<br>どんな処理をすれば良いかコンピュータが分かるわけです。</p>
+<h2 id="Kotlinでの型の使い方"><a href="#Kotlinでの型の使い方" class="headerlink" title="Kotlinでの型の使い方"></a>Kotlinでの型の使い方</h2><p>それでは説明が続きましたが、プログラミングをしていきましょう。<br>今日は以下の二つの型を紹介します。</p>
+<ul>
+<li>Int（整数型）</li>
+<li>String（文字列型）</li>
+</ul>
+<p>プログラムに日本語でこれは整数です！とか書くわけにいかないので、<br>型には英語で名前がついています。</p>
+<p><u>整数を表す型の名前がInt、</u><br><u>文字列を表す型の名前がStringとなっています。</u></p>
+<p>この二つはよく使うので、とりあえず覚えておきましょう。</p>
+<h3 id="Int（整数型）"><a href="#Int（整数型）" class="headerlink" title="Int（整数型）"></a>Int（整数型）</h3><p>Int型の変数には整数を入れることができます。</p>
+<p>前回、変数を宣言したコードはこんな感じでした。</p>
+<figure class="highlight kotlin"><figcaption><span>変数とは②</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> hensu = <span class="number">1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>実は<u>Kotlinは変数の型を代入した値から推測して型をつけてくれいます</u>。<br>この場合、代入したのが<code>1</code>なので、<code>Int</code>型を勝手につけてくれているんですね。</p>
+<p>でも、せっかく勉強したので、<br>自分でこの変数はInt型なんだぞ！と宣言してみましょう。</p>
+<p>Int型と教えてあげるときはこんな書き方をします。<br>実際にプログラムを書いてみましょう。</p>
+<figure class="highlight kotlin"><figcaption><span>変数とは②</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> hensu:<span class="built_in">Int</span> = <span class="number">1</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>この部分に注目してみてください。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hensu:Int</span><br></pre></td></tr></table></figure>
+
+<p>変数名の後に<code>:</code>(コロン)をつけて、<br>その後に<code>Int</code>と型名を書きます。</p>
+<p><u>この変数は<code>Int</code>型です</u>、と宣言しています。</p>
+<p>それでは問題です。</p>
+<blockquote>
+<p><strong>問題</strong><br>先ほどのプログラムに追加して、<br>hensu2という名前のInt型の変数に<br>数字の2を代入してみてください。<br>その際にhensu2がInt型であることを明示するようにしてください。</p>
+</blockquote>
+<p>できましたか？</p>
+<figure class="highlight kotlin"><figcaption><span>変数とは②</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> hensu:<span class="built_in">Int</span> = <span class="number">1</span></span><br><span class="line">    <span class="keyword">var</span> hensu2:<span class="built_in">Int</span> = <span class="number">2</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="String型-文字列"><a href="#String型-文字列" class="headerlink" title="String型(文字列)"></a>String型(文字列)</h3><p>次はStringです。</p>
+<p>例として名前を値としてもつString型の変数<code>name</code>を宣言してみます。</p>
+<figure class="highlight kotlin"><figcaption><span>変数とは②</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> name:String = <span class="string">"佐藤太郎"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>先ほどとほとんど同じですね。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">name:String</span><br></pre></td></tr></table></figure>
+<p>この部分で、nameはString型の変数だ！ということを書いています。</p>
+<p>少し違うのは=(イコール)の右側です。<br>何か先ほどとの気付きませんか？</p>
+<p>そうです、<u>値が””(ダブルクオーテーション)で囲われています</u>ね。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;佐藤太郎&quot;</span><br></pre></td></tr></table></figure>
+<p>Kotlinや多くのプログラム言語では、<br><u>文字列として値を書くときは””(ダブルクオーテーション)で囲う、というルールがあります。</u></p>
+<blockquote>
+<p><strong>問題</strong><br>先ほどのプログラムに追加して、<br>name2という名前のString型の変数に<br>「鈴木花子」という値を代入してみてください。<br>もちろんString型であることを明示するようにしてください。</p>
+</blockquote>
+<p>できましたか？<br>正解はこちらです。</p>
+<figure class="highlight kotlin"><figcaption><span>変数とは②</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> name:String = <span class="string">"佐藤太郎"</span></span><br><span class="line">    <span class="keyword">var</span> name2:String = <span class="string">"鈴木花子"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="数字と文字列"><a href="#数字と文字列" class="headerlink" title="数字と文字列"></a>数字と文字列</h2><p>文字列を宣言するときは””で囲う、という話をしました。<br>なぜこんなことをするのでしょうか。</p>
+<p>例えば、中身は<code>5</code>なんだけど文字として扱いたい、というときがあったりします。<br>そんなときに””がないと数字として認識されてしまいます。</p>
+<p>ちょっとこのコードをPlaygroundで実行してみてください。</p>
+<figure class="highlight kotlin"><figcaption><span>変数とは②</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> moji:String = <span class="number">5</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>こんなエラーが出ますね。</p>
+<img src="/2021/02/2021-0203-kotlin-variable-2/01-error.png" class="">
+<p>これはString型の変数なのにIntの値を入れようとしたためです。</p>
+<p>ではここで、次の問題です。</p>
+<blockquote>
+<p><strong>問題</strong><br>上のコードでString型の変数mojiに、<br>文字列として5を入れるコードに直してください。</p>
+</blockquote>
+<p>できましたか？</p>
+<p>Int型の値は入れることができないので、<br>“”で囲ってString型にしてあげれば良いですね。</p>
+<figure class="highlight kotlin"><figcaption><span>変数とは②</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">fun</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">var</span> moji:String = <span class="string">"5"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>このように型を間違うと正しい結果にならなかったり、<br>エラーが出たりしてしまいます。</p>
+<p>ところで、今日勉強した<code>var name:String</code>のように変数の型を明記する方法ですが、<br>普通は省略できるので、書かないことが多いです。</p>
+<p>しかし、<u>はじめのうちは変数が何の型なのかを把握することはとても大事です。</u></p>
+<p>なので、この入門の変数宣言は型を明記する方法で書いていこうと思います。</p>
+<h3 id="余談"><a href="#余談" class="headerlink" title="余談"></a>余談</h3><p>先ほど体験したように、<br><u>プログラミングでは何かエラーが発生したときに、エラーメッセージが出ます</u>。</p>
+<p>そして<u>残念なことにエラーメッセージの大体が英語です泣。</u></p>
+<p>しかし、このエラーメッセージは何が間違っているか教えてくれる手がかりになります。</p>
+<p>エラーが起きたときはまず、<br><u>エラーメッセージを読んで、</u><br><u>それでも間違いが分からなければメッセージをGoogle検索してみましょう。</u></p>
+<p>同じように困ったことがある人が解決方法を載せてくれていたりします。</p>
+<h2 id="まとめ"><a href="#まとめ" class="headerlink" title="まとめ"></a>まとめ</h2><p>今日は変数の型について勉強しました。<br>ちょっとずつプログラミングっぽくなってきました。</p>
+<p>次回はもっとプログラミングっぽく、<br>コンピュータに計算させる方法を紹介しますので、<br>お楽しみに！</p>
+<p>それじゃ今日はこの辺で。</p>
+<h2 id="関連記事"><a href="#関連記事" class="headerlink" title="関連記事"></a>関連記事</h2><p>この入門の記事一覧はこちらです。<br><a href="/tags/%E6%9C%80%E9%80%9FKotlin-Android%E3%82%A2%E3%83%97%E3%83%AA%E9%96%8B%E7%99%BA%E5%85%A5%E9%96%80/">未経験OK！最速Kotlin&amp;androidアプリ開発入門</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.bedroomcomputing.com/2021/02/2021-0203-kotlin-variable-2/" data-id="ckkp70guc00165p527kvh0z0g" data-title="未経験OK！最速Kotlin&amp;androidアプリ開発入門その４　変数とは②" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%80%E9%80%9FKotlin-Android%E3%82%A2%E3%83%97%E3%83%AA%E9%96%8B%E7%99%BA%E5%85%A5%E9%96%80/" rel="tag">最速Kotlin&Androidアプリ開発入門</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2021/02/2021-0201-kotlin-variable-1/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">未経験OK！最速Kotlin&amp;androidアプリ開発入門その３　変数とは①</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    <div class="widget-wrap">
+<h3 class="widget-title">About</h3>
+<div class="widget">
+	<img src="/css/images/author.png" alt="著者" class="author-img">
+	<a class="author-link" href="/about" >karintomania</a>
+	<p><p>イギリス在住のWeb開発者が日々学んだことを書き連ねています。<br> Java/Kotlinに興味があります。</p>
+</p>
+</div>
+</div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/02/2021-0203-kotlin-variable-2/">未経験OK！最速Kotlin&amp;androidアプリ開発入門その４　変数とは②</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/2021-0201-kotlin-variable-1/">未経験OK！最速Kotlin&amp;androidアプリ開発入門その３　変数とは①</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/2021-0127-kotlin-hello-world/">未経験OK！最速Kotlin&amp;androidアプリ開発入門その２　Hello world!!はじめてのプログラミング</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/2021-0127-what-is-kotlin/">未経験OK！最速Kotlin&amp;androidアプリ開発入門その１ Kotlinとは？</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/2021-0123-spreadsheet-kotlin/">androidアプリからGoogle API(Spreadsheet)にアクセスする</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%83%A9%E3%82%A4%E3%83%95/">エンジニアライフ</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E8%A1%93/">技術</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Azure/" rel="tag">Azure</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bot/" rel="tag">Bot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cosmos-DB/" rel="tag">Cosmos DB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DB/" rel="tag">DB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Excel/" rel="tag">Excel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github-Pages/" rel="tag">Github Pages</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Google-Tech-Dev-Guide/" rel="tag">Google Tech Dev Guide</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Heroku/" rel="tag">Heroku</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kotlin/" rel="tag">Kotlin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LINE-Bot/" rel="tag">LINE Bot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-Command/" rel="tag">Linux Command</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Logcat/" rel="tag">Logcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OR-Mapper/" rel="tag">OR Mapper</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OSS/" rel="tag">OSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Orchid/" rel="tag">Orchid</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PDF/" rel="tag">PDF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PostgreSQL/" rel="tag">PostgreSQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PowerShell/" rel="tag">PowerShell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RPA/" rel="tag">RPA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Room/" rel="tag">Room</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQLite/" rel="tag">SQLite</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Shell-Script/" rel="tag">Shell Script</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-Boot/" rel="tag">Spring Boot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tabula/" rel="tag">Tabula</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Twitter/" rel="tag">Twitter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Twitter-API/" rel="tag">Twitter API</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Twitter4j/" rel="tag">Twitter4j</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UiPath/" rel="tag">UiPath</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VBS/" rel="tag">VBS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VS-Code/" rel="tag">VS Code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/" rel="tag">Vim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Windows/" rel="tag">Windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xdebug/" rel="tag">Xdebug</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/admob/" rel="tag">admob</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/" rel="tag">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android-studio/" rel="tag">android studio</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mybatis/" rel="tag">mybatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/" rel="tag">node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0/" rel="tag">アルゴリズム</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%83%90%E3%83%83%E3%83%81/" rel="tag">バッチ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%83%96%E3%83%AD%E3%82%B0/" rel="tag">ブログ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%83%9E%E3%82%AF%E3%83%AD/" rel="tag">マクロ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%83%A2%E3%83%81%E3%83%99%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3/" rel="tag">モチベーション</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%80%8B%E4%BA%BA%E9%96%8B%E7%99%BA/" rel="tag">個人開発</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%9D%E5%BF%83%E8%80%85/" rel="tag">初心者</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%80%E9%80%9FKotlin-Android%E3%82%A2%E3%83%97%E3%83%AA%E9%96%8B%E7%99%BA%E5%85%A5%E9%96%80/" rel="tag">最速Kotlin&Androidアプリ開発入門</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%AD%A3%E8%A6%8F%E8%A1%A8%E7%8F%BE/" rel="tag">正規表現</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%8B%AC%E5%AD%A6/" rel="tag">独学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%87%AA%E5%8B%95%E5%8C%96/" rel="tag">自動化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%96%A2%E6%95%B0%E5%9E%8B%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0/" rel="tag">関数型プログラミング</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Azure/" style="font-size: 11.43px;">Azure</a> <a href="/tags/Bot/" style="font-size: 10px;">Bot</a> <a href="/tags/Cosmos-DB/" style="font-size: 11.43px;">Cosmos DB</a> <a href="/tags/DB/" style="font-size: 11.43px;">DB</a> <a href="/tags/Docker/" style="font-size: 14.29px;">Docker</a> <a href="/tags/Excel/" style="font-size: 10px;">Excel</a> <a href="/tags/Github-Pages/" style="font-size: 15.71px;">Github Pages</a> <a href="/tags/Google-Tech-Dev-Guide/" style="font-size: 15.71px;">Google Tech Dev Guide</a> <a href="/tags/Heroku/" style="font-size: 11.43px;">Heroku</a> <a href="/tags/Hexo/" style="font-size: 17.14px;">Hexo</a> <a href="/tags/Java/" style="font-size: 18.57px;">Java</a> <a href="/tags/Kotlin/" style="font-size: 14.29px;">Kotlin</a> <a href="/tags/LINE-Bot/" style="font-size: 11.43px;">LINE Bot</a> <a href="/tags/Linux-Command/" style="font-size: 10px;">Linux Command</a> <a href="/tags/Logcat/" style="font-size: 10px;">Logcat</a> <a href="/tags/OR-Mapper/" style="font-size: 11.43px;">OR Mapper</a> <a href="/tags/OSS/" style="font-size: 11.43px;">OSS</a> <a href="/tags/Orchid/" style="font-size: 10px;">Orchid</a> <a href="/tags/PDF/" style="font-size: 10px;">PDF</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/PostgreSQL/" style="font-size: 11.43px;">PostgreSQL</a> <a href="/tags/PowerShell/" style="font-size: 10px;">PowerShell</a> <a href="/tags/RPA/" style="font-size: 10px;">RPA</a> <a href="/tags/Room/" style="font-size: 10px;">Room</a> <a href="/tags/SQLite/" style="font-size: 10px;">SQLite</a> <a href="/tags/Shell-Script/" style="font-size: 10px;">Shell Script</a> <a href="/tags/Spring-Boot/" style="font-size: 17.14px;">Spring Boot</a> <a href="/tags/Tabula/" style="font-size: 10px;">Tabula</a> <a href="/tags/Twitter/" style="font-size: 11.43px;">Twitter</a> <a href="/tags/Twitter-API/" style="font-size: 12.86px;">Twitter API</a> <a href="/tags/Twitter4j/" style="font-size: 10px;">Twitter4j</a> <a href="/tags/UiPath/" style="font-size: 10px;">UiPath</a> <a href="/tags/VBS/" style="font-size: 11.43px;">VBS</a> <a href="/tags/VS-Code/" style="font-size: 11.43px;">VS Code</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/Windows/" style="font-size: 12.86px;">Windows</a> <a href="/tags/Xdebug/" style="font-size: 10px;">Xdebug</a> <a href="/tags/admob/" style="font-size: 10px;">admob</a> <a href="/tags/android/" style="font-size: 20px;">android</a> <a href="/tags/android-studio/" style="font-size: 10px;">android studio</a> <a href="/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0/" style="font-size: 15.71px;">アルゴリズム</a> <a href="/tags/%E3%83%90%E3%83%83%E3%83%81/" style="font-size: 10px;">バッチ</a> <a href="/tags/%E3%83%96%E3%83%AD%E3%82%B0/" style="font-size: 10px;">ブログ</a> <a href="/tags/%E3%83%9E%E3%82%AF%E3%83%AD/" style="font-size: 10px;">マクロ</a> <a href="/tags/%E3%83%A2%E3%83%81%E3%83%99%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3/" style="font-size: 10px;">モチベーション</a> <a href="/tags/%E5%80%8B%E4%BA%BA%E9%96%8B%E7%99%BA/" style="font-size: 12.86px;">個人開発</a> <a href="/tags/%E5%88%9D%E5%BF%83%E8%80%85/" style="font-size: 10px;">初心者</a> <a href="/tags/%E6%9C%80%E9%80%9FKotlin-Android%E3%82%A2%E3%83%97%E3%83%AA%E9%96%8B%E7%99%BA%E5%85%A5%E9%96%80/" style="font-size: 14.29px;">最速Kotlin&Androidアプリ開発入門</a> <a href="/tags/%E6%AD%A3%E8%A6%8F%E8%A1%A8%E7%8F%BE/" style="font-size: 10px;">正規表現</a> <a href="/tags/%E7%8B%AC%E5%AD%A6/" style="font-size: 10px;">独学</a> <a href="/tags/%E8%87%AA%E5%8B%95%E5%8C%96/" style="font-size: 14.29px;">自動化</a> <a href="/tags/%E9%96%A2%E6%95%B0%E5%9E%8B%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0/" style="font-size: 10px;">関数型プログラミング</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 karintomania<br>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+    <a href="/categories/%E6%8A%80%E8%A1%93/" class="mobile-nav-link">Dev</a>
+  
+    <a href="/categories/%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%83%A9%E3%82%A4%E3%83%95/" class="mobile-nav-link">Engineer&#39;s life</a>
+  
+</nav>
+    
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
