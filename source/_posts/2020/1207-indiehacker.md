@@ -139,6 +139,15 @@ Inkdropは今では人気のソフトですが、
 
 ここでエンジニアに人気の転職サイトを紹介します。
 
+**レバテックキャリア**
+エンジニアとして働いていて実務経験があるなら、
+求人数の充実具合からレバテックキャリアがおすすめです。
+<u>IT転職ではデファクト・スタンダード</u>ですね。
+[▼レバテック　キャリア 登録はこちら▼](https://px.a8.net/svt/ejp?a8mat=3H3JXF+8PRGKY+2JK4+ZRIB5 )
+<a href="https://px.a8.net/svt/ejp?a8mat=3H3JXF+8PRGKY+2JK4+ZWFS1" rel="nofollow">
+<img border="0" width="728" height="90" alt="" src="https://www22.a8.net/svt/bgt?aid=210117795527&wid=001&eno=01&mid=s00000011866006030000&mc=1"></a>
+<img border="0" width="1" height="1" src="https://www13.a8.net/0.gif?a8mat=3H3JXF+8PRGKY+2JK4+ZWFS1" alt="">
+
 **Tech Clips**
 Tech Clipsは<u>年収500万以上＆自社サービスを持った会社</u>に特化した求人サイトです。
 首都圏限定になってはしまいますが、
