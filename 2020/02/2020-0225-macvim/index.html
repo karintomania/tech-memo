@@ -21,34 +21,42 @@
     <!-- OGP settings -->
 	
   		<meta name="description" content="テキストエディタへのこだわりこんにちは。karintomania(twitter)です。皆さん、突然ですがテキストエディタは何を使っていますか。僕は開発の際はVSCodeを使い、それ以外の簡単なテキストはMac標準のテキストエディットを使っていました。ある日突然気づきました。 これってダサいのでは？言うなれば、WindowsでIE使い続けているようなものではないかと。Vimを使うしかない、とその時">
-<meta name="keywords" content="Vim">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Mac Vimを導入してみた">
-<meta property="og:url" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;02&#x2F;2020-0225-macvim&#x2F;index.html">
+<meta property="og:url" content="https://www.bedroomcomputing.com/2020/02/2020-0225-macvim/index.html">
 <meta property="og:site_name" content="寝室コンピューティング">
 <meta property="og:description" content="テキストエディタへのこだわりこんにちは。karintomania(twitter)です。皆さん、突然ですがテキストエディタは何を使っていますか。僕は開発の際はVSCodeを使い、それ以外の簡単なテキストはMac標準のテキストエディットを使っていました。ある日突然気づきました。 これってダサいのでは？言うなれば、WindowsでIE使い続けているようなものではないかと。Vimを使うしかない、とその時">
-<meta property="og:locale" content="en">
-<meta property="og:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;02&#x2F;2020-0225-macvim&#x2F;01_download.png">
-<meta property="og:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;02&#x2F;2020-0225-macvim&#x2F;02_origin.png">
-<meta property="og:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;02&#x2F;2020-0225-macvim&#x2F;02_set.png">
-<meta property="og:image" content="https:&#x2F;&#x2F;thumbnail.image.rakuten.co.jp&#x2F;ran&#x2F;img&#x2F;2001&#x2F;0009&#x2F;784&#x2F;844&#x2F;378&#x2F;792&#x2F;20010009784844378792_1.jpg?_ex=320x320">
-<meta property="og:updated_time" content="2020-11-01T14:49:41.633Z">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://www.bedroomcomputing.com/2020/02/2020-0225-macvim/01_download.png">
+<meta property="og:image" content="https://www.bedroomcomputing.com/2020/02/2020-0225-macvim/02_origin.png">
+<meta property="og:image" content="https://www.bedroomcomputing.com/2020/02/2020-0225-macvim/02_set.png">
+<meta property="og:image" content="https://thumbnail.image.rakuten.co.jp/ran/img/2001/0009/784/844/378/792/20010009784844378792_1.jpg?_ex=320x320">
+<meta property="article:published_time" content="2020-02-25T18:22:36.000Z">
+<meta property="article:modified_time" content="2020-11-01T14:49:41.633Z">
+<meta property="article:author" content="karintomania">
+<meta property="article:tag" content="Vim">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;02&#x2F;2020-0225-macvim&#x2F;01_download.png">
+<meta name="twitter:image" content="https://www.bedroomcomputing.com/2020/02/2020-0225-macvim/01_download.png">
 	
   
   
     <link rel="icon" href="/css/images/favicon.ico">
   
   
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
   
-  <link rel="stylesheet" href="/css/style.css">
   
-    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
   
   <script data-ad-client="ca-pub-2164726777115826" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-</head>
+<meta name="generator" content="Hexo 4.2.1"></head>
 
 <body>
   <div id="container">
@@ -142,16 +150,16 @@
 <p>見た目だけでも大した違いですが、<br>キーバインドなどで相当な操作性の違いが出てきます。<br>一つ一つ見ていきましょう。  </p>
 <h2 id="vimrcファイルの作成"><a href="#vimrcファイルの作成" class="headerlink" title="vimrcファイルの作成"></a>vimrcファイルの作成</h2><p>vimの設定はvimrcファイルというファイルに記述していきます。<br>GUIでの設定画面もあるにはあるんですが、わかりづらい上に設定は保存されません。<br>そんなんだからとっつきづらいんだよなーと思いつつも、<br>設定ファイルになっていることで先人の設定をコピペで丸パクリできる、なんてメリットもあります。  </p>
 <p>さて、まずはvimrcファイルを作ります。<br>root/User/{User名}配下に.vimrcと.gvimrcというファイルを作ってください。  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">root/User/&#123;User名&#125;</span><br><span class="line"> ┣.vimrc</span><br><span class="line"> ┗.gvimrc</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">root&#x2F;User&#x2F;&#123;User名&#125;</span><br><span class="line"> ┣.vimrc</span><br><span class="line"> ┗.gvimrc</span><br></pre></td></tr></table></figure>
 <p>このgvimrcはguiに関する設定が入ります。<br>root/usr/share/vim配下にもvimrcというファイルがあるのですが、<br><del>そいつはフェイクだ！</del>編集できません。できるのかも知れませんが、僕はできませんでした。<br>無難に自分の権限のあるところでやりましょう。  </p>
 <h2 id="見た目系の変更"><a href="#見た目系の変更" class="headerlink" title="見た目系の変更"></a>見た目系の変更</h2><p>まずは分かりやすい見た目の変更から行きます。<br>そのままだとフォントが小さくてみづらいので、フォントを変えます。<br>Edit-&gt;Font-&gt;Show Fontsからフォントがプレビューできます。<br>適当に好きなフォントとサイズを選びましょう。<br>設定したフォントは以下のコマンドで表示できます。  </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:echo &amp;guifont</span><br></pre></td></tr></table></figure>
 
 <p>フォントの設定が分かったらそれを.gvimrcに記述します。  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set guifont=Osaka-Mono:h18</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set guifont&#x3D;Osaka-Mono:h18</span><br></pre></td></tr></table></figure>
 <p>フォントは変わったでしょうか。  </p>
 <p>ここからは.vimrcファイルの設定に入っていきます。<br>見た目系の設定で言うと、以下のあたりを設定すると良い感じに充実してきます。<br>ちなみにステータスラインとは、Vimを開いた時に下の方に見えている欄のことです。  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&quot; 行番号表示</span><br><span class="line">set number</span><br><span class="line"></span><br><span class="line">&quot; Status Line系の充実</span><br><span class="line">&quot; ステータスラインを常に表示</span><br><span class="line">set laststatus=2 </span><br><span class="line">&quot; 現在のモードを表示</span><br><span class="line">set showmode </span><br><span class="line">&quot; 打ったコマンドをステータスラインの下に表示</span><br><span class="line">set showcmd </span><br><span class="line">&quot; ステータスラインの右側にカーソルの現在位置を表示する</span><br><span class="line">set ruler </span><br><span class="line">&quot; メニュー補完</span><br><span class="line">set wildmenu</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&quot; 不可視文字の可視化</span><br><span class="line">set list</span><br><span class="line">set listchars=tab:&gt;_,trail:·,eol:↲</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&quot; 行番号表示</span><br><span class="line">set number</span><br><span class="line"></span><br><span class="line">&quot; Status Line系の充実</span><br><span class="line">&quot; ステータスラインを常に表示</span><br><span class="line">set laststatus&#x3D;2 </span><br><span class="line">&quot; 現在のモードを表示</span><br><span class="line">set showmode </span><br><span class="line">&quot; 打ったコマンドをステータスラインの下に表示</span><br><span class="line">set showcmd </span><br><span class="line">&quot; ステータスラインの右側にカーソルの現在位置を表示する</span><br><span class="line">set ruler </span><br><span class="line">&quot; メニュー補完</span><br><span class="line">set wildmenu</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&quot; 不可視文字の可視化</span><br><span class="line">set list</span><br><span class="line">set listchars&#x3D;tab:&gt;_,trail:·,eol:↲</span><br></pre></td></tr></table></figure>
 
 <h2 id="カラースキームの設定"><a href="#カラースキームの設定" class="headerlink" title="カラースキームの設定"></a>カラースキームの設定</h2><p>また、Vimはカラースキームを設定できます。<br>おそらくコードを書く時などはデフォルトもそれなりに使えるかも知れませんが、<br>僕の用途は（.txtと言う意味の）テキストを編集することが主な用途なので、<br>デフォルトだとちょっと薄暗くて見づらいので変えてみます。</p>
 <p>カラースキームを選ぶ際には、こちらのページを参考にしました。<br><a href="https://www.slant.co/topics/480/~best-vim-color-schemes" target="_blank" rel="noopener">vimカラースキームランキング</a><br>ここから選びたいスキームの.vimファイルをダウンロードしてきます。  </p>
@@ -159,7 +167,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot; Color scheme</span><br><span class="line">syntax enable  &quot; シンタックスハイライトを有効にする</span><br><span class="line">colorscheme zenburn  &quot; zenburnをカラースキームに設定</span><br></pre></td></tr></table></figure>
 <p>これでVimを再起動するとだいぶ良い感じになっているかと思います。  </p>
 <h2 id="テキストエディタとして必要な設定"><a href="#テキストエディタとして必要な設定" class="headerlink" title="テキストエディタとして必要な設定"></a>テキストエディタとして必要な設定</h2><p>あとは、おすすめの設定を以下に書いておきます。<br>というか、クリップボードやエンコーディングについてはテキストエディタとしてないと使い物にならない系なので、設定しとくことをお勧めします。  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&quot; ヤンクやペースト時クリップボードの内容を使用する</span><br><span class="line">set clipboard=unnamed </span><br><span class="line"></span><br><span class="line">&quot; encoding 日本語を編集する際に大事</span><br><span class="line">set encoding=utf-8</span><br><span class="line">set fileencodings=utf-8</span><br><span class="line">set ambiwidth=double  &quot; ◯や◆などの文字が半角の幅で表示されてしまうことを防ぐ</span><br><span class="line"></span><br><span class="line">&quot; auto indent</span><br><span class="line">set autoindent</span><br><span class="line">set smartindent</span><br><span class="line"></span><br><span class="line">&quot; tab</span><br><span class="line">set tabstop=4  &quot; タブの幅をスペース４つ分にする</span><br><span class="line">set shiftwidth=4</span><br><span class="line"></span><br><span class="line">&quot; search</span><br><span class="line">set smartcase  &quot; 大文字が検索文字に含まれていたときは大文字小文字を区別する</span><br><span class="line">set hlsearch   &quot; 検索キーワードをハイライトする</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&quot; ヤンクやペースト時クリップボードの内容を使用する</span><br><span class="line">set clipboard&#x3D;unnamed </span><br><span class="line"></span><br><span class="line">&quot; encoding 日本語を編集する際に大事</span><br><span class="line">set encoding&#x3D;utf-8</span><br><span class="line">set fileencodings&#x3D;utf-8</span><br><span class="line">set ambiwidth&#x3D;double  &quot; ◯や◆などの文字が半角の幅で表示されてしまうことを防ぐ</span><br><span class="line"></span><br><span class="line">&quot; auto indent</span><br><span class="line">set autoindent</span><br><span class="line">set smartindent</span><br><span class="line"></span><br><span class="line">&quot; tab</span><br><span class="line">set tabstop&#x3D;4  &quot; タブの幅をスペース４つ分にする</span><br><span class="line">set shiftwidth&#x3D;4</span><br><span class="line"></span><br><span class="line">&quot; search</span><br><span class="line">set smartcase  &quot; 大文字が検索文字に含まれていたときは大文字小文字を区別する</span><br><span class="line">set hlsearch   &quot; 検索キーワードをハイライトする</span><br></pre></td></tr></table></figure>
 
 <h2 id="キーバインド"><a href="#キーバインド" class="headerlink" title="キーバインド"></a>キーバインド</h2><p>Vimでは自分の好きなショートカットを登録することができます。<br>ここでは僕が登録しているキーバインドを紹介します。<br>ちなみにMacのcommandボタンとの同時押しは<code>&lt;D-x&gt;</code>と表示します。<br>Windowsのノリで<code>&lt;C-x&gt;</code>で登録するとCtrlキーになってしまいます。  </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&quot; Key binds</span><br><span class="line">nnoremap &lt;D-Enter&gt; o&lt;ESC&gt;  &quot; Command+Enterで改行</span><br><span class="line">noremap H ^  &quot; Shift+hで行先頭ジャンプ</span><br><span class="line">noremap L $  &quot; Shift+lで行末ジャンプ</span><br><span class="line">remap kj &lt;ESC&gt;  &quot; k+jでEscape</span><br><span class="line">nnoremap &lt;D-]&gt; &gt;&gt;  &quot; Command+]でインデントをふやす</span><br><span class="line">nnoremap &lt;D-[&gt; &lt;&lt;  &quot; 上のやつの逆</span><br><span class="line"></span><br><span class="line">vnoremap &lt;D-]&gt; &gt;gv  &quot; Visualモードでのインデント。gvで同じ範囲の再選択</span><br><span class="line">vnoremap &lt;D-[&gt; &lt;gv  &quot; 上に同じ</span><br></pre></td></tr></table></figure>
@@ -173,7 +181,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.bedroomcomputing.com/2020/02/2020-0225-macvim/" data-id="ckkveve9g001nfpl1gt01gjsz" data-title="Mac Vimを導入してみた" class="article-share-link">Share</a>
+      <a data-url="https://www.bedroomcomputing.com/2020/02/2020-0225-macvim/" data-id="ckloeq9al000mue52fkebb4t2" data-title="Mac Vimを導入してみた" class="article-share-link">Share</a>
       
       
       
@@ -228,6 +236,10 @@
       <ul>
         
           <li>
+            <a href="/2021/02/2021-0227-kotlin-calc/">未経験OK！最速Kotlin&amp;androidアプリ開発入門その５　Kotlinで計算する</a>
+          </li>
+        
+          <li>
             <a href="/2021/02/2021-0207-inventing-on-principle/">哲学駆動開発で起業・個人開発のアイデアを出す方法</a>
           </li>
         
@@ -241,10 +253,6 @@
         
           <li>
             <a href="/2021/01/2021-0127-kotlin-hello-world/">未経験OK！最速Kotlin&amp;androidアプリ開発入門その２　Hello world!!はじめてのプログラミング</a>
-          </li>
-        
-          <li>
-            <a href="/2021/01/2021-0127-what-is-kotlin/">未経験OK！最速Kotlin&amp;androidアプリ開発入門その１ Kotlinとは？</a>
           </li>
         
       </ul>
@@ -276,7 +284,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Azure/" style="font-size: 11.43px;">Azure</a> <a href="/tags/Bot/" style="font-size: 10px;">Bot</a> <a href="/tags/Cosmos-DB/" style="font-size: 11.43px;">Cosmos DB</a> <a href="/tags/DB/" style="font-size: 11.43px;">DB</a> <a href="/tags/Docker/" style="font-size: 14.29px;">Docker</a> <a href="/tags/Excel/" style="font-size: 10px;">Excel</a> <a href="/tags/Github-Pages/" style="font-size: 15.71px;">Github Pages</a> <a href="/tags/Google-Tech-Dev-Guide/" style="font-size: 15.71px;">Google Tech Dev Guide</a> <a href="/tags/Heroku/" style="font-size: 11.43px;">Heroku</a> <a href="/tags/Hexo/" style="font-size: 17.14px;">Hexo</a> <a href="/tags/Java/" style="font-size: 18.57px;">Java</a> <a href="/tags/Kotlin/" style="font-size: 14.29px;">Kotlin</a> <a href="/tags/LINE-Bot/" style="font-size: 11.43px;">LINE Bot</a> <a href="/tags/Linux-Command/" style="font-size: 10px;">Linux Command</a> <a href="/tags/Logcat/" style="font-size: 10px;">Logcat</a> <a href="/tags/OR-Mapper/" style="font-size: 11.43px;">OR Mapper</a> <a href="/tags/OSS/" style="font-size: 11.43px;">OSS</a> <a href="/tags/Orchid/" style="font-size: 10px;">Orchid</a> <a href="/tags/PDF/" style="font-size: 10px;">PDF</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/PostgreSQL/" style="font-size: 11.43px;">PostgreSQL</a> <a href="/tags/PowerShell/" style="font-size: 10px;">PowerShell</a> <a href="/tags/RPA/" style="font-size: 10px;">RPA</a> <a href="/tags/Room/" style="font-size: 10px;">Room</a> <a href="/tags/SQLite/" style="font-size: 10px;">SQLite</a> <a href="/tags/Shell-Script/" style="font-size: 10px;">Shell Script</a> <a href="/tags/Spring-Boot/" style="font-size: 17.14px;">Spring Boot</a> <a href="/tags/Tabula/" style="font-size: 10px;">Tabula</a> <a href="/tags/Twitter/" style="font-size: 11.43px;">Twitter</a> <a href="/tags/Twitter-API/" style="font-size: 12.86px;">Twitter API</a> <a href="/tags/Twitter4j/" style="font-size: 10px;">Twitter4j</a> <a href="/tags/UiPath/" style="font-size: 10px;">UiPath</a> <a href="/tags/VBS/" style="font-size: 11.43px;">VBS</a> <a href="/tags/VS-Code/" style="font-size: 11.43px;">VS Code</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/Windows/" style="font-size: 12.86px;">Windows</a> <a href="/tags/Xdebug/" style="font-size: 10px;">Xdebug</a> <a href="/tags/admob/" style="font-size: 10px;">admob</a> <a href="/tags/android/" style="font-size: 20px;">android</a> <a href="/tags/android-studio/" style="font-size: 10px;">android studio</a> <a href="/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0/" style="font-size: 15.71px;">アルゴリズム</a> <a href="/tags/%E3%82%AF%E3%83%AA%E3%82%A8%E3%82%A4%E3%83%86%E3%82%A3%E3%83%93%E3%83%86%E3%82%A3/" style="font-size: 11.43px;">クリエイティビティ</a> <a href="/tags/%E3%83%90%E3%83%83%E3%83%81/" style="font-size: 10px;">バッチ</a> <a href="/tags/%E3%83%96%E3%83%AD%E3%82%B0/" style="font-size: 10px;">ブログ</a> <a href="/tags/%E3%83%9E%E3%82%AF%E3%83%AD/" style="font-size: 10px;">マクロ</a> <a href="/tags/%E3%83%A2%E3%83%81%E3%83%99%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3/" style="font-size: 10px;">モチベーション</a> <a href="/tags/%E5%80%8B%E4%BA%BA%E9%96%8B%E7%99%BA/" style="font-size: 14.29px;">個人開発</a> <a href="/tags/%E5%88%9D%E5%BF%83%E8%80%85/" style="font-size: 10px;">初心者</a> <a href="/tags/%E6%9C%80%E9%80%9FKotlin-Android%E3%82%A2%E3%83%97%E3%83%AA%E9%96%8B%E7%99%BA%E5%85%A5%E9%96%80/" style="font-size: 14.29px;">最速Kotlin&Androidアプリ開発入門</a> <a href="/tags/%E6%AD%A3%E8%A6%8F%E8%A1%A8%E7%8F%BE/" style="font-size: 10px;">正規表現</a> <a href="/tags/%E7%8B%AC%E5%AD%A6/" style="font-size: 10px;">独学</a> <a href="/tags/%E8%87%AA%E5%8B%95%E5%8C%96/" style="font-size: 14.29px;">自動化</a> <a href="/tags/%E9%96%A2%E6%95%B0%E5%9E%8B%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0/" style="font-size: 10px;">関数型プログラミング</a>
+      <a href="/tags/Azure/" style="font-size: 11.25px;">Azure</a> <a href="/tags/Bot/" style="font-size: 10px;">Bot</a> <a href="/tags/Cosmos-DB/" style="font-size: 11.25px;">Cosmos DB</a> <a href="/tags/DB/" style="font-size: 11.25px;">DB</a> <a href="/tags/Docker/" style="font-size: 13.75px;">Docker</a> <a href="/tags/Excel/" style="font-size: 10px;">Excel</a> <a href="/tags/Github-Pages/" style="font-size: 16.25px;">Github Pages</a> <a href="/tags/Google-Tech-Dev-Guide/" style="font-size: 16.25px;">Google Tech Dev Guide</a> <a href="/tags/Heroku/" style="font-size: 11.25px;">Heroku</a> <a href="/tags/Hexo/" style="font-size: 17.5px;">Hexo</a> <a href="/tags/Java/" style="font-size: 18.75px;">Java</a> <a href="/tags/Kotlin/" style="font-size: 13.75px;">Kotlin</a> <a href="/tags/LINE-Bot/" style="font-size: 11.25px;">LINE Bot</a> <a href="/tags/Linux-Command/" style="font-size: 10px;">Linux Command</a> <a href="/tags/Logcat/" style="font-size: 10px;">Logcat</a> <a href="/tags/OR-Mapper/" style="font-size: 11.25px;">OR Mapper</a> <a href="/tags/OSS/" style="font-size: 11.25px;">OSS</a> <a href="/tags/Orchid/" style="font-size: 10px;">Orchid</a> <a href="/tags/PDF/" style="font-size: 10px;">PDF</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/PostgreSQL/" style="font-size: 11.25px;">PostgreSQL</a> <a href="/tags/PowerShell/" style="font-size: 10px;">PowerShell</a> <a href="/tags/RPA/" style="font-size: 10px;">RPA</a> <a href="/tags/Room/" style="font-size: 10px;">Room</a> <a href="/tags/SQLite/" style="font-size: 10px;">SQLite</a> <a href="/tags/Shell-Script/" style="font-size: 10px;">Shell Script</a> <a href="/tags/Spring-Boot/" style="font-size: 17.5px;">Spring Boot</a> <a href="/tags/Tabula/" style="font-size: 10px;">Tabula</a> <a href="/tags/Twitter/" style="font-size: 11.25px;">Twitter</a> <a href="/tags/Twitter-API/" style="font-size: 12.5px;">Twitter API</a> <a href="/tags/Twitter4j/" style="font-size: 10px;">Twitter4j</a> <a href="/tags/UiPath/" style="font-size: 10px;">UiPath</a> <a href="/tags/VBS/" style="font-size: 11.25px;">VBS</a> <a href="/tags/VS-Code/" style="font-size: 11.25px;">VS Code</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/Windows/" style="font-size: 12.5px;">Windows</a> <a href="/tags/Xdebug/" style="font-size: 10px;">Xdebug</a> <a href="/tags/admob/" style="font-size: 10px;">admob</a> <a href="/tags/android/" style="font-size: 20px;">android</a> <a href="/tags/android-studio/" style="font-size: 10px;">android studio</a> <a href="/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0/" style="font-size: 16.25px;">アルゴリズム</a> <a href="/tags/%E3%82%AF%E3%83%AA%E3%82%A8%E3%82%A4%E3%83%86%E3%82%A3%E3%83%93%E3%83%86%E3%82%A3/" style="font-size: 11.25px;">クリエイティビティ</a> <a href="/tags/%E3%83%90%E3%83%83%E3%83%81/" style="font-size: 10px;">バッチ</a> <a href="/tags/%E3%83%96%E3%83%AD%E3%82%B0/" style="font-size: 10px;">ブログ</a> <a href="/tags/%E3%83%9E%E3%82%AF%E3%83%AD/" style="font-size: 10px;">マクロ</a> <a href="/tags/%E3%83%A2%E3%83%81%E3%83%99%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3/" style="font-size: 10px;">モチベーション</a> <a href="/tags/%E5%80%8B%E4%BA%BA%E9%96%8B%E7%99%BA/" style="font-size: 13.75px;">個人開発</a> <a href="/tags/%E5%88%9D%E5%BF%83%E8%80%85/" style="font-size: 10px;">初心者</a> <a href="/tags/%E6%9C%80%E9%80%9FKotlin-Android%E3%82%A2%E3%83%97%E3%83%AA%E9%96%8B%E7%99%BA%E5%85%A5%E9%96%80/" style="font-size: 15px;">最速Kotlin&Androidアプリ開発入門</a> <a href="/tags/%E6%AD%A3%E8%A6%8F%E8%A1%A8%E7%8F%BE/" style="font-size: 10px;">正規表現</a> <a href="/tags/%E7%8B%AC%E5%AD%A6/" style="font-size: 10px;">独学</a> <a href="/tags/%E8%87%AA%E5%8B%95%E5%8C%96/" style="font-size: 13.75px;">自動化</a> <a href="/tags/%E9%96%A2%E6%95%B0%E5%9E%8B%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0/" style="font-size: 10px;">関数型プログラミング</a>
     </div>
   </div>
 
@@ -317,13 +325,19 @@
 </nav>
     
 
+
 <script src="/js/jquery-3.4.1.min.js"></script>
 
 
-  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
 
 
 <script src="/js/script.js"></script>
+
 
 
 

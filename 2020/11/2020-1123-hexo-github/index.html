@@ -21,31 +21,40 @@
     <!-- OGP settings -->
 	
   		<meta name="description" content="背景こんにちは。 かりんとうマニア(@karintozuki)です。今回は静的サイトジェネレータHexoを使ってブログを作る方法を紹介していきます。">
-<meta name="keywords" content="Hexo,Github Pages">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HexoとGithub Pagesを使って簡単にブログを公開する">
-<meta property="og:url" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;11&#x2F;2020-1123-hexo-github&#x2F;index.html">
+<meta property="og:url" content="https://www.bedroomcomputing.com/2020/11/2020-1123-hexo-github/index.html">
 <meta property="og:site_name" content="寝室コンピューティング">
 <meta property="og:description" content="背景こんにちは。 かりんとうマニア(@karintozuki)です。今回は静的サイトジェネレータHexoを使ってブログを作る方法を紹介していきます。">
-<meta property="og:locale" content="en">
-<meta property="og:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;11&#x2F;2020-1123-hexo-github&#x2F;thumb.png">
-<meta property="og:updated_time" content="2020-11-23T01:35:31.854Z">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://www.bedroomcomputing.com/2020/11/2020-1123-hexo-github/thumb.png">
+<meta property="article:published_time" content="2020-11-23T01:23:02.000Z">
+<meta property="article:modified_time" content="2020-11-23T01:35:31.854Z">
+<meta property="article:author" content="karintomania">
+<meta property="article:tag" content="Hexo">
+<meta property="article:tag" content="Github Pages">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https:&#x2F;&#x2F;www.bedroomcomputing.com&#x2F;2020&#x2F;11&#x2F;2020-1123-hexo-github&#x2F;thumb.png">
+<meta name="twitter:image" content="https://www.bedroomcomputing.com/2020/11/2020-1123-hexo-github/thumb.png">
 	
   
   
     <link rel="icon" href="/css/images/favicon.ico">
   
   
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
   
-  <link rel="stylesheet" href="/css/style.css">
   
-    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
   
   <script data-ad-client="ca-pub-2164726777115826" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-</head>
+<meta name="generator" content="Hexo 4.2.1"></head>
 
 <body>
   <div id="container">
@@ -150,7 +159,7 @@
 <p><a href="https://github.com/YenYuHsuan/hexo-theme-beantech" target="_blank" rel="noopener">https://github.com/YenYuHsuan/hexo-theme-beantech</a></p>
 <h2 id="テーマのダウンロード"><a href="#テーマのダウンロード" class="headerlink" title="テーマのダウンロード"></a>テーマのダウンロード</h2><p>大体のテーマではGithubのReadmeに導入方法が書いてあるので、<br>それを実行しましょう。</p>
 <p>今回はBeanTechでのやり方を紹介します。<br>適当なフォルダの中で以下のコマンドを実行します。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/YenYuHsuan/hexo-theme-beantech.git ./hexo-beantech</span><br><span class="line">cd hexo-beantech</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;YenYuHsuan&#x2F;hexo-theme-beantech.git .&#x2F;hexo-beantech</span><br><span class="line">cd hexo-beantech</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
 
 <p>そしたら以下のコマンドでLiveサーバーを起動してみます。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
@@ -191,7 +200,7 @@
 <p>公開されるURLが取得できるので、<br>これを確認します。<br>https://{ユーザ名}.github.io/{レポジトリ名}/といった形式になっているでしょうか。</p>
 <img src="/2020/11/2020-1123-hexo-github/10-url.png" class="">
 <p>config.ymlを設定します。<br>以下の項目に先ほど取得したURLを設定します。<br>URLの項目にはGithub PagesのURLを設定してください。<br>Deployの項目にはレポジトリのURLを設定してください。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># URL</span><br><span class="line">## If your site is put in a subdirectory, set url as &apos;http://yoursite.com/child&apos; and root as &apos;/child/&apos;</span><br><span class="line">url: https://&#123;ユーザ名&#125;.github.io/</span><br><span class="line">root: /&#123;レポジトリ名&#125;</span><br><span class="line">permalink: :year/:month/:day/:title/</span><br><span class="line">permalink_defaults:</span><br><span class="line"></span><br><span class="line"># 中略</span><br><span class="line"></span><br><span class="line"># Deployment</span><br><span class="line">## Docs: https://hexo.io/docs/deployment.html</span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: &#123;GithubレポジトリのURL&#125;</span><br><span class="line">  branch: gh-page</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># URL</span><br><span class="line">## If your site is put in a subdirectory, set url as &#39;http:&#x2F;&#x2F;yoursite.com&#x2F;child&#39; and root as &#39;&#x2F;child&#x2F;&#39;</span><br><span class="line">url: https:&#x2F;&#x2F;&#123;ユーザ名&#125;.github.io&#x2F;</span><br><span class="line">root: &#x2F;&#123;レポジトリ名&#125;</span><br><span class="line">permalink: :year&#x2F;:month&#x2F;:day&#x2F;:title&#x2F;</span><br><span class="line">permalink_defaults:</span><br><span class="line"></span><br><span class="line"># 中略</span><br><span class="line"></span><br><span class="line"># Deployment</span><br><span class="line">## Docs: https:&#x2F;&#x2F;hexo.io&#x2F;docs&#x2F;deployment.html</span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: &#123;GithubレポジトリのURL&#125;</span><br><span class="line">  branch: gh-page</span><br></pre></td></tr></table></figure>
 
 <p><code>source/CNAME</code>ファイルにもGithub PagesのURLを指定します。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;Github PagesのURL&#125;</span><br></pre></td></tr></table></figure>
@@ -203,10 +212,10 @@
 <p>アクセスして確認してみてください。<br>サイトが表示されたでしょうか。</p>
 <h2 id="masterブランチの利用"><a href="#masterブランチの利用" class="headerlink" title="masterブランチの利用"></a>masterブランチの利用</h2><p>前のステップで公開用のソースはGithub上に挙げられますが、<br>CSSやHTMLテンプレートの変更もGithubで管理したいですよね。<br>その場合は普通にMasterブランチにソースをpushすればOKです。</p>
 <p>gitignoreはこんな感じにしています。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">node_modules/</span><br><span class="line">public/</span><br><span class="line">.deploy_git/</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">node_modules&#x2F;</span><br><span class="line">public&#x2F;</span><br><span class="line">.deploy_git&#x2F;</span><br></pre></td></tr></table></figure>
 
 <p>以下のコマンドでmasterブランチをpushしましょう。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br><span class="line">git add .</span><br><span class="line">git commit -m &quot;first commit&quot; </span><br><span class="line">git remote add origin  https://github.com/karintomania/karintouManga.git</span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br><span class="line">git add .</span><br><span class="line">git commit -m &quot;first commit&quot; </span><br><span class="line">git remote add origin  https:&#x2F;&#x2F;github.com&#x2F;karintomania&#x2F;karintouManga.git</span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
 
 <h2 id="ドメインの変更"><a href="#ドメインの変更" class="headerlink" title="ドメインの変更"></a>ドメインの変更</h2><p>このままだとドメインがgithub.ioのままですね。<br>もちろんこのままでもいいのですが、ブログとして運用したい場合は<br>独自ドメインで行ったほうが何かと都合が良いです。</p>
 <p>というわけで変更していきましょう。</p>
@@ -227,14 +236,14 @@
 
 
 <h3 id="Hexoの設定"><a href="#Hexoの設定" class="headerlink" title="Hexoの設定"></a>Hexoの設定</h3><p>config.ymlにてurlを新しいURLに直します。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># URL</span><br><span class="line">## If your site is put in a subdirectory, set url as &apos;http://yoursite.com/child&apos; and root as &apos;/child/&apos;</span><br><span class="line">url: https://www.manga.bedroomcomputing.com/ # Note: don&apos;t forget to modify the CNAME file to your url</span><br><span class="line">root: /</span><br><span class="line">permalink: :year/:month/:day/:title/</span><br><span class="line">permalink_defaults:</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># URL</span><br><span class="line">## If your site is put in a subdirectory, set url as &#39;http:&#x2F;&#x2F;yoursite.com&#x2F;child&#39; and root as &#39;&#x2F;child&#x2F;&#39;</span><br><span class="line">url: https:&#x2F;&#x2F;www.manga.bedroomcomputing.com&#x2F; # Note: don&#39;t forget to modify the CNAME file to your url</span><br><span class="line">root: &#x2F;</span><br><span class="line">permalink: :year&#x2F;:month&#x2F;:day&#x2F;:title&#x2F;</span><br><span class="line">permalink_defaults:</span><br></pre></td></tr></table></figure>
 
 <p>以上でサイトが独自ドメインで公開されたはずです。</p>
 <h2 id="Google-Analyticsの反映"><a href="#Google-Analyticsの反映" class="headerlink" title="Google Analyticsの反映"></a>Google Analyticsの反映</h2><p>Google Analyticsに登録します。<br>これでアクセス数などが確認できます。</p>
 <img src="/2020/11/2020-1123-hexo-github/14-create-property.png" class="">
 
 <p>プロパティを作成するとトラッキングコードが取得できるので、<br>config.ymlに設定します。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># Analytics settings</span><br><span class="line"># Baidu Analytics</span><br><span class="line"># ba_track_id: 4cc1f2d8f3067386cc5cdb626a202900</span><br><span class="line"># Google Analytics</span><br><span class="line">ga_track_id: &apos;UA-161452704-5&apos;          # Format: UA-xxxxxx-xx</span><br><span class="line">ga_domain:</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># Analytics settings</span><br><span class="line"># Baidu Analytics</span><br><span class="line"># ba_track_id: 4cc1f2d8f3067386cc5cdb626a202900</span><br><span class="line"># Google Analytics</span><br><span class="line">ga_track_id: &#39;UA-161452704-5&#39;          # Format: UA-xxxxxx-xx</span><br><span class="line">ga_domain:</span><br></pre></td></tr></table></figure>
 
 <p>自分でアクセスしてみて<br>アクセスが監視できているか確認してみてください。</p>
 <img src="/2020/11/2020-1123-hexo-github/16-user.png" class="">
@@ -258,7 +267,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://www.bedroomcomputing.com/2020/11/2020-1123-hexo-github/" data-id="ckkvevebp0052fpl1fua929hl" data-title="HexoとGithub Pagesを使って簡単にブログを公開する" class="article-share-link">Share</a>
+      <a data-url="https://www.bedroomcomputing.com/2020/11/2020-1123-hexo-github/" data-id="ckloeq9ee004due52ck3mhjrl" data-title="HexoとGithub Pagesを使って簡単にブログを公開する" class="article-share-link">Share</a>
       
       
       
@@ -313,6 +322,10 @@
       <ul>
         
           <li>
+            <a href="/2021/02/2021-0227-kotlin-calc/">未経験OK！最速Kotlin&amp;androidアプリ開発入門その５　Kotlinで計算する</a>
+          </li>
+        
+          <li>
             <a href="/2021/02/2021-0207-inventing-on-principle/">哲学駆動開発で起業・個人開発のアイデアを出す方法</a>
           </li>
         
@@ -326,10 +339,6 @@
         
           <li>
             <a href="/2021/01/2021-0127-kotlin-hello-world/">未経験OK！最速Kotlin&amp;androidアプリ開発入門その２　Hello world!!はじめてのプログラミング</a>
-          </li>
-        
-          <li>
-            <a href="/2021/01/2021-0127-what-is-kotlin/">未経験OK！最速Kotlin&amp;androidアプリ開発入門その１ Kotlinとは？</a>
           </li>
         
       </ul>
@@ -361,7 +370,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Azure/" style="font-size: 11.43px;">Azure</a> <a href="/tags/Bot/" style="font-size: 10px;">Bot</a> <a href="/tags/Cosmos-DB/" style="font-size: 11.43px;">Cosmos DB</a> <a href="/tags/DB/" style="font-size: 11.43px;">DB</a> <a href="/tags/Docker/" style="font-size: 14.29px;">Docker</a> <a href="/tags/Excel/" style="font-size: 10px;">Excel</a> <a href="/tags/Github-Pages/" style="font-size: 15.71px;">Github Pages</a> <a href="/tags/Google-Tech-Dev-Guide/" style="font-size: 15.71px;">Google Tech Dev Guide</a> <a href="/tags/Heroku/" style="font-size: 11.43px;">Heroku</a> <a href="/tags/Hexo/" style="font-size: 17.14px;">Hexo</a> <a href="/tags/Java/" style="font-size: 18.57px;">Java</a> <a href="/tags/Kotlin/" style="font-size: 14.29px;">Kotlin</a> <a href="/tags/LINE-Bot/" style="font-size: 11.43px;">LINE Bot</a> <a href="/tags/Linux-Command/" style="font-size: 10px;">Linux Command</a> <a href="/tags/Logcat/" style="font-size: 10px;">Logcat</a> <a href="/tags/OR-Mapper/" style="font-size: 11.43px;">OR Mapper</a> <a href="/tags/OSS/" style="font-size: 11.43px;">OSS</a> <a href="/tags/Orchid/" style="font-size: 10px;">Orchid</a> <a href="/tags/PDF/" style="font-size: 10px;">PDF</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/PostgreSQL/" style="font-size: 11.43px;">PostgreSQL</a> <a href="/tags/PowerShell/" style="font-size: 10px;">PowerShell</a> <a href="/tags/RPA/" style="font-size: 10px;">RPA</a> <a href="/tags/Room/" style="font-size: 10px;">Room</a> <a href="/tags/SQLite/" style="font-size: 10px;">SQLite</a> <a href="/tags/Shell-Script/" style="font-size: 10px;">Shell Script</a> <a href="/tags/Spring-Boot/" style="font-size: 17.14px;">Spring Boot</a> <a href="/tags/Tabula/" style="font-size: 10px;">Tabula</a> <a href="/tags/Twitter/" style="font-size: 11.43px;">Twitter</a> <a href="/tags/Twitter-API/" style="font-size: 12.86px;">Twitter API</a> <a href="/tags/Twitter4j/" style="font-size: 10px;">Twitter4j</a> <a href="/tags/UiPath/" style="font-size: 10px;">UiPath</a> <a href="/tags/VBS/" style="font-size: 11.43px;">VBS</a> <a href="/tags/VS-Code/" style="font-size: 11.43px;">VS Code</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/Windows/" style="font-size: 12.86px;">Windows</a> <a href="/tags/Xdebug/" style="font-size: 10px;">Xdebug</a> <a href="/tags/admob/" style="font-size: 10px;">admob</a> <a href="/tags/android/" style="font-size: 20px;">android</a> <a href="/tags/android-studio/" style="font-size: 10px;">android studio</a> <a href="/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0/" style="font-size: 15.71px;">アルゴリズム</a> <a href="/tags/%E3%82%AF%E3%83%AA%E3%82%A8%E3%82%A4%E3%83%86%E3%82%A3%E3%83%93%E3%83%86%E3%82%A3/" style="font-size: 11.43px;">クリエイティビティ</a> <a href="/tags/%E3%83%90%E3%83%83%E3%83%81/" style="font-size: 10px;">バッチ</a> <a href="/tags/%E3%83%96%E3%83%AD%E3%82%B0/" style="font-size: 10px;">ブログ</a> <a href="/tags/%E3%83%9E%E3%82%AF%E3%83%AD/" style="font-size: 10px;">マクロ</a> <a href="/tags/%E3%83%A2%E3%83%81%E3%83%99%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3/" style="font-size: 10px;">モチベーション</a> <a href="/tags/%E5%80%8B%E4%BA%BA%E9%96%8B%E7%99%BA/" style="font-size: 14.29px;">個人開発</a> <a href="/tags/%E5%88%9D%E5%BF%83%E8%80%85/" style="font-size: 10px;">初心者</a> <a href="/tags/%E6%9C%80%E9%80%9FKotlin-Android%E3%82%A2%E3%83%97%E3%83%AA%E9%96%8B%E7%99%BA%E5%85%A5%E9%96%80/" style="font-size: 14.29px;">最速Kotlin&Androidアプリ開発入門</a> <a href="/tags/%E6%AD%A3%E8%A6%8F%E8%A1%A8%E7%8F%BE/" style="font-size: 10px;">正規表現</a> <a href="/tags/%E7%8B%AC%E5%AD%A6/" style="font-size: 10px;">独学</a> <a href="/tags/%E8%87%AA%E5%8B%95%E5%8C%96/" style="font-size: 14.29px;">自動化</a> <a href="/tags/%E9%96%A2%E6%95%B0%E5%9E%8B%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0/" style="font-size: 10px;">関数型プログラミング</a>
+      <a href="/tags/Azure/" style="font-size: 11.25px;">Azure</a> <a href="/tags/Bot/" style="font-size: 10px;">Bot</a> <a href="/tags/Cosmos-DB/" style="font-size: 11.25px;">Cosmos DB</a> <a href="/tags/DB/" style="font-size: 11.25px;">DB</a> <a href="/tags/Docker/" style="font-size: 13.75px;">Docker</a> <a href="/tags/Excel/" style="font-size: 10px;">Excel</a> <a href="/tags/Github-Pages/" style="font-size: 16.25px;">Github Pages</a> <a href="/tags/Google-Tech-Dev-Guide/" style="font-size: 16.25px;">Google Tech Dev Guide</a> <a href="/tags/Heroku/" style="font-size: 11.25px;">Heroku</a> <a href="/tags/Hexo/" style="font-size: 17.5px;">Hexo</a> <a href="/tags/Java/" style="font-size: 18.75px;">Java</a> <a href="/tags/Kotlin/" style="font-size: 13.75px;">Kotlin</a> <a href="/tags/LINE-Bot/" style="font-size: 11.25px;">LINE Bot</a> <a href="/tags/Linux-Command/" style="font-size: 10px;">Linux Command</a> <a href="/tags/Logcat/" style="font-size: 10px;">Logcat</a> <a href="/tags/OR-Mapper/" style="font-size: 11.25px;">OR Mapper</a> <a href="/tags/OSS/" style="font-size: 11.25px;">OSS</a> <a href="/tags/Orchid/" style="font-size: 10px;">Orchid</a> <a href="/tags/PDF/" style="font-size: 10px;">PDF</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/PostgreSQL/" style="font-size: 11.25px;">PostgreSQL</a> <a href="/tags/PowerShell/" style="font-size: 10px;">PowerShell</a> <a href="/tags/RPA/" style="font-size: 10px;">RPA</a> <a href="/tags/Room/" style="font-size: 10px;">Room</a> <a href="/tags/SQLite/" style="font-size: 10px;">SQLite</a> <a href="/tags/Shell-Script/" style="font-size: 10px;">Shell Script</a> <a href="/tags/Spring-Boot/" style="font-size: 17.5px;">Spring Boot</a> <a href="/tags/Tabula/" style="font-size: 10px;">Tabula</a> <a href="/tags/Twitter/" style="font-size: 11.25px;">Twitter</a> <a href="/tags/Twitter-API/" style="font-size: 12.5px;">Twitter API</a> <a href="/tags/Twitter4j/" style="font-size: 10px;">Twitter4j</a> <a href="/tags/UiPath/" style="font-size: 10px;">UiPath</a> <a href="/tags/VBS/" style="font-size: 11.25px;">VBS</a> <a href="/tags/VS-Code/" style="font-size: 11.25px;">VS Code</a> <a href="/tags/Vim/" style="font-size: 10px;">Vim</a> <a href="/tags/Windows/" style="font-size: 12.5px;">Windows</a> <a href="/tags/Xdebug/" style="font-size: 10px;">Xdebug</a> <a href="/tags/admob/" style="font-size: 10px;">admob</a> <a href="/tags/android/" style="font-size: 20px;">android</a> <a href="/tags/android-studio/" style="font-size: 10px;">android studio</a> <a href="/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0/" style="font-size: 16.25px;">アルゴリズム</a> <a href="/tags/%E3%82%AF%E3%83%AA%E3%82%A8%E3%82%A4%E3%83%86%E3%82%A3%E3%83%93%E3%83%86%E3%82%A3/" style="font-size: 11.25px;">クリエイティビティ</a> <a href="/tags/%E3%83%90%E3%83%83%E3%83%81/" style="font-size: 10px;">バッチ</a> <a href="/tags/%E3%83%96%E3%83%AD%E3%82%B0/" style="font-size: 10px;">ブログ</a> <a href="/tags/%E3%83%9E%E3%82%AF%E3%83%AD/" style="font-size: 10px;">マクロ</a> <a href="/tags/%E3%83%A2%E3%83%81%E3%83%99%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3/" style="font-size: 10px;">モチベーション</a> <a href="/tags/%E5%80%8B%E4%BA%BA%E9%96%8B%E7%99%BA/" style="font-size: 13.75px;">個人開発</a> <a href="/tags/%E5%88%9D%E5%BF%83%E8%80%85/" style="font-size: 10px;">初心者</a> <a href="/tags/%E6%9C%80%E9%80%9FKotlin-Android%E3%82%A2%E3%83%97%E3%83%AA%E9%96%8B%E7%99%BA%E5%85%A5%E9%96%80/" style="font-size: 15px;">最速Kotlin&Androidアプリ開発入門</a> <a href="/tags/%E6%AD%A3%E8%A6%8F%E8%A1%A8%E7%8F%BE/" style="font-size: 10px;">正規表現</a> <a href="/tags/%E7%8B%AC%E5%AD%A6/" style="font-size: 10px;">独学</a> <a href="/tags/%E8%87%AA%E5%8B%95%E5%8C%96/" style="font-size: 13.75px;">自動化</a> <a href="/tags/%E9%96%A2%E6%95%B0%E5%9E%8B%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0/" style="font-size: 10px;">関数型プログラミング</a>
     </div>
   </div>
 
@@ -402,13 +411,19 @@
 </nav>
     
 
+
 <script src="/js/jquery-3.4.1.min.js"></script>
 
 
-  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
 
 
 <script src="/js/script.js"></script>
+
 
 
 
