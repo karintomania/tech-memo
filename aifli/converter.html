@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		main {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			width: 100%;
+		}
+
+		form {
+			margin: 30px;
+			width: 40%;
+		}
+
+		form textarea, input {
+			width: 100%;
+		}
+
+		.result-container {
+			margin: 30px;
+			width: 40%;
+		}
+
+		.result-container div{
+			margin-bottom: 30px;
+		}
+
+	</style>
+
+	<script>
+	</script>
+</head>
+<body>
+	<header>
+		<h1>カエレバアフィリリンク生成くん</h1>
+	</header>
+	<main>
+		<form>
+				Links
+				<ul>
+					<li><a href='https://kaereba.com/'>カエレバ</a></li>
+					<li><a href='#'>A8.net</a></li>
+				</ul>
+				<div> カエレバHTML </div>
+				<div> <textarea id='kaereba' rows='10' ></textarea> </div>
+				<div> amazon link </div>
+				<div> <input type='text' id='amazon' value='https://www.amazon.com/' /></div>
+				<div> 楽天 link </div>
+				<div> <input type='text' id='rakuten' value='https://www.rakuten.com/'/></div>
+				<input type='button' onclick="generate()" value='generate'>
+		</form>
+		<section class='result-container'>
+			result:
+			<div id='result'></div>
+			sample:
+			<div id='sample'></div>
+		</section>
+	</main>
+	<script>
+		document.getElementById('kaereba').value = 
+			`<div class="kaerebalink-box" style="text-align:left;padding-bottom:20px;font-size:small;zoom: 1;overflow: hidden;"><div class="kaerebalink-image" style="float:left;margin:0 15px 10px 0;"><a href="https://hb.afl.rakuten.co.jp/hgc/aaaaaaaa.bbbbbbbb.cccccccc.dddddddd/kaereba_main_202108261655557487?pc=https%3A%2F%2Fproduct.rakuten.co.jp%2Fproduct%2F-%2F73993d4b433937c280a1696a8c69c92e%2F&amp;m=http%3A%2F%2Fm.product.rakuten.co.jp%2Fproduct%2F73993d4b433937c280a1696a8c69c92e%2F" target="_blank"><img src="https://thumbnail.image.rakuten.co.jp/ran/img/2001/0009/784/797/393/156/20010009784797393156_1.jpg?_ex=64x64" style="border: none;"></a></div><div class="kaerebalink-info" style="line-height:120%;zoom: 1;overflow: hidden;"><div class="kaerebalink-name" style="margin-bottom:10px;line-height:120%"><a href="https://hb.afl.rakuten.co.jp/hgc/aaaaaaaa.bbbbbbbb.cccccccc.dddddddd/kaereba_main_202108261655557487?pc=https%3A%2F%2Fproduct.rakuten.co.jp%2Fproduct%2F-%2F73993d4b433937c280a1696a8c69c92e%2F&amp;m=http%3A%2F%2Fm.product.rakuten.co.jp%2Fproduct%2F73993d4b433937c280a1696a8c69c92e%2F" target="_blank">スラスラわかるＨＴＭＬ＆ＣＳＳのきほん サンプル実習  第２版/ＳＢクリエイティブ/狩野祐東</a><div class="kaerebalink-powered-date" style="font-size:8pt;margin-top:5px;font-family:verdana;line-height:120%">posted with <a href="https://kaereba.com" rel="nofollow" target="_blank">カエレバ</a></div></div><div class="kaerebalink-detail" style="margin-bottom:5px;"></div><div class="kaerebalink-link1" style="margin-top:10px;"><div class="shoplinkrakuten" style="display:inline;margin-right:5px"><a href="https://hb.afl.rakuten.co.jp/hgc/aaaaaaaa.bbbbbbbb.cccccccc.dddddddd/kaereba_main_202108261655557487?pc=https%3A%2F%2Fproduct.rakuten.co.jp%2Fproduct%2F-%2F73993d4b433937c280a1696a8c69c92e%2F&amp;m=http%3A%2F%2Fm.product.rakuten.co.jp%2Fproduct%2F73993d4b433937c280a1696a8c69c92e%2F" target="_blank">楽天市場</a></div><div class="shoplinkamazon" style="display:inline;margin-right:5px"><a href="//af.moshimo.com/af/c/click?a_id=*******&amp;p_id=170&amp;pc_id=185&amp;pl_id=4062&amp;s_v=b5Rz2P0601xu&amp;url=https%3A%2F%2Fwww.amazon.co.jp%2Fgp%2Fsearch%3Fkeywords%3D%25E3%2582%25B9%25E3%2583%25A9%25E3%2582%25B9%25E3%2583%25A9%25E3%2582%258F%25E3%2581%258B%25E3%2582%258BHTML%26__mk_ja_JP%3D%25E3%2582%25AB%25E3%2582%25BF%25E3%2582%25AB%25E3%2583%258A" target="_blank">Amazon</a><img src="//i.moshimo.com/af/i/impression?a_id=*******&amp;p_id=170&amp;pc_id=185&amp;pl_id=4062" width="1" height="1" style="border:none;"></div></div></div><div class="booklink-footer" style="clear: left"></div></div>`
+
+		function generate() {
+
+			const kaereba = document.getElementById('kaereba').value;
+
+			const amazon = 'href="' + document.getElementById('amazon').value + '"';
+			const rakuten = 'href="' + document.getElementById('rakuten').value + '"';
+
+			// replace amazon
+			const regAmazon = /href="\/\/af.moshimo.com.*?"/g;
+			let result = kaereba.replaceAll(regAmazon, amazon);
+
+			// replace rakuten
+			const regRakuten = /href="https:\/\/hb\..*?"/g;
+			result = result.replaceAll(regRakuten, rakuten);
+
+			document.getElementById('result').innerText = result;
+			document.getElementById('sample').innerHTML = result;
+
+			return false;
+
+		}
+	</script>
+</body>
+</html>
