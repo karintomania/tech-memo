@@ -25,7 +25,7 @@ Reactを業務で使うことになり、チュートリアルを一通り終え
 ## 作ったもの
 こちらです。
 {% asset_img 00.png %}
-https://karintomania.github.io/tech-book-gen/
+[存在しない技術書メーカー](/projects/tech-book-gen)
 
 使い方は説明するまでもないですが、
 各フィールドに文字を入れるとプレビューに反映されます。

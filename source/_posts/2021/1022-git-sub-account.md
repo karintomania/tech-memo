@@ -58,9 +58,9 @@ git config --local remote.origin.url https://{ユーザ名}:{アクセストー�
 良いのかと思います。
 
 それじゃ今日はこの辺で。
-{% row %}
+{% raw %}
 <div class="kaerebalink-box" style="text-align:left;padding-bottom:20px;font-size:small;zoom: 1;overflow: hidden;"><div class="kaerebalink-image" style="float:left;margin:0 15px 10px 0;"><a href="https://www.rakuten.com/" target="_blank"><img src="https://thumbnail.image.rakuten.co.jp/ran/img/2001/0009/784/897/978/857/20010009784897978857_1.jpg?_ex=64x64" style="border: none;"></a></div><div class="kaerebalink-info" style="line-height:120%;zoom: 1;overflow: hidden;"><div class="kaerebalink-name" style="margin-bottom:10px;line-height:120%"><a href="https://www.rakuten.com/" target="_blank">いきなりはじめるＰＨＰ ワクワク・ドキドキの入門教室 /リックテレコム/谷藤賢一</a><div class="kaerebalink-powered-date" style="font-size:8pt;margin-top:5px;font-family:verdana;line-height:120%">posted with <a href="https://kaereba.com" rel="nofollow" target="_blank">カエレバ</a></div></div><div class="kaerebalink-detail" style="margin-bottom:5px;"></div><div class="kaerebalink-link1" style="margin-top:10px;"><div class="shoplinkrakuten" style="display:inline;margin-right:5px"><a href="https://www.rakuten.com/" target="_blank">楽天市場</a></div><div class="shoplinkamazon" style="display:inline;margin-right:5px"><a href="https://www.amazon.com/" target="_blank">Amazon</a><img src="https://www.rakutenimp.com/" width="1" height="1" style="border:none;"></div></div></div><div class="booklink-footer" style="clear: left"></div></div>
-{% endrow %}
+{% endraw %}
 ## 関連記事
 こちらの記事もおすすめです。  
 
