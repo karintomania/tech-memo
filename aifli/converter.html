@@ -44,6 +44,8 @@
 		<form>
 				Links
 				<ul>
+					<li><a href="https://af.moshimo.com/af/shop/promotion/source/amazon?shop_site_id=374295&promotion_id=170">amazon商品もしも</a></li>
+					<li><a href="https://af.moshimo.com/af/shop/promotion/source/rakuten?shop_site_id=374295&promotion_id=54">楽天商品もしも</a></li>
 					<li><a href='https://kaereba.com/'>カエレバ</a></li>
 					<li><a href='#'>A8.net</a></li>
 				</ul>
@@ -53,6 +55,8 @@
 				<div> <input type='text' id='amazon' value='https://www.amazon.com/' /></div>
 				<div> 楽天 link </div>
 				<div> <input type='text' id='rakuten' value='https://www.rakuten.com/'/></div>
+				<div> imp link </div>
+				<div> <input type='text' id='imp' value='https://www.rakuten.com/'/></div>
 				<input type='button' onclick="generate()" value='generate'>
 		</form>
 		<section class='result-container'>
@@ -72,10 +76,15 @@
 
 			const amazon = 'href="' + document.getElementById('amazon').value + '"';
 			const rakuten = 'href="' + document.getElementById('rakuten').value + '"';
+			const imp = 'src="' + document.getElementById('imp').value + '"';
+
+			// replace imp link
+			const regImp = /src="\/\/i.moshimo.com.*?"/g;
+			let result = kaereba.replaceAll(regImp, imp);
 
 			// replace amazon
 			const regAmazon = /href="\/\/af.moshimo.com.*?"/g;
-			let result = kaereba.replaceAll(regAmazon, amazon);
+			result = kaereba.replaceAll(regAmazon, amazon);
 
 			// replace rakuten
 			const regRakuten = /href="https:\/\/hb\..*?"/g;
