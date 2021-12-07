@@ -1,0 +1,29 @@
+---
+layout: false
+---
+
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Unity WebGL Player | Super Project Manager</title>
+  </head>
+  <body style="text-align: center;background-color: #F6F6F6; padding-top:24px;">
+    <canvas id="unity-canvas" width=960 height=540 style="width: 960px; height: 540px; background: #231F20"></canvas>
+    <script src="Build/Web.loader.js"></script>
+    <script>
+      createUnityInstance(document.querySelector("#unity-canvas"), {
+        dataUrl: "Build/Web.data",
+        frameworkUrl: "Build/Web.framework.js",
+        codeUrl: "Build/Web.wasm",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "Karintomania",
+        productName: "Super Project Manager",
+        productVersion: "1.1",
+        // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
+        // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
+      });
+    </script>
+  </body>
+</html>

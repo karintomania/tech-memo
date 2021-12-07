@@ -21,8 +21,14 @@ Webプログラマとして働いています。
 Androidアプリとしてリリースしてみました。
 
 今回作ったゲームはこちらからダウンロードできます。
+
 {% asset_img 00_app.png %}
-[スーパープロジェクトマネージャー](https://play.google.com/store/apps/details?id=com.bedroomcomputing.ProjectManager)
+
+Webで遊ぶ場合はこちらのリンクから(PCのブラウザからのみプレイ可能です。 ※モバイル不可)
+[WEB版 スーパープロジェクトマネージャー](/projects/super-project-manager/game.html)
+
+Androidはこちらからどうぞ。
+[Android版 スーパープロジェクトマネージャー](https://play.google.com/store/apps/details?id=com.bedroomcomputing.ProjectManager)
 
 この記事では０からUnityを勉強して、その過程で気付いたことを書いていきます。
 
