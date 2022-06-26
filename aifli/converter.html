@@ -79,12 +79,15 @@
 			const imp = 'src="' + document.getElementById('imp').value + '"';
 
 			// replace imp link
-			const regImp = /src="\/\/i.moshimo.com.*?"/g;
-			let result = kaereba.replaceAll(regImp, imp);
+			// const regImp = /src="\/\/i.moshimo.com.*?"/g;
+			// let result = kaereba.replaceAll(regImp, '');
 
+			const regImp = /<img src="\/\/i\.moshimo.*?>/;
+			result = kaereba.replace(regImp, '');
+			
 			// replace amazon
 			const regAmazon = /href="\/\/af.moshimo.com.*?"/g;
-			result = kaereba.replaceAll(regAmazon, amazon);
+			result = result.replaceAll(regAmazon, amazon);
 
 			// replace rakuten
 			const regRakuten = /href="https:\/\/hb\..*?"/g;
