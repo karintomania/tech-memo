@@ -58,10 +58,33 @@ git config --local remote.origin.url https://{ユーザ名}:{アクセストー�
 良いのかと思います。
 
 それじゃ今日はこの辺で。
-{% raw %}
-<div class="kaerebalink-box" style="text-align:left;padding-bottom:20px;font-size:small;zoom: 1;overflow: hidden;"><div class="kaerebalink-image" style="float:left;margin:0 15px 10px 0;"><a href="https://www.rakuten.com/" target="_blank"><img src="https://thumbnail.image.rakuten.co.jp/ran/img/2001/0009/784/897/978/857/20010009784897978857_1.jpg?_ex=64x64" style="border: none;"></a></div><div class="kaerebalink-info" style="line-height:120%;zoom: 1;overflow: hidden;"><div class="kaerebalink-name" style="margin-bottom:10px;line-height:120%"><a href="https://www.rakuten.com/" target="_blank">いきなりはじめるＰＨＰ ワクワク・ドキドキの入門教室 /リックテレコム/谷藤賢一</a><div class="kaerebalink-powered-date" style="font-size:8pt;margin-top:5px;font-family:verdana;line-height:120%">posted with <a href="https://kaereba.com" rel="nofollow" target="_blank">カエレバ</a></div></div><div class="kaerebalink-detail" style="margin-bottom:5px;"></div><div class="kaerebalink-link1" style="margin-top:10px;"><div class="shoplinkrakuten" style="display:inline;margin-right:5px"><a href="https://www.rakuten.com/" target="_blank">楽天市場</a></div><div class="shoplinkamazon" style="display:inline;margin-right:5px"><a href="https://www.amazon.com/" target="_blank">Amazon</a><img src="https://www.rakutenimp.com/" width="1" height="1" style="border:none;"></div></div></div><div class="booklink-footer" style="clear: left"></div></div>
-{% endraw %}
+
 ## 関連記事
 こちらの記事もおすすめです。  
 
 [Gitで最初のコミットを消す方法](/2021/08/2021-0826-git-delete-first-commit/)
+
+## PR
+あなたの会社はあなたの技術を評価してくれていますか？
+技術力を高めようと頑張っているのに、
+技術が評価されないような会社にいたらそれは良い環境なのでしょうか？
+エンジニアとして技術を高めたいのなら環境を選ぶことも大事です。
+
+**レバテックキャリア**
+エンジニアとして働いていて実務経験があるなら、
+求人数の充実具合からレバテックキャリアがおすすめです。
+<u>IT転職ではデファクト・スタンダード</u>ですね。
+[▼レバテック　キャリア 登録はこちら▼](https://px.a8.net/svt/ejp?a8mat=3H3JXF+8PRGKY+2JK4+ZRIB5 )
+<a href="https://px.a8.net/svt/ejp?a8mat=3H3JXF+8PRGKY+2JK4+ZWFS1" rel="nofollow">
+<img border="0" width="728" height="90" alt="" src="https://www22.a8.net/svt/bgt?aid=210117795527&wid=001&eno=01&mid=s00000011866006030000&mc=1"></a>
+<img border="0" width="1" height="1" src="https://www13.a8.net/0.gif?a8mat=3H3JXF+8PRGKY+2JK4+ZWFS1" alt="">
+
+**Tech Clips**
+Tech Clipsは<u>年収500万以上＆自社サービスを持った会社</u>に特化した求人サイトです。
+首都圏限定になってはしまいますが、
+収入を増やしたい、自社サービスを持った企業への転職をしたい人におすすめです。
+
+[▼Tech Clips 登録はこちら▼](https://px.a8.net/svt/ejp?a8mat=3H3JXF+DE94S2+3SWM+61Z81)
+<a href="https://px.a8.net/svt/ejp?a8mat=3H3JXF+DE94S2+3SWM+61Z81" rel="nofollow">
+<img border="0" width="300" height="250" alt="" src="https://www20.a8.net/svt/bgt?aid=210117795810&wid=001&eno=01&mid=s00000017743001017000&mc=1"></a>
+<img border="0" width="1" height="1" src="https://www12.a8.net/0.gif?a8mat=3H3JXF+DE94S2+3SWM+61Z81" alt="">
