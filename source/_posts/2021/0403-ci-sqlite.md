@@ -155,3 +155,28 @@ SQLiteは他のDBよりも気楽に使えるので大好きです。
 こちらの記事もおすすめです。  
 
 [VS Codeで複数バージョンのPHPに対してXdebugを利用する](/tech-memo/2021/01/2021-0112-debug-multi-php/)
+
+## PR
+あなたの会社はあなたの技術を評価してくれていますか？
+技術力を高めようと頑張っているのに、
+技術が評価されないような会社にいたらそれは良い環境なのでしょうか？
+エンジニアとして技術を高めたいのなら環境を選ぶことも大事です。
+
+**レバテックキャリア**
+エンジニアとして働いていて実務経験があるなら、
+求人数の充実具合からレバテックキャリアがおすすめです。
+<u>IT転職ではデファクト・スタンダード</u>ですね。
+[▼レバテック　キャリア 登録はこちら▼](https://px.a8.net/svt/ejp?a8mat=3H3JXF+8PRGKY+2JK4+ZRIB5 )
+<a href="https://px.a8.net/svt/ejp?a8mat=3H3JXF+8PRGKY+2JK4+ZWFS1" rel="nofollow">
+<img border="0" width="728" height="90" alt="" src="https://www22.a8.net/svt/bgt?aid=210117795527&wid=001&eno=01&mid=s00000011866006030000&mc=1"></a>
+<img border="0" width="1" height="1" src="https://www13.a8.net/0.gif?a8mat=3H3JXF+8PRGKY+2JK4+ZWFS1" alt="">
+
+**Tech Clips**
+Tech Clipsは<u>年収500万以上＆自社サービスを持った会社</u>に特化した求人サイトです。
+首都圏限定になってはしまいますが、
+収入を増やしたい、自社サービスを持った企業への転職をしたい人におすすめです。
+
+[▼Tech Clips 登録はこちら▼](https://px.a8.net/svt/ejp?a8mat=3H3JXF+DE94S2+3SWM+61Z81)
+<a href="https://px.a8.net/svt/ejp?a8mat=3H3JXF+DE94S2+3SWM+61Z81" rel="nofollow">
+<img border="0" width="300" height="250" alt="" src="https://www20.a8.net/svt/bgt?aid=210117795810&wid=001&eno=01&mid=s00000017743001017000&mc=1"></a>
+<img border="0" width="1" height="1" src="https://www12.a8.net/0.gif?a8mat=3H3JXF+DE94S2+3SWM+61Z81" alt="">
