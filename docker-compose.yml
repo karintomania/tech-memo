@@ -1,0 +1,11 @@
+version: '3'
+services:
+  tech-memo:
+    build:
+      dockerfile: Dockerfile
+      context: .
+    container_name: tech-memo
+    volumes:
+      - .:/app
+    ports:
+      - "5000:5000"
