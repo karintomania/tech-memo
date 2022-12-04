@@ -1,4 +1,4 @@
-FROM node:12
+FROM node:18
 
 ARG USER_ID
 ARG GROUP_ID
@@ -8,6 +8,4 @@ RUN apt-get -y update \
 && npm install -g hexo-cli
 WORKDIR /app
 CMD npm run server
-
-USER node
 
