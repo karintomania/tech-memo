@@ -49,3 +49,16 @@ tags: [Java, PHP, Java script]
 ## 画像
 feature は10 x 5くらいでOK
 
+## Git関連
+deplo時のエラー
+```
+Author identity unknown
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+```
+`rm -rf .deploy_git`してからエラーメッセージ通りにコマンドを叩く
