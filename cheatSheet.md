@@ -61,4 +61,8 @@ Run
   git config --global user.email "you@example.com"
   git config --global user.name "Your Name"
 ```
-`rm -rf .deploy_git`してからエラーメッセージ通りにコマンドを叩く
+```
+rm -rf .deploy_git && \
+git config --global user.name karintomania && git config --global user.email 19652340+karintomania@users.noreply.github.com && \
+hexo deploy
+```
