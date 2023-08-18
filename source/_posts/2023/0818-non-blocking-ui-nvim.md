@@ -12,7 +12,12 @@ date: 2023-08-18 08:21:48
 
 ## 背景
 こんにちは。 [かりんとうマニア(@karintozuki)](https://twitter.com/karintozuki)です。  
-皆様、NeoVimのプラグイン開発やってますでしょうか。今回はプラグイン開発の上で役立つTipsを紹介します。
+皆様、NeoVimのプラグイン開発やってますでしょうか。
+私はNeoVimからChatGPTと会話できるプラグインを作っています。
+https://github.com/karintomania/nvim-ai-chat
+よかったら使ってみてください（宣伝）
+
+今回はそんなプラグイン開発の上で役立つTipsを紹介します。
 <!-- more -->
 
 ## 解決したい課題： `os.execute`を使うとUIがブロックされてしまう
