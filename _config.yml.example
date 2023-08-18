@@ -91,7 +91,7 @@ theme: landscape
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/karintomania/tech-memo.git
+  repo: https://karintomania:xxxx@github.com/karintomania/tech-memo.git
   branch: gh-pages
 
 # site map
