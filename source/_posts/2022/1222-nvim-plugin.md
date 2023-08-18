@@ -1,8 +1,9 @@
 ---
 title: Luaで最小構成のNeoVimのプラグインを作る
 tags:
-  - Vim
+  - NeoVim
   - Lua
+  - NeoVimプラグイン
 categories: 技術
 featured_image: thumb.png
 date: 2022-12-22 08:10:31
