@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-161452704-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-161452704-1');
+</script>
+<!-- End Google Analytics -->
+
+  
+  <title>PHP DIでDIを学ぶ | 寝室コンピューティング</title>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- OGP settings -->
+	
+  		<meta name="description" content="背景こんにちは。 かりんとうマニア(@karintozuki)です。この記事ではDI（Dependency Injection: 依存性注入）とは何なのか、をphp-diというDIコンテナを使って説明したいと思います。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP DIでDIを学ぶ">
+<meta property="og:url" content="https://www.bedroomcomputing.com/2022/05/2022-0527-php-di/index.html">
+<meta property="og:site_name" content="寝室コンピューティング">
+<meta property="og:description" content="背景こんにちは。 かりんとうマニア(@karintozuki)です。この記事ではDI（Dependency Injection: 依存性注入）とは何なのか、をphp-diというDIコンテナを使って説明したいと思います。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://www.bedroomcomputing.com/2022/05/2022-0527-php-di/thumb.png">
+<meta property="article:published_time" content="2022-05-27T13:40:32.000Z">
+<meta property="article:modified_time" content="2022-11-02T23:16:38.473Z">
+<meta property="article:author" content="karintomania">
+<meta property="article:tag" content="PHP">
+<meta property="article:tag" content="php-di">
+<meta property="article:tag" content="DI">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.bedroomcomputing.com/2022/05/2022-0527-php-di/thumb.png">
+	
+  
+  
+    <link rel="icon" href="/css/images/favicon.ico">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  <script data-ad-client="ca-pub-2164726777115826" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+	  <div id="logo-wrap">
+      <h1>
+        <a href="/" id="logo">寝室コンピューティング</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+          <a class="main-nav-link" href="/categories/%E6%8A%80%E8%A1%93/">Dev</a>
+        
+          <a class="main-nav-link" href="/categories/%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%83%A9%E3%82%A4%E3%83%95/">Engineer&#39;s life</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://www.bedroomcomputing.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2022-0527-php-di" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2022/05/2022-0527-php-di/" class="article-date">
+  <time datetime="2022-05-27T13:40:32.000Z" itemprop="datePublished">2022-05-27</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%8A%80%E8%A1%93/">技術</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      PHP DIでDIを学ぶ
+    </h1>
+  
+
+      </header>
+	
+    <div class="article-entry" itemprop="articleBody">
+	
+		<img src="https://www.bedroomcomputing.com/2022/05/2022-0527-php-di/thumb.png">
+	
+      
+		<h2>目次</h2>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%83%8C%E6%99%AF"><span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DI%E3%81%A8%E3%81%AF"><span class="toc-text">DIとは</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%9D%E5%AD%98%E6%80%A7%E3%81%A8%E3%81%AF"><span class="toc-text">依存性とは</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BE%9D%E5%AD%98%E6%80%A7%E6%B3%A8%E5%85%A5"><span class="toc-text">依存性注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%99%E8%AB%87-IoC%EF%BC%88Inversion-of-Control-%E5%88%B6%E5%BE%A1%E3%81%AE%E5%8F%8D%E8%BB%A2%EF%BC%89"><span class="toc-text">余談 IoC（Inversion of Control: 制御の反転）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DI%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A%E3%81%A8%E3%81%AF"><span class="toc-text">DIコンテナとは</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#DI%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8A%E3%81%AE%E5%9F%BA%E6%9C%AC%E6%A9%9F%E8%83%BD"><span class="toc-text">DIコンテナの基本機能</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#DI%E3%82%B3%E3%83%B3%E3%83%86%E3%83%8Aphp-di%E3%81%AE%E7%B4%B9%E4%BB%8B"><span class="toc-text">DIコンテナphp-diの紹介</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A9%9F%E8%83%BD%EF%BC%91%EF%BC%8E%E5%AE%A3%E8%A8%80%E3%82%92%E4%B8%80%E3%81%8B%E6%89%80%E3%81%AB%E3%81%BE%E3%81%A8%E3%82%81%E3%82%8B"><span class="toc-text">機能１．宣言を一か所にまとめる</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A9%9F%E8%83%BD%EF%BC%92%EF%BC%8EConstructor-Injection%E3%81%AE%E3%82%B5%E3%83%9D%E3%83%BC%E3%83%88"><span class="toc-text">機能２．Constructor Injectionのサポート</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A9%9F%E8%83%BD%EF%BC%93%EF%BC%8EAutowired"><span class="toc-text">機能３．Autowired</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A9%9F%E8%83%BD4%EF%BC%8EInterface%E3%81%AE%E5%AE%9F%E8%A3%85"><span class="toc-text">機能4．Interfaceの実装</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%82%A2%E3%83%B3%E3%83%81%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3%E3%81%AA%E3%81%A9"><span class="toc-text">アンチパターンなど</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Dependency-Fetch-%E3%82%A2%E3%83%B3%E3%83%81%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3"><span class="toc-text">Dependency Fetch アンチパターン</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#make-%E3%83%A1%E3%82%BD%E3%83%83%E3%83%89"><span class="toc-text">make()メソッド</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%81%BE%E3%81%A8%E3%82%81"><span class="toc-text">まとめ</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%96%A2%E9%80%A3%E8%A8%98%E4%BA%8B"><span class="toc-text">関連記事</span></a></li></ol>
+        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>こんにちは。 <a target="_blank" rel="noopener" href="https://twitter.com/karintozuki">かりんとうマニア(@karintozuki)</a>です。<br>この記事ではDI（Dependency Injection: 依存性注入）とは何なのか、を<br>php-diというDIコンテナを使って説明したいと思います。</p>
+<span id="more"></span>
+
+<h2 id="DIとは"><a href="#DIとは" class="headerlink" title="DIとは"></a>DIとは</h2><p>DIはDependency Injectionの頭文字をとったもので、<br>日本語にすると、依存性注入と訳せます。</p>
+<h3 id="依存性とは"><a href="#依存性とは" class="headerlink" title="依存性とは"></a>依存性とは</h3><p>何かのクラスAがあったとします。<br><u><br>クラスAが他のクラスBを使うとき、クラスBはクラスAの依存性です。<br>クラスAはクラスBに依存しているということもできます。<br></u></p>
+<p>これを普通にコードにしてみると以下の感じになると思います。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">// 依存性注入を使わない例</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ClassA</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> ClassB <span class="variable">$b</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="variable language_">$this</span>-&gt;b = <span class="keyword">new</span> <span class="title function_ invoke__">ClassB</span>();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="依存性注入"><a href="#依存性注入" class="headerlink" title="依存性注入"></a>依存性注入</h3><p>先ほどの例では、クラスBをクラスAの中で<code>new</code>していました。<br><u><br>依存性注入では、依存性であるクラスBを外部から「注入」します。<br></u></p>
+<p>以下のコードを見てください。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">// 依存性注入を使う</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ClassA</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> ClassB <span class="variable">$b</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params">ClassB <span class="variable">$b</span></span>)</span>&#123;</span><br><span class="line">		<span class="variable language_">$this</span>-&gt;b = <span class="variable">$b</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>コードから<code>new</code>が消えましたね。</p>
+<p>これをするメリットは依存性を一か所にまとめることができることです。</p>
+<p><strong>依存性注入を使わずにクラスAを使う場合</strong><br>1.アプリケーションがクラスAをnewする<br>2.クラスAがクラスBをnewする</p>
+<p><strong>依存性注入を使ってクラスAを使う場合</strong><br>1.アプリケーションがクラスAに必要なクラスBをnewする<br>2.アプリケーションがクラスBを渡してクラスAをnewする</p>
+<p>依存性注入を使う場合、主語がアプリケーションになっていることが分かるでしょうか。<br>個別のクラスは依存しているクラスの詳細を知る必要がなく、<br>アプリケーション一か所にクラスの宣言をまとめることができます。</p>
+<p>これとInterfaceを合わせて使うことでクラスAのコードを変更することなく、<br>クラスBをクラスCに変えるなんてことができるようになります。<br>（DIとInterfaceについては詳しく後述します。）</p>
+<h3 id="余談-IoC（Inversion-of-Control-制御の反転）"><a href="#余談-IoC（Inversion-of-Control-制御の反転）" class="headerlink" title="余談 IoC（Inversion of Control: 制御の反転）"></a>余談 IoC（Inversion of Control: 制御の反転）</h3><p>DIの文脈でIoCという言葉も良く出てきます。<br>これは先ほどの例でいうと、依存性クラスBを制御（new）するのが、<br>クラスA（アプリケーションから呼び出される側）からアプリケーション（Aを呼び出す側）に<br>反転しているという意味です。</p>
+<p>Dependency Inversionということもあるみたいです。<br>いわゆるSOLID原則のDはDependency Inversionですね。</p>
+<h2 id="DIコンテナとは"><a href="#DIコンテナとは" class="headerlink" title="DIコンテナとは"></a>DIコンテナとは</h2><p>まずはじめに、DIとDIコンテナの違いを説明します。<br><strong>DI</strong><br>DIはきれいなコードを書くためのテクニックです。</p>
+<p><strong>DIコンテナ</strong><br>DIコンテナはDIを簡単に書くためのライブラリでDIを実装する際に便利な機能を有します。 </p>
+<p>DIはシンプルにテクニックの名前なので、<br>DIコンテナを使わなくてもDIを使ったコードは書けます。</p>
+<h3 id="DIコンテナの基本機能"><a href="#DIコンテナの基本機能" class="headerlink" title="DIコンテナの基本機能"></a>DIコンテナの基本機能</h3><p>最後にDIコンテナはどんな機能を提供するのか、<br>それにはどんなメリットがあるのか、具体例を紹介します。</p>
+<h4 id="DIコンテナphp-diの紹介"><a href="#DIコンテナphp-diの紹介" class="headerlink" title="DIコンテナphp-diの紹介"></a>DIコンテナphp-diの紹介</h4><p>この記事ではphp-diというDIコンテナを使っていきます。<br>他にもDIコンテナはあるのですが、このライブラリが一番使われているようだったので、<br>php-diをチョイスしました。<br>何となく使えてしまうというか、直感的に使えるのでおすすめです。</p>
+<p>また、LaravelのようなWebフレームワークを使っている方は<br>元からDIコンテナがフレームワークに組み込まれています。</p>
+<p>呼び出し方や設定が違うだけで、根本の考え方は同じなので、<br>この記事を参考に自分が使っているフレームワークでは<br>どのような実装になるのか調べてみてください。</p>
+<h4 id="機能１．宣言を一か所にまとめる"><a href="#機能１．宣言を一か所にまとめる" class="headerlink" title="機能１．宣言を一か所にまとめる"></a>機能１．宣言を一か所にまとめる</h4><p>先ほど、DIを使うと主語がアプリケーションになる、という説明をしました。<br>DIコンテナを使う場合、このアプリケーションに当たるのがDIコンテナです。<br>そのため、DIコンテナは</p>
+<ul>
+<li>すべてのクラスをどのようにnewするのか、</li>
+<li>どのクラスがなんのクラスに依存しているのか</li>
+</ul>
+<p>を知っている必要があります。</p>
+<p>この「どのようにnewするのか」をphp-diでは配列として宣言します。</p>
+<p>実際のコードで確認してみましょう。<br>以下のようなプロジェクト構成を想定してください。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">project root</span><br><span class="line">├bootstrap.php</span><br><span class="line">└app.php</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>bootstrap.phpでコンテナを設定して、app.phpでそれを使うような構成です。</p>
+<p><strong>注意</strong><br>本記事のコードを実際に動かすには<br>php-diをcomposerなどでダウンロードするなどいくらか設定が必要です。<br>細かい設定などはphp-diの公式ドキュメントをご覧ください。</p>
+<p>以下の例ではMonologを設定しています。</p>
+<figure class="highlight php"><figcaption><span>bootstrap.php</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">use</span> <span class="title">DI</span>\<span class="title">ContainerBuilder</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="title">Monolog</span>\<span class="title">Logger</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="title">Monolog</span>\<span class="title">Handler</span>\<span class="title">StreamHandler</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="title">Psr</span>\<span class="title">Log</span>\<span class="title">LoggerInterface</span>;</span><br><span class="line"><span class="keyword">use</span> <span class="title">Psr</span>\<span class="title">Container</span>\<span class="title">ContainerInterface</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// autoloadの読み込み</span></span><br><span class="line"><span class="keyword">require</span> <span class="keyword">__DIR__</span>.<span class="string">&#x27;/../vendor/autoload.php&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 設定配列の宣言</span></span><br><span class="line"><span class="variable">$def</span> = [</span><br><span class="line">	<span class="comment">// ここでLoggerをnewする</span></span><br><span class="line">	<span class="title class_">Logger</span>::<span class="variable language_">class</span> =&gt; <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="variable">$logger</span> = <span class="keyword">new</span> <span class="title class_">Logger</span>(<span class="string">&#x27;DI-App&#x27;</span>);</span><br><span class="line">		<span class="variable">$logger</span>-&gt;<span class="title function_ invoke__">pushHandler</span>(<span class="keyword">new</span> <span class="title class_">StreamHandler</span>(<span class="keyword">__DIR__</span>.<span class="string">&#x27;/app.log&#x27;</span>));</span><br><span class="line">		<span class="keyword">return</span> <span class="variable">$logger</span>;</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="comment">// LoggerInterfaceにLoggerを設定</span></span><br><span class="line">	<span class="title class_">LoggerInterface</span>::<span class="variable language_">class</span> =&gt; <span class="function"><span class="keyword">function</span>(<span class="params">ContainerInterface <span class="variable">$c</span></span>)</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="variable">$c</span>-&gt;<span class="title function_ invoke__">get</span>(<span class="title class_">Logger</span>::<span class="variable language_">class</span>);</span><br><span class="line">	&#125;</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 設定をもとにコンテナをビルドする</span></span><br><span class="line"><span class="variable">$containerBuilder</span> = <span class="keyword">new</span> <span class="title class_">ContainerBuilder</span>();</span><br><span class="line"><span class="variable">$containerBuilder</span>-&gt;<span class="title function_ invoke__">addDefinitions</span>(<span class="variable">$def</span>);</span><br><span class="line"><span class="variable">$container</span> = <span class="variable">$containerBuilder</span>-&gt;<span class="title function_ invoke__">build</span>();</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="variable">$container</span>;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>ちょっと長いですが、<code>$def</code>という配列に依存性を宣言しています。</p>
+<p>この部分を見てみます。</p>
+<figure class="highlight php"><figcaption><span>bootstrap.php</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ここでLoggerをnewする</span></span><br><span class="line"><span class="title class_">Logger</span>::<span class="variable language_">class</span> =&gt; <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="variable">$logger</span> = <span class="keyword">new</span> <span class="title class_">Logger</span>(<span class="string">&#x27;DI-App&#x27;</span>);</span><br><span class="line">	<span class="variable">$logger</span>-&gt;<span class="title function_ invoke__">pushHandler</span>(<span class="keyword">new</span> <span class="title class_">StreamHandler</span>(<span class="keyword">__DIR__</span>.<span class="string">&#x27;/app.log&#x27;</span>));</span><br><span class="line">	<span class="keyword">return</span> <span class="variable">$logger</span>;</span><br><span class="line">&#125;,</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>ここではシンプルにnewするだけでなく、Monologの初期設定もしています。</p>
+<p>DIコンテナを使わない場合、こういった初期設定を<br>ログを使うすべてのクラスで行わないといけません。</p>
+<p>これくらいの設定ならまだいいですが、<br>設定が10数行に及ぶことはよくあるかと思います。</p>
+<p>そういった手間がなくせるのが良いところですね。</p>
+<p>それではこのコンテナを使うコードを見てみましょう。</p>
+<figure class="highlight php"><figcaption><span>app.php</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">use</span> <span class="title">Monolog</span>\<span class="title">Logger</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable">$container</span> = <span class="keyword">require</span> <span class="keyword">__DIR__</span>.<span class="string">&#x27;/bootstrap.php&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/** <span class="doctag">@var</span> Logger $logger */</span></span><br><span class="line"><span class="variable">$logger</span> = <span class="variable">$container</span>-&gt;<span class="title function_ invoke__">get</span>(<span class="title class_">Logger</span>::<span class="variable language_">class</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable">$logger</span>-&gt;<span class="title function_ invoke__">info</span>(<span class="string">&#x27;ログ&#x27;</span>);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>コンテナからクラスを取り出す際はnewを使う代わりにget()メソッドを使用します。</p>
+<figure class="highlight php"><figcaption><span>app.php</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** <span class="doctag">@var</span> Logger $logger */</span></span><br><span class="line"><span class="variable">$logger</span> = <span class="variable">$container</span>-&gt;<span class="title function_ invoke__">get</span>(<span class="title class_">Logger</span>::<span class="variable language_">class</span>);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>ちなみに<code>/** @var Logger $logger */</code>を記述することで<br>IDEなどがクラスを認識してくれます。</p>
+<p>newの代わりにコンテナからget()しただけだと、<br>変数がなんのクラスが不明のままになってしまいます。</p>
+<h4 id="機能２．Constructor-Injectionのサポート"><a href="#機能２．Constructor-Injectionのサポート" class="headerlink" title="機能２．Constructor Injectionのサポート"></a>機能２．Constructor Injectionのサポート</h4><p>それでは先ほど使用したロガーを使うクラスを作ってみます。<br>Hello.phpというクラスを作ります。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">project root</span><br><span class="line">├bootstrap.php</span><br><span class="line">├app.php</span><br><span class="line">└Hello.php</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight php"><figcaption><span>Hello.php</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title class_">App</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">use</span> <span class="title">Monolog</span>\<span class="title">Logger</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Hello</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> Logger <span class="variable">$logger</span>;</span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params">Logger <span class="variable">$logger</span></span>) </span>&#123; <span class="comment">// Constructor Injection</span></span><br><span class="line">		<span class="variable language_">$this</span>-&gt;logger = <span class="variable">$logger</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">sayHello</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="variable language_">$this</span>-&gt;logger-&gt;<span class="title function_ invoke__">info</span>(<span class="string">&quot;Hello&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight php"><figcaption><span>app.php</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">use</span> <span class="title">App</span>\<span class="title">Hello</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable">$container</span> = <span class="keyword">require</span> <span class="keyword">__DIR__</span>.<span class="string">&#x27;/bootstrap.php&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/** <span class="doctag">@var</span> Hello $hello */</span></span><br><span class="line"><span class="variable">$hello</span> = <span class="variable">$container</span>-&gt;<span class="title function_ invoke__">get</span>(<span class="title class_">Hello</span>::<span class="variable language_">class</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable">$hello</span>-&gt;<span class="title function_ invoke__">sayHello</span>();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>ここではコンストラクタインジェクションというテクニックを使用しています。<br>Hello.phpクラスのコンストラクタを見てみます。</p>
+<figure class="highlight php"><figcaption><span>Hello.php</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params">Logger <span class="variable">$logger</span></span>) </span>&#123; <span class="comment">// Constructor Injection</span></span><br><span class="line">	<span class="variable language_">$this</span>-&gt;logger = <span class="variable">$logger</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>コンストラクタインジェクションは<br><u>依存性をコンストラクタの引数として記述し、そのクラスを作成する際に依存性を注入するテクニックです。</u><br>こうすることでHelloクラスの中でLoggerクラスをnewすることがなくなります。</p>
+<p>DIコンテナはHelloクラスを作るときにLoggerクラスを自動的に作ってくれます。</p>
+<p>app.phpのこの部分を見てください。</p>
+<figure class="highlight php"><figcaption><span>app.php</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** <span class="doctag">@var</span> Hello $hello */</span></span><br><span class="line"><span class="variable">$hello</span> = <span class="variable">$container</span>-&gt;<span class="title function_ invoke__">get</span>(<span class="title class_">Hello</span>::<span class="variable language_">class</span>);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>もし、コンストラクタインジェクションをphp-diが自動でしてくれなければ、<br>以下のようにいちいち依存性を自分で注入してあげないといけませんね。</p>
+<figure class="highlight php"><figcaption><span>app.php</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$logger</span> = <span class="keyword">new</span> <span class="title class_">Logger</span>(<span class="string">&#x27;DI-App&#x27;</span>);</span><br><span class="line"><span class="comment">// $loggerを初期設定</span></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="variable">$hello</span> = <span class="keyword">new</span> <span class="title class_">Hello</span>(<span class="variable">$logger</span>);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>DIコンテナはHelloに必要な依存性をConstructorの引数から<br>自動的に判断して、LoggerクラスをHelloクラスに渡してくれます。</p>
+<p>便利ですね。</p>
+<h4 id="機能３．Autowired"><a href="#機能３．Autowired" class="headerlink" title="機能３．Autowired"></a>機能３．Autowired</h4><p>先ほどの例ですが、実はbootstrap.phpの$defを一切変更せずに動きます。</p>
+<p>本来であればHelloクラスをどのようにnewするかは$defに記述しなければいけません。<br>しかし、php-diはそれも自動でやってくれます。</p>
+<p><u>初期設定を必要としないHelloのようなクラスは、<br>Hello::classをコンテナに渡すことで勝手に作ってくれます。</u></p>
+<p>これは便利ですね。</p>
+<p>逆にLoggerのようにシンプルにnewするだけでなく、<br>設定などをしたいクラスは$defに記述する必要があります。</p>
+<h4 id="機能4．Interfaceの実装"><a href="#機能4．Interfaceの実装" class="headerlink" title="機能4．Interfaceの実装"></a>機能4．Interfaceの実装</h4><p>先ほどの例でLoggerをMonologではなく別のライブラリに変えるような<br>場面を想定してみます。</p>
+<p>普通であればLoggerを使っているクラスすべてを書き換えなければならず、<br>面倒でバグを生みやすい作業になるのですが、<br>Interfaceを使うことで解決できます。</p>
+<p>MonologはPSR-3 LoggerInterfaceというPHP標準のロガーインターフェースに準拠しています。</p>
+<p>bootstrap.phpの$defをもう一度見てみてください。</p>
+<figure class="highlight php"><figcaption><span>bootstrap.php</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 設定配列の宣言</span></span><br><span class="line"><span class="variable">$def</span> = [</span><br><span class="line">	<span class="comment">// ここでLoggerをnewする</span></span><br><span class="line">	<span class="title class_">Logger</span>::<span class="variable language_">class</span> =&gt; <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="variable">$logger</span> = <span class="keyword">new</span> <span class="title class_">Logger</span>(<span class="string">&#x27;DI-App&#x27;</span>);</span><br><span class="line">		<span class="variable">$logger</span>-&gt;<span class="title function_ invoke__">pushHandler</span>(<span class="keyword">new</span> <span class="title class_">StreamHandler</span>(<span class="keyword">__DIR__</span>.<span class="string">&#x27;/app.log&#x27;</span>));</span><br><span class="line">		<span class="keyword">return</span> <span class="variable">$logger</span>;</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="comment">// LoggerInterfaceにLoggerを設定</span></span><br><span class="line">	<span class="title class_">LoggerInterface</span>::<span class="variable language_">class</span> =&gt; <span class="function"><span class="keyword">function</span>(<span class="params">ContainerInterface <span class="variable">$c</span></span>)</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="variable">$c</span>-&gt;<span class="title function_ invoke__">get</span>(<span class="title class_">Logger</span>::<span class="variable language_">class</span>);</span><br><span class="line">	&#125;</span><br><span class="line">];</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><u>この部分でPHPの標準インターフェースであるLoggerInterfaceにMonologを設定しています。</u></p>
+<figure class="highlight php"><figcaption><span>bootstrap.php</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// LoggerInterfaceにLoggerを設定</span></span><br><span class="line"><span class="title class_">LoggerInterface</span>::<span class="variable language_">class</span> =&gt; <span class="function"><span class="keyword">function</span>(<span class="params">ContainerInterface <span class="variable">$c</span></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="variable">$c</span>-&gt;<span class="title function_ invoke__">get</span>(<span class="title class_">Logger</span>::<span class="variable language_">class</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>こうすることで、クラス内でLoggerInterfaceを依存性として宣言した場合、<br><u>Monologを自動的にインターフェースの実装として使ってくれます。 </u></p>
+<p>それではHelloクラスをMonologに依存しない形に変えてみます。</p>
+<figure class="highlight php"><figcaption><span>Hello.php</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title class_">App</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">use</span> <span class="title">Psr</span>\<span class="title">Log</span>\<span class="title">LoggerInterface</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Hello</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> LoggerInterface <span class="variable">$logger</span>;</span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params">LoggerInterface <span class="variable">$logger</span></span>) </span>&#123;</span><br><span class="line">		<span class="variable language_">$this</span>-&gt;logger = <span class="variable">$logger</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">sayHello</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="variable language_">$this</span>-&gt;logger-&gt;<span class="title function_ invoke__">info</span>(<span class="string">&quot;Hello&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>こうすることで<u>LoggerをほかのPSR-3準拠のLoggerに変更する際に、<br>Helloクラスを変更する必要がなくなりました。</u></p>
+<p>LoggerやMailerなど標準Interfaceが用意されているものや、<br>テスト用にMockを使いたい場合などに役立ちますね。</p>
+<h2 id="アンチパターンなど"><a href="#アンチパターンなど" class="headerlink" title="アンチパターンなど"></a>アンチパターンなど</h2><p>最後にアンチパターンやTipsを紹介します。</p>
+<h3 id="Dependency-Fetch-アンチパターン"><a href="#Dependency-Fetch-アンチパターン" class="headerlink" title="Dependency Fetch アンチパターン"></a>Dependency Fetch アンチパターン</h3><p>基本的に<u>$container-&gt;get()を呼び出すのは最小限にするようにしましょう。</u></p>
+<p>すべてのクラスが$container変数を持っているようなコードはDependency Injectionではなく<br>Dependency Fetchというアンチパターンになってしまいます。</p>
+<p>以下のような感じです。</p>
+<figure class="highlight php"><figcaption><span>Hello.php</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title class_">App</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">use</span> <span class="title">Monolog</span>\<span class="title">Logger</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HelloAnti</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> Logger <span class="variable">$logger</span>;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="variable">$container</span> = <span class="keyword">require</span> <span class="keyword">__DIR__</span>.<span class="string">&#x27;/bootstrap.php&#x27;</span>; <span class="comment">//直接コンテナを触っている</span></span><br><span class="line">		<span class="variable language_">$this</span>-&gt;logger = <span class="variable">$container</span>-&gt;<span class="title function_ invoke__">get</span>(<span class="title class_">Logger</span>::<span class="variable language_">class</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">sayHello</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="variable language_">$this</span>-&gt;logger-&gt;<span class="title function_ invoke__">info</span>(<span class="string">&quot;Hello Anti&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<p>コンテナから直接、依存性を取り出すのではなく、<br>コンストラクタインジェクションや@injectアノテーションを使うことが推奨されています。</p>
+<h4 id="make-メソッド"><a href="#make-メソッド" class="headerlink" title="make()メソッド"></a>make()メソッド</h4><p>php-diを使うときはコンストラクタに依存性を記述しますが、<br>普通コンストラクタって引数を記述するところですよね。</p>
+<p>普通の引数と依存性のための引数を使うクラスの場合、get()ではなく、<br>make()メソッドを使用します。</p>
+<p>例えば、Helloクラスに言語という引数を足してみます。<br>以下のようなコードです。</p>
+<figure class="highlight php"><figcaption><span>HelloMake.php</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title class_">App</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">use</span> <span class="title">Monolog</span>\<span class="title">Logger</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HelloMake</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> Logger <span class="variable">$logger</span>;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">string</span> <span class="variable">$lang</span>;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">__construct</span>(<span class="params">Logger <span class="variable">$logger</span>, <span class="keyword">string</span> <span class="variable">$lang</span></span>) </span>&#123; <span class="comment">//引数に言語をとる</span></span><br><span class="line">		<span class="variable language_">$this</span>-&gt;logger = <span class="variable">$logger</span>;</span><br><span class="line">		<span class="variable language_">$this</span>-&gt;lang = <span class="variable">$lang</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">sayHello</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="variable">$hello</span> = <span class="string">&quot;hello&quot;</span>;</span><br><span class="line">		<span class="keyword">if</span>(<span class="variable language_">$this</span>-&gt;lang === <span class="string">&#x27;jp&#x27;</span>)</span><br><span class="line">			<span class="variable">$hello</span> = <span class="string">&quot;こんにちは&quot;</span>;</span><br><span class="line"></span><br><span class="line">		<span class="variable language_">$this</span>-&gt;logger-&gt;<span class="title function_ invoke__">info</span>(<span class="variable">$hello</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>このようなクラスを呼ぶ場合はmake()メソッドを使用します。</p>
+<figure class="highlight php"><figcaption><span>app.php</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">use</span> <span class="title">App</span>\<span class="title">HelloMake</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable">$container</span> = <span class="keyword">require</span> <span class="keyword">__DIR__</span>.<span class="string">&#x27;/bootstrap.php&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/** <span class="doctag">@var</span> HelloMake $hello */</span></span><br><span class="line"><span class="variable">$hello</span> = <span class="variable">$container</span>-&gt;<span class="title function_ invoke__">make</span>(<span class="title class_">HelloMake</span>::<span class="variable language_">class</span>, [<span class="string">&#x27;lang&#x27;</span> =&gt; <span class="string">&#x27;jp&#x27;</span>]); <span class="comment">//make メソッド</span></span><br><span class="line"></span><br><span class="line"><span class="variable">$hello</span>-&gt;<span class="title function_ invoke__">sayHello</span>();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>また、このようなクラスを依存性に持つ場合は、<br>コンストラクタにDI\FactoryInterfaceをとり、そこからmake()を呼び出すことが推奨されています。<br>これは先ほどのアンチパターン（$containerをクラスが直接持つ）にならないようにするためですね。</p>
+<h2 id="まとめ"><a href="#まとめ" class="headerlink" title="まとめ"></a>まとめ</h2><p>この記事ではphp-diを使ってDIやDIコンテナの使用例を紹介してきました。<br>DIを知らなかった人やフレームワークに入っているものを何となく使っていた人の<br>理解が深まると幸いです。</p>
+<p>それじゃ今日はこの辺で。</p>
+<h2 id="関連記事"><a href="#関連記事" class="headerlink" title="関連記事"></a>関連記事</h2><p>こちらの記事もおすすめです。  </p>
+<p><a href="/2020/04/2020-0430-springboot-azure-2/">Spring Boot + Azure App Engine +Cosmos DBでAPIを無料で爆速開発する - その２</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.bedroomcomputing.com/2022/05/2022-0527-php-di/" data-id="cm030t6vg00742nqr6rsige55" data-title="PHP DIでDIを学ぶ" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DI/" rel="tag">DI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php-di/" rel="tag">php-di</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/06/2022-0613-ai-shigure/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          AIで凛として時雨をRe:Automationする！（歌詞をAIに自動生成させてみた）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/04/2022-0416-docker-php-ini/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Docker内のphp.iniを編集する方法</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    <div class="widget-wrap">
+<h3 class="widget-title">About</h3>
+<div class="widget">
+	<img src="/css/images/author.png" alt="著者" class="author-img">
+	<a class="author-link" href="/about" >karintomania</a>
+	<p><p>イギリス在住のWeb開発者が日々学んだことを書き連ねています。<br> PHPメインでやらせてもらってます。</p>
+</p>
+</div>
+</div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/08/2024-0820-understanding/">AIに負けないプログラマ - 理解によるプログラミングについて</a>
+          </li>
+        
+          <li>
+            <a href="/2024/08/2024-0802-zellij-update-recovery/">Zellijのアップデートでセッションが消えてしまったとき</a>
+          </li>
+        
+          <li>
+            <a href="/2024/06/2024-0606-tripled-salary/">イギリスに来てから5年かけて給料を3倍にした話</a>
+          </li>
+        
+          <li>
+            <a href="/2024/05/2024-0522-aiterm/">iTerm2に追加されたAIサポートを使ってみる</a>
+          </li>
+        
+          <li>
+            <a href="/2024/05/2024-0501-ghcr-image/">GitHubのコンテナレジストリにイメージをアップロードする</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%83%A9%E3%82%A4%E3%83%95/">エンジニアライフ</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E8%A1%93/">技術</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AI/" rel="tag">AI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/" rel="tag">Apache</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Azure/" rel="tag">Azure</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bot/" rel="tag">Bot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cosmos-DB/" rel="tag">Cosmos DB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DB/" rel="tag">DB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DI/" rel="tag">DI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Excel/" rel="tag">Excel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitHub/" rel="tag">GitHub</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitHub-Container-Registry/" rel="tag">GitHub Container Registry</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github-Pages/" rel="tag">Github Pages</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Google-Tech-Dev-Guide/" rel="tag">Google Tech Dev Guide</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Helix/" rel="tag">Helix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Heroku/" rel="tag">Heroku</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hotwire/" rel="tag">Hotwire</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kotlin/" rel="tag">Kotlin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kubernetes/" rel="tag">Kubernetes</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LINE-Bot/" rel="tag">LINE Bot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Laravel/" rel="tag">Laravel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-Command/" rel="tag">Linux Command</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Livewire/" rel="tag">Livewire</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Logcat/" rel="tag">Logcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lua/" rel="tag">Lua</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Minikube/" rel="tag">Minikube</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NeoVim/" rel="tag">NeoVim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NeoVim%E3%83%97%E3%83%A9%E3%82%B0%E3%82%A4%E3%83%B3/" rel="tag">NeoVimプラグイン</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OR-Mapper/" rel="tag">OR Mapper</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OSS/" rel="tag">OSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Orchid/" rel="tag">Orchid</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PDF/" rel="tag">PDF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PostgreSQL/" rel="tag">PostgreSQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PowerShell/" rel="tag">PowerShell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RPA/" rel="tag">RPA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Room/" rel="tag">Room</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SMTP/" rel="tag">SMTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQLite/" rel="tag">SQLite</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH/" rel="tag">SSH</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Shell-Script/" rel="tag">Shell Script</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-Boot/" rel="tag">Spring Boot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tabula/" rel="tag">Tabula</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Twitter/" rel="tag">Twitter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Twitter-API/" rel="tag">Twitter API</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Twitter4j/" rel="tag">Twitter4j</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UiPath/" rel="tag">UiPath</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unity/" rel="tag">Unity</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VBS/" rel="tag">VBS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VS-Code/" rel="tag">VS Code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/" rel="tag">Vim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Windows/" rel="tag">Windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xdebug/" rel="tag">Xdebug</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/admob/" rel="tag">admob</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/" rel="tag">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android-studio/" rel="tag">android studio</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/code-igniter/" rel="tag">code igniter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iTerm2-AI-ChatGPT-CLI/" rel="tag">iTerm2, AI, ChatGPT, CLI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mybatis/" rel="tag">mybatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/" rel="tag">node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php-di/" rel="tag">php-di</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/smtp4dev/" rel="tag">smtp4dev</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zellij/" rel="tag">zellij</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0/" rel="tag">アルゴリズム</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%82%A8%E3%83%87%E3%82%A3%E3%82%BF/" rel="tag">エディタ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%82%AD%E3%83%A3%E3%83%AA%E3%82%A2/" rel="tag">キャリア</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%82%AF%E3%83%AA%E3%82%A8%E3%82%A4%E3%83%86%E3%82%A3%E3%83%93%E3%83%86%E3%82%A3/" rel="tag">クリエイティビティ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3/" rel="tag">セッション</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%83%90%E3%83%83%E3%83%81/" rel="tag">バッチ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%83%96%E3%83%AD%E3%82%B0/" rel="tag">ブログ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%83%9E%E3%82%AF%E3%83%AD/" rel="tag">マクロ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%83%A2%E3%83%81%E3%83%99%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3/" rel="tag">モチベーション</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%80%8B%E4%BA%BA%E9%96%8B%E7%99%BA/" rel="tag">個人開発</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%9D%E5%BF%83%E8%80%85/" rel="tag">初心者</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%80%E9%80%9FKotlin-Android%E3%82%A2%E3%83%97%E3%83%AA%E9%96%8B%E7%99%BA%E5%85%A5%E9%96%80/" rel="tag">最速Kotlin&amp;Androidアプリ開発入門</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%AD%A3%E8%A6%8F%E8%A1%A8%E7%8F%BE/" rel="tag">正規表現</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%8B%AC%E5%AD%A6/" rel="tag">独学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%87%AA%E5%8B%95%E5%8C%96/" rel="tag">自動化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%8B%B1%E8%AA%9E/" rel="tag">英語</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%96%8B%E7%99%BA%E3%83%84%E3%83%BC%E3%83%AB/" rel="tag">開発ツール</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%96%A2%E6%95%B0%E5%9E%8B%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0/" rel="tag">関数型プログラミング</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AI/" style="font-size: 11px;">AI</a> <a href="/tags/Apache/" style="font-size: 10px;">Apache</a> <a href="/tags/Azure/" style="font-size: 11px;">Azure</a> <a href="/tags/Bot/" style="font-size: 10px;">Bot</a> <a href="/tags/Cosmos-DB/" style="font-size: 11px;">Cosmos DB</a> <a href="/tags/DB/" style="font-size: 11px;">DB</a> <a href="/tags/DI/" style="font-size: 10px;">DI</a> <a href="/tags/Docker/" style="font-size: 16px;">Docker</a> <a href="/tags/Excel/" style="font-size: 10px;">Excel</a> <a href="/tags/Git/" style="font-size: 11px;">Git</a> <a href="/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/tags/GitHub-Container-Registry/" style="font-size: 10px;">GitHub Container Registry</a> <a href="/tags/Github-Pages/" style="font-size: 15px;">Github Pages</a> <a href="/tags/Google-Tech-Dev-Guide/" style="font-size: 15px;">Google Tech Dev Guide</a> <a href="/tags/Helix/" style="font-size: 10px;">Helix</a> <a href="/tags/Heroku/" style="font-size: 11px;">Heroku</a> <a href="/tags/Hexo/" style="font-size: 17px;">Hexo</a> <a href="/tags/Hotwire/" style="font-size: 10px;">Hotwire</a> <a href="/tags/Java/" style="font-size: 19px;">Java</a> <a href="/tags/Kotlin/" style="font-size: 13px;">Kotlin</a> <a href="/tags/Kubernetes/" style="font-size: 11px;">Kubernetes</a> <a href="/tags/LINE-Bot/" style="font-size: 11px;">LINE Bot</a> <a href="/tags/Laravel/" style="font-size: 11px;">Laravel</a> <a href="/tags/Linux-Command/" style="font-size: 10px;">Linux Command</a> <a href="/tags/Livewire/" style="font-size: 10px;">Livewire</a> <a href="/tags/Logcat/" style="font-size: 10px;">Logcat</a> <a href="/tags/Lua/" style="font-size: 11px;">Lua</a> <a href="/tags/Minikube/" style="font-size: 10px;">Minikube</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/NeoVim/" style="font-size: 14px;">NeoVim</a> <a href="/tags/NeoVim%E3%83%97%E3%83%A9%E3%82%B0%E3%82%A4%E3%83%B3/" style="font-size: 12px;">NeoVimプラグイン</a> <a href="/tags/OR-Mapper/" style="font-size: 11px;">OR Mapper</a> <a href="/tags/OSS/" style="font-size: 11px;">OSS</a> <a href="/tags/Orchid/" style="font-size: 10px;">Orchid</a> <a href="/tags/PDF/" style="font-size: 10px;">PDF</a> <a href="/tags/PHP/" style="font-size: 18px;">PHP</a> <a href="/tags/PostgreSQL/" style="font-size: 11px;">PostgreSQL</a> <a href="/tags/PowerShell/" style="font-size: 10px;">PowerShell</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/RPA/" style="font-size: 10px;">RPA</a> <a href="/tags/React/" style="font-size: 10px;">React</a> <a href="/tags/Room/" style="font-size: 10px;">Room</a> <a href="/tags/SMTP/" style="font-size: 10px;">SMTP</a> <a href="/tags/SQLite/" style="font-size: 11px;">SQLite</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/Shell-Script/" style="font-size: 10px;">Shell Script</a> <a href="/tags/Spring-Boot/" style="font-size: 17px;">Spring Boot</a> <a href="/tags/Tabula/" style="font-size: 10px;">Tabula</a> <a href="/tags/Twitter/" style="font-size: 11px;">Twitter</a> <a href="/tags/Twitter-API/" style="font-size: 12px;">Twitter API</a> <a href="/tags/Twitter4j/" style="font-size: 10px;">Twitter4j</a> <a href="/tags/UiPath/" style="font-size: 10px;">UiPath</a> <a href="/tags/Unity/" style="font-size: 10px;">Unity</a> <a href="/tags/VBS/" style="font-size: 11px;">VBS</a> <a href="/tags/VS-Code/" style="font-size: 11px;">VS Code</a> <a href="/tags/Vim/" style="font-size: 11px;">Vim</a> <a href="/tags/Windows/" style="font-size: 12px;">Windows</a> <a href="/tags/Xdebug/" style="font-size: 10px;">Xdebug</a> <a href="/tags/admob/" style="font-size: 10px;">admob</a> <a href="/tags/android/" style="font-size: 20px;">android</a> <a href="/tags/android-studio/" style="font-size: 10px;">android studio</a> <a href="/tags/code-igniter/" style="font-size: 11px;">code igniter</a> <a href="/tags/iTerm2-AI-ChatGPT-CLI/" style="font-size: 10px;">iTerm2, AI, ChatGPT, CLI</a> <a href="/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/php-di/" style="font-size: 10px;">php-di</a> <a href="/tags/smtp4dev/" style="font-size: 10px;">smtp4dev</a> <a href="/tags/zellij/" style="font-size: 10px;">zellij</a> <a href="/tags/%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0/" style="font-size: 15px;">アルゴリズム</a> <a href="/tags/%E3%82%A8%E3%83%87%E3%82%A3%E3%82%BF/" style="font-size: 10px;">エディタ</a> <a href="/tags/%E3%82%AD%E3%83%A3%E3%83%AA%E3%82%A2/" style="font-size: 11px;">キャリア</a> <a href="/tags/%E3%82%AF%E3%83%AA%E3%82%A8%E3%82%A4%E3%83%86%E3%82%A3%E3%83%93%E3%83%86%E3%82%A3/" style="font-size: 11px;">クリエイティビティ</a> <a href="/tags/%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3/" style="font-size: 10px;">セッション</a> <a href="/tags/%E3%83%90%E3%83%83%E3%83%81/" style="font-size: 10px;">バッチ</a> <a href="/tags/%E3%83%96%E3%83%AD%E3%82%B0/" style="font-size: 10px;">ブログ</a> <a href="/tags/%E3%83%9E%E3%82%AF%E3%83%AD/" style="font-size: 10px;">マクロ</a> <a href="/tags/%E3%83%A2%E3%83%81%E3%83%99%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3/" style="font-size: 10px;">モチベーション</a> <a href="/tags/%E5%80%8B%E4%BA%BA%E9%96%8B%E7%99%BA/" style="font-size: 13px;">個人開発</a> <a href="/tags/%E5%88%9D%E5%BF%83%E8%80%85/" style="font-size: 10px;">初心者</a> <a href="/tags/%E6%9C%80%E9%80%9FKotlin-Android%E3%82%A2%E3%83%97%E3%83%AA%E9%96%8B%E7%99%BA%E5%85%A5%E9%96%80/" style="font-size: 14px;">最速Kotlin&Androidアプリ開発入門</a> <a href="/tags/%E6%AD%A3%E8%A6%8F%E8%A1%A8%E7%8F%BE/" style="font-size: 10px;">正規表現</a> <a href="/tags/%E7%8B%AC%E5%AD%A6/" style="font-size: 10px;">独学</a> <a href="/tags/%E8%87%AA%E5%8B%95%E5%8C%96/" style="font-size: 13px;">自動化</a> <a href="/tags/%E8%8B%B1%E8%AA%9E/" style="font-size: 11px;">英語</a> <a href="/tags/%E9%96%8B%E7%99%BA%E3%83%84%E3%83%BC%E3%83%AB/" style="font-size: 10px;">開発ツール</a> <a href="/tags/%E9%96%A2%E6%95%B0%E5%9E%8B%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0/" style="font-size: 10px;">関数型プログラミング</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">June 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/05/">May 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/03/">March 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">November 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">September 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">July 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/12/">December 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/">November 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">August 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">April 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2024 karintomania<br>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+    <a href="/categories/%E6%8A%80%E8%A1%93/" class="mobile-nav-link">Dev</a>
+  
+    <a href="/categories/%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%83%A9%E3%82%A4%E3%83%95/" class="mobile-nav-link">Engineer&#39;s life</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

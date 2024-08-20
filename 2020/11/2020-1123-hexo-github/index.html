@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-161452704-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-161452704-1');
+</script>
+<!-- End Google Analytics -->
+
+  
+  <title>HexoとGithub Pagesを使って簡単にブログを公開する | 寝室コンピューティング</title>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- OGP settings -->
+	
+  		<meta name="description" content="背景こんにちは。 かりんとうマニア(@karintozuki)です。今回は静的サイトジェネレータHexoを使ってブログを作る方法を紹介していきます。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HexoとGithub Pagesを使って簡単にブログを公開する">
+<meta property="og:url" content="https://www.bedroomcomputing.com/2020/11/2020-1123-hexo-github/index.html">
+<meta property="og:site_name" content="寝室コンピューティング">
+<meta property="og:description" content="背景こんにちは。 かりんとうマニア(@karintozuki)です。今回は静的サイトジェネレータHexoを使ってブログを作る方法を紹介していきます。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://www.bedroomcomputing.com/2020/11/2020-1123-hexo-github/thumb.png">
+<meta property="article:published_time" content="2020-11-23T01:23:02.000Z">
+<meta property="article:modified_time" content="2022-11-02T23:16:38.409Z">
+<meta property="article:author" content="karintomania">
+<meta property="article:tag" content="Hexo">
+<meta property="article:tag" content="Github Pages">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.bedroomcomputing.com/2020/11/2020-1123-hexo-github/thumb.png">
+	
+  
+  
+    <link rel="icon" href="/css/images/favicon.ico">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  <script data-ad-client="ca-pub-2164726777115826" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+	  <div id="logo-wrap">
+      <h1>
+        <a href="/" id="logo">寝室コンピューティング</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+          <a class="main-nav-link" href="/categories/%E6%8A%80%E8%A1%93/">Dev</a>
+        
+          <a class="main-nav-link" href="/categories/%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%83%A9%E3%82%A4%E3%83%95/">Engineer&#39;s life</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://www.bedroomcomputing.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2020-1123-hexo-github" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/11/2020-1123-hexo-github/" class="article-date">
+  <time datetime="2020-11-23T01:23:02.000Z" itemprop="datePublished">2020-11-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%8A%80%E8%A1%93/">技術</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      HexoとGithub Pagesを使って簡単にブログを公開する
+    </h1>
+  
+
+      </header>
+	
+    <div class="article-entry" itemprop="articleBody">
+	
+		<img src="https://www.bedroomcomputing.com/2020/11/2020-1123-hexo-github/thumb.png">
+	
+      
+		<h2>目次</h2>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%83%8C%E6%99%AF"><span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%A6%81"><span class="toc-text">概要</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E6%8F%90%E6%9D%A1%E4%BB%B6"><span class="toc-text">前提条件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hexo%E3%82%92%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB"><span class="toc-text">Hexoをインストール</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%83%86%E3%83%BC%E3%83%9E%E3%82%92%E9%81%B8%E3%81%B6"><span class="toc-text">テーマを選ぶ</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%83%86%E3%83%BC%E3%83%9E%E3%81%AE%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89"><span class="toc-text">テーマのダウンロード</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A6%8B%E3%81%9F%E7%9B%AE%E3%82%92%E3%81%84%E3%81%98%E3%82%8B"><span class="toc-text">見た目をいじる</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%83%98%E3%83%83%E3%83%80%E7%94%BB%E5%83%8F%E3%81%AE%E5%A4%89%E6%9B%B4"><span class="toc-text">ヘッダ画像の変更</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%83%95%E3%82%A9%E3%83%B3%E3%83%88%E3%83%BB%E3%83%95%E3%82%A9%E3%83%B3%E3%83%88%E3%82%B5%E3%82%A4%E3%82%BA%E3%81%AE%E5%A4%89%E6%9B%B4"><span class="toc-text">フォント・フォントサイズの変更</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%82%A2%E3%82%A4%E3%82%AD%E3%83%A3%E3%83%83%E3%83%81%E7%94%BB%E5%83%8F%E3%81%AE%E8%BF%BD%E5%8A%A0"><span class="toc-text">アイキャッチ画像の追加</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%82%B5%E3%82%A4%E3%83%88%E3%82%BF%E3%82%A4%E3%83%88%E3%83%AB%E3%83%BB%E3%83%95%E3%82%A1%E3%83%93%E3%82%B3%E3%83%B3%E3%81%AE%E5%A4%89%E6%9B%B4"><span class="toc-text">サイトタイトル・ファビコンの変更</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4"><span class="toc-text">デプロイ</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#master%E3%83%96%E3%83%A9%E3%83%B3%E3%83%81%E3%81%AE%E5%88%A9%E7%94%A8"><span class="toc-text">masterブランチの利用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E3%81%AE%E5%A4%89%E6%9B%B4"><span class="toc-text">ドメインの変更</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Github%E3%81%A7%E3%81%AE%E8%A8%AD%E5%AE%9A"><span class="toc-text">Githubでの設定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E7%99%BB%E9%8C%B2%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E5%81%B4%E3%81%AE%E8%A8%AD%E5%AE%9A"><span class="toc-text">ドメイン登録サービス側の設定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Hexo%E3%81%AE%E8%A8%AD%E5%AE%9A"><span class="toc-text">Hexoの設定</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Google-Analytics%E3%81%AE%E5%8F%8D%E6%98%A0"><span class="toc-text">Google Analyticsの反映</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Search-Console%E3%81%B8%E3%81%AE%E7%99%BB%E9%8C%B2"><span class="toc-text">Search Consoleへの登録</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%81%BE%E3%81%A8%E3%82%81"><span class="toc-text">まとめ</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%96%A2%E9%80%A3%E8%A8%98%E4%BA%8B"><span class="toc-text">関連記事</span></a></li></ol>
+        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>こんにちは。 <a target="_blank" rel="noopener" href="https://twitter.com/karintozuki">かりんとうマニア(@karintozuki)</a>です。<br>今回は静的サイトジェネレータHexoを使ってブログを作る方法を紹介していきます。</p>
+<span id="more"></span>
+
+<p>今回は趣味で書いている漫画を公開するための<br>ブログを作ったので、その手順をまとめました。</p>
+<h2 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h2><p>使用する技術は以下の通りです。<br>Hexo: 静的サイトジェネレータ<br>Github Pages: サイトのホスティング</p>
+<h3 id="前提条件"><a href="#前提条件" class="headerlink" title="前提条件"></a>前提条件</h3><ul>
+<li>node.js インストール済み</li>
+<li>Githubのアカウント作成済み</li>
+<li>Googleアカウント作成済み</li>
+</ul>
+<p>今回はWindowsでの作成方法を紹介しますが、<br>Macでもそんなに変わらないと思います。</p>
+<h2 id="Hexoをインストール"><a href="#Hexoをインストール" class="headerlink" title="Hexoをインストール"></a>Hexoをインストール</h2><p>まずは下準備として<br>Hexoのコマンドラインツールをインストールします。</p>
+<p>以下のコマンドを打ってください。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+
+<p>それでは試しにブログを作成していきましょう。</p>
+<p>適当なフォルダで以下のコマンドを打ちます。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure>
+<p>初期化が完了したら以下のコマンドを打って試しに見てみましょう。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+<p><a target="_blank" rel="noopener" href="http://localhost:4000/">http://localhost:4000</a> にアクセスすることで試しにアクセスできます。</p>
+<img src="/2020/11/2020-1123-hexo-github/01-testServer.png" class="">
+<p>できましたかね。簡単にブログが作れて素敵ですね。</p>
+<h2 id="テーマを選ぶ"><a href="#テーマを選ぶ" class="headerlink" title="テーマを選ぶ"></a>テーマを選ぶ</h2><p>それでは好きなテーマを選んでいきます。<br>デフォルトのテーマでいい人はこの章を飛ばして<br>先ほど作成したサイトを使ってください。</p>
+<p>以下のサイトにテーマがまとめられているので、<br>好きなテーマを選んでください。<br><a target="_blank" rel="noopener" href="https://hexo.io/themes/">https://hexo.io/themes/</a></p>
+<p>私はbeantechというテーマを選んでみました。</p>
+<img src="/2020/11/2020-1123-hexo-github/02-bean.png" class="">
+<p><a target="_blank" rel="noopener" href="https://github.com/YenYuHsuan/hexo-theme-beantech">https://github.com/YenYuHsuan/hexo-theme-beantech</a></p>
+<h2 id="テーマのダウンロード"><a href="#テーマのダウンロード" class="headerlink" title="テーマのダウンロード"></a>テーマのダウンロード</h2><p>大体のテーマではGithubのReadmeに導入方法が書いてあるので、<br>それを実行しましょう。</p>
+<p>今回はBeanTechでのやり方を紹介します。<br>適当なフォルダの中で以下のコマンドを実行します。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/YenYuHsuan/hexo-theme-beantech.git ./hexo-beantech</span><br><span class="line">cd hexo-beantech</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
+
+<p>そしたら以下のコマンドでLiveサーバーを起動してみます。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+
+<p>起動しましたかね。<br>新しいテーマでのブログが立ち上がりました。</p>
+<img src="/2020/11/2020-1123-hexo-github/03-beanblog.png" class="">
+
+<h2 id="見た目をいじる"><a href="#見た目をいじる" class="headerlink" title="見た目をいじる"></a>見た目をいじる</h2><p>そのままではさすがに自分のサイトって感じがしませんので、<br>適当にCSSやらなにやらいじってかっこよくしましょう。</p>
+<p>全部を書いてくとキリがないので、ポイントだけ紹介します。</p>
+<h3 id="ヘッダ画像の変更"><a href="#ヘッダ画像の変更" class="headerlink" title="ヘッダ画像の変更"></a>ヘッダ画像の変更</h3><p>ヘッダ画像を変えるだけでほぼ違うサイトに見えます笑<br>これは絶対変えましょう。</p>
+<h3 id="フォント・フォントサイズの変更"><a href="#フォント・フォントサイズの変更" class="headerlink" title="フォント・フォントサイズの変更"></a>フォント・フォントサイズの変更</h3><p>英語と中国語が映えるようなフォント設定になっているテーマが多い感じなので、<br>日本語用のフォントに変更します。<br>私は以下のfont-familyを利用しています。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">font-family: &quot;Helvetica Neue&quot;,Arial,&quot;Hiragino Kaku Gothic ProN&quot;,&quot;Hiragino Sans&quot;,Meiryo,sans-serif;</span><br></pre></td></tr></table></figure>
+
+<h3 id="アイキャッチ画像の追加"><a href="#アイキャッチ画像の追加" class="headerlink" title="アイキャッチ画像の追加"></a>アイキャッチ画像の追加</h3><p>私は漫画ブログを作りたかったので、<br>記事一覧に漫画の一コマも一緒に載せるようにしました。<br>これには<code>hexo-featured-image</code>というプラグインを使用しました。<br><a target="_blank" rel="noopener" href="https://github.com/poacher2k/hexo-featured-image">https://github.com/poacher2k/hexo-featured-image</a></p>
+<h3 id="サイトタイトル・ファビコンの変更"><a href="#サイトタイトル・ファビコンの変更" class="headerlink" title="サイトタイトル・ファビコンの変更"></a>サイトタイトル・ファビコンの変更</h3><p>Chromeとかのタブに表示されるアレです。</p>
+<p>このほかにも細かな修正はしました。<br>例えば、なぜか「ページ上部に戻る」ボタンのアイコンがアイアンマンだったので、<br>普通の矢印に変えたり。</p>
+<img src="/2020/11/2020-1123-hexo-github/06-ironman.png" class="">
+<p>このテーマの作者はアイアンマン大好きみたいですね。<br>著作権とか大丈夫なんだろうか。。。</p>
+<p>それはさておき、<br>これで大体の見た目が決まりました。<br>こちらが修正前↓</p>
+<img src="/2020/11/2020-1123-hexo-github/04-origin.png" class="">
+
+
+<p>こちらが修正後です↓</p>
+<img src="/2020/11/2020-1123-hexo-github/05-after.png" class="">
+<p>うん、まあ良いでしょう。</p>
+<h2 id="デプロイ"><a href="#デプロイ" class="headerlink" title="デプロイ"></a>デプロイ</h2><p>それではGithubにデプロイしていきます。<br>これで世界中にあなたのサイトが公開されることになります。<br>おめでとうございます。</p>
+<p>Githubで新規のレポジトリを作成しましょう。</p>
+<img src="/2020/11/2020-1123-hexo-github/07-create-repo.png" class="">
+<p>repository nameだけ設定すれば大丈夫です。</p>
+<p>レポジトリのURLを控えましょう</p>
+<img src="/2020/11/2020-1123-hexo-github/08-url.png" class="">
+
+<p>次にGithub Pagesの設定をします。</p>
+<img src="/2020/11/2020-1123-hexo-github/08-setting.png" class="">
+<p>設定タブからGithub Pagesの設定欄に行きます。<br>Sourceに<code>gh-pages</code>ブランチを設定して<code>Save</code>しましょう。</p>
+<img src="/2020/11/2020-1123-hexo-github/09-ghpage.png" class="">
+
+<p>公開されるURLが取得できるので、<br>これを確認します。<br>https:&#x2F;&#x2F;{ユーザ名}.github.io&#x2F;{レポジトリ名}&#x2F;といった形式になっているでしょうか。</p>
+<img src="/2020/11/2020-1123-hexo-github/10-url.png" class="">
+<p>config.ymlを設定します。<br>以下の項目に先ほど取得したURLを設定します。<br>URLの項目にはGithub PagesのURLを設定してください。<br>Deployの項目にはレポジトリのURLを設定してください。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># URL</span><br><span class="line">## If your site is put in a subdirectory, set url as &#x27;http://yoursite.com/child&#x27; and root as &#x27;/child/&#x27;</span><br><span class="line">url: https://&#123;ユーザ名&#125;.github.io/</span><br><span class="line">root: /&#123;レポジトリ名&#125;</span><br><span class="line">permalink: :year/:month/:day/:title/</span><br><span class="line">permalink_defaults:</span><br><span class="line"></span><br><span class="line"># 中略</span><br><span class="line"></span><br><span class="line"># Deployment</span><br><span class="line">## Docs: https://hexo.io/docs/deployment.html</span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: &#123;GithubレポジトリのURL&#125;</span><br><span class="line">  branch: gh-page</span><br></pre></td></tr></table></figure>
+
+<p><code>source/CNAME</code>ファイルにもGithub PagesのURLを指定します。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;Github PagesのURL&#125;</span><br></pre></td></tr></table></figure>
+
+<p>以上で設定は完了です。</p>
+<p>以下のコマンドを打つことで<br>ブログがGithubにデプロイされます。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo generate &amp;&amp; hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>アクセスして確認してみてください。<br>サイトが表示されたでしょうか。</p>
+<h2 id="masterブランチの利用"><a href="#masterブランチの利用" class="headerlink" title="masterブランチの利用"></a>masterブランチの利用</h2><p>前のステップで公開用のソースはGithub上に挙げられますが、<br>CSSやHTMLテンプレートの変更もGithubで管理したいですよね。<br>その場合は普通にMasterブランチにソースをpushすればOKです。</p>
+<p>gitignoreはこんな感じにしています。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">node_modules/</span><br><span class="line">public/</span><br><span class="line">.deploy_git/</span><br></pre></td></tr></table></figure>
+
+<p>以下のコマンドでmasterブランチをpushしましょう。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br><span class="line">git add .</span><br><span class="line">git commit -m &quot;first commit&quot; </span><br><span class="line">git remote add origin  https://github.com/karintomania/karintouManga.git</span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
+
+<h2 id="ドメインの変更"><a href="#ドメインの変更" class="headerlink" title="ドメインの変更"></a>ドメインの変更</h2><p>このままだとドメインがgithub.ioのままですね。<br>もちろんこのままでもいいのですが、ブログとして運用したい場合は<br>独自ドメインで行ったほうが何かと都合が良いです。</p>
+<p>というわけで変更していきましょう。</p>
+<p>もしドメインをこれから取得するなら<br>お名前ドットコムが有名どころです。</p>
+
+<a target="_blank" href="https://px.a8.net/svt/ejp?a8mat=3BK2F7+C9RNN6+50+2HLB41" rel="nofollow noopener">
+<img border="0" width="468" height="60" alt="" src="https://www26.a8.net/svt/bgt?aid=200810563742&wid=001&eno=01&mid=s00000000018015048000&mc=1"></a>
+<img border="0" width="1" height="1" src="https://www16.a8.net/0.gif?a8mat=3BK2F7+C9RNN6+50+2HLB41" alt="">
+
+
+<h3 id="Githubでの設定"><a href="#Githubでの設定" class="headerlink" title="Githubでの設定"></a>Githubでの設定</h3><p>Custom Domain欄にドメイン名を設定します。<br>また、HTTPSも有効にしておきます。</p>
+<img src="/2020/11/2020-1123-hexo-github/12-custom-domain.png" class="">
+
+
+<h3 id="ドメイン登録サービス側の設定"><a href="#ドメイン登録サービス側の設定" class="headerlink" title="ドメイン登録サービス側の設定"></a>ドメイン登録サービス側の設定</h3><p>ドメインを取得したサービス側でCNAMEを設定します。<br>サービスにより違うと思うので、やり方は調べてみてください。</p>
+<p>私の場合はこんな感じでした。</p>
+<img src="/2020/11/2020-1123-hexo-github/13-cname.png" class="">
+
+
+<h3 id="Hexoの設定"><a href="#Hexoの設定" class="headerlink" title="Hexoの設定"></a>Hexoの設定</h3><p>config.ymlにてurlを新しいURLに直します。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># URL</span><br><span class="line">## If your site is put in a subdirectory, set url as &#x27;http://yoursite.com/child&#x27; and root as &#x27;/child/&#x27;</span><br><span class="line">url: https://www.manga.bedroomcomputing.com/ # Note: don&#x27;t forget to modify the CNAME file to your url</span><br><span class="line">root: /</span><br><span class="line">permalink: :year/:month/:day/:title/</span><br><span class="line">permalink_defaults:</span><br></pre></td></tr></table></figure>
+
+<p>以上でサイトが独自ドメインで公開されたはずです。</p>
+<h2 id="Google-Analyticsの反映"><a href="#Google-Analyticsの反映" class="headerlink" title="Google Analyticsの反映"></a>Google Analyticsの反映</h2><p>Google Analyticsに登録します。<br>これでアクセス数などが確認できます。</p>
+<img src="/2020/11/2020-1123-hexo-github/14-create-property.png" class="">
+
+<p>プロパティを作成するとトラッキングコードが取得できるので、<br>config.ymlに設定します。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># Analytics settings</span><br><span class="line"># Baidu Analytics</span><br><span class="line"># ba_track_id: 4cc1f2d8f3067386cc5cdb626a202900</span><br><span class="line"># Google Analytics</span><br><span class="line">ga_track_id: &#x27;UA-161452704-5&#x27;          # Format: UA-xxxxxx-xx</span><br><span class="line">ga_domain: </span><br></pre></td></tr></table></figure>
+
+<p>自分でアクセスしてみて<br>アクセスが監視できているか確認してみてください。</p>
+<img src="/2020/11/2020-1123-hexo-github/16-user.png" class="">
+
+<h2 id="Search-Consoleへの登録"><a href="#Search-Consoleへの登録" class="headerlink" title="Search Consoleへの登録"></a>Search Consoleへの登録</h2><p>Google search consoleへ登録します。<br>これをすることでGoogle検索に引っかかるようになります。</p>
+<p>サイトに自分のドメインを登録します。</p>
+<img src="/2020/11/2020-1123-hexo-github/17-satchico.png" class="">
+
+
+<p>また、サイトマップを登録します。<br>サイトマップはページとURLを教えてくれるXMLファイルです。</p>
+<p>私が使っているテーマでは、自動でsitemapを生成してくれるので、<br>そのURLを登録します。</p>
+<img src="/2020/11/2020-1123-hexo-github/18-sitemap.png" class="">
+
+<p>テーマがsitemapに対応していなくても生成してくれるプラグインを利用することで<br>sitemap.xmlを生成できます。<br><a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo-generator-sitemap">https://github.com/hexojs/hexo-generator-sitemap</a></p>
+<p>何日か待つとGoogleの検索に出てくるようになります。<br>Google検索にヒットするかどうかを判定するためには<br>Googleで「site:{サイトのURL}」で検索してヒットすれば<br>無事に登録されています。</p>
+<h2 id="まとめ"><a href="#まとめ" class="headerlink" title="まとめ"></a>まとめ</h2><p>長い道のりですが、<br>ブログを公開するまでにはこんな感じです。</p>
+<p>楽しいブログライフを！<br>それじゃ今日はこの辺で。</p>
+<h2 id="関連記事"><a href="#関連記事" class="headerlink" title="関連記事"></a>関連記事</h2><p>こちらの記事もおすすめです。  </p>
+<p><a href="/2020/08/2020-0815-engineer-static-site-gen-blog/">エンジニア向けブログの始め方。年間経費1500円で運用している私がその方法を紹介</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.bedroomcomputing.com/2020/11/2020-1123-hexo-github/" data-id="cm030t6u1004w2nqrh2q4fl0n" data-title="HexoとGithub Pagesを使って簡単にブログを公開する" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Github-Pages/" rel="tag">Github Pages</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/12/2020-1207-indiehacker/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          個人開発のモチベーションがなくなったときに読みたい記事５選
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/11/2020-1118-google-dev-guide-5/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Google Tech Dev Guideのコーディング問題解いてみた〜その5（ついでに日本語訳も）</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    <div class="widget-wrap">
+<h3 class="widget-title">About</h3>
+<div class="widget">
+	<img src="/css/images/author.png" alt="著者" class="author-img">
+	<a class="author-link" href="/about" >karintomania</a>
+	<p><p>イギリス在住のWeb開発者が日々学んだことを書き連ねています。<br> PHPメインでやらせてもらってます。</p>
+</p>
+</div>
+</div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/08/2024-0820-understanding/">AIに負けないプログラマ - 理解によるプログラミングについて</a>
+          </li>
+        
+          <li>
+            <a href="/2024/08/2024-0802-zellij-update-recovery/">Zellijのアップデートでセッションが消えてしまったとき</a>
+          </li>
+        
+          <li>
+            <a href="/2024/06/2024-0606-tripled-salary/">イギリスに来てから5年かけて給料を3倍にした話</a>
+          </li>
+        
+          <li>
+            <a href="/2024/05/2024-0522-aiterm/">iTerm2に追加されたAIサポートを使ってみる</a>
+          </li>
+        
+          <li>
+            <a href="/2024/05/2024-0501-ghcr-image/">GitHubのコンテナレジストリにイメージをアップロードする</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%83%A9%E3%82%A4%E3%83%95/">エンジニアライフ</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E8%A1%93/">技術</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AI/" rel="tag">AI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/" rel="tag">Apache</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Azure/" rel="tag">Azure</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bot/" rel="tag">Bot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cosmos-DB/" rel="tag">Cosmos DB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DB/" rel="tag">DB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DI/" rel="tag">DI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Excel/" rel="tag">Excel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitHub/" rel="tag">GitHub</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitHub-Container-Registry/" rel="tag">GitHub Container Registry</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github-Pages/" rel="tag">Github Pages</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Google-Tech-Dev-Guide/" rel="tag">Google Tech Dev Guide</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Helix/" rel="tag">Helix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Heroku/" rel="tag">Heroku</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hotwire/" rel="tag">Hotwire</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kotlin/" rel="tag">Kotlin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kubernetes/" rel="tag">Kubernetes</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LINE-Bot/" rel="tag">LINE Bot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Laravel/" rel="tag">Laravel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-Command/" rel="tag">Linux Command</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Livewire/" rel="tag">Livewire</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Logcat/" rel="tag">Logcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lua/" rel="tag">Lua</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Minikube/" rel="tag">Minikube</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NeoVim/" rel="tag">NeoVim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NeoVim%E3%83%97%E3%83%A9%E3%82%B0%E3%82%A4%E3%83%B3/" rel="tag">NeoVimプラグイン</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OR-Mapper/" rel="tag">OR Mapper</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OSS/" rel="tag">OSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Orchid/" rel="tag">Orchid</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PDF/" rel="tag">PDF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PostgreSQL/" rel="tag">PostgreSQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PowerShell/" rel="tag">PowerShell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RPA/" rel="tag">RPA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Room/" rel="tag">Room</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SMTP/" rel="tag">SMTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQLite/" rel="tag">SQLite</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH/" rel="tag">SSH</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Shell-Script/" rel="tag">Shell Script</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-Boot/" rel="tag">Spring Boot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tabula/" rel="tag">Tabula</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Twitter/" rel="tag">Twitter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Twitter-API/" rel="tag">Twitter API</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Twitter4j/" rel="tag">Twitter4j</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UiPath/" rel="tag">UiPath</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unity/" rel="tag">Unity</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VBS/" rel="tag">VBS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VS-Code/" rel="tag">VS Code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/" rel="tag">Vim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Windows/" rel="tag">Windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xdebug/" rel="tag">Xdebug</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/admob/" rel="tag">admob</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/" rel="tag">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android-studio/" rel="tag">android studio</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/code-igniter/" rel="tag">code igniter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iTerm2-AI-ChatGPT-CLI/" rel="tag">iTerm2, AI, ChatGPT, CLI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mybatis/" rel="tag">mybatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/" rel="tag">node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php-di/" rel="tag">php-di</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/smtp4dev/" rel="tag">smtp4dev</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zellij/" rel="tag">zellij</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0/" rel="tag">アルゴリズム</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%82%A8%E3%83%87%E3%82%A3%E3%82%BF/" rel="tag">エディタ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%82%AD%E3%83%A3%E3%83%AA%E3%82%A2/" rel="tag">キャリア</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%82%AF%E3%83%AA%E3%82%A8%E3%82%A4%E3%83%86%E3%82%A3%E3%83%93%E3%83%86%E3%82%A3/" rel="tag">クリエイティビティ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3/" rel="tag">セッション</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%83%90%E3%83%83%E3%83%81/" rel="tag">バッチ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%83%96%E3%83%AD%E3%82%B0/" rel="tag">ブログ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%83%9E%E3%82%AF%E3%83%AD/" rel="tag">マクロ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%83%A2%E3%83%81%E3%83%99%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3/" rel="tag">モチベーション</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%80%8B%E4%BA%BA%E9%96%8B%E7%99%BA/" rel="tag">個人開発</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%9D%E5%BF%83%E8%80%85/" rel="tag">初心者</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%80%E9%80%9FKotlin-Android%E3%82%A2%E3%83%97%E3%83%AA%E9%96%8B%E7%99%BA%E5%85%A5%E9%96%80/" rel="tag">最速Kotlin&amp;Androidアプリ開発入門</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%AD%A3%E8%A6%8F%E8%A1%A8%E7%8F%BE/" rel="tag">正規表現</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%8B%AC%E5%AD%A6/" rel="tag">独学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%87%AA%E5%8B%95%E5%8C%96/" rel="tag">自動化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%8B%B1%E8%AA%9E/" rel="tag">英語</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%96%8B%E7%99%BA%E3%83%84%E3%83%BC%E3%83%AB/" rel="tag">開発ツール</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%96%A2%E6%95%B0%E5%9E%8B%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0/" rel="tag">関数型プログラミング</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AI/" style="font-size: 11px;">AI</a> <a href="/tags/Apache/" style="font-size: 10px;">Apache</a> <a href="/tags/Azure/" style="font-size: 11px;">Azure</a> <a href="/tags/Bot/" style="font-size: 10px;">Bot</a> <a href="/tags/Cosmos-DB/" style="font-size: 11px;">Cosmos DB</a> <a href="/tags/DB/" style="font-size: 11px;">DB</a> <a href="/tags/DI/" style="font-size: 10px;">DI</a> <a href="/tags/Docker/" style="font-size: 16px;">Docker</a> <a href="/tags/Excel/" style="font-size: 10px;">Excel</a> <a href="/tags/Git/" style="font-size: 11px;">Git</a> <a href="/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/tags/GitHub-Container-Registry/" style="font-size: 10px;">GitHub Container Registry</a> <a href="/tags/Github-Pages/" style="font-size: 15px;">Github Pages</a> <a href="/tags/Google-Tech-Dev-Guide/" style="font-size: 15px;">Google Tech Dev Guide</a> <a href="/tags/Helix/" style="font-size: 10px;">Helix</a> <a href="/tags/Heroku/" style="font-size: 11px;">Heroku</a> <a href="/tags/Hexo/" style="font-size: 17px;">Hexo</a> <a href="/tags/Hotwire/" style="font-size: 10px;">Hotwire</a> <a href="/tags/Java/" style="font-size: 19px;">Java</a> <a href="/tags/Kotlin/" style="font-size: 13px;">Kotlin</a> <a href="/tags/Kubernetes/" style="font-size: 11px;">Kubernetes</a> <a href="/tags/LINE-Bot/" style="font-size: 11px;">LINE Bot</a> <a href="/tags/Laravel/" style="font-size: 11px;">Laravel</a> <a href="/tags/Linux-Command/" style="font-size: 10px;">Linux Command</a> <a href="/tags/Livewire/" style="font-size: 10px;">Livewire</a> <a href="/tags/Logcat/" style="font-size: 10px;">Logcat</a> <a href="/tags/Lua/" style="font-size: 11px;">Lua</a> <a href="/tags/Minikube/" style="font-size: 10px;">Minikube</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/NeoVim/" style="font-size: 14px;">NeoVim</a> <a href="/tags/NeoVim%E3%83%97%E3%83%A9%E3%82%B0%E3%82%A4%E3%83%B3/" style="font-size: 12px;">NeoVimプラグイン</a> <a href="/tags/OR-Mapper/" style="font-size: 11px;">OR Mapper</a> <a href="/tags/OSS/" style="font-size: 11px;">OSS</a> <a href="/tags/Orchid/" style="font-size: 10px;">Orchid</a> <a href="/tags/PDF/" style="font-size: 10px;">PDF</a> <a href="/tags/PHP/" style="font-size: 18px;">PHP</a> <a href="/tags/PostgreSQL/" style="font-size: 11px;">PostgreSQL</a> <a href="/tags/PowerShell/" style="font-size: 10px;">PowerShell</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/RPA/" style="font-size: 10px;">RPA</a> <a href="/tags/React/" style="font-size: 10px;">React</a> <a href="/tags/Room/" style="font-size: 10px;">Room</a> <a href="/tags/SMTP/" style="font-size: 10px;">SMTP</a> <a href="/tags/SQLite/" style="font-size: 11px;">SQLite</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/Shell-Script/" style="font-size: 10px;">Shell Script</a> <a href="/tags/Spring-Boot/" style="font-size: 17px;">Spring Boot</a> <a href="/tags/Tabula/" style="font-size: 10px;">Tabula</a> <a href="/tags/Twitter/" style="font-size: 11px;">Twitter</a> <a href="/tags/Twitter-API/" style="font-size: 12px;">Twitter API</a> <a href="/tags/Twitter4j/" style="font-size: 10px;">Twitter4j</a> <a href="/tags/UiPath/" style="font-size: 10px;">UiPath</a> <a href="/tags/Unity/" style="font-size: 10px;">Unity</a> <a href="/tags/VBS/" style="font-size: 11px;">VBS</a> <a href="/tags/VS-Code/" style="font-size: 11px;">VS Code</a> <a href="/tags/Vim/" style="font-size: 11px;">Vim</a> <a href="/tags/Windows/" style="font-size: 12px;">Windows</a> <a href="/tags/Xdebug/" style="font-size: 10px;">Xdebug</a> <a href="/tags/admob/" style="font-size: 10px;">admob</a> <a href="/tags/android/" style="font-size: 20px;">android</a> <a href="/tags/android-studio/" style="font-size: 10px;">android studio</a> <a href="/tags/code-igniter/" style="font-size: 11px;">code igniter</a> <a href="/tags/iTerm2-AI-ChatGPT-CLI/" style="font-size: 10px;">iTerm2, AI, ChatGPT, CLI</a> <a href="/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/php-di/" style="font-size: 10px;">php-di</a> <a href="/tags/smtp4dev/" style="font-size: 10px;">smtp4dev</a> <a href="/tags/zellij/" style="font-size: 10px;">zellij</a> <a href="/tags/%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0/" style="font-size: 15px;">アルゴリズム</a> <a href="/tags/%E3%82%A8%E3%83%87%E3%82%A3%E3%82%BF/" style="font-size: 10px;">エディタ</a> <a href="/tags/%E3%82%AD%E3%83%A3%E3%83%AA%E3%82%A2/" style="font-size: 11px;">キャリア</a> <a href="/tags/%E3%82%AF%E3%83%AA%E3%82%A8%E3%82%A4%E3%83%86%E3%82%A3%E3%83%93%E3%83%86%E3%82%A3/" style="font-size: 11px;">クリエイティビティ</a> <a href="/tags/%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3/" style="font-size: 10px;">セッション</a> <a href="/tags/%E3%83%90%E3%83%83%E3%83%81/" style="font-size: 10px;">バッチ</a> <a href="/tags/%E3%83%96%E3%83%AD%E3%82%B0/" style="font-size: 10px;">ブログ</a> <a href="/tags/%E3%83%9E%E3%82%AF%E3%83%AD/" style="font-size: 10px;">マクロ</a> <a href="/tags/%E3%83%A2%E3%83%81%E3%83%99%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3/" style="font-size: 10px;">モチベーション</a> <a href="/tags/%E5%80%8B%E4%BA%BA%E9%96%8B%E7%99%BA/" style="font-size: 13px;">個人開発</a> <a href="/tags/%E5%88%9D%E5%BF%83%E8%80%85/" style="font-size: 10px;">初心者</a> <a href="/tags/%E6%9C%80%E9%80%9FKotlin-Android%E3%82%A2%E3%83%97%E3%83%AA%E9%96%8B%E7%99%BA%E5%85%A5%E9%96%80/" style="font-size: 14px;">最速Kotlin&Androidアプリ開発入門</a> <a href="/tags/%E6%AD%A3%E8%A6%8F%E8%A1%A8%E7%8F%BE/" style="font-size: 10px;">正規表現</a> <a href="/tags/%E7%8B%AC%E5%AD%A6/" style="font-size: 10px;">独学</a> <a href="/tags/%E8%87%AA%E5%8B%95%E5%8C%96/" style="font-size: 13px;">自動化</a> <a href="/tags/%E8%8B%B1%E8%AA%9E/" style="font-size: 11px;">英語</a> <a href="/tags/%E9%96%8B%E7%99%BA%E3%83%84%E3%83%BC%E3%83%AB/" style="font-size: 10px;">開発ツール</a> <a href="/tags/%E9%96%A2%E6%95%B0%E5%9E%8B%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0/" style="font-size: 10px;">関数型プログラミング</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">June 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/05/">May 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/03/">March 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">November 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">September 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">July 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/12/">December 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/">November 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">August 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">April 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2024 karintomania<br>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+    <a href="/categories/%E6%8A%80%E8%A1%93/" class="mobile-nav-link">Dev</a>
+  
+    <a href="/categories/%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%83%A9%E3%82%A4%E3%83%95/" class="mobile-nav-link">Engineer&#39;s life</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

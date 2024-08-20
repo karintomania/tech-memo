@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-161452704-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-161452704-1');
+</script>
+<!-- End Google Analytics -->
+
+  
+  <title>JSフレームワークを勉強したくないのでHotwireを使ってサーバーサイドだけでモダンなUIを作ってみた | 寝室コンピューティング</title>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- OGP settings -->
+	
+  		<meta name="description" content="完成品の紹介こんにちは。 かりんとうマニア(@karintozuki)です。   まずは最初にどんなものを作ったのか完成品をお見せします。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JSフレームワークを勉強したくないのでHotwireを使ってサーバーサイドだけでモダンなUIを作ってみた">
+<meta property="og:url" content="https://www.bedroomcomputing.com/2022/08/2022-0808-hotwire/index.html">
+<meta property="og:site_name" content="寝室コンピューティング">
+<meta property="og:description" content="完成品の紹介こんにちは。 かりんとうマニア(@karintozuki)です。   まずは最初にどんなものを作ったのか完成品をお見せします。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://www.bedroomcomputing.com/2022/08/2022-0808-hotwire/thumb.png">
+<meta property="article:published_time" content="2022-08-08T14:38:07.000Z">
+<meta property="article:modified_time" content="2022-11-02T23:16:38.477Z">
+<meta property="article:author" content="karintomania">
+<meta property="article:tag" content="Hotwire">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.bedroomcomputing.com/2022/08/2022-0808-hotwire/thumb.png">
+	
+  
+  
+    <link rel="icon" href="/css/images/favicon.ico">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  <script data-ad-client="ca-pub-2164726777115826" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+	  <div id="logo-wrap">
+      <h1>
+        <a href="/" id="logo">寝室コンピューティング</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+          <a class="main-nav-link" href="/categories/%E6%8A%80%E8%A1%93/">Dev</a>
+        
+          <a class="main-nav-link" href="/categories/%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%83%A9%E3%82%A4%E3%83%95/">Engineer&#39;s life</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://www.bedroomcomputing.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2022-0808-hotwire" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2022/08/2022-0808-hotwire/" class="article-date">
+  <time datetime="2022-08-08T14:38:07.000Z" itemprop="datePublished">2022-08-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%8A%80%E8%A1%93/">技術</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JSフレームワークを勉強したくないのでHotwireを使ってサーバーサイドだけでモダンなUIを作ってみた
+    </h1>
+  
+
+      </header>
+	
+    <div class="article-entry" itemprop="articleBody">
+	
+		<img src="https://www.bedroomcomputing.com/2022/08/2022-0808-hotwire/thumb.png">
+	
+      
+		<h2>目次</h2>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%8C%E6%88%90%E5%93%81%E3%81%AE%E7%B4%B9%E4%BB%8B"><span class="toc-text">完成品の紹介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%83%8C%E6%99%AF"><span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hotwire%E3%81%A8%E3%81%AF"><span class="toc-text">Hotwireとは</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hotwire%E3%81%AE%E6%A6%82%E8%A6%81"><span class="toc-text">Hotwireの概要</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Turbo%E3%81%A8%E3%81%AF"><span class="toc-text">Turboとは</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Turbo-Drive"><span class="toc-text">Turbo Drive</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Turbo-Frame"><span class="toc-text">Turbo Frame</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Turbo-Stream"><span class="toc-text">Turbo Stream</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Turbo-Stream%E3%82%BF%E3%82%B0"><span class="toc-text">Turbo Streamタグ</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Turbo-Stream%E3%81%A8Socket%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6"><span class="toc-text">Turbo StreamとSocketについて</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Turbo-Native"><span class="toc-text">Turbo Native</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stimulus%E3%81%A8Alpine-js"><span class="toc-text">StimulusとAlpine js</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%96%8B%E7%99%BATips"><span class="toc-text">開発Tips</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%B5%E3%82%A4%E3%83%89%E3%81%AE%E5%AE%9F%E8%A3%85%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6"><span class="toc-text">サーバーサイドの実装について</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%81%BE%E3%81%A8%E3%82%81"><span class="toc-text">まとめ</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%96%A2%E9%80%A3%E8%A8%98%E4%BA%8B"><span class="toc-text">関連記事</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PR"><span class="toc-text">PR</span></a></li></ol>
+        <h2 id="完成品の紹介"><a href="#完成品の紹介" class="headerlink" title="完成品の紹介"></a>完成品の紹介</h2><p>こんにちは。 <a target="_blank" rel="noopener" href="https://twitter.com/karintozuki">かりんとうマニア(@karintozuki)</a>です。  </p>
+<p>まずは最初にどんなものを作ったのか完成品をお見せします。</p>
+<img src="/2022/08/2022-0808-hotwire/all.gif" class="">
+
+<span id="more"></span>
+<p>なんてことはないTodoリストなのですが、以下のような実装になっています。</p>
+<ul>
+<li>サーバーとのやりとりにAjaxを使っている</li>
+<li>UIの更新はページ遷移をするのではなく、DOMの一部を更新する</li>
+</ul>
+<p>（この記事では、上記のようなUIをモダンなUIと呼ぶことにします。ダイナミックなUIとか好きな呼び方で読み替えてもらって構いません。）</p>
+<p>それだけでは別にすごくない、ただのSPAじゃん、と思っているかもしれません。</p>
+<p>ポイントは<u>JSを一行も書かずにモダンなUIを実現している</u>ということです。</p>
+<p>普通にやばいですよね？モダンなUIを実現するのにJS書かないなんて！！</p>
+<p>これはHotwireを使って実装されています。</p>
+<p>詳細を見ていきましょう。</p>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>私はいわゆるサーバーサイドエンジニアなのですが、<br>正直、<u>JS勉強するのめんどくさくないですか？？</u></p>
+<p>まあ、めんどくさいというとネガティブすぎるのですが、<br>とにかくJS界隈は技術の進歩が速く、<br>JSを専門にしているフロントエンドの方ならまだしも、<br>私のような<u>サーバーサイドエンジニアがキャッチアップしようとすると大変な分野</u>です。</p>
+<p>しかし、例えば生のJSやjQueryだけでモダンなUIを組もうとすると<br>それはそれで大変な作業になってしまいます。</p>
+<p>そのような問題意識から出てきたのがHotwireです。</p>
+<h2 id="Hotwireとは"><a href="#Hotwireとは" class="headerlink" title="Hotwireとは"></a>Hotwireとは</h2><p>先ほどの背景にも書いたように<br><u>Hotwireは学習コストを限りなく少なくしつつもモダンなフロントエンドが書けるようにしようというフロントエンドフレームワークです。</u></p>
+<p>Ruby on Railsの開発者として有名なDHHが開発しています。<br>誤解されやすいのですが、<u>Hotwireは別にRailsじゃなくても使えます。</u></p>
+<p>（私も誤解していました笑）</p>
+<p>それを強調するために今回はLaravelでバックエンドを書いてますが、<br>PythonでもGoでも好きな言語を使ってください。</p>
+<p>Hotwireのもう少し技術よりな話をすると、Hotwireの鍵となる考えは<br><u>規則に従った部分的なHTMLをレスポンスとして返すとフレームワークがUIを更新してくれる</u>ということだと思っています。</p>
+<p>規則に従った部分的なHTMLというのは以下のような感じです。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">turbo-frame</span> <span class="attr">id</span>=<span class="string">&quot;message&quot;</span>&gt;</span></span><br><span class="line">	更新されました！</span><br><span class="line"><span class="tag">&lt;/<span class="name">turbo-frame</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>詳細は後述しますが、</p>
+<p>上記のHTMLをレスポンスとして受け取ると<br>フレームワークが現在表示しているHTMLから<br><code>id=”message”</code>というIDを持つ<code>turbo-frame</code>タグを探して、<br>その中身を「更新されました！」という内容に変更してくれます。</p>
+<p>そんなに難しくなさそうですよね？</p>
+<h2 id="Hotwireの概要"><a href="#Hotwireの概要" class="headerlink" title="Hotwireの概要"></a>Hotwireの概要</h2><p>実はHotwireはいくつかのライブラリを使うことでフロントエンドを実現する技術スタックの名称です。</p>
+<p>そのライブラリがTurboとStimulusです。</p>
+<p>また、Turboはいくつかの機能を持ち合わせています。</p>
+<p>ざっくりと各ライブラリの概要をまとめました。</p>
+<ul>
+<li>Turbo: 普通のHTMLでモダンなUIを実現するためのライブラリ<ul>
+<li>Turbo Drive：　ページ遷移を効率化する</li>
+<li>Turbo Frame：　HTMLを要素単位で更新する</li>
+<li>Turbo Stream：　Turbo Frameと似ているが、リアルタイムに更新できたり複数箇所を更新できる</li>
+<li>Turbo Native　Nativeアプリのためのライブラリ</li>
+</ul>
+</li>
+<li>Stimulus　Turboで実現できない動きをJSでやるためのフレームワーク</li>
+</ul>
+<p>この記事ではモダンなUIを作る上でよく使う</p>
+<ul>
+<li>Turbo Frame</li>
+<li>Turbo Stream</li>
+</ul>
+<p>を中心に説明していきます。</p>
+<p>先ほどお見せしたTodoリストはこの二つだけを使って実装されています。</p>
+<h2 id="Turboとは"><a href="#Turboとは" class="headerlink" title="Turboとは"></a>Turboとは</h2><p>Turboは先ほども書いたように普通のHTMLでモダンなUIを実現するためのライブラリです。</p>
+<p>具体的には以下のようなことをやってくれます。</p>
+<ul>
+<li>リンクやフォームの送信をFetch（Ajax）に変換する</li>
+<li>レスポンス内のHTMLに応じてDOMを更新する</li>
+</ul>
+<p>それではTurboの機能を見ていきましょう。</p>
+<h2 id="Turbo-Drive"><a href="#Turbo-Drive" class="headerlink" title="Turbo Drive"></a>Turbo Drive</h2><p><u>Turbo Driveはページ遷移を効率よくする</u>ための機能です。</p>
+<p>ページを丸ごと書き換えるのではなく、Bodyだけを書き換えてHeadはうまいことマージしてくれるので、ページ遷移が高速になるそうです。</p>
+<p>この記事では使っていないので、詳細は省きますが、<br>ページ遷移する際にTurboが勝手に最適化してくれるので、基本的にはプログラマ側は何もしなくて良いようです。</p>
+<h2 id="Turbo-Frame"><a href="#Turbo-Frame" class="headerlink" title="Turbo Frame"></a>Turbo Frame</h2><p>Turbo Driveがページ遷移だとしたら、<br><u>Turbo FrameはHTMLの要素単位で変換することができます。</u></p>
+<p>以下のGIFを見てください。</p>
+<img src="/2022/08/2022-0808-hotwire/edit.gif" class="">
+
+<p>タスクをクリックすると、タスクの編集画面に切り替わります。</p>
+<p>それではタスクを表示しているHTMLを見てみましょう。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- ① タスクの表示フレーム --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">turbo-frame</span> <span class="attr">id</span>=<span class="string">&quot;task_1&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;w-full flex mb-2&quot;</span>&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- ② 編集画面へのリンク --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">&quot;block w-2/3&quot;</span> <span class="attr">href</span>=<span class="string">&quot;&#123;&#123;route(&#x27;tasks.edit&#x27;, [&#x27;task&#x27; =&gt; $task-&gt;id])&#125;&#125;&quot;</span>&gt;</span># &#123;&#123;$task-&gt;task&#125;&#125;<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- ③ 削除フォーム --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">form</span> <span class="attr">class</span>=<span class="string">&quot;w-1/3&quot;</span> <span class="attr">class</span>=<span class="string">&quot;inline&quot;</span></span></span><br><span class="line"><span class="tag">			<span class="attr">method</span>=<span class="string">&quot;delete&quot;</span></span></span><br><span class="line"><span class="tag">			<span class="attr">action</span>=<span class="string">&quot;&#123;&#123;route(&#x27;tasks.destroy&#x27;, [&#x27;task&#x27; =&gt; $task])&#125;&#125;&quot;</span></span></span><br><span class="line"><span class="tag">			<span class="attr">target</span>=<span class="string">&quot;showTask&quot;</span></span></span><br><span class="line"><span class="tag">			&gt;</span></span><br><span class="line">			@csrf</span><br><span class="line">			<span class="tag">&lt;<span class="name">x-common.img-submit</span> <span class="attr">:src</span>=<span class="string">&quot;asset(&#x27;img/done.svg&#x27;)&quot;</span> <span class="attr">:id</span>=<span class="string">&quot;&#x27;deleteTask_&#x27;.$task-&gt;id&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">x-common.img-submit</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">turbo-frame</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>① タスクの表示フレーム という箇所を見てみます。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- ① タスクの表示フレーム --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">turbo-frame</span> <span class="attr">id</span>=<span class="string">&quot;task_1&quot;</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 省略 --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">turbo-frame</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>これがTurbo Frameです。</p>
+<p>一見、ただのHTMLタグですね。<br>気をつけるのは、<u>Frame内のリンクとフォームはこのFrame内の更新に使われるということです。</u></p>
+<p>② 編集画面へのリンクを見てみましょう。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- ② 編集画面へのリンク --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">&quot;block w-2/3&quot;</span> <span class="attr">href</span>=<span class="string">&quot;&#123;&#123;route(&#x27;tasks.edit&#x27;, [&#x27;task&#x27; =&gt; $task-&gt;id])&#125;&#125;&quot;</span>&gt;</span># &#123;&#123;$task-&gt;task&#125;&#125;<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>このリンクをクリックした時のレスポンスは以下のような感じです。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">turbo-frame</span> <span class="attr">id</span>=<span class="string">&quot;task_7&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;mb-2&quot;</span>&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- 編集用のフォーム --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">form</span> <span class="attr">class</span>=<span class="string">&quot;w-full &quot;</span> <span class="attr">method</span>=<span class="string">&quot;put&quot;</span> <span class="attr">action</span>=<span class="string">&quot;&#123;&#123;route(&#x27;tasks.update&#x27;, [&#x27;task&#x27; =&gt; $task-&gt;id])&#125;&#125;&quot;</span> <span class="attr">target</span>=<span class="string">&quot;_top&quot;</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;flex&quot;</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;w-2/3&quot;</span>&gt;</span></span><br><span class="line">					# <span class="tag">&lt;<span class="name">input</span> <span class="attr">class</span>=<span class="string">&quot;outline-0  border-b border-black&quot;</span> <span class="attr">name</span>=<span class="string">&quot;task&quot;</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">value</span>=<span class="string">&quot;&#123;&#123;$task-&gt;task&#125;&#125;&quot;</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">				<span class="tag">&lt;<span class="name">x-common.img-submit</span> <span class="attr">:src</span>=<span class="string">&quot;asset(&#x27;img/save.svg&#x27;)&quot;</span> <span class="attr">:id</span>=<span class="string">&quot;&#x27;updateTask_&#x27;.$task-&gt;id&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">x-common.img-submit</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">turbo-frame</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>こちらも同じ<code>id=”task_7”</code>というIDを持ったTurbo Frameです。<br>このようなレスポンスを返してあげると、<code>&lt;turbo-frame&gt;</code>タグの中身がそのまま更新されます。</p>
+<p>ここで使っているのは普通のHTML操作なので、<br>お好きなフレームワークのテンプレートエンジンで実装できます。</p>
+<p><u>JSを書かずにHTMLだけでDOMを更新することに成功しました！</u></p>
+<p>まとめると、以下のような感じでしょうか。</p>
+<ul>
+<li>Turbo Frameは<code>&lt;turbo-frame&gt;</code>タグで囲ったHTMLを更新できる</li>
+<li><code>&lt;turbo-frame&gt;</code>タグ内のフォームとリンクはFrame内の更新に使用される</li>
+<li>そのフォームとリンクのレスポンスは、同じIDを持った<code>&lt;turbo-frame&gt;</code>タグで囲われたHTMLを返す</li>
+<li>Turbo Frameはレスポンスの内容でFrame内のHTMLを書き換える</li>
+</ul>
+<h2 id="Turbo-Stream"><a href="#Turbo-Stream" class="headerlink" title="Turbo Stream"></a>Turbo Stream</h2><p>StreamはFrameに似ていますが、できることが増えます。</p>
+<p>Frameでは対応できないケースとして、以下の二つが挙げられます。</p>
+<ul>
+<li>複数箇所を更新したいが、それらが一つのFrame内に存在しない</li>
+<li>更新だけではなく、追加や削除をしたい</li>
+</ul>
+<p>これらを可能にするのがTurbo Streamです。</p>
+<p>以下のGIFを見てください</p>
+<img src="/2022/08/2022-0808-hotwire/done.gif" class="">
+
+<p>タスク完了ボタンが押された時の画面更新は以下の二つです。</p>
+<ul>
+<li>タスクをリストから削除</li>
+<li>タスクのカウントを減らす (2 tasks→1 taskに変わっているところです)</li>
+</ul>
+<p>複数箇所の更新をしたいので、Streamを使って実装します。</p>
+<p>（実はこの実装はStreamを使わなくても可能です。タスクのカウントとリストをひとつの親Frameに入れて全体を更新するような実装です。どちらが良いかはケースバイケースです）</p>
+<p>タスク完了ボタンを押したときのレスポンスは以下の感じです。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- タスクの削除 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">turbo-stream</span></span></span><br><span class="line"><span class="tag">    <span class="attr">target</span>=<span class="string">&quot;task_7&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">action</span>=<span class="string">&quot;remove&quot;</span></span></span><br><span class="line"><span class="tag">&gt;</span><span class="tag">&lt;/<span class="name">turbo-stream</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- カウントの更新 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">turbo-stream</span></span></span><br><span class="line"><span class="tag">    <span class="attr">target</span>=<span class="string">&quot;taskCount&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">action</span>=<span class="string">&quot;replace&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;taskCount&quot;</span> &gt;</span></span><br><span class="line">            1 task</span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">turbo-stream</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><u><code>&lt;turbo-stream&gt;</code>というタグが二つ、タスクの削除とカウントの更新用にあるのが分かるでしょうか。</u><br>詳細を見ていきます。</p>
+<h3 id="Turbo-Streamタグ"><a href="#Turbo-Streamタグ" class="headerlink" title="Turbo Streamタグ"></a>Turbo Streamタグ</h3><p>Turbo Streamタグは<code>target</code>と<code>action</code>という属性を持っています。</p>
+<ul>
+<li><code>target</code> には更新したいDOMのID</li>
+<li><code>action</code>には実行したいアクション</li>
+</ul>
+<p>をそれぞれ指定します。</p>
+<p><code>target</code> は別にTurbo Frameでなくても良く、idがついてるHTMLタグならなんでも指定できます。</p>
+<p>また、タグ内にHTMLを記載する場合は<code>&lt;template&gt;</code>タグを使う必要があります。</p>
+<p><code>action</code>には以下の７種類があります。</p>
+<ul>
+<li><code>append</code> &#x2F; <code>prepend</code>: HTMLを<code>target</code>内の一番最初&#x2F;最後に追加します。</li>
+<li><code>before</code> &#x2F; <code>after</code>: HTMを<code>target</code>の前&#x2F;後に追加します。(targetの外側に追加されます。)</li>
+<li><code>replace</code>: <code>target</code>に指定された要素を更新します。</li>
+<li><code>update</code>: <code>target</code>に指定されたタグはそのままに、その中身を<code>&lt;template&gt;</code>内のHTMLで更新します。</li>
+<li><code>remove</code>: <code>target</code>に指定された要素を削除します。</li>
+</ul>
+<p>それではもう一度タスク完了時のレスポンスを見てみます。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- タスクの削除 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">turbo-stream</span></span></span><br><span class="line"><span class="tag">    <span class="attr">target</span>=<span class="string">&quot;task_7&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">action</span>=<span class="string">&quot;remove&quot;</span></span></span><br><span class="line"><span class="tag">&gt;</span><span class="tag">&lt;/<span class="name">turbo-stream</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- カウントの更新 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">turbo-stream</span></span></span><br><span class="line"><span class="tag">    <span class="attr">target</span>=<span class="string">&quot;taskCount&quot;</span></span></span><br><span class="line"><span class="tag">    <span class="attr">action</span>=<span class="string">&quot;replace&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;taskCount&quot;</span> &gt;</span></span><br><span class="line">            1 task</span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">turbo-stream</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>最初のタスクの削除のために<code>remove</code>を使っていますね。削除なので、<code>&lt;template&gt;</code>はありません。</p>
+<p>二番目は更新後のカウントを表示するHTMLを<code>replace</code>がついたStreamで囲っています。</p>
+<p>これによってカウントが更新されるわけですね。</p>
+<p>ひとつのレスポンスには<code>&lt;turbo-stream&gt;</code>タグを好きなだけ書くことができます。</p>
+<p>これでFrameの問題だった以下のようなケースに対応できました。</p>
+<ul>
+<li>複数箇所を更新したいが、それらが一つのFrame内に存在しない</li>
+<li>更新だけではなく、追加や削除をしたい</li>
+</ul>
+<h3 id="Turbo-StreamとSocketについて"><a href="#Turbo-StreamとSocketについて" class="headerlink" title="Turbo StreamとSocketについて"></a>Turbo StreamとSocketについて</h3><p>Turbo Streamのもうひとつの大事な機能に<br><u>Web Socketと併用することでリアルタイムにUIを更新できる</u>というものがあります。</p>
+<p>このTodoリストでは実装していませんが、Socketを使うことで他の人がリストを更新したのを<br>自分のブラウザでもリアルタイムで見るなんてことが可能です。</p>
+<h2 id="Turbo-Native"><a href="#Turbo-Native" class="headerlink" title="Turbo Native"></a>Turbo Native</h2><p>これは使ってないので、細かい説明は省略です。</p>
+<p>基本的にはiOS, Androidのネイティブ向けの便利機能になるようです。</p>
+<h2 id="StimulusとAlpine-js"><a href="#StimulusとAlpine-js" class="headerlink" title="StimulusとAlpine js"></a>StimulusとAlpine js</h2><p>FrameとStreamで大体のことはできるのですが、<br><u>それ以上のことがしたい、あるいはそのUIのためだけにいちいちサーバー&#x2F;クライアント間の通信をするのはもったいない、というときのためにStimulusというJSフレームワークが用意されています。</u></p>
+<p>モーダルの表示とかがいい例でしょうか。<br>別にサーバー側のデータを触るわけではないので、サーバーに問い合わせるまでもなく、純粋にJSだけで実装したいですよね。</p>
+<p>Hotwire自体はStimulusを使うことが前提なのですが、個人的には似たような経緯で開発されたAlpine jsを推していきたいです。<br>Stimulusはなんかややこしそうなのに対し、Alpine jsはとてもシンプルなので。。。</p>
+<p>この記事では特にどちらも説明しませんが、以下に公式ドキュメントのリンクを貼っておきます。<br>好きな方を使ってみたらいいと思います。</p>
+<p><a target="_blank" rel="noopener" href="https://stimulus.hotwired.dev/handbook/origin">Stimulus公式</a><br><a target="_blank" rel="noopener" href="https://alpinejs.dev/">Alpine js公式</a></p>
+<h2 id="開発Tips"><a href="#開発Tips" class="headerlink" title="開発Tips"></a>開発Tips</h2><p>Turbo (Drive, Frame, Stream)とStimulusと色々あるので、<br>どれを使えばいいのか分かりづらいですよね。</p>
+<p>基本的には</p>
+<ul>
+<li>Driveはページ遷移</li>
+<li>Frameはひとつの要素内の更新</li>
+<li>Streamは複数要素の更新や追加・削除、またはリアルタイムなアプリケーション</li>
+<li>StimulusはTurboではできないことやサーバーとのやりとりではなくJSだけでやりたいこと</li>
+</ul>
+<p>というのが目安になると思います。</p>
+<p>学習・実装コストは少ない順にFrame、Stream、Stimulus、<br>できることの自由度は逆になります。</p>
+<p>なので、<u>なるべく簡単な手法で済ませることが推奨されています。</u></p>
+<p>このTodoリストもタスクの追加、削除はStreamを使っていますが、<br>ぶっちゃけリストごとFrameで更新してしまってもあまりパフォーマンスは変わりません。</p>
+<p>ケースバイケースですね。</p>
+<h2 id="サーバーサイドの実装について"><a href="#サーバーサイドの実装について" class="headerlink" title="サーバーサイドの実装について"></a>サーバーサイドの実装について</h2><p>ここまで話してきたことは<u>サーバーサイドに依存しません。</u></p>
+<p>使っているのはただのHTMLなので、<br>好きな言語の好きなフレームワークを使ってください。</p>
+<p>私はLaravelを使っています。</p>
+<p>LarabelにはTurboを使うための便利なパッケージがあるのでそれを使いました。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/tonysm/turbo-laravel">https://github.com/tonysm/turbo-laravel</a></p>
+<p>別にRailsだけのものではないということを知ってほしいです。</p>
+<h2 id="まとめ"><a href="#まとめ" class="headerlink" title="まとめ"></a>まとめ</h2><p><u>Hotwire(というかTurbo)を使うことでJSを一行も書かずにモダンなUIが作れました！</u></p>
+<p>今回はシンプルなTodoリストでしたが、もっと複雑なアプリケーションも作れそうです。</p>
+<p>ちなみにこの記事で作ったプロジェクトはGithubにあげてあります。<br><a target="_blank" rel="noopener" href="https://github.com/karintomania/Laravel-turbo-test">https://github.com/karintomania/Laravel-turbo-test</a></p>
+<p>ほとんどのエンジニアがJSについて語っている中、<br>ひっそりと盛り上がっているHotwire界隈にぜひ触れてみてください！</p>
+<p>それじゃ今日はこの辺で。</p>
+<h2 id="関連記事"><a href="#関連記事" class="headerlink" title="関連記事"></a>関連記事</h2><p>こちらの記事もおすすめです。  </p>
+<p><a href="/2022/06/2022-0613-ai-shigure/">AIで凛として時雨をRe:Automationする！（歌詞をAIに自動生成させてみた）</a></p>
+<h2 id="PR"><a href="#PR" class="headerlink" title="PR"></a>PR</h2><p>技術力を高めようとしているのに、技術が評価されない会社にいたら難しいですよね？<br>きちんとした技術を持ったエンジニアを評価する会社を探しませんか？</p>
+<p>エンジニア転職ならレバテックキャリアがおすすです。</p>
+<a target="_blank" href="https://px.a8.net/svt/ejp?a8mat=3H3JXF+8PRGKY+2JK4+ZQFQ9" rel="nofollow noopener">
+<img border="0" width="468" height="60" alt="" src="https://www26.a8.net/svt/bgt?aid=210117795527&wid=001&eno=01&mid=s00000011866006002000&mc=1"></a>
+<img border="0" width="1" height="1" src="https://www13.a8.net/0.gif?a8mat=3H3JXF+8PRGKY+2JK4+ZQFQ9" alt="">
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.bedroomcomputing.com/2022/08/2022-0808-hotwire/" data-id="cm030t6vn007h2nqr2sef4gn3" data-title="JSフレームワークを勉強したくないのでHotwireを使ってサーバーサイドだけでモダンなUIを作ってみた" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hotwire/" rel="tag">Hotwire</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/11/2022-1106-deadsea/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          死海効果について解説
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/07/2022-0701-smtp4dev/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">開発環境でメールをテストするときはsmtp4devが便利</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    <div class="widget-wrap">
+<h3 class="widget-title">About</h3>
+<div class="widget">
+	<img src="/css/images/author.png" alt="著者" class="author-img">
+	<a class="author-link" href="/about" >karintomania</a>
+	<p><p>イギリス在住のWeb開発者が日々学んだことを書き連ねています。<br> PHPメインでやらせてもらってます。</p>
+</p>
+</div>
+</div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/08/2024-0820-understanding/">AIに負けないプログラマ - 理解によるプログラミングについて</a>
+          </li>
+        
+          <li>
+            <a href="/2024/08/2024-0802-zellij-update-recovery/">Zellijのアップデートでセッションが消えてしまったとき</a>
+          </li>
+        
+          <li>
+            <a href="/2024/06/2024-0606-tripled-salary/">イギリスに来てから5年かけて給料を3倍にした話</a>
+          </li>
+        
+          <li>
+            <a href="/2024/05/2024-0522-aiterm/">iTerm2に追加されたAIサポートを使ってみる</a>
+          </li>
+        
+          <li>
+            <a href="/2024/05/2024-0501-ghcr-image/">GitHubのコンテナレジストリにイメージをアップロードする</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%83%A9%E3%82%A4%E3%83%95/">エンジニアライフ</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E8%A1%93/">技術</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AI/" rel="tag">AI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/" rel="tag">Apache</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Azure/" rel="tag">Azure</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bot/" rel="tag">Bot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cosmos-DB/" rel="tag">Cosmos DB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DB/" rel="tag">DB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DI/" rel="tag">DI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Excel/" rel="tag">Excel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitHub/" rel="tag">GitHub</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitHub-Container-Registry/" rel="tag">GitHub Container Registry</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github-Pages/" rel="tag">Github Pages</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Google-Tech-Dev-Guide/" rel="tag">Google Tech Dev Guide</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Helix/" rel="tag">Helix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Heroku/" rel="tag">Heroku</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hotwire/" rel="tag">Hotwire</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kotlin/" rel="tag">Kotlin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kubernetes/" rel="tag">Kubernetes</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LINE-Bot/" rel="tag">LINE Bot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Laravel/" rel="tag">Laravel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-Command/" rel="tag">Linux Command</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Livewire/" rel="tag">Livewire</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Logcat/" rel="tag">Logcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lua/" rel="tag">Lua</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Minikube/" rel="tag">Minikube</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NeoVim/" rel="tag">NeoVim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NeoVim%E3%83%97%E3%83%A9%E3%82%B0%E3%82%A4%E3%83%B3/" rel="tag">NeoVimプラグイン</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OR-Mapper/" rel="tag">OR Mapper</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OSS/" rel="tag">OSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Orchid/" rel="tag">Orchid</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PDF/" rel="tag">PDF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PostgreSQL/" rel="tag">PostgreSQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PowerShell/" rel="tag">PowerShell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RPA/" rel="tag">RPA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Room/" rel="tag">Room</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SMTP/" rel="tag">SMTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQLite/" rel="tag">SQLite</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH/" rel="tag">SSH</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Shell-Script/" rel="tag">Shell Script</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-Boot/" rel="tag">Spring Boot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tabula/" rel="tag">Tabula</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Twitter/" rel="tag">Twitter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Twitter-API/" rel="tag">Twitter API</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Twitter4j/" rel="tag">Twitter4j</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UiPath/" rel="tag">UiPath</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unity/" rel="tag">Unity</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VBS/" rel="tag">VBS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VS-Code/" rel="tag">VS Code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/" rel="tag">Vim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Windows/" rel="tag">Windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xdebug/" rel="tag">Xdebug</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/admob/" rel="tag">admob</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/" rel="tag">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android-studio/" rel="tag">android studio</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/code-igniter/" rel="tag">code igniter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iTerm2-AI-ChatGPT-CLI/" rel="tag">iTerm2, AI, ChatGPT, CLI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mybatis/" rel="tag">mybatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/" rel="tag">node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php-di/" rel="tag">php-di</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/smtp4dev/" rel="tag">smtp4dev</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zellij/" rel="tag">zellij</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0/" rel="tag">アルゴリズム</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%82%A8%E3%83%87%E3%82%A3%E3%82%BF/" rel="tag">エディタ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%82%AD%E3%83%A3%E3%83%AA%E3%82%A2/" rel="tag">キャリア</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%82%AF%E3%83%AA%E3%82%A8%E3%82%A4%E3%83%86%E3%82%A3%E3%83%93%E3%83%86%E3%82%A3/" rel="tag">クリエイティビティ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3/" rel="tag">セッション</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%83%90%E3%83%83%E3%83%81/" rel="tag">バッチ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%83%96%E3%83%AD%E3%82%B0/" rel="tag">ブログ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%83%9E%E3%82%AF%E3%83%AD/" rel="tag">マクロ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%83%A2%E3%83%81%E3%83%99%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3/" rel="tag">モチベーション</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%80%8B%E4%BA%BA%E9%96%8B%E7%99%BA/" rel="tag">個人開発</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%9D%E5%BF%83%E8%80%85/" rel="tag">初心者</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%80%E9%80%9FKotlin-Android%E3%82%A2%E3%83%97%E3%83%AA%E9%96%8B%E7%99%BA%E5%85%A5%E9%96%80/" rel="tag">最速Kotlin&amp;Androidアプリ開発入門</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%AD%A3%E8%A6%8F%E8%A1%A8%E7%8F%BE/" rel="tag">正規表現</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%8B%AC%E5%AD%A6/" rel="tag">独学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%87%AA%E5%8B%95%E5%8C%96/" rel="tag">自動化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%8B%B1%E8%AA%9E/" rel="tag">英語</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%96%8B%E7%99%BA%E3%83%84%E3%83%BC%E3%83%AB/" rel="tag">開発ツール</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%96%A2%E6%95%B0%E5%9E%8B%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0/" rel="tag">関数型プログラミング</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AI/" style="font-size: 11px;">AI</a> <a href="/tags/Apache/" style="font-size: 10px;">Apache</a> <a href="/tags/Azure/" style="font-size: 11px;">Azure</a> <a href="/tags/Bot/" style="font-size: 10px;">Bot</a> <a href="/tags/Cosmos-DB/" style="font-size: 11px;">Cosmos DB</a> <a href="/tags/DB/" style="font-size: 11px;">DB</a> <a href="/tags/DI/" style="font-size: 10px;">DI</a> <a href="/tags/Docker/" style="font-size: 16px;">Docker</a> <a href="/tags/Excel/" style="font-size: 10px;">Excel</a> <a href="/tags/Git/" style="font-size: 11px;">Git</a> <a href="/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/tags/GitHub-Container-Registry/" style="font-size: 10px;">GitHub Container Registry</a> <a href="/tags/Github-Pages/" style="font-size: 15px;">Github Pages</a> <a href="/tags/Google-Tech-Dev-Guide/" style="font-size: 15px;">Google Tech Dev Guide</a> <a href="/tags/Helix/" style="font-size: 10px;">Helix</a> <a href="/tags/Heroku/" style="font-size: 11px;">Heroku</a> <a href="/tags/Hexo/" style="font-size: 17px;">Hexo</a> <a href="/tags/Hotwire/" style="font-size: 10px;">Hotwire</a> <a href="/tags/Java/" style="font-size: 19px;">Java</a> <a href="/tags/Kotlin/" style="font-size: 13px;">Kotlin</a> <a href="/tags/Kubernetes/" style="font-size: 11px;">Kubernetes</a> <a href="/tags/LINE-Bot/" style="font-size: 11px;">LINE Bot</a> <a href="/tags/Laravel/" style="font-size: 11px;">Laravel</a> <a href="/tags/Linux-Command/" style="font-size: 10px;">Linux Command</a> <a href="/tags/Livewire/" style="font-size: 10px;">Livewire</a> <a href="/tags/Logcat/" style="font-size: 10px;">Logcat</a> <a href="/tags/Lua/" style="font-size: 11px;">Lua</a> <a href="/tags/Minikube/" style="font-size: 10px;">Minikube</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/NeoVim/" style="font-size: 14px;">NeoVim</a> <a href="/tags/NeoVim%E3%83%97%E3%83%A9%E3%82%B0%E3%82%A4%E3%83%B3/" style="font-size: 12px;">NeoVimプラグイン</a> <a href="/tags/OR-Mapper/" style="font-size: 11px;">OR Mapper</a> <a href="/tags/OSS/" style="font-size: 11px;">OSS</a> <a href="/tags/Orchid/" style="font-size: 10px;">Orchid</a> <a href="/tags/PDF/" style="font-size: 10px;">PDF</a> <a href="/tags/PHP/" style="font-size: 18px;">PHP</a> <a href="/tags/PostgreSQL/" style="font-size: 11px;">PostgreSQL</a> <a href="/tags/PowerShell/" style="font-size: 10px;">PowerShell</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/RPA/" style="font-size: 10px;">RPA</a> <a href="/tags/React/" style="font-size: 10px;">React</a> <a href="/tags/Room/" style="font-size: 10px;">Room</a> <a href="/tags/SMTP/" style="font-size: 10px;">SMTP</a> <a href="/tags/SQLite/" style="font-size: 11px;">SQLite</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/Shell-Script/" style="font-size: 10px;">Shell Script</a> <a href="/tags/Spring-Boot/" style="font-size: 17px;">Spring Boot</a> <a href="/tags/Tabula/" style="font-size: 10px;">Tabula</a> <a href="/tags/Twitter/" style="font-size: 11px;">Twitter</a> <a href="/tags/Twitter-API/" style="font-size: 12px;">Twitter API</a> <a href="/tags/Twitter4j/" style="font-size: 10px;">Twitter4j</a> <a href="/tags/UiPath/" style="font-size: 10px;">UiPath</a> <a href="/tags/Unity/" style="font-size: 10px;">Unity</a> <a href="/tags/VBS/" style="font-size: 11px;">VBS</a> <a href="/tags/VS-Code/" style="font-size: 11px;">VS Code</a> <a href="/tags/Vim/" style="font-size: 11px;">Vim</a> <a href="/tags/Windows/" style="font-size: 12px;">Windows</a> <a href="/tags/Xdebug/" style="font-size: 10px;">Xdebug</a> <a href="/tags/admob/" style="font-size: 10px;">admob</a> <a href="/tags/android/" style="font-size: 20px;">android</a> <a href="/tags/android-studio/" style="font-size: 10px;">android studio</a> <a href="/tags/code-igniter/" style="font-size: 11px;">code igniter</a> <a href="/tags/iTerm2-AI-ChatGPT-CLI/" style="font-size: 10px;">iTerm2, AI, ChatGPT, CLI</a> <a href="/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/php-di/" style="font-size: 10px;">php-di</a> <a href="/tags/smtp4dev/" style="font-size: 10px;">smtp4dev</a> <a href="/tags/zellij/" style="font-size: 10px;">zellij</a> <a href="/tags/%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0/" style="font-size: 15px;">アルゴリズム</a> <a href="/tags/%E3%82%A8%E3%83%87%E3%82%A3%E3%82%BF/" style="font-size: 10px;">エディタ</a> <a href="/tags/%E3%82%AD%E3%83%A3%E3%83%AA%E3%82%A2/" style="font-size: 11px;">キャリア</a> <a href="/tags/%E3%82%AF%E3%83%AA%E3%82%A8%E3%82%A4%E3%83%86%E3%82%A3%E3%83%93%E3%83%86%E3%82%A3/" style="font-size: 11px;">クリエイティビティ</a> <a href="/tags/%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3/" style="font-size: 10px;">セッション</a> <a href="/tags/%E3%83%90%E3%83%83%E3%83%81/" style="font-size: 10px;">バッチ</a> <a href="/tags/%E3%83%96%E3%83%AD%E3%82%B0/" style="font-size: 10px;">ブログ</a> <a href="/tags/%E3%83%9E%E3%82%AF%E3%83%AD/" style="font-size: 10px;">マクロ</a> <a href="/tags/%E3%83%A2%E3%83%81%E3%83%99%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3/" style="font-size: 10px;">モチベーション</a> <a href="/tags/%E5%80%8B%E4%BA%BA%E9%96%8B%E7%99%BA/" style="font-size: 13px;">個人開発</a> <a href="/tags/%E5%88%9D%E5%BF%83%E8%80%85/" style="font-size: 10px;">初心者</a> <a href="/tags/%E6%9C%80%E9%80%9FKotlin-Android%E3%82%A2%E3%83%97%E3%83%AA%E9%96%8B%E7%99%BA%E5%85%A5%E9%96%80/" style="font-size: 14px;">最速Kotlin&Androidアプリ開発入門</a> <a href="/tags/%E6%AD%A3%E8%A6%8F%E8%A1%A8%E7%8F%BE/" style="font-size: 10px;">正規表現</a> <a href="/tags/%E7%8B%AC%E5%AD%A6/" style="font-size: 10px;">独学</a> <a href="/tags/%E8%87%AA%E5%8B%95%E5%8C%96/" style="font-size: 13px;">自動化</a> <a href="/tags/%E8%8B%B1%E8%AA%9E/" style="font-size: 11px;">英語</a> <a href="/tags/%E9%96%8B%E7%99%BA%E3%83%84%E3%83%BC%E3%83%AB/" style="font-size: 10px;">開発ツール</a> <a href="/tags/%E9%96%A2%E6%95%B0%E5%9E%8B%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0/" style="font-size: 10px;">関数型プログラミング</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">June 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/05/">May 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/03/">March 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">November 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">September 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">July 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/12/">December 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/">November 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">August 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">April 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2024 karintomania<br>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+    <a href="/categories/%E6%8A%80%E8%A1%93/" class="mobile-nav-link">Dev</a>
+  
+    <a href="/categories/%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%83%A9%E3%82%A4%E3%83%95/" class="mobile-nav-link">Engineer&#39;s life</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
