@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.bedroomcomputing.com/portfolio/index.html</loc>
+    
+    <lastmod>2024-11-06T17:36:23.010Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.bedroomcomputing.com/2024/08/2024-0820-understanding/</loc>
     
     <lastmod>2024-08-20T22:51:46.379Z</lastmod>
@@ -79,14 +86,14 @@
   </url>
   
   <url>
-    <loc>https://www.bedroomcomputing.com/2022/12/2022-1222-nvim-plugin/</loc>
+    <loc>https://www.bedroomcomputing.com/2023/07/2023-0728-nvim-as-app/</loc>
     
     <lastmod>2024-08-19T09:33:42.318Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://www.bedroomcomputing.com/2023/07/2023-0728-nvim-as-app/</loc>
+    <loc>https://www.bedroomcomputing.com/2022/12/2022-1222-nvim-plugin/</loc>
     
     <lastmod>2024-08-19T09:33:42.318Z</lastmod>
     
@@ -173,13 +180,6 @@
     <loc>https://www.bedroomcomputing.com/projects/index.html</loc>
     
     <lastmod>2022-11-02T23:16:38.485Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.bedroomcomputing.com/portfolio/index.html</loc>
-    
-    <lastmod>2022-11-02T23:16:38.481Z</lastmod>
     
   </url>
   
