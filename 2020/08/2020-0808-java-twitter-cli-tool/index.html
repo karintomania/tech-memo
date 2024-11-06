@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-161452704-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-161452704-1');
+</script>
+<!-- End Google Analytics -->
+
+  
+  <title>Twitter APIをJavaで触る！Twitter4jを使ってみた | 寝室コンピューティング</title>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- OGP settings -->
+	
+  		<meta name="description" content="背景こんにちは。 karintomania(@karintozuki)です。   JavaでTwitter APIを触る方法を調べたところ、Twitter4jというライブラリが良いらしい。今回はそれを使って、ターミナルからTwitterを触るツールを作ってみたので、少しソースを解説したいと思う。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Twitter APIをJavaで触る！Twitter4jを使ってみた">
+<meta property="og:url" content="https://www.bedroomcomputing.com/2020/08/2020-0808-java-twitter-cli-tool/index.html">
+<meta property="og:site_name" content="寝室コンピューティング">
+<meta property="og:description" content="背景こんにちは。 karintomania(@karintozuki)です。   JavaでTwitter APIを触る方法を調べたところ、Twitter4jというライブラリが良いらしい。今回はそれを使って、ターミナルからTwitterを触るツールを作ってみたので、少しソースを解説したいと思う。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://www.bedroomcomputing.com/2020/08/2020-0808-java-twitter-cli-tool/tweet.gif">
+<meta property="article:published_time" content="2020-08-08T23:19:49.000Z">
+<meta property="article:modified_time" content="2022-11-02T23:16:38.361Z">
+<meta property="article:author" content="karintomania">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="Twitter">
+<meta property="article:tag" content="Twitter API">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.bedroomcomputing.com/2020/08/2020-0808-java-twitter-cli-tool/tweet.gif">
+	
+  
+  
+    <link rel="icon" href="/css/images/favicon.ico">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  <script data-ad-client="ca-pub-2164726777115826" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+	  <div id="logo-wrap">
+      <h1>
+        <a href="/" id="logo">寝室コンピューティング</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+          <a class="main-nav-link" href="/categories/%E6%8A%80%E8%A1%93/">Dev</a>
+        
+          <a class="main-nav-link" href="/categories/%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%83%A9%E3%82%A4%E3%83%95/">Engineer&#39;s life</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://www.bedroomcomputing.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2020-0808-java-twitter-cli-tool" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/2020-0808-java-twitter-cli-tool/" class="article-date">
+  <time datetime="2020-08-08T23:19:49.000Z" itemprop="datePublished">2020-08-08</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%8A%80%E8%A1%93/">技術</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Twitter APIをJavaで触る！Twitter4jを使ってみた
+    </h1>
+  
+
+      </header>
+	
+    <div class="article-entry" itemprop="articleBody">
+	
+		<img src="https://www.bedroomcomputing.com/2020/08/2020-0808-java-twitter-cli-tool/tweet.gif">
+	
+      
+		<h2>目次</h2>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%83%8C%E6%99%AF"><span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%92%B0%E5%A2%83%E3%83%BB%E5%BF%85%E8%A6%81%E4%BA%8B%E9%A0%85"><span class="toc-text">環境・必要事項</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E3%81%84%E6%96%B9"><span class="toc-text">使い方</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%82%92%E3%83%80%E3%82%A6%E3%83%B3%E3%83%AD%E3%83%BC%E3%83%89"><span class="toc-text">プロジェクトをダウンロード</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Consumer%E3%82%AD%E3%83%BC%E3%82%92%E8%A8%AD%E5%AE%9A"><span class="toc-text">Consumerキーを設定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%83%A6%E3%83%BC%E3%82%B6%E5%90%8D%E3%82%92%E5%A4%89%E6%9B%B4"><span class="toc-text">ユーザ名を変更</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B5%B7%E5%8B%95%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89"><span class="toc-text">起動コマンド</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%82%BD%E3%83%BC%E3%82%B9%E8%A7%A3%E8%AA%AC"><span class="toc-text">ソース解説</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Twitter-4j%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6"><span class="toc-text">Twitter 4jについて</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OAuth%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9F%E3%83%AD%E3%82%B0%E3%82%A4%E3%83%B3%E5%87%A6%E7%90%86"><span class="toc-text">OAuthを使ったログイン処理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%82%BF%E3%82%A4%E3%83%A0%E3%83%A9%E3%82%A4%E3%83%B3%E3%81%AE%E5%8F%96%E5%BE%97"><span class="toc-text">タイムラインの取得</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%83%84%E3%82%A4%E3%83%BC%E3%83%88"><span class="toc-text">ツイート</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%81%BE%E3%81%A8%E3%82%81"><span class="toc-text">まとめ</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%96%A2%E9%80%A3%E8%A8%98%E4%BA%8B"><span class="toc-text">関連記事</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PR"><span class="toc-text">PR</span></a></li></ol>
+        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>こんにちは。 <a target="_blank" rel="noopener" href="https://twitter.com/karintozuki">karintomania(@karintozuki)</a>です。  </p>
+<p>JavaでTwitter APIを触る方法を調べたところ、<br><u>Twitter4jというライブラリが良いらしい。</u><br>今回はそれを使って、ターミナルからTwitterを触るツールを作ってみたので、<br>少しソースを解説したいと思う。</p>
+<span id="more"></span>
+
+<h2 id="環境・必要事項"><a href="#環境・必要事項" class="headerlink" title="環境・必要事項"></a>環境・必要事項</h2><ul>
+<li>Java8以上</li>
+<li>MacOS</li>
+</ul>
+<p><u>Twitterデベロッパーアカウント</u>が必要。</p>
+<h2 id="使い方"><a href="#使い方" class="headerlink" title="使い方"></a>使い方</h2><h3 id="プロジェクトをダウンロード"><a href="#プロジェクトをダウンロード" class="headerlink" title="プロジェクトをダウンロード"></a>プロジェクトをダウンロード</h3><p><a target="_blank" rel="noopener" href="https://github.com/karintomania/twitter-cli-java">Githubはこちら。</a><br>適当なフォルダで<code>git clone</code>するなり<br>zipでダウンロードするなりしてほしい。</p>
+<p>いくつか初期設定が必要です。</p>
+<h3 id="Consumerキーを設定"><a href="#Consumerキーを設定" class="headerlink" title="Consumerキーを設定"></a>Consumerキーを設定</h3><p><code>resource/twitter4j.properties</code>内の以下二つのプロパティを設定する。<br>これらの値はTwitterデベロッパーアカウントを作成すると取得できる。</p>
+<figure class="highlight properties"><figcaption><span>twitter4j.properties</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">//</span> <span class="string">コンシューマーキーを設定</span></span><br><span class="line"><span class="attr">oauth.consumerKey</span>=<span class="string">put-your-consumer-key</span></span><br><span class="line"><span class="attr">//</span> <span class="string">コンシューマーシークレットを設定</span></span><br><span class="line"><span class="attr">oauth.consumerSecret</span>=<span class="string">put-your-consumer-secret</span></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="ユーザ名を変更"><a href="#ユーザ名を変更" class="headerlink" title="ユーザ名を変更"></a>ユーザ名を変更</h3><p>ユーザ名(使用したいアカウントの@xxxxのxxxx部分)を<br><code>Authenticator.java</code>の以下の箇所に入れる。<br>ソースベタうちでごめんなさい。</p>
+<figure class="highlight java"><figcaption><span>Authenticator.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">init</span><span class="params">()</span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// ユーザー名(@xxxのxxx)を適宜変えてください</span></span><br><span class="line">	<span class="type">Auth</span> <span class="variable">auth</span> <span class="operator">=</span> ar.getAuth(<span class="string">&quot;put-user-name-here&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="起動コマンド"><a href="#起動コマンド" class="headerlink" title="起動コマンド"></a>起動コマンド</h3><p>以下コマンドをプロジェクトルートフォルダで実行すると、<br>ツールが起動する。<br><code>./gradlew run --console=plain</code></p>
+<p>–console&#x3D;plainオプションをつけているのは、<br>Gradleのメッセージがちょっとうるさいから。</p>
+<p>起動したら以下のコマンドが使える。<br>最初はloginコマンドを打ってログインする必要がある。</p>
+<table>
+<thead>
+<tr>
+<th>コマンド</th>
+<th>意味</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>login</td>
+<td>ログインできる</td>
+</tr>
+<tr>
+<td>tl</td>
+<td>タイムラインを５件ずつ表示する。nを押すと次の5件を表示する</td>
+</tr>
+<tr>
+<td>tw</td>
+<td>ツイートです。素のままだと改行もできないので、実用的じゃない爆</td>
+</tr>
+<tr>
+<td>help</td>
+<td>ヘルプが申し訳程度に出る</td>
+</tr>
+</tbody></table>
+<h2 id="ソース解説"><a href="#ソース解説" class="headerlink" title="ソース解説"></a>ソース解説</h2><h3 id="Twitter-4jについて"><a href="#Twitter-4jについて" class="headerlink" title="Twitter 4jについて"></a>Twitter 4jについて</h3><p>このツールでは<u>Twitter4jというライブラリを使っている。</u><br>公式サンプルがだいぶ参考になるので、そちらも合わせてみていただきたい。<br><a target="_blank" rel="noopener" href="http://twitter4j.org/ja/">http://twitter4j.org/ja/</a></p>
+<h3 id="OAuthを使ったログイン処理"><a href="#OAuthを使ったログイン処理" class="headerlink" title="OAuthを使ったログイン処理"></a>OAuthを使ったログイン処理</h3><p>OAuth処理はAuthenticator.javaで行っている。<br><code>authenticate()</code>メソッドを少し紹介する。</p>
+<figure class="highlight java"><figcaption><span>.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// OAuth認証</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">authenticate</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="comment">// The factory instance is re-useable and thread safe.</span></span><br><span class="line">    <span class="type">Twitter</span> <span class="variable">twitter</span> <span class="operator">=</span> TwitterFactory.getSingleton();</span><br><span class="line">	<span class="keyword">try</span>&#123;</span><br><span class="line">		<span class="type">RequestToken</span> <span class="variable">requestToken</span> <span class="operator">=</span> twitter.getOAuthRequestToken();</span><br><span class="line">		<span class="type">AccessToken</span> <span class="variable">accessToken</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">		<span class="type">BufferedReader</span> <span class="variable">br</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BufferedReader</span>(<span class="keyword">new</span> <span class="title class_">InputStreamReader</span>(System.in));</span><br><span class="line">		<span class="keyword">while</span> (<span class="literal">null</span> == accessToken) &#123;</span><br><span class="line">			System.out.println(<span class="string">&quot;Open the following URL and grant access to your account:&quot;</span>);</span><br><span class="line">			System.out.println(requestToken.getAuthorizationURL());</span><br><span class="line">			System.out.print(<span class="string">&quot;Enter the PIN(if aviailable) or just hit enter.[PIN]:&quot;</span>);</span><br><span class="line">			<span class="type">String</span> <span class="variable">pin</span> <span class="operator">=</span> br.readLine();</span><br><span class="line">		<span class="keyword">try</span>&#123;</span><br><span class="line">			<span class="keyword">if</span>(pin.length() &gt; <span class="number">0</span>)&#123;</span><br><span class="line">				accessToken = twitter.getOAuthAccessToken(requestToken, pin);</span><br><span class="line">			&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">				accessToken = twitter.getOAuthAccessToken();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">catch</span> (TwitterException te) &#123;</span><br><span class="line">			<span class="keyword">if</span>(<span class="number">401</span> == te.getStatusCode())&#123;</span><br><span class="line">				System.out.println(<span class="string">&quot;Unable to get the access token.&quot;</span>);</span><br><span class="line">			&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">				te.printStackTrace();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">//persist to the accessToken for future reference.</span></span><br><span class="line">		storeAccessToken(twitter.verifyCredentials().getScreenName(),accessToken);</span><br><span class="line">	&#125;<span class="keyword">catch</span>(TwitterException te)&#123;</span><br><span class="line">		te.printStackTrace();</span><br><span class="line">	&#125;<span class="keyword">catch</span>(IOException ioe)&#123;</span><br><span class="line">		ioe.printStackTrace();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<p>実際に動作させると、<br>以下の流れで成功するとトークンが取得できる。</p>
+<ol>
+<li>認証用のURL表示　requestToken.getAuthorizationURL()使用</li>
+<li>認証画面をブラウザで開き、コードを取得</li>
+<li>コードをターミナルに入力してもらい、トークン取得 twitter.getOAuthAccessToken(requestToken, pin);</li>
+</ol>
+<p>このGIFをみてもらうと分かりやすいと思う。</p>
+<img src="/2020/08/2020-0808-java-twitter-cli-tool/login.gif" class="">
+
+<p>トークンは取得すると、アクセストークンとアクセストークンシークレットが取得できる。<br>このプログラム内ではMyBatisとSQLiteを使って永続化している。興味があればDTOフォルダ内を参照して欲しい。</p>
+<h3 id="タイムラインの取得"><a href="#タイムラインの取得" class="headerlink" title="タイムラインの取得"></a>タイムラインの取得</h3><p>タイムラインの取得はTwitterServiceクラス内のshowTimeLine()メソッドで行っている。</p>
+<figure class="highlight java"><figcaption><span>TwitterService.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// タイムライン表示</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">showTimeLine</span><span class="params">()</span>&#123;</span><br><span class="line">		<span class="type">Scanner</span> <span class="variable">in</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">		<span class="type">String</span> <span class="variable">s</span> <span class="operator">=</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">		<span class="type">int</span> <span class="variable">page</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">		<span class="type">String</span> <span class="variable">commandMode</span> <span class="operator">=</span> <span class="string">&quot;TimeLine Mode (next:n, back:b, quit:q)&gt;&quot;</span>;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// タイムライン表示</span></span><br><span class="line">		showPagedTimeLine(page);</span><br><span class="line"></span><br><span class="line">		<span class="keyword">do</span>&#123;</span><br><span class="line">			System.out.print(commandMode);</span><br><span class="line">			s = in.nextLine();</span><br><span class="line">			<span class="keyword">switch</span> (s)&#123;</span><br><span class="line">				<span class="comment">// タイムラインを終了</span></span><br><span class="line">				<span class="keyword">case</span> <span class="string">&quot;q&quot;</span>:</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">				<span class="comment">//　次のページを表示</span></span><br><span class="line">				<span class="keyword">case</span> <span class="string">&quot;n&quot;</span>:</span><br><span class="line">					showPagedTimeLine(++page);</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">				<span class="comment">//　前のページを表示</span></span><br><span class="line">				<span class="keyword">case</span> <span class="string">&quot;b&quot;</span>:</span><br><span class="line">					showPagedTimeLine((page &gt; <span class="number">1</span>) ? --page : <span class="number">0</span>);</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">				<span class="keyword">default</span>: </span><br><span class="line">					System.out.println(s + <span class="string">&quot; command is not found.&quot;</span>);</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">		&#125;<span class="keyword">while</span>(!s.equals(<span class="string">&quot;q&quot;</span>));</span><br><span class="line"></span><br><span class="line">		<span class="comment">// Dont close the scanner.</span></span><br><span class="line">		<span class="comment">// It will close the scanner of App.java as well</span></span><br><span class="line">		<span class="comment">// in.close();</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// ツイートを5件ずつ表示</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">showPagedTimeLine</span><span class="params">(<span class="type">int</span> page)</span>&#123;</span><br><span class="line"></span><br><span class="line">		<span class="type">Paging</span> <span class="variable">paging</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Paging</span>(page, <span class="number">5</span>);</span><br><span class="line">		<span class="keyword">try</span>&#123;</span><br><span class="line">			<span class="comment">// タイムライン取得</span></span><br><span class="line">			List&lt;Status&gt; statuses = twitter.getHomeTimeline(paging);</span><br><span class="line">			statuses.stream().forEach(status -&gt; System.out.println(formatTweet(status)));</span><br><span class="line">		&#125;<span class="keyword">catch</span>(TwitterException te)&#123;</span><br><span class="line">			te.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 表示用に整形</span></span><br><span class="line">	<span class="keyword">public</span> String <span class="title function_">formatTweet</span><span class="params">(Status s)</span>&#123;</span><br><span class="line">		<span class="type">String</span> <span class="variable">tweetText</span> <span class="operator">=</span> s.getUser().getName() + <span class="string">&quot; :\n\n&quot;</span> + s.getText();</span><br><span class="line">		tweetText += <span class="string">&quot;\n----------------------------&quot;</span>;</span><br><span class="line">		<span class="keyword">return</span> tweetText;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>twitter.getHomeTimeline()</code>メソッドでタイムラインを取得できる。<br>このメソッドはページネーションに対応しているため、<br>このプログラム内では５件ずつ取得するようにしている。</p>
+<p>こちらも動作イメージとしてGIFを用意した。</p>
+<img src="/2020/08/2020-0808-java-twitter-cli-tool/timeline.gif" class="">
+
+<h3 id="ツイート"><a href="#ツイート" class="headerlink" title="ツイート"></a>ツイート</h3><p>ツイートには<code>twitter.updateStatus()</code>メソッドを使う。<br>普通に標準入力を読み込んでメソッドに文字列を渡しているだけ。</p>
+<figure class="highlight java"><figcaption><span>TwitterService.java</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ツイートする</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">tweet</span><span class="params">()</span>&#123;</span><br><span class="line"></span><br><span class="line">		<span class="type">Scanner</span> <span class="variable">in</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">		<span class="type">String</span> <span class="variable">tweetMode</span> <span class="operator">=</span> <span class="string">&quot;Tweet Mode &gt;&quot;</span>;</span><br><span class="line">		System.out.print(tweetMode);</span><br><span class="line"></span><br><span class="line">		<span class="type">String</span> <span class="variable">s</span> <span class="operator">=</span> in.nextLine();</span><br><span class="line"></span><br><span class="line">		<span class="keyword">try</span>&#123;</span><br><span class="line">			<span class="comment">// ツイートを送信</span></span><br><span class="line">			twitter.updateStatus(s);</span><br><span class="line">		&#125;<span class="keyword">catch</span>(TwitterException te)&#123;</span><br><span class="line">			te.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		System.out.println(s);</span><br><span class="line"></span><br><span class="line">		<span class="comment">// Dont close the scanner.</span></span><br><span class="line">		<span class="comment">// It will close the scanner of App.java as well</span></span><br><span class="line">		<span class="comment">// in.close();</span></span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>こちらも動作イメージとしてGIFを用意した。</p>
+<img src="/2020/08/2020-0808-java-twitter-cli-tool/tweet.gif" class="">
+
+<h2 id="まとめ"><a href="#まとめ" class="headerlink" title="まとめ"></a>まとめ</h2><p>Twitter周りの実装は全部Twitter4j任せで簡単にできた。<br>しかし、<u>利用したいAPIによっては対応していないのもあるようなので、注意が必要。</u><br>例えばいいねやインプレッション数が取得できるEngagement APIには対応していないようだった。</p>
+<p>また、CLIツールとして動作するようなものを作るのが初めてだったので、<br>そこに結構苦戦した。</p>
+<p>それじゃ今日はこの辺で。</p>
+<h2 id="関連記事"><a href="#関連記事" class="headerlink" title="関連記事"></a>関連記事</h2><p>こちらの記事もおすすめ。  </p>
+<p><a href="/2020/04/2020-0408-linebot/">Spring BootでLINE Botのサンプルを動かす 〜おうむ返しのその先へ〜</a></p>
+<h2 id="PR"><a href="#PR" class="headerlink" title="PR"></a>PR</h2><p>あなたの会社はあなたの技術を評価してくれていますか？<br>技術力を高めようと頑張っているのに、<br>技術が評価されないような会社にいたらそれは良い環境なのでしょうか？<br>エンジニアとして技術を高めたいのなら環境を選ぶことも大事です。</p>
+<p><strong>レバテックキャリア</strong><br>エンジニアとして働いていて実務経験があるなら、<br>求人数の充実具合からレバテックキャリアがおすすめです。<br><u>IT転職ではデファクト・スタンダード</u>ですね。<br><a target="_blank" rel="noopener" href="https://px.a8.net/svt/ejp?a8mat=3H3JXF+8PRGKY+2JK4+ZRIB5">▼レバテック　キャリア 登録はこちら▼</a><br><a target="_blank" href="https://px.a8.net/svt/ejp?a8mat=3H3JXF+8PRGKY+2JK4+ZWFS1" rel="nofollow noopener"><br><img border="0" width="728" height="90" alt="" src="https://www22.a8.net/svt/bgt?aid=210117795527&wid=001&eno=01&mid=s00000011866006030000&mc=1"></a><br><img border="0" width="1" height="1" src="https://www13.a8.net/0.gif?a8mat=3H3JXF+8PRGKY+2JK4+ZWFS1" alt=""></p>
+<p><strong>Tech Clips</strong><br>Tech Clipsは<u>年収500万以上＆自社サービスを持った会社</u>に特化した求人サイトです。<br>首都圏限定になってはしまいますが、<br>収入を増やしたい、自社サービスを持った企業への転職をしたい人におすすめです。</p>
+<p><a target="_blank" rel="noopener" href="https://px.a8.net/svt/ejp?a8mat=3H3JXF+DE94S2+3SWM+61Z81">▼Tech Clips 登録はこちら▼</a><br><a target="_blank" href="https://px.a8.net/svt/ejp?a8mat=3H3JXF+DE94S2+3SWM+61Z81" rel="nofollow noopener"><br><img border="0" width="300" height="250" alt="" src="https://www20.a8.net/svt/bgt?aid=210117795810&wid=001&eno=01&mid=s00000017743001017000&mc=1"></a><br><img border="0" width="1" height="1" src="https://www12.a8.net/0.gif?a8mat=3H3JXF+DE94S2+3SWM+61Z81" alt=""></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.bedroomcomputing.com/2020/08/2020-0808-java-twitter-cli-tool/" data-id="cm030t6tb003e2nqrak6j6pif" data-title="Twitter APIをJavaで触る！Twitter4jを使ってみた" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Twitter/" rel="tag">Twitter</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Twitter-API/" rel="tag">Twitter API</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/08/2020-0815-engineer-static-site-gen-blog/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          エンジニア向けブログの始め方。年間経費1500円で運用している私がその方法を紹介
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/08/2020-0801-android-selftaught/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">アプリ未経験エンジニアが独学で個人開発Androidアプリを公開するまでにやったこと</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    <div class="widget-wrap">
+<h3 class="widget-title">About</h3>
+<div class="widget">
+	<img src="/css/images/author.png" alt="著者" class="author-img">
+	<a class="author-link" href="/about" >karintomania</a>
+	<p><p>イギリス在住のWeb開発者が日々学んだことを書き連ねています。<br> PHPメインでやらせてもらってます。</p>
+</p>
+</div>
+</div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/08/2024-0820-understanding/">AIに負けないプログラマ - 理解によるプログラミングについて</a>
+          </li>
+        
+          <li>
+            <a href="/2024/08/2024-0802-zellij-update-recovery/">Zellijのアップデートでセッションが消えてしまったとき</a>
+          </li>
+        
+          <li>
+            <a href="/2024/06/2024-0606-tripled-salary/">イギリスに来てから5年かけて給料を3倍にした話</a>
+          </li>
+        
+          <li>
+            <a href="/2024/05/2024-0522-aiterm/">iTerm2に追加されたAIサポートを使ってみる</a>
+          </li>
+        
+          <li>
+            <a href="/2024/05/2024-0501-ghcr-image/">GitHubのコンテナレジストリにイメージをアップロードする</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%83%A9%E3%82%A4%E3%83%95/">エンジニアライフ</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E8%A1%93/">技術</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AI/" rel="tag">AI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/" rel="tag">Apache</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Azure/" rel="tag">Azure</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bot/" rel="tag">Bot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cosmos-DB/" rel="tag">Cosmos DB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DB/" rel="tag">DB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DI/" rel="tag">DI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Excel/" rel="tag">Excel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitHub/" rel="tag">GitHub</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitHub-Container-Registry/" rel="tag">GitHub Container Registry</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github-Pages/" rel="tag">Github Pages</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Google-Tech-Dev-Guide/" rel="tag">Google Tech Dev Guide</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Helix/" rel="tag">Helix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Heroku/" rel="tag">Heroku</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hotwire/" rel="tag">Hotwire</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kotlin/" rel="tag">Kotlin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kubernetes/" rel="tag">Kubernetes</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LINE-Bot/" rel="tag">LINE Bot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Laravel/" rel="tag">Laravel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-Command/" rel="tag">Linux Command</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Livewire/" rel="tag">Livewire</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Logcat/" rel="tag">Logcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lua/" rel="tag">Lua</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Minikube/" rel="tag">Minikube</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NeoVim/" rel="tag">NeoVim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NeoVim%E3%83%97%E3%83%A9%E3%82%B0%E3%82%A4%E3%83%B3/" rel="tag">NeoVimプラグイン</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OR-Mapper/" rel="tag">OR Mapper</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OSS/" rel="tag">OSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Orchid/" rel="tag">Orchid</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PDF/" rel="tag">PDF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PostgreSQL/" rel="tag">PostgreSQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PowerShell/" rel="tag">PowerShell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RPA/" rel="tag">RPA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Room/" rel="tag">Room</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SMTP/" rel="tag">SMTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQLite/" rel="tag">SQLite</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH/" rel="tag">SSH</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Shell-Script/" rel="tag">Shell Script</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-Boot/" rel="tag">Spring Boot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tabula/" rel="tag">Tabula</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Twitter/" rel="tag">Twitter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Twitter-API/" rel="tag">Twitter API</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Twitter4j/" rel="tag">Twitter4j</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UiPath/" rel="tag">UiPath</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unity/" rel="tag">Unity</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VBS/" rel="tag">VBS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VS-Code/" rel="tag">VS Code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/" rel="tag">Vim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Windows/" rel="tag">Windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xdebug/" rel="tag">Xdebug</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/admob/" rel="tag">admob</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/" rel="tag">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android-studio/" rel="tag">android studio</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/code-igniter/" rel="tag">code igniter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iTerm2-AI-ChatGPT-CLI/" rel="tag">iTerm2, AI, ChatGPT, CLI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mybatis/" rel="tag">mybatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/" rel="tag">node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php-di/" rel="tag">php-di</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/smtp4dev/" rel="tag">smtp4dev</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zellij/" rel="tag">zellij</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0/" rel="tag">アルゴリズム</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%82%A8%E3%83%87%E3%82%A3%E3%82%BF/" rel="tag">エディタ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%82%AD%E3%83%A3%E3%83%AA%E3%82%A2/" rel="tag">キャリア</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%82%AF%E3%83%AA%E3%82%A8%E3%82%A4%E3%83%86%E3%82%A3%E3%83%93%E3%83%86%E3%82%A3/" rel="tag">クリエイティビティ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3/" rel="tag">セッション</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%83%90%E3%83%83%E3%83%81/" rel="tag">バッチ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%83%96%E3%83%AD%E3%82%B0/" rel="tag">ブログ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%83%9E%E3%82%AF%E3%83%AD/" rel="tag">マクロ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%83%A2%E3%83%81%E3%83%99%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3/" rel="tag">モチベーション</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%80%8B%E4%BA%BA%E9%96%8B%E7%99%BA/" rel="tag">個人開発</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%9D%E5%BF%83%E8%80%85/" rel="tag">初心者</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%80%E9%80%9FKotlin-Android%E3%82%A2%E3%83%97%E3%83%AA%E9%96%8B%E7%99%BA%E5%85%A5%E9%96%80/" rel="tag">最速Kotlin&amp;Androidアプリ開発入門</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%AD%A3%E8%A6%8F%E8%A1%A8%E7%8F%BE/" rel="tag">正規表現</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%8B%AC%E5%AD%A6/" rel="tag">独学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%87%AA%E5%8B%95%E5%8C%96/" rel="tag">自動化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%8B%B1%E8%AA%9E/" rel="tag">英語</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%96%8B%E7%99%BA%E3%83%84%E3%83%BC%E3%83%AB/" rel="tag">開発ツール</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%96%A2%E6%95%B0%E5%9E%8B%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0/" rel="tag">関数型プログラミング</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AI/" style="font-size: 11px;">AI</a> <a href="/tags/Apache/" style="font-size: 10px;">Apache</a> <a href="/tags/Azure/" style="font-size: 11px;">Azure</a> <a href="/tags/Bot/" style="font-size: 10px;">Bot</a> <a href="/tags/Cosmos-DB/" style="font-size: 11px;">Cosmos DB</a> <a href="/tags/DB/" style="font-size: 11px;">DB</a> <a href="/tags/DI/" style="font-size: 10px;">DI</a> <a href="/tags/Docker/" style="font-size: 16px;">Docker</a> <a href="/tags/Excel/" style="font-size: 10px;">Excel</a> <a href="/tags/Git/" style="font-size: 11px;">Git</a> <a href="/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/tags/GitHub-Container-Registry/" style="font-size: 10px;">GitHub Container Registry</a> <a href="/tags/Github-Pages/" style="font-size: 15px;">Github Pages</a> <a href="/tags/Google-Tech-Dev-Guide/" style="font-size: 15px;">Google Tech Dev Guide</a> <a href="/tags/Helix/" style="font-size: 10px;">Helix</a> <a href="/tags/Heroku/" style="font-size: 11px;">Heroku</a> <a href="/tags/Hexo/" style="font-size: 17px;">Hexo</a> <a href="/tags/Hotwire/" style="font-size: 10px;">Hotwire</a> <a href="/tags/Java/" style="font-size: 19px;">Java</a> <a href="/tags/Kotlin/" style="font-size: 13px;">Kotlin</a> <a href="/tags/Kubernetes/" style="font-size: 11px;">Kubernetes</a> <a href="/tags/LINE-Bot/" style="font-size: 11px;">LINE Bot</a> <a href="/tags/Laravel/" style="font-size: 11px;">Laravel</a> <a href="/tags/Linux-Command/" style="font-size: 10px;">Linux Command</a> <a href="/tags/Livewire/" style="font-size: 10px;">Livewire</a> <a href="/tags/Logcat/" style="font-size: 10px;">Logcat</a> <a href="/tags/Lua/" style="font-size: 11px;">Lua</a> <a href="/tags/Minikube/" style="font-size: 10px;">Minikube</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/NeoVim/" style="font-size: 14px;">NeoVim</a> <a href="/tags/NeoVim%E3%83%97%E3%83%A9%E3%82%B0%E3%82%A4%E3%83%B3/" style="font-size: 12px;">NeoVimプラグイン</a> <a href="/tags/OR-Mapper/" style="font-size: 11px;">OR Mapper</a> <a href="/tags/OSS/" style="font-size: 11px;">OSS</a> <a href="/tags/Orchid/" style="font-size: 10px;">Orchid</a> <a href="/tags/PDF/" style="font-size: 10px;">PDF</a> <a href="/tags/PHP/" style="font-size: 18px;">PHP</a> <a href="/tags/PostgreSQL/" style="font-size: 11px;">PostgreSQL</a> <a href="/tags/PowerShell/" style="font-size: 10px;">PowerShell</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/RPA/" style="font-size: 10px;">RPA</a> <a href="/tags/React/" style="font-size: 10px;">React</a> <a href="/tags/Room/" style="font-size: 10px;">Room</a> <a href="/tags/SMTP/" style="font-size: 10px;">SMTP</a> <a href="/tags/SQLite/" style="font-size: 11px;">SQLite</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/Shell-Script/" style="font-size: 10px;">Shell Script</a> <a href="/tags/Spring-Boot/" style="font-size: 17px;">Spring Boot</a> <a href="/tags/Tabula/" style="font-size: 10px;">Tabula</a> <a href="/tags/Twitter/" style="font-size: 11px;">Twitter</a> <a href="/tags/Twitter-API/" style="font-size: 12px;">Twitter API</a> <a href="/tags/Twitter4j/" style="font-size: 10px;">Twitter4j</a> <a href="/tags/UiPath/" style="font-size: 10px;">UiPath</a> <a href="/tags/Unity/" style="font-size: 10px;">Unity</a> <a href="/tags/VBS/" style="font-size: 11px;">VBS</a> <a href="/tags/VS-Code/" style="font-size: 11px;">VS Code</a> <a href="/tags/Vim/" style="font-size: 11px;">Vim</a> <a href="/tags/Windows/" style="font-size: 12px;">Windows</a> <a href="/tags/Xdebug/" style="font-size: 10px;">Xdebug</a> <a href="/tags/admob/" style="font-size: 10px;">admob</a> <a href="/tags/android/" style="font-size: 20px;">android</a> <a href="/tags/android-studio/" style="font-size: 10px;">android studio</a> <a href="/tags/code-igniter/" style="font-size: 11px;">code igniter</a> <a href="/tags/iTerm2-AI-ChatGPT-CLI/" style="font-size: 10px;">iTerm2, AI, ChatGPT, CLI</a> <a href="/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/php-di/" style="font-size: 10px;">php-di</a> <a href="/tags/smtp4dev/" style="font-size: 10px;">smtp4dev</a> <a href="/tags/zellij/" style="font-size: 10px;">zellij</a> <a href="/tags/%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0/" style="font-size: 15px;">アルゴリズム</a> <a href="/tags/%E3%82%A8%E3%83%87%E3%82%A3%E3%82%BF/" style="font-size: 10px;">エディタ</a> <a href="/tags/%E3%82%AD%E3%83%A3%E3%83%AA%E3%82%A2/" style="font-size: 11px;">キャリア</a> <a href="/tags/%E3%82%AF%E3%83%AA%E3%82%A8%E3%82%A4%E3%83%86%E3%82%A3%E3%83%93%E3%83%86%E3%82%A3/" style="font-size: 11px;">クリエイティビティ</a> <a href="/tags/%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3/" style="font-size: 10px;">セッション</a> <a href="/tags/%E3%83%90%E3%83%83%E3%83%81/" style="font-size: 10px;">バッチ</a> <a href="/tags/%E3%83%96%E3%83%AD%E3%82%B0/" style="font-size: 10px;">ブログ</a> <a href="/tags/%E3%83%9E%E3%82%AF%E3%83%AD/" style="font-size: 10px;">マクロ</a> <a href="/tags/%E3%83%A2%E3%83%81%E3%83%99%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3/" style="font-size: 10px;">モチベーション</a> <a href="/tags/%E5%80%8B%E4%BA%BA%E9%96%8B%E7%99%BA/" style="font-size: 13px;">個人開発</a> <a href="/tags/%E5%88%9D%E5%BF%83%E8%80%85/" style="font-size: 10px;">初心者</a> <a href="/tags/%E6%9C%80%E9%80%9FKotlin-Android%E3%82%A2%E3%83%97%E3%83%AA%E9%96%8B%E7%99%BA%E5%85%A5%E9%96%80/" style="font-size: 14px;">最速Kotlin&Androidアプリ開発入門</a> <a href="/tags/%E6%AD%A3%E8%A6%8F%E8%A1%A8%E7%8F%BE/" style="font-size: 10px;">正規表現</a> <a href="/tags/%E7%8B%AC%E5%AD%A6/" style="font-size: 10px;">独学</a> <a href="/tags/%E8%87%AA%E5%8B%95%E5%8C%96/" style="font-size: 13px;">自動化</a> <a href="/tags/%E8%8B%B1%E8%AA%9E/" style="font-size: 11px;">英語</a> <a href="/tags/%E9%96%8B%E7%99%BA%E3%83%84%E3%83%BC%E3%83%AB/" style="font-size: 10px;">開発ツール</a> <a href="/tags/%E9%96%A2%E6%95%B0%E5%9E%8B%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0/" style="font-size: 10px;">関数型プログラミング</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">June 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/05/">May 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/03/">March 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">November 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">September 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">July 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/12/">December 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/">November 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">August 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">April 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2024 karintomania<br>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+    <a href="/categories/%E6%8A%80%E8%A1%93/" class="mobile-nav-link">Dev</a>
+  
+    <a href="/categories/%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%83%A9%E3%82%A4%E3%83%95/" class="mobile-nav-link">Engineer&#39;s life</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

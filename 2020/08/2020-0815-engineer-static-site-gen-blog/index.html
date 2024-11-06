@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-161452704-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-161452704-1');
+</script>
+<!-- End Google Analytics -->
+
+  
+  <title>エンジニア向けブログの始め方。年間経費1500円で運用している私がその方法を紹介 | 寝室コンピューティング</title>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- OGP settings -->
+	
+  		<meta name="description" content="はじめにこんにちは。 karintomania(@karintozuki)です。   私は現役エンジニアとしてこのブログを運用しています。一年ほど運用してみて、私の運用方法は、エンジニアでブログを始めたい人にお勧めできそうだな、と思ったので、こんな記事を書いてみました。結論から言うと、Github Pages + 静的サイトジェネレータを利用したブログが最強だと思っています。 特に経費の面では無料">
+<meta property="og:type" content="article">
+<meta property="og:title" content="エンジニア向けブログの始め方。年間経費1500円で運用している私がその方法を紹介">
+<meta property="og:url" content="https://www.bedroomcomputing.com/2020/08/2020-0815-engineer-static-site-gen-blog/index.html">
+<meta property="og:site_name" content="寝室コンピューティング">
+<meta property="og:description" content="はじめにこんにちは。 karintomania(@karintozuki)です。   私は現役エンジニアとしてこのブログを運用しています。一年ほど運用してみて、私の運用方法は、エンジニアでブログを始めたい人にお勧めできそうだな、と思ったので、こんな記事を書いてみました。結論から言うと、Github Pages + 静的サイトジェネレータを利用したブログが最強だと思っています。 特に経費の面では無料">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://www.bedroomcomputing.com/2020/08/2020-0815-engineer-static-site-gen-blog/thumb.png">
+<meta property="article:published_time" content="2020-08-15T19:01:38.000Z">
+<meta property="article:modified_time" content="2022-11-02T23:16:38.389Z">
+<meta property="article:author" content="karintomania">
+<meta property="article:tag" content="Hexo">
+<meta property="article:tag" content="Github Pages">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.bedroomcomputing.com/2020/08/2020-0815-engineer-static-site-gen-blog/thumb.png">
+	
+  
+  
+    <link rel="icon" href="/css/images/favicon.ico">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  <script data-ad-client="ca-pub-2164726777115826" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+	  <div id="logo-wrap">
+      <h1>
+        <a href="/" id="logo">寝室コンピューティング</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+          <a class="main-nav-link" href="/categories/%E6%8A%80%E8%A1%93/">Dev</a>
+        
+          <a class="main-nav-link" href="/categories/%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%83%A9%E3%82%A4%E3%83%95/">Engineer&#39;s life</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://www.bedroomcomputing.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2020-0815-engineer-static-site-gen-blog" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/2020-0815-engineer-static-site-gen-blog/" class="article-date">
+  <time datetime="2020-08-15T19:01:38.000Z" itemprop="datePublished">2020-08-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%83%A9%E3%82%A4%E3%83%95/">エンジニアライフ</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      エンジニア向けブログの始め方。年間経費1500円で運用している私がその方法を紹介
+    </h1>
+  
+
+      </header>
+	
+    <div class="article-entry" itemprop="articleBody">
+	
+		<img src="https://www.bedroomcomputing.com/2020/08/2020-0815-engineer-static-site-gen-blog/thumb.png">
+	
+      
+		<h2>目次</h2>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB"><span class="toc-text">はじめに</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%83%B3%E5%AE%9A%E8%AA%AD%E8%80%85"><span class="toc-text">想定読者</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%81%8C%E3%83%96%E3%83%AD%E3%82%B0%E3%82%92%E6%9B%B8%E3%81%8F%E3%83%A1%E3%83%AA%E3%83%83%E3%83%88"><span class="toc-text">エンジニアがブログを書くメリット</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%82%A2%E3%82%A6%E3%83%88%E3%83%97%E3%83%83%E3%83%88%E3%81%AE%E5%A0%B4%E3%81%AB%E3%81%AA%E3%82%8B"><span class="toc-text">アウトプットの場になる</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%80%E8%A1%93%E5%8A%9B%E3%81%AE%E8%A8%BC%E6%98%8E"><span class="toc-text">技術力の証明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%83%8D%E3%83%83%E3%83%88%E4%B8%8A%E3%81%AE%E6%9C%89%E5%90%8D%E4%BA%BA%E3%81%AB%E3%81%AA%E3%82%8C%E3%82%8B%E3%81%8B%E3%82%82"><span class="toc-text">ネット上の有名人になれるかも</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%AF%E6%A5%AD%E3%81%A8%E3%81%97%E3%81%A6"><span class="toc-text">副業として</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E5%90%91%E3%81%91%E3%81%AE%E3%83%96%E3%83%AD%E3%82%B0%E3%81%AE%E5%A7%8B%E3%82%81%E6%96%B9"><span class="toc-text">エンジニア向けのブログの始め方</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Github-Pages%E3%81%A8%E3%81%AF"><span class="toc-text">Github Pagesとは</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%99%E7%9A%84%E3%82%B5%E3%82%A4%E3%83%88%E3%82%B8%E3%82%A7%E3%83%8D%E3%83%AC%E3%83%BC%E3%82%BF%E3%81%A8%E3%81%AF"><span class="toc-text">静的サイトジェネレータとは</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Github-Pages-%E9%9D%99%E7%9A%84%E3%82%B5%E3%82%A4%E3%83%88%E3%82%B8%E3%82%A7%E3%83%8D%E3%83%AC%E3%83%BC%E3%82%BF%E3%81%8C%E3%81%8A%E3%81%99%E3%81%99%E3%82%81%E3%81%AA%E7%90%86%E7%94%B1"><span class="toc-text">Github Pages + 静的サイトジェネレータがおすすめな理由</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B5%8C%E8%B2%BB%E3%82%92%E6%8A%91%E3%81%88%E3%81%A6%E5%A7%8B%E3%82%81%E3%82%89%E3%82%8C%E3%82%8B"><span class="toc-text">経費を抑えて始められる</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Google%E5%BA%83%E5%91%8A%E3%82%84%E3%82%A2%E3%83%95%E3%82%A3%E3%83%AA%E3%82%A8%E3%82%A4%E3%83%88%E3%81%8C%E3%81%A7%E3%81%8D%E3%82%8B"><span class="toc-text">Google広告やアフィリエイトができる</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%80%E8%A1%93%E5%8A%9B%E3%81%AE%E3%82%A2%E3%83%94%E3%83%BC%E3%83%AB%E3%81%AB%E3%82%82%E3%81%AA%E3%82%8B"><span class="toc-text">技術力のアピールにもなる</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%83%87%E3%83%A1%E3%83%AA%E3%83%83%E3%83%88"><span class="toc-text">デメリット</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E5%AE%9A%E3%81%AE%E7%9F%A5%E8%AD%98%E3%81%8C%E5%BF%85%E8%A6%81"><span class="toc-text">一定の知識が必要</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%83%85%E5%A0%B1%E3%81%8C%E5%B0%91%E3%81%AA%E3%81%84"><span class="toc-text">情報が少ない</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%83%96%E3%83%AD%E3%82%B0%E3%82%92%E5%A7%8B%E3%82%81%E3%82%8B2%E3%82%B9%E3%83%86%E3%83%83%E3%83%97"><span class="toc-text">ブログを始める2ステップ</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%99%E7%9A%84%E3%82%B5%E3%82%A4%E3%83%88%E3%82%B8%E3%82%A7%E3%83%8D%E3%83%AC%E3%83%BC%E3%82%BF%E3%82%92%E9%81%B8%E3%81%B6"><span class="toc-text">静的サイトジェネレータを選ぶ</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Github-Pages%E3%81%AB%E3%81%A6%E5%85%AC%E9%96%8B"><span class="toc-text">Github Pagesにて公開</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%81%9D%E3%81%AE%E4%BB%96%E3%82%84%E3%81%A3%E3%81%A6%E3%81%8A%E3%81%84%E3%81%9F%E6%96%B9%E3%81%8C%E8%89%AF%E3%81%84%E3%81%93%E3%81%A8"><span class="toc-text">その他やっておいた方が良いこと</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%83%86%E3%83%BC%E3%83%9E%E3%81%AE%E5%A4%89%E6%9B%B4"><span class="toc-text">テーマの変更</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Google-Search-Console%E3%81%B8%E3%81%AE%E7%99%BB%E9%8C%B2"><span class="toc-text">Google Search Consoleへの登録</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Google-Analytics%E3%81%AE%E5%B0%8E%E5%85%A5"><span class="toc-text">Google Analyticsの導入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8B%AC%E8%87%AA%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E3%81%AB%E3%81%99%E3%82%8B"><span class="toc-text">独自ドメインにする</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Google-Adsense%E3%82%84%E3%82%A2%E3%83%95%E3%82%A3%E3%83%AA%E3%82%A8%E3%82%A4%E3%83%88%E7%99%BB%E9%8C%B2"><span class="toc-text">Google Adsenseやアフィリエイト登録</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A8%98%E4%BA%8B%E3%82%92%E6%9B%B8%E3%81%8F"><span class="toc-text">記事を書く</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%81%BE%E3%81%A8%E3%82%81"><span class="toc-text">まとめ</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%96%A2%E9%80%A3%E8%A8%98%E4%BA%8B"><span class="toc-text">関連記事</span></a></li></ol>
+        <h2 id="はじめに"><a href="#はじめに" class="headerlink" title="はじめに"></a>はじめに</h2><p>こんにちは。 <a target="_blank" rel="noopener" href="https://twitter.com/karintozuki">karintomania(@karintozuki)</a>です。  </p>
+<p>私は現役エンジニアとしてこのブログを運用しています。<br>一年ほど運用してみて、<br>私の運用方法は、<u>エンジニアでブログを始めたい人にお勧めできそうだな</u>、と思ったので、<br>こんな記事を書いてみました。<br>結論から言うと、<br><u>Github Pages + 静的サイトジェネレータ</u><br>を利用したブログが最強だと思っています。</p>
+<p>特に経費の面では無料〜１５００円程度の運用が可能です。<br>それでは詳細を紹介していきます。</p>
+<span id="more"></span>
+
+<h2 id="想定読者"><a href="#想定読者" class="headerlink" title="想定読者"></a>想定読者</h2><p>こういった人に向けて書いています。</p>
+<ul>
+<li>ブログを始めたいエンジニア</li>
+<li>ブログを始めたいけど費用を抑えたい人</li>
+</ul>
+<h2 id="エンジニアがブログを書くメリット"><a href="#エンジニアがブログを書くメリット" class="headerlink" title="エンジニアがブログを書くメリット"></a>エンジニアがブログを書くメリット</h2><p>運用方法を紹介する前に私がブログを運用してみて感じた<br>ブログを書くメリットを紹介しようと思います。</p>
+<h3 id="アウトプットの場になる"><a href="#アウトプットの場になる" class="headerlink" title="アウトプットの場になる"></a>アウトプットの場になる</h3><p>エンジニアという職業柄、新しい技術を習得することは付き物ですね。<br>ただインプットだけするよりアウトプットした方がより勉強になりますし、<br>他の人が同じことを勉強する際に参考になれるかもしれません。</p>
+<h3 id="技術力の証明"><a href="#技術力の証明" class="headerlink" title="技術力の証明"></a>技術力の証明</h3><p>ブログによって日々学んだことを書いていると、<br><u>そのブログを見せるだけで、自分の技術力の証明になります。</u><br>（もちろん、内容によりますが。。。）</p>
+<p>エンジニアですと、案件によっては作ったサービスなどを<br>他人に見せられないことも多いですよね。</p>
+<p>ですが、<u>案件内で学んだことをブログにアウトプットしておくことで<br>成果物を見せずとも技術を証明することができます。</u></p>
+<p>当たり前ですが、案件のソースコードを載せるのは<br>ほとんどの場合NGですので気をつけましょう笑</p>
+<h3 id="ネット上の有名人になれるかも"><a href="#ネット上の有名人になれるかも" class="headerlink" title="ネット上の有名人になれるかも"></a>ネット上の有名人になれるかも</h3><p>ブログが人気になれば、あのブログの人ですね、<br>なんて言われることもあるかもしれません。<br>私もそれを目指していますが、なかなか先は長そうです。。。</p>
+<h3 id="副業として"><a href="#副業として" class="headerlink" title="副業として"></a>副業として</h3><p>ブログで魅力的なのは、収益化の可能性があることです。<br><u><br>今回紹介する方法は、無料ブログサービスを使う場合と異なり、<br>広告を載せることができるので、収益化が可能です。<br></u></p>
+<p>また、自分でサービスなどを作る人であれば、<br>それを告知する場所としても使えるので、一つの武器になります。</p>
+<h2 id="エンジニア向けのブログの始め方"><a href="#エンジニア向けのブログの始め方" class="headerlink" title="エンジニア向けのブログの始め方"></a>エンジニア向けのブログの始め方</h2><p>冒頭にもお伝えしたように、<br>私はエンジニアの方がブログを始める際にはGithub Pagesと静的サイトジェネレータが良いと思っています。<br>それでは、これらはそもそも何なのかを紹介したいと思います。</p>
+<h3 id="Github-Pagesとは"><a href="#Github-Pagesとは" class="headerlink" title="Github Pagesとは"></a>Github Pagesとは</h3><p>Github Pagesとは、<u>Githubが提供している静的サイトのホスティングサービス</u>です。<br>エンジニアの方ならGithubを使ったことがあるかもしれません。</p>
+<p>このサービスは簡単にいうとGithubのリポジトリにHTMLやCSS、Javascriptを置いておくと、<br>それがWebページとして読めるようになる（ホスティングしてくれる）サービスです。<br>こちらはなんと<u>無料</u>で使えてしまいます！<br>無料で世界中にあなたのWebサイトを公開することができます。</p>
+<h3 id="静的サイトジェネレータとは"><a href="#静的サイトジェネレータとは" class="headerlink" title="静的サイトジェネレータとは"></a>静的サイトジェネレータとは</h3><p>静的サイトジェネレータとは、HTML、CSS、JavaScriptのみで作られたサイトを作れるプログラムです。<br>ちなみに反対語は動的サイトです。Wordpressなどで使ったサイトはHTMLなどの静的ファイル以外に<br>PHPやMySQLをサーバ側で動かすことになるので動的サイトになります。</p>
+<p>静的サイトジェネレータを使う理由としては、<br><u>サイト構築の手間を省き、ブログを書くことに集中するためです。</u></p>
+<p>一般的なブログには以下のような機能やパーツがあると思います。</p>
+<ul>
+<li>カテゴリごとに記事を分ける機能</li>
+<li>タグ付け</li>
+<li>ヘッダやサイドバー<br>などなど。。。</li>
+</ul>
+<p>これらをイチから自分でHTMLを作成していては大変ですよね。<br>それらの仕事を代わりにやってくれるのが静的サイトジェネレータです。</p>
+<h2 id="Github-Pages-静的サイトジェネレータがおすすめな理由"><a href="#Github-Pages-静的サイトジェネレータがおすすめな理由" class="headerlink" title="Github Pages + 静的サイトジェネレータがおすすめな理由"></a>Github Pages + 静的サイトジェネレータがおすすめな理由</h2><p>それではGithub Pages + 静的サイトジェネレータでブログを始めるメリットを紹介します。</p>
+<h3 id="経費を抑えて始められる"><a href="#経費を抑えて始められる" class="headerlink" title="経費を抑えて始められる"></a>経費を抑えて始められる</h3><p>ブログを始めるといえばWordpressが有名ですが、<br>その場合、<u>レンタルサーバ費が月額1000円くらいかかります。</u><br>（1000円くらい良いよ、という人はそれで全然問題ありません笑。）</p>
+<p>対して、<u>Github Pagesは無料、静的サイトジェネレータは無料なので、かかる経費は無料です。</u><br>独自ドメインにする場合でもドメインの費用は年間１５００円くらいなので、<br>だいぶ安いですね。</p>
+<p>私も最初はお試しで始めたので、独自ドメインなしの無料で始めました。</p>
+<h3 id="Google広告やアフィリエイトができる"><a href="#Google広告やアフィリエイトができる" class="headerlink" title="Google広告やアフィリエイトができる"></a>Google広告やアフィリエイトができる</h3><p>静的サイトジェネレータ + Github Pagesでは<br>Google adsenseやアフィリエイト広告を設置することが可能です。<br>よほど違法性の高い稼ぎ方をしなければ規約に触れることはないかと思います。</p>
+<p>無料ブログサービスなどもありますが、<br>こちらは広告などのマネタイズが制限される場合が多いため、<br>収益化も目指したい人にはおすすめです。</p>
+<h3 id="技術力のアピールにもなる"><a href="#技術力のアピールにもなる" class="headerlink" title="技術力のアピールにもなる"></a>技術力のアピールにもなる</h3><p>静的サイトジェネレータとGithubを使うので、最低限のIT知識が必要になります。<br>Githubはプログラマには必須の知識ですし、<br>静的サイトジェネレータは様々な言語で実装されています。</p>
+<p><u>自分が勉強している言語で構築することで、<br>その言語の勉強にもなります。</u></p>
+<h2 id="デメリット"><a href="#デメリット" class="headerlink" title="デメリット"></a>デメリット</h2><p>逆にデメリットを紹介します。</p>
+<h3 id="一定の知識が必要"><a href="#一定の知識が必要" class="headerlink" title="一定の知識が必要"></a>一定の知識が必要</h3><p>最低限、Githubの知識と、静的サイトジェネレータを使用するための知識は必要です。<br>テンプレートなどをカスタマイズするにはHTML、CSSの知識もあると良いでしょう。</p>
+<p>ただ、エンジニアであればこの辺りはもう習得済みであるケースも多いかと思います。<br>また、<u>ボタン一つで完成する、といった類のものではないため、<br>その学習が嫌な人は避けた方が良いでしょう。</u></p>
+<h3 id="情報が少ない"><a href="#情報が少ない" class="headerlink" title="情報が少ない"></a>情報が少ない</h3><p>現在、ブログを始めるにはWordPressを利用するのが主流であるため、<br><u>Wordpressに比べて、静的サイトジェネレータでブログを構築するための情報は少ないです。</u><br>必要な情報を取得できるだけのリテラシーが必要と言えるでしょう。</p>
+<h2 id="ブログを始める2ステップ"><a href="#ブログを始める2ステップ" class="headerlink" title="ブログを始める2ステップ"></a>ブログを始める2ステップ</h2><p>詳細な始め方を書くと、大変な量になってしまうので、<br>概要だけ書くことにします。</p>
+<p>といっても必要なのは<u>たったの２ステップです。</u></p>
+<ul>
+<li>静的サイトジェネレータを選ぶ</li>
+<li>Github Pagesにアップロードする</li>
+</ul>
+<p>それでは見ていきましょう。</p>
+<h3 id="静的サイトジェネレータを選ぶ"><a href="#静的サイトジェネレータを選ぶ" class="headerlink" title="静的サイトジェネレータを選ぶ"></a>静的サイトジェネレータを選ぶ</h3><p>まずは利用したい静的サイトジェネレータを選びましょう。</p>
+<p>各言語から出ているので、自分が得意な言語が良いかと思いますが、<br>基本的な操作はコマンドを叩くだけだったりするので、<br>自分の詳しい言語にこだわらなくても大丈夫です。</p>
+<p>各言語での有名な静的サイトジェネレータは以下の感じです。<br>Jekyllがかなり有名ですが、最近はJavaScript製のものも人気が出ています。</p>
+<table>
+<thead>
+<tr>
+<th>言語</th>
+<th>主要な静的サイトジェネレータ</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Ruby</td>
+<td>Jekyll</td>
+</tr>
+<tr>
+<td>JavaScript</td>
+<td>Gatsby, Hexo</td>
+</tr>
+<tr>
+<td>Go</td>
+<td>Hugo</td>
+</tr>
+</tbody></table>
+<p>ちなみにこのブログはJavaScript製のHexoを使用しています。</p>
+<p>各ジェネレータでチュートリアルなどがあると思うので、<br>それらを利用してテンプレートでも良いので、<br>ブログを生成してみましょう。</p>
+<p>ちなみにHexoを使ったブログの作り方を以下の記事で紹介しています。<br>興味があれば読んでみてください。<br><a href="/2020/11/2020-1123-hexo-github/">HexoとGithub Pagesを使って簡単にブログを公開する</a></p>
+<h3 id="Github-Pagesにて公開"><a href="#Github-Pagesにて公開" class="headerlink" title="Github Pagesにて公開"></a>Github Pagesにて公開</h3><p>静的サイトジェネレータを選び、サイトを生成したら、<br>Githubにてレポジトリを新規作成して、Webサイトのソースをアップロードします。</p>
+<p>詳細は省きますが、レポジトリの設定からGithub Pagesの項目へ移動し、<br>公開したいブランチ（基本はMasterかと思います）を選択します。</p>
+<p>リポジトリの設定画面を開きます。</p>
+<img src="/2020/08/2020-0815-engineer-static-site-gen-blog/01-setting.png" class="" title>
+
+<p>Github Pagesを設定します。</p>
+<img src="/2020/08/2020-0815-engineer-static-site-gen-blog/02-branch.png" class="" title>
+<p><u>たったこれだけの設定でサイトの公開が完了します。</u><br>サイトはhttps:&#x2F;&#x2F;{ユーザ名}.github.io&#x2F;{リポジトリ名}&#x2F;のアドレスでサイトが公開されます。</p>
+<p>しかも、多くの静的サイトジェネレータはGithub Pagesとの連携をサポートしているため、<br>この設定すらしなくて良いことがほとんどです。</p>
+<h2 id="その他やっておいた方が良いこと"><a href="#その他やっておいた方が良いこと" class="headerlink" title="その他やっておいた方が良いこと"></a>その他やっておいた方が良いこと</h2><p>これだけであなたのブログが公開されました。</p>
+<p>とはいえ、ブログとして運用していくにはまだまだ設定が必要です。<br>ここではブログ運用の際にやっておいた方が良いことを紹介します。</p>
+<h3 id="テーマの変更"><a href="#テーマの変更" class="headerlink" title="テーマの変更"></a>テーマの変更</h3><p>デフォルトのテーマでも良いですが、<br>どうせなら好きなテーマを選びましょう。</p>
+<h3 id="Google-Search-Consoleへの登録"><a href="#Google-Search-Consoleへの登録" class="headerlink" title="Google Search Consoleへの登録"></a>Google Search Consoleへの登録</h3><p><u>実はGithub Pagesでブログを公開しただけでは、Google検索に引っかかりません。</u><br>こちらの記事もご参照ください。</p>
+<p><a href="/2020/04/2020-0408-googleconsole/">GitHubPagesで作ったブログをGoogle検索にヒットさせる</a></p>
+<h3 id="Google-Analyticsの導入"><a href="#Google-Analyticsの導入" class="headerlink" title="Google Analyticsの導入"></a>Google Analyticsの導入</h3><p>これをすることで<u>どれくらいの人がブログを見たかを把握することができます。</u><br>モチベーション維持に効果絶大です。</p>
+<h3 id="独自ドメインにする"><a href="#独自ドメインにする" class="headerlink" title="独自ドメインにする"></a>独自ドメインにする</h3><p>github.ioドメインもハッカーぽくて良いですが笑<br><u>独自ドメインにすることでGoogle Adsenseを貼ることができます。</u><br>私はしばらくgithub.ioドメインでしたが、広告を貼るために独自ドメインを取得しました。</p>
+<p>ドメイン変更はそれなりに面倒なのとアクセス数に影響があるっぽいので、<br>なるべく早めにやっておいた方が良いです。</p>
+<p>ドメイン取得の際はお名前ドットコムがおすすめです。</p>
+
+<a target="_blank" href="https://px.a8.net/svt/ejp?a8mat=3BK2F7+C9RNN6+50+2HLB41" rel="nofollow noopener">
+<img border="0" width="468" height="60" alt="" src="https://www26.a8.net/svt/bgt?aid=200810563742&wid=001&eno=01&mid=s00000000018015048000&mc=1"></a>
+<img border="0" width="1" height="1" src="https://www16.a8.net/0.gif?a8mat=3BK2F7+C9RNN6+50+2HLB41" alt="">
+
+
+<h3 id="Google-Adsenseやアフィリエイト登録"><a href="#Google-Adsenseやアフィリエイト登録" class="headerlink" title="Google Adsenseやアフィリエイト登録"></a>Google Adsenseやアフィリエイト登録</h3><p>これはブログを収益化したい人向けになりますが、<br><u>収益がある、というのはブログを長く続けるには必要な要素だと思っています。</u></p>
+<h3 id="記事を書く"><a href="#記事を書く" class="headerlink" title="記事を書く"></a>記事を書く</h3><p>これは当たり前ですね。。。</p>
+<p>最初はネタ探しにも苦労すると思いますが、<br>私のおすすめは、<br><u>上記のブログ整備を進めながら、その作業自体を記事にしてしまうこと</u>ですね。<br>技術ブログを書くに当たって、<br>どんなふうに書くのかを知るための良い練習になると思います。</p>
+<h2 id="まとめ"><a href="#まとめ" class="headerlink" title="まとめ"></a>まとめ</h2><p>いかがでしたか。</p>
+<p>エンジニアはすでに必要な知識が身についているので、<br>WordPress使うよりもこの方法が良いと思っています。</p>
+<p>それと個人的には静的サイトジェネレーターのユーザーが増えて<br>界隈が盛り上がってくれたら良いなーと。</p>
+<p>この記事を読んで興味を持ったらぜひ挑戦してみてください。</p>
+<p>それじゃ今日はこの辺で。</p>
+<h2 id="関連記事"><a href="#関連記事" class="headerlink" title="関連記事"></a>関連記事</h2><p>こちらの記事ではHexoでブログを構築する方法を紹介しています。<br>興味があれば読んでみてください。  </p>
+<p><a href="/2020/11/2020-1123-hexo-github/">HexoとGithub Pagesを使って簡単にブログを公開する</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.bedroomcomputing.com/2020/08/2020-0815-engineer-static-site-gen-blog/" data-id="cm030t6td003h2nqrcgxh8pfy" data-title="エンジニア向けブログの始め方。年間経費1500円で運用している私がその方法を紹介" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Github-Pages/" rel="tag">Github Pages</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/08/2020-0823-twitter-api-without-library/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          【Java】Twitter APIからライブラリを使わずツイート取得してみる
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/08/2020-0808-java-twitter-cli-tool/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Twitter APIをJavaで触る！Twitter4jを使ってみた</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    <div class="widget-wrap">
+<h3 class="widget-title">About</h3>
+<div class="widget">
+	<img src="/css/images/author.png" alt="著者" class="author-img">
+	<a class="author-link" href="/about" >karintomania</a>
+	<p><p>イギリス在住のWeb開発者が日々学んだことを書き連ねています。<br> PHPメインでやらせてもらってます。</p>
+</p>
+</div>
+</div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/08/2024-0820-understanding/">AIに負けないプログラマ - 理解によるプログラミングについて</a>
+          </li>
+        
+          <li>
+            <a href="/2024/08/2024-0802-zellij-update-recovery/">Zellijのアップデートでセッションが消えてしまったとき</a>
+          </li>
+        
+          <li>
+            <a href="/2024/06/2024-0606-tripled-salary/">イギリスに来てから5年かけて給料を3倍にした話</a>
+          </li>
+        
+          <li>
+            <a href="/2024/05/2024-0522-aiterm/">iTerm2に追加されたAIサポートを使ってみる</a>
+          </li>
+        
+          <li>
+            <a href="/2024/05/2024-0501-ghcr-image/">GitHubのコンテナレジストリにイメージをアップロードする</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%83%A9%E3%82%A4%E3%83%95/">エンジニアライフ</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E8%A1%93/">技術</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AI/" rel="tag">AI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/" rel="tag">Apache</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Azure/" rel="tag">Azure</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bot/" rel="tag">Bot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cosmos-DB/" rel="tag">Cosmos DB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DB/" rel="tag">DB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DI/" rel="tag">DI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Excel/" rel="tag">Excel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitHub/" rel="tag">GitHub</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitHub-Container-Registry/" rel="tag">GitHub Container Registry</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github-Pages/" rel="tag">Github Pages</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Google-Tech-Dev-Guide/" rel="tag">Google Tech Dev Guide</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Helix/" rel="tag">Helix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Heroku/" rel="tag">Heroku</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hotwire/" rel="tag">Hotwire</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kotlin/" rel="tag">Kotlin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kubernetes/" rel="tag">Kubernetes</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LINE-Bot/" rel="tag">LINE Bot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Laravel/" rel="tag">Laravel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-Command/" rel="tag">Linux Command</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Livewire/" rel="tag">Livewire</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Logcat/" rel="tag">Logcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lua/" rel="tag">Lua</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Minikube/" rel="tag">Minikube</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NeoVim/" rel="tag">NeoVim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NeoVim%E3%83%97%E3%83%A9%E3%82%B0%E3%82%A4%E3%83%B3/" rel="tag">NeoVimプラグイン</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OR-Mapper/" rel="tag">OR Mapper</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OSS/" rel="tag">OSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Orchid/" rel="tag">Orchid</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PDF/" rel="tag">PDF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PostgreSQL/" rel="tag">PostgreSQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PowerShell/" rel="tag">PowerShell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RPA/" rel="tag">RPA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Room/" rel="tag">Room</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SMTP/" rel="tag">SMTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQLite/" rel="tag">SQLite</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH/" rel="tag">SSH</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Shell-Script/" rel="tag">Shell Script</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-Boot/" rel="tag">Spring Boot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tabula/" rel="tag">Tabula</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Twitter/" rel="tag">Twitter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Twitter-API/" rel="tag">Twitter API</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Twitter4j/" rel="tag">Twitter4j</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UiPath/" rel="tag">UiPath</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unity/" rel="tag">Unity</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VBS/" rel="tag">VBS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VS-Code/" rel="tag">VS Code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/" rel="tag">Vim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Windows/" rel="tag">Windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xdebug/" rel="tag">Xdebug</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/admob/" rel="tag">admob</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/" rel="tag">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android-studio/" rel="tag">android studio</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/code-igniter/" rel="tag">code igniter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iTerm2-AI-ChatGPT-CLI/" rel="tag">iTerm2, AI, ChatGPT, CLI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mybatis/" rel="tag">mybatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/" rel="tag">node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php-di/" rel="tag">php-di</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/smtp4dev/" rel="tag">smtp4dev</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zellij/" rel="tag">zellij</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0/" rel="tag">アルゴリズム</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%82%A8%E3%83%87%E3%82%A3%E3%82%BF/" rel="tag">エディタ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%82%AD%E3%83%A3%E3%83%AA%E3%82%A2/" rel="tag">キャリア</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%82%AF%E3%83%AA%E3%82%A8%E3%82%A4%E3%83%86%E3%82%A3%E3%83%93%E3%83%86%E3%82%A3/" rel="tag">クリエイティビティ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3/" rel="tag">セッション</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%83%90%E3%83%83%E3%83%81/" rel="tag">バッチ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%83%96%E3%83%AD%E3%82%B0/" rel="tag">ブログ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%83%9E%E3%82%AF%E3%83%AD/" rel="tag">マクロ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%83%A2%E3%83%81%E3%83%99%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3/" rel="tag">モチベーション</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%80%8B%E4%BA%BA%E9%96%8B%E7%99%BA/" rel="tag">個人開発</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%9D%E5%BF%83%E8%80%85/" rel="tag">初心者</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%80%E9%80%9FKotlin-Android%E3%82%A2%E3%83%97%E3%83%AA%E9%96%8B%E7%99%BA%E5%85%A5%E9%96%80/" rel="tag">最速Kotlin&amp;Androidアプリ開発入門</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%AD%A3%E8%A6%8F%E8%A1%A8%E7%8F%BE/" rel="tag">正規表現</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%8B%AC%E5%AD%A6/" rel="tag">独学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%87%AA%E5%8B%95%E5%8C%96/" rel="tag">自動化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%8B%B1%E8%AA%9E/" rel="tag">英語</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%96%8B%E7%99%BA%E3%83%84%E3%83%BC%E3%83%AB/" rel="tag">開発ツール</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%96%A2%E6%95%B0%E5%9E%8B%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0/" rel="tag">関数型プログラミング</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AI/" style="font-size: 11px;">AI</a> <a href="/tags/Apache/" style="font-size: 10px;">Apache</a> <a href="/tags/Azure/" style="font-size: 11px;">Azure</a> <a href="/tags/Bot/" style="font-size: 10px;">Bot</a> <a href="/tags/Cosmos-DB/" style="font-size: 11px;">Cosmos DB</a> <a href="/tags/DB/" style="font-size: 11px;">DB</a> <a href="/tags/DI/" style="font-size: 10px;">DI</a> <a href="/tags/Docker/" style="font-size: 16px;">Docker</a> <a href="/tags/Excel/" style="font-size: 10px;">Excel</a> <a href="/tags/Git/" style="font-size: 11px;">Git</a> <a href="/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/tags/GitHub-Container-Registry/" style="font-size: 10px;">GitHub Container Registry</a> <a href="/tags/Github-Pages/" style="font-size: 15px;">Github Pages</a> <a href="/tags/Google-Tech-Dev-Guide/" style="font-size: 15px;">Google Tech Dev Guide</a> <a href="/tags/Helix/" style="font-size: 10px;">Helix</a> <a href="/tags/Heroku/" style="font-size: 11px;">Heroku</a> <a href="/tags/Hexo/" style="font-size: 17px;">Hexo</a> <a href="/tags/Hotwire/" style="font-size: 10px;">Hotwire</a> <a href="/tags/Java/" style="font-size: 19px;">Java</a> <a href="/tags/Kotlin/" style="font-size: 13px;">Kotlin</a> <a href="/tags/Kubernetes/" style="font-size: 11px;">Kubernetes</a> <a href="/tags/LINE-Bot/" style="font-size: 11px;">LINE Bot</a> <a href="/tags/Laravel/" style="font-size: 11px;">Laravel</a> <a href="/tags/Linux-Command/" style="font-size: 10px;">Linux Command</a> <a href="/tags/Livewire/" style="font-size: 10px;">Livewire</a> <a href="/tags/Logcat/" style="font-size: 10px;">Logcat</a> <a href="/tags/Lua/" style="font-size: 11px;">Lua</a> <a href="/tags/Minikube/" style="font-size: 10px;">Minikube</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/NeoVim/" style="font-size: 14px;">NeoVim</a> <a href="/tags/NeoVim%E3%83%97%E3%83%A9%E3%82%B0%E3%82%A4%E3%83%B3/" style="font-size: 12px;">NeoVimプラグイン</a> <a href="/tags/OR-Mapper/" style="font-size: 11px;">OR Mapper</a> <a href="/tags/OSS/" style="font-size: 11px;">OSS</a> <a href="/tags/Orchid/" style="font-size: 10px;">Orchid</a> <a href="/tags/PDF/" style="font-size: 10px;">PDF</a> <a href="/tags/PHP/" style="font-size: 18px;">PHP</a> <a href="/tags/PostgreSQL/" style="font-size: 11px;">PostgreSQL</a> <a href="/tags/PowerShell/" style="font-size: 10px;">PowerShell</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/RPA/" style="font-size: 10px;">RPA</a> <a href="/tags/React/" style="font-size: 10px;">React</a> <a href="/tags/Room/" style="font-size: 10px;">Room</a> <a href="/tags/SMTP/" style="font-size: 10px;">SMTP</a> <a href="/tags/SQLite/" style="font-size: 11px;">SQLite</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/Shell-Script/" style="font-size: 10px;">Shell Script</a> <a href="/tags/Spring-Boot/" style="font-size: 17px;">Spring Boot</a> <a href="/tags/Tabula/" style="font-size: 10px;">Tabula</a> <a href="/tags/Twitter/" style="font-size: 11px;">Twitter</a> <a href="/tags/Twitter-API/" style="font-size: 12px;">Twitter API</a> <a href="/tags/Twitter4j/" style="font-size: 10px;">Twitter4j</a> <a href="/tags/UiPath/" style="font-size: 10px;">UiPath</a> <a href="/tags/Unity/" style="font-size: 10px;">Unity</a> <a href="/tags/VBS/" style="font-size: 11px;">VBS</a> <a href="/tags/VS-Code/" style="font-size: 11px;">VS Code</a> <a href="/tags/Vim/" style="font-size: 11px;">Vim</a> <a href="/tags/Windows/" style="font-size: 12px;">Windows</a> <a href="/tags/Xdebug/" style="font-size: 10px;">Xdebug</a> <a href="/tags/admob/" style="font-size: 10px;">admob</a> <a href="/tags/android/" style="font-size: 20px;">android</a> <a href="/tags/android-studio/" style="font-size: 10px;">android studio</a> <a href="/tags/code-igniter/" style="font-size: 11px;">code igniter</a> <a href="/tags/iTerm2-AI-ChatGPT-CLI/" style="font-size: 10px;">iTerm2, AI, ChatGPT, CLI</a> <a href="/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/php-di/" style="font-size: 10px;">php-di</a> <a href="/tags/smtp4dev/" style="font-size: 10px;">smtp4dev</a> <a href="/tags/zellij/" style="font-size: 10px;">zellij</a> <a href="/tags/%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0/" style="font-size: 15px;">アルゴリズム</a> <a href="/tags/%E3%82%A8%E3%83%87%E3%82%A3%E3%82%BF/" style="font-size: 10px;">エディタ</a> <a href="/tags/%E3%82%AD%E3%83%A3%E3%83%AA%E3%82%A2/" style="font-size: 11px;">キャリア</a> <a href="/tags/%E3%82%AF%E3%83%AA%E3%82%A8%E3%82%A4%E3%83%86%E3%82%A3%E3%83%93%E3%83%86%E3%82%A3/" style="font-size: 11px;">クリエイティビティ</a> <a href="/tags/%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3/" style="font-size: 10px;">セッション</a> <a href="/tags/%E3%83%90%E3%83%83%E3%83%81/" style="font-size: 10px;">バッチ</a> <a href="/tags/%E3%83%96%E3%83%AD%E3%82%B0/" style="font-size: 10px;">ブログ</a> <a href="/tags/%E3%83%9E%E3%82%AF%E3%83%AD/" style="font-size: 10px;">マクロ</a> <a href="/tags/%E3%83%A2%E3%83%81%E3%83%99%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3/" style="font-size: 10px;">モチベーション</a> <a href="/tags/%E5%80%8B%E4%BA%BA%E9%96%8B%E7%99%BA/" style="font-size: 13px;">個人開発</a> <a href="/tags/%E5%88%9D%E5%BF%83%E8%80%85/" style="font-size: 10px;">初心者</a> <a href="/tags/%E6%9C%80%E9%80%9FKotlin-Android%E3%82%A2%E3%83%97%E3%83%AA%E9%96%8B%E7%99%BA%E5%85%A5%E9%96%80/" style="font-size: 14px;">最速Kotlin&Androidアプリ開発入門</a> <a href="/tags/%E6%AD%A3%E8%A6%8F%E8%A1%A8%E7%8F%BE/" style="font-size: 10px;">正規表現</a> <a href="/tags/%E7%8B%AC%E5%AD%A6/" style="font-size: 10px;">独学</a> <a href="/tags/%E8%87%AA%E5%8B%95%E5%8C%96/" style="font-size: 13px;">自動化</a> <a href="/tags/%E8%8B%B1%E8%AA%9E/" style="font-size: 11px;">英語</a> <a href="/tags/%E9%96%8B%E7%99%BA%E3%83%84%E3%83%BC%E3%83%AB/" style="font-size: 10px;">開発ツール</a> <a href="/tags/%E9%96%A2%E6%95%B0%E5%9E%8B%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0/" style="font-size: 10px;">関数型プログラミング</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">June 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/05/">May 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/03/">March 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">November 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">September 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">July 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/12/">December 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/">November 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">August 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">April 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2024 karintomania<br>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+    <a href="/categories/%E6%8A%80%E8%A1%93/" class="mobile-nav-link">Dev</a>
+  
+    <a href="/categories/%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%83%A9%E3%82%A4%E3%83%95/" class="mobile-nav-link">Engineer&#39;s life</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

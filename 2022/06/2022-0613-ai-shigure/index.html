@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-161452704-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-161452704-1');
+</script>
+<!-- End Google Analytics -->
+
+  
+  <title>AIで凛として時雨をRe:Automationする！（歌詞をAIに自動生成させてみた） | 寝室コンピューティング</title>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- OGP settings -->
+	
+  		<meta name="description" content="背景こんにちは。凛として時雨が好きです。 かりんとうマニア(@karintozuki)です。今回はそんな凛として時雨（以下、時雨と表記）の歌詞をAIに学習させて自動生成できるかどうか試してみます。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AIで凛として時雨をRe:Automationする！（歌詞をAIに自動生成させてみた）">
+<meta property="og:url" content="https://www.bedroomcomputing.com/2022/06/2022-0613-ai-shigure/index.html">
+<meta property="og:site_name" content="寝室コンピューティング">
+<meta property="og:description" content="背景こんにちは。凛として時雨が好きです。 かりんとうマニア(@karintozuki)です。今回はそんな凛として時雨（以下、時雨と表記）の歌詞をAIに学習させて自動生成できるかどうか試してみます。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://www.bedroomcomputing.com/2022/06/2022-0613-ai-shigure/thumb.png">
+<meta property="article:published_time" content="2022-06-13T21:03:16.000Z">
+<meta property="article:modified_time" content="2022-11-02T23:16:38.473Z">
+<meta property="article:author" content="karintomania">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="Python">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.bedroomcomputing.com/2022/06/2022-0613-ai-shigure/thumb.png">
+	
+  
+  
+    <link rel="icon" href="/css/images/favicon.ico">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  <script data-ad-client="ca-pub-2164726777115826" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+	  <div id="logo-wrap">
+      <h1>
+        <a href="/" id="logo">寝室コンピューティング</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+          <a class="main-nav-link" href="/categories/%E6%8A%80%E8%A1%93/">Dev</a>
+        
+          <a class="main-nav-link" href="/categories/%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%83%A9%E3%82%A4%E3%83%95/">Engineer&#39;s life</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://www.bedroomcomputing.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2022-0613-ai-shigure" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2022/06/2022-0613-ai-shigure/" class="article-date">
+  <time datetime="2022-06-13T21:03:16.000Z" itemprop="datePublished">2022-06-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%8A%80%E8%A1%93/">技術</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      AIで凛として時雨をRe:Automationする！（歌詞をAIに自動生成させてみた）
+    </h1>
+  
+
+      </header>
+	
+    <div class="article-entry" itemprop="articleBody">
+	
+		<img src="https://www.bedroomcomputing.com/2022/06/2022-0613-ai-shigure/thumb.png">
+	
+      
+		<h2>目次</h2>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%83%8C%E6%99%AF"><span class="toc-text">背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%BA%E5%B7%A5%E7%9F%A5%E8%83%BDRinna%E3%81%AE%E7%B4%B9%E4%BB%8B"><span class="toc-text">人工知能Rinnaの紹介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A4%9C%E8%A8%BC%E6%96%B9%E6%B3%95"><span class="toc-text">検証方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%A6%E7%BF%92%E7%84%A1%E3%81%97"><span class="toc-text">学習無し</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Re-automation"><span class="toc-text">Re:automation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%83%86%E3%83%AC%E3%82%AD%E3%83%A3%E3%82%B9%E3%82%BF%E3%83%BC%E3%81%AE%E7%9C%9F%E5%AE%9F"><span class="toc-text">テレキャスターの真実</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JPOP-Xfile"><span class="toc-text">JPOP Xfile</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%BA%E3%82%89%E6%9D%B1%E4%BA%AC%E3%81%95%E3%81%84%E3%81%8F%E3%81%A0"><span class="toc-text">俺ら東京さいくだ</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%A6%E7%BF%92%EF%BC%93%E5%9B%9E%E7%9B%AE"><span class="toc-text">学習３回目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Re-automation"><span class="toc-text">Re:automation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%83%86%E3%83%AC%E3%82%AD%E3%83%A3%E3%82%B9%E3%82%BF%E3%83%BC%E3%81%AE%E7%9C%9F%E5%AE%9F"><span class="toc-text">テレキャスターの真実</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JPOP-Xfile"><span class="toc-text">JPOP Xfile</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%BA%E3%82%89%E6%9D%B1%E4%BA%AC%E3%81%95%E3%81%84%E3%81%8F%E3%81%A0"><span class="toc-text">俺ら東京さいくだ</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%A6%E7%BF%92%EF%BC%95%E5%9B%9E%E7%9B%AE"><span class="toc-text">学習５回目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Re-automation"><span class="toc-text">Re:automation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%83%86%E3%83%AC%E3%82%AD%E3%83%A3%E3%82%B9%E3%82%BF%E3%83%BC%E3%81%AE%E7%9C%9F%E5%AE%9F"><span class="toc-text">テレキャスターの真実</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JPOP-Xfile"><span class="toc-text">JPOP Xfile</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%BA%E3%82%89%E6%9D%B1%E4%BA%AC%E3%81%95%E3%81%84%E3%81%8F%E3%81%A0"><span class="toc-text">俺ら東京さいくだ</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%A6%E7%BF%92%EF%BC%91%EF%BC%90%E5%9B%9E%E7%9B%AE"><span class="toc-text">学習１０回目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Re-automation"><span class="toc-text">Re:automation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%83%86%E3%83%AC%E3%82%AD%E3%83%A3%E3%82%B9%E3%82%BF%E3%83%BC%E3%81%AE%E7%9C%9F%E5%AE%9F"><span class="toc-text">テレキャスターの真実</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JPOP-Xfile"><span class="toc-text">JPOP Xfile</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%BA%E3%82%89%E6%9D%B1%E4%BA%AC%E3%81%95%E3%81%84%E3%81%8F%E3%81%A0"><span class="toc-text">俺ら東京さいくだ</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%A6%E7%BF%92%EF%BC%92%EF%BC%90%E5%9B%9E%E7%9B%AE"><span class="toc-text">学習２０回目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Re-automation"><span class="toc-text">Re:automation</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E3%83%86%E3%83%AC%E3%82%AD%E3%83%A3%E3%82%B9%E3%82%BF%E3%83%BC%E3%81%AE%E7%9C%9F%E5%AE%9F"><span class="toc-text">テレキャスターの真実</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JPOP-Xfile"><span class="toc-text">JPOP Xfile</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%BA%E3%82%89%E6%9D%B1%E4%BA%AC%E3%81%95%E3%81%84%E3%81%8F%E3%81%A0"><span class="toc-text">俺ら東京さいくだ</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%81%9D%E3%81%AE%E4%BB%96"><span class="toc-text">その他</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AE%AE%E3%82%84%E3%81%8B%E3%81%AA%E6%AE%BA%E4%BA%BA"><span class="toc-text">鮮やかな殺人</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#illusion-is-mine"><span class="toc-text">illusion is mine</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#abnormalize"><span class="toc-text">abnormalize</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E3%81%BE%E3%81%A8%E3%82%81"><span class="toc-text">まとめ</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%A8%98%E4%BA%8B"><span class="toc-text">参考記事</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%96%A2%E9%80%A3%E8%A8%98%E4%BA%8B"><span class="toc-text">関連記事</span></a></li></ol>
+        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>こんにちは。<br>凛として時雨が好きです。 <a target="_blank" rel="noopener" href="https://twitter.com/karintozuki">かりんとうマニア(@karintozuki)</a>です。<br>今回はそんな凛として時雨（以下、時雨と表記）の歌詞をAIに学習させて自動生成できるかどうか試してみます。</p>
+<span id="more"></span>
+
+<p>時雨は曲も独特ですが、歌詞も割と特徴的です。<br>単語だったり、フレーズだったりが時雨っぽいなーと思わせるものが多いです。<br>殺伐としてるというか冷たい感じとも形容できる雰囲気の単語が多く出ている感じがします。</p>
+<p>そこでAIに時雨の歌詞を学習させて<br>人工知能にできるか試してみたいと思います。</p>
+<h2 id="人工知能Rinnaの紹介"><a href="#人工知能Rinnaの紹介" class="headerlink" title="人工知能Rinnaの紹介"></a>人工知能Rinnaの紹介</h2><p>とはいえ、私はAIを専門的にやっているプログラマではないので、<br>イチから人工知能を作るのはちょっと難しそうです。</p>
+<p>そこで色々ググった結果、すでに企業が訓練済みのモデルを公開してくれているようです。</p>
+<p>今回はRinna社が公開しているRinnaを使います。<br><a target="_blank" rel="noopener" href="https://huggingface.co/rinna/japanese-gpt2-medium">https://huggingface.co/rinna/japanese-gpt2-medium</a></p>
+<p>このRinnaはすでに日本語を学習しているので、<br>そのままでもかなりこなれた日本語を生成できるようです。</p>
+<p>このRinnaさんに時雨の歌詞をどっぷり学習してもらいましょう。</p>
+<img src="/2022/06/2022-0613-ai-shigure/rinna.png" class="" title="[rinna]">
+
+<h2 id="検証方法"><a href="#検証方法" class="headerlink" title="検証方法"></a>検証方法</h2><p>今回使用するRinnaはCLM(Causal Language Modelling)といって、<br>与えられた文章の次に来る単語を予測するのが得意です。</p>
+<p>なので、時雨の曲の一部を与えて、続く歌詞を生成させてみます。</p>
+<p>使う曲と歌詞は以下の感じです。</p>
+<table>
+<thead>
+<tr>
+<th>曲名</th>
+<th>歌詞</th>
+<th>選考理由</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Re:automation</td>
+<td>改造されて君を嫌いになっていく</td>
+<td>単純にAIっぽい歌だから（適当）</td>
+</tr>
+<tr>
+<td>テレキャスターの真実</td>
+<td>テレキャスターの真実は</td>
+<td>AIにテレキャスターの真実を聞いてみたいから</td>
+</tr>
+<tr>
+<td>JPOP Xfile</td>
+<td>君の自由にもう飽きて歌うこともなくなって</td>
+<td>一番好きな曲なので。</td>
+</tr>
+</tbody></table>
+<p>また、全然時雨っぽくない曲から時雨っぽい歌詞が出るのかも検証してみます。<br>ここは時雨っぽさが全くない（？）、吉幾三の俺ら東京さいくだの歌いだしを使って、<br>やっぱり時雨っぽい歌詞になるのか、それとも吉幾三に引っ張られるのかをテストしてみます。</p>
+<table>
+<thead>
+<tr>
+<th>曲名</th>
+<th>歌詞</th>
+<th>選考理由</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>俺ら東京さいくだ</td>
+<td>は～ テレビも無え ラジオも無え</td>
+<td>時雨っぽくないから</td>
+</tr>
+</tbody></table>
+<p>今回はそれぞれの曲に対して3パターンの候補を生成してもらいます。</p>
+<p>与えるデータはもちろん時雨の歌詞なのですが、<br>それだけではちょっとデータが少なかったので、TK from 凛として時雨のほうの歌詞も食わせてみました。</p>
+<p>がんばれRinna。</p>
+<h2 id="学習無し"><a href="#学習無し" class="headerlink" title="学習無し"></a>学習無し</h2><p>とりあえず凛として時雨をしらない無垢な状態のRinnaさんに<br>歌詞を生成してもらいましょう。</p>
+<blockquote><h3 id="Re-automation"><a href="#Re-automation" class="headerlink" title="Re:automation"></a>Re:automation</h3><p>改造されて君を嫌いになっていく</s> 俺はどうしたら好きになるのか?とか、そういうことを考えたり。 そのあとのレスで「このスレもそうだわ〜」と言っていたからさ・∀・)イラッとしたんだが &gt;スレの住人さんたちからも、「お前には好きになってやれない」と強く言われてた 「好きな人がいないのなら、好きになることを諦める必要は無いだろうね」って言ってましたよ! &gt;&gt;715みたいな奴</p>
+<p>改造されて君を嫌いになっていく</s> &gt;214 そういえば、今のところこのスレは俺が一番好きなキャラじゃないんだな。 「あの人は俺だっけ?なんでお前にはこんな事しちゃうんですか」って感じだよね。 でも「あなたは何をしてるんですか?」みたいなこと言ってたら、もう少し話したくなるよ だからこそ、自分から話しかけてみる必要があるのかもしれません! どうぞ皆様のご</p>
+<p>改造されて君を嫌いになっていく</s> まはもう少しで「俺の好きな奴」と思えてしまうかもしれない。 「お前が、この人だってそうやっていけばいいのだなあ……!」 「あの…、そんなことより………でもさ…」「……それなら……」 「……あ、おれも、俺の妹ちゃんですからねーよ!……私達にも、何があっても………」 どうやら私は、私が自分のことを好き</p>
+<h3 id="テレキャスターの真実"><a href="#テレキャスターの真実" class="headerlink" title="テレキャスターの真実"></a>テレキャスターの真実</h3><p>テレキャスターの真実は</s> 、 テレキャスターを知らない視聴者が、 視聴者に対して「テレキャスターとはどういうものか? 」と尋ねる。 またその理由は、「(テレキャスターに)テレキャスターってどうやってやるんだろう?」という疑問を投げかけられることがあるためである(テレキャスターとの対話で、 ) 「テレキャスターとは、何人くらいいるんですか?」という質問には、「(テレキャスターとして)誰一人いないですよ!」と答える人もいれば、「そんな</p>
+<p>テレキャスターの真実は</s> 1. 朝ドラ『あさイチ』(2007年3月)。 テレビ朝日アナウンサーとして、第6期「土曜ワイド劇場」枠で放送された。 当初は「日曜ワイド・日曜版」(2006年4月21日 - 2006年10月23日放送予定で、『あさイチ』に初登場したゲストが、番組制作担当と兼任していた。 司会進行役:石塚健(後のテレビ東京系全国ネットの番組司会者) 森永和夫 『あさ</p>
+<p>テレキャスターの真実は</s> 実は私にもわからない。 ・・・と、この「テレキャスター」に出会った時も、その日のうちに「テレキャスター」が何をしてくれるのか? そして、今週はどうなるだろう。 ・・・というのもこの『テレキャスター』とは、テレキャスターの略で、「テレビ電話(テレビ電話)」を意味しているらしい。 このテレキャスターの名前は、実は、テレキャスターと呼ばれているらしいのだそうだ。 「テレキャスター」には、ある</p>
+<h3 id="JPOP-Xfile"><a href="#JPOP-Xfile" class="headerlink" title="JPOP Xfile"></a>JPOP Xfile</h3><p>君の自由にもう飽きて歌うこともなくなって</s> 俺「そうだ!お前が歌ってくれたから、一緒に歌いたいんだけどね・・」→「うん。でもね。だからみんなで歌いましょうって言ったらいいじゃないか?」 でもそんなこと言ってるといつまでも俺は俺に何も言わなくて済んでくれないんだろうなあw まともなら「お前は何事にも絶対に関わらないようにしなさい!」というような奴なんだろう</p>
+<p>君の自由にもう飽きて歌うこともなくなって</s> 僕は、今年に入って1ヶ月も経たない。だから、今年の冬に何をやるのか全く決めずに 僕にとって、あの日が最後の日っていうような、そんな日もあるんだけど…。 それはきっと、この夏で一番大きな出来事だったはずなんですよね。 そして、この「今日」なんて本当に大事なものだと思うんです! そうやって、今年の春には、その「明日</p>
+<p>君の自由にもう飽きて歌うこともなくなって</s> そう言えば、あの時「あした」っていうのは、あの頃の気持ちを思い出させるんだよね。 「えーっ!?」と、ふっと目をつぶった瞬間に、その言葉が頭の中で流れ込んできたのを覚えてるわ・・・。 まぁ、そんなことより、この「あした!」の声の方が、ずっと心地良いなと思うのだよ! という訳で、今回は、「</p>
+<h3 id="俺ら東京さいくだ"><a href="#俺ら東京さいくだ" class="headerlink" title="俺ら東京さいくだ"></a>俺ら東京さいくだ</h3><p>は～ テレビも無え ラジオも無え</s> ありませんでした。 お客様のニーズに応えるべく、スタッフが頑張ります(&gt;_&lt;) 今年1月18日に開催予定の「第2回 あすか料理コンテスト」に出店します! 11時00分からスタートしていますよ!!お楽しみに!!! 「第3回 あすか料理グランプリ」では、 あおりた料理やお菓子を使ったレシピをご紹介</p>
+<p>は～ テレビも無え ラジオも無え</s> 見せず、テレビのチャンネルを外してたんだけどね・・(笑) 「お母さん、今度一緒に遊ぼうよ!」「今日は早く寝てね」と 言ってあげた。 「ママ!今日はもういいんですか?」と言いながら お昼から雨が降り始めた。 その日のうちに、 雨に降られてしまって傘を忘れていたら、 家に着く頃には雨だしで</p>
+<p>は～ テレビも無え ラジオも無え</s> 放送でしたが、 今回、お休みしていました。 「明日の日本」を観て きっとまた会いたくなるような日になるだろうなぁと・・・ 今日から、朝6時30分から 朝5時に起きてから、寝るまでに 寝ることが 一番だと思ってました(苦笑)。 今夜は お昼ご飯を作って食べに行きます! 「明日は</p>
+</blockquote>
+
+
+
+<p>うーん、ネット上のテキストを学習データにしているせいなのか、<br>〇ちゃんねるとアフィリエイトブログ、ニュースサイトあたりの文体が散見されますね。<br>ネット民丸出しな感じのテキストです。</p>
+<p>当然のことながら時雨っぽさはみじんもありません。<br>少し先行きが不安になりました。</p>
+<h2 id="学習３回目"><a href="#学習３回目" class="headerlink" title="学習３回目"></a>学習３回目</h2><p>AIにはエポックというものがあります。<br>ざっくり言うとデータを突っ込んで答え合わせをしながらパラメータを調整する、というのが１エポックです。</p>
+<p>とりあえずRinnaさんには時雨の歌詞を全部読みこみ、調整という作業を3回してもらいました。<br>その結果がこちらです。</p>
+<blockquote><h3 id="Re-automation"><a href="#Re-automation" class="headerlink" title="Re:automation"></a>Re:automation</h3><p>改造されて君を嫌いになっていくのか? そうか僕のせいでいいから君が僕を見つめてあげるよ。」 僕は今、何をしてるんだろうねぇ～って思う今日このごろだったらもう僕も気付いてないだろうなぁと思う今日このころじゃあまだまだ気付くことはあったかもしれないけど今はまだ何も見えていないことなんてあるし誰かを傷つけたり傷つけたりしたら終わりだからいつか忘れたいと思える今日この</p>
+<p>改造されて君を嫌いになっていくんだ。 「あの人が好きだったよね」の「あの人とは僕が違うから好きになったよね!」みたいな言葉が浮かんでくるんだけど、僕らはどうしたら好きな人の心を掴む事が出来るんかなぁ?って思いながら見てるんだろうなって思えたり、そんな風に見えてたくなる瞬間があるんだけど・・・・・ でもそれでいいんだ!今だけじゃダメだって言ってくれるのは</p>
+<p>改造されて君を嫌いになっていく僕の影はどうなったんだろう?って不安な気持ちが溢れてこっちまで来ても何も変わらないよね?なんか寂しさを感じているから、もうちょっとだけ悲しい感情を抱き続けるのかな?なんて思っちゃうよね…。 そんな風に思うと今はそんな感じになってしまってたのかなって思ったりしてるんだけど そうじゃないって思えるようになった時に少しホッとしちゃったんですかね?何か変わってくれ</p>
+<h3 id="テレキャスターの真実"><a href="#テレキャスターの真実" class="headerlink" title="テレキャスターの真実"></a>テレキャスターの真実</h3><p>テレキャスターの真実は、どうでもいいから僕らの心に届くものを見せてあげて欲しい。君らもいつか見つけたいあの子達と逢いたくなってしまうよ」 声を上げて叫んでる姿を見て涙が溢れたんだ! そう思いながら僕らは僕たちの心の中に寄りかかってきたのだろう 君たちは僕たちが見た夢や未来を切り取ったような錯覚に襲われるからだって 「もう少し強くなりたいな」とか「もっと</p>
+<p>テレキャスターの真実は? - livedoor China (曖昧さ回避) - ウェイバックマシン(2009年5月6日アーカイブ分) #テレキャスターがテレキャスターを「テレキャスター」と呼ばないようにするには?—— テレキャスターが「テレキャスター」と呼ぶには「テレキャスター」とは呼ばないでテレキャスターに呼ばれてテレキャスターを呼ぶか、それともテレキャスター呼ぶのか? テレキャスターがテレ</p>
+<p>テレキャスターの真実はどうなるのか?? 僕が知ったこと、今さら聞けない真実。その真実とは!?? 「あなたのこと嫌いな人がいるよね!」 と僕を怒らせている。 「好きになった人がいたら幸せになれる」 と僕に言った。 それは嘘でも何でもない と僕の声だ… 僕もそうだったんだけどさっきまで「君が好きになってほしいなら幸せになろう!僕なりの愛を伝えてあげ</p>
+<h3 id="JPOP-Xfile"><a href="#JPOP-Xfile" class="headerlink" title="JPOP Xfile"></a>JPOP Xfile</h3><p>君の自由にもう飽きて歌うこともなくなってしまい、 僕は今ここにいるから、僕も君の声が聞こえてるんだよっていう風に感じているんですね。 だからこそ、僕と君を離してあげることさえ出来なかった僕に声を掛けられるようになったりして… 僕には、この僕だけが見えない世界があるんだなって思うんだよなって思いながら 僕は君だけじゃなくて誰かと一緒にいたいなんて思えるわけじゃないんだよ? 僕だけの</p>
+<p>君の自由にもう飽きて歌うこともなくなってしまいました。まだ何もしないでただただ泣いてたんだけどね。でも今は僕が生きてるこの世界を壊さないようにしたいです(<em>^_^</em>) そんな気持ちになったらきっとまたどこかで止まってくれるはず!って思いながら抱きしめていたよ♡ 今月いっぱいまで待っていてくれたら幸せなことになってもいいし、いつか叶わなくても大丈夫なんだと思えるような奇跡に気づけ</p>
+<p>君の自由にもう飽きて歌うこともなくなってきたよなぁ・・」 「僕はもう少しだけ、僕とあなたの間に距離を置いていけばいいんだろうね」「まだ僕が僕を離さないでいるから、今この瞬間を大切にしてあげてほしいよね」 「うんうんうん、僕もそう思うし誰かに抱かれてしまうようなことはしたくなくて、ずっと僕を待っていたいな。」 「うんうんうん。そうなってほしいけど、まだ僕には</p>
+<h3 id="俺ら東京さいくだ"><a href="#俺ら東京さいくだ" class="headerlink" title="俺ら東京さいくだ"></a>俺ら東京さいくだ</h3><p>は～ テレビも無え ラジオも無えの で、 いつまでも 笑ってるんだね・・・。 そんな風に思う今日この頃ですが 昨日は朝から 寝起きに 1時間ほど ぐーっと 眠ってしまったり、 目をこすりすぎて眠れなかったりと 色々と 不安になりますよね? でも 私は いつも 元気になってくれているし いつも心にも元気をもらっているよ</p>
+<p>は～ テレビも無え ラジオも無え テレビもないのに、この人達からしたら 誰一人として何もない。 今夜こそは 君の声を聴いてくれたんだぞっ! 今日もまた明日が終わっちゃうよぉー 僕らは いつも いつも 君達の笑顔を見つめてるしねぇー もういいかい? この日もまだまだ寒い一日ですが、風邪引かないように気をつけて</p>
+<p>は～ テレビも無え ラジオも無えーな?何でそんなことするのよね! って思ったりしてましたが、今日も元気そうだったわ。 明日は台風24号接近のため、お出かけにはお気をつけくださいませ&lt;(_ _)&gt; 「大雨洪水警報」を発令中です。皆様の安全とご多幸を心よりお祈り申し上げますm(__)m 今朝から雨ばかり</p>
+</blockquote>
+
+<p>ネット民っぽさがだいぶ薄れていい感じです。<br>特筆すべきは一人称に僕を使うようになったことでしょうか。</p>
+<p>ですが、まだまだ全体的に独り言っぽい感じで、歌詞のような文体ではないようです。<br>テレキャスターという単語はあまり使われない単語なので、精度が低いように感じます。</p>
+<h2 id="学習５回目"><a href="#学習５回目" class="headerlink" title="学習５回目"></a>学習５回目</h2><p>5回学習した後の結果がこちらです。</p>
+<blockquote><h3 id="Re-automation"><a href="#Re-automation" class="headerlink" title="Re:automation"></a>Re:automation</h3><p>改造されて君を嫌いになっていくんだろう? 僕はもうこの世の果てには生きて行けないし、僕がいないと何もできないだろう。 まだ僕の中で何か足りないものを見つけ出して、それでもいらないものはないものを探し出すからねぇー どうせ君も僕の中に何か欲しいものがないか探してみるよぉ～ そんな僕の声を僕達に届かせられるようにしたいって思っていたんだ 誰かを待っている時でも誰かがいるなら 誰にも邪魔</p>
+<p>改造されて君を嫌いになっていく。 僕はいつも自分の好きな物だけを愛してるよって思えるようになったらもう少しで終わりだねえって感じてるよね 誰かが僕と会えたならその日の出来事も全部好きになれそうな気配りの感情があるからなあなんか寂しいんだけど何かが寂しくなってきてしまうよね?笑っていい事あるといいねぇ いつかこの世界で君を忘れないでくれたあの日を思い</p>
+<p>改造されて君を嫌いになっていく」 君の記憶の中で君は誰にも奪われないから僕らの世界へはもう行けないんだろうね。 この世界のどこかにある誰かと僕らはどう向き合えばいいのだろう? その問いかけた答えが僕らを「君」に変えてくれるなら僕もいつか叶えることができるよ。 そして僕たちもいつか叶えてあげたいけど叶えないからこの世界に逃げてしまってもいつか叶うよ僕だけになれるよ</p>
+<h3 id="テレキャスターの真実"><a href="#テレキャスターの真実" class="headerlink" title="テレキャスターの真実"></a>テレキャスターの真実</h3><p>テレキャスターの真実は? と疑問に思わざるを得ないのですが、それって何なんでしょうか? 実は、そのテレキャスターを誰よりも嫌いな人達が「僕」だと思ってるのですか? 「僕」なんて言葉で「僕」を嫌いな人の正体を調べてみた! 答えを探してみる… 今すぐ会いたいあなたがあるのよね。 あなたもそう思うよねえ誰かが「僕」「僕」を見てくれてる</p>
+<p>テレキャスターの真実は? - 君が知っていたら教えてくれ! - テレキャスターと未来へ- 夢を叶えた僕達の秘密に隠された秘密を探してみる- テレキャスターと未来へ〜「僕」の真相は? (曖昧さ回避) このドラマティックな物語の中で、今あなたの中にある奇跡的な「奇跡」って何だろう? その答えを求めてるよね? 「嘘なんてないから」 あの日見た景色すべてが</p>
+<p>テレキャスターの真実はどうなるだろう? 僕が見つけた嘘とは何か? 君も信じたい未来はない。僕だけの秘密なんてないからねぇ、今は秘密って言葉があるけど、僕だけが知っている真実は何なんでしょうか?誰にも分からないよ誰かを信じたければ誰かに伝えたいことを伝えて終わりじゃないですか?僕だけの夢ならまだ叶えるからその約束を僕なりに変える為にこの世界に飛び込んだ僕でいいんだよ君と僕</p>
+<h3 id="JPOP-Xfile"><a href="#JPOP-Xfile" class="headerlink" title="JPOP Xfile"></a>JPOP Xfile</h3><p>君の自由にもう飽きて歌うこともなくなってきたよ」と告げる「まだまだ君に歌えないから歌わないけどいつか誰かを泣かせようじゃないかな?」 「僕は僕が生きていくってことは誰かが死ぬってことさ」「僕らの未来はないんだろうな?死んでないで」と告げる君の言葉の意味とは? 「僕らはもう僕らしさも知らないだろうね。僕だけが消えてもいないだろうよ」と伝えながら</s> - - - -</p>
+<p>君の自由にもう飽きて歌うこともなくなってるんだ。」 君と僕は違う生き方が出来ているよ、僕に君がいて僕は何を感じてるのか分からないから僕も誰かに僕を捧げたくて仕方がなくなるよ僕なんていないだろうしいつか僕の中で僕を見つけて僕を見てみせるっていうのは誰かの言葉で僕は無意識の中にある言葉なんだけど僕は何かに僕を見つめられたいなって思うよ君がいるのかなあ</s></p>
+<p>君の自由にもう飽きて歌うこともなくなってるよなぁ…。 俺ももう少しで終わりにするつもりだったんだからさあ君を泣く前に僕は消えないだろうけど? この世界が僕達の中で唯一生きているって言うんだねえと思えたらいいなって思うのなら 君達が僕達の世界にいない理由なんかどこにある気づいてないよ何か見つけてあげてるかな?誰かが僕らの世界に逃げ出したあとは誰かが</p>
+<h3 id="俺ら東京さいくだ"><a href="#俺ら東京さいくだ" class="headerlink" title="俺ら東京さいくだ"></a>俺ら東京さいくだ</h3><p>は～ テレビも無え ラジオも無えっさに失笑してたけどなあ… もうちょっと待っててね、まだ君のそばにはいるから いつか僕が誰かを殺さないと あの日の涙を流しながら 明日死ぬかも知れなくて泣いてしまった 今日生きてるんだよ 今生きているんだよ今死んでるんだったら今生きていて良いんだって心で感じているだけじゃ意味ないんだ</s> - - - -</p>
+<p>は～ テレビも無え ラジオも無え Can you? もうちょっと 君と会えていいよ 今度また逢えたらいいなあの子たち。僕の心の中にいてもいられず、僕が抱き締めたくなってるからね この前、君に会ったら「あぁ今日は何だかい?」って声かけてきちゃったよね! 僕を抱きしめているのは「君」だけじゃないってことなんだって</p>
+<p>は～ テレビも無え ラジオも無え ラジオも無え ラジオも無え ラジオも無え ラジオも無え ラジオも無え ラジオも無え ラジオも無え ラジオも無え ラジオも無え ラジオにも無え ラジオも無え ラジオも無え ラジオも無え ラジオも無え ラジオも同じ ラジオ番組でも無え ラジオとは無え ラジオも無</p>
+</blockquote>
+
+<p>いい感じではないでしょうか。<br>しかし、どことなくオネエっぽくなってしまいました。</p>
+<p>その理由が、やたらと語尾に「ねえ」を使っているところです。</p>
+<blockquote><p>「僕だけの秘密なんてないからねぇ、今は秘密って。。。」</p>
+</blockquote>
+
+<p>ちょっと考えて気づいたのですが、こちらは語尾にねえ、がついているではなく、</p>
+<blockquote><p>「僕だけの秘密なんてないから。ねぇ、今は秘密って。。。」</p>
+</blockquote>
+
+<p>という風に解釈すると急に時雨みが増します。<br>今回使用した歌詞データの中に「ねえ」または「ねぇ」は合計26回出現していました。</p>
+<p>君が知っていたら教えてくれ！は笑ってしまいました。</p>
+<blockquote><p>テレキャスターの真実は? - 君が知っていたら教えてくれ!</p>
+</blockquote>
+
+<p>吉幾三も少しではありますが、「殺す」など物騒な言葉が出たり、<br>「Can you?」など英語が混じってくるあたり、時雨みが出ているといえるのではないでしょうか。</p>
+<blockquote><p>は～ テレビも無え ラジオも無え Can you? もうちょっと 君と会えていいよ</p>
+</blockquote>
+
+<p>三個めの生成はラジオが欲しすぎて訳が分からなくなってますね。<br><s>意味不明の re:automation!!!</s></p>
+<blockquote><p>は～ テレビも無え ラジオも無え ラジオも無え ラジオも無え ラジオも無え ラジオも無え ラジオも無え ラジオも無え ラジオも無え ラジオも無え ラジオも無え ラジオにも無え ラジオも無え ラジオも無え ラジオも無え ラジオも無え ラジオも同じ ラジオ番組でも無え ラジオとは無え ラジオも無</p>
+</blockquote>
+
+
+<h2 id="学習１０回目"><a href="#学習１０回目" class="headerlink" title="学習１０回目"></a>学習１０回目</h2><p>どんどん行きます。10回学習したあとの結果がこちらです。</p>
+<blockquote><h3 id="Re-automation"><a href="#Re-automation" class="headerlink" title="Re:automation"></a>Re:automation</h3><p>改造されて君を嫌いになっていくのも僕だけ? 愛は永遠に壊れていくから? もう僕なんて誰にもなれないの? その答えを教えてねぇよ。 誰かが変えても君は変えられなくて 僕だけのせいで 変わっていくからねえよ 君さえも僕じゃないって 変わらないんだなって思うようになっていくよね? 君の中に何か居場所はないけど 僕の中で居る場所はいつか変わるだろうし変えられない</p>
+<p>改造されて君を嫌いになっていくのは僕だけ? この本で言う改造ってなんだろう?僕は何をしたらいいかな?僕の中で「ああいう改造をする」みたいな「改造しない」が僕の中に居るから、僕の中では誰にも似てるよねえ。僕の中の何かと違う感覚になった時も「あれ?」と思った時に誰かを変えられないのなら僕らは変わるんだろうなって思えるのは自由だねえけど僕だけがそうだったとしても</p>
+<p>改造されて君を嫌いになっていく。 その言葉は僕の心の中に染み付いている 僕の中で君と僕が混ざり合うようにして 僕の中の記憶が消えていく様に 壊された君が僕の体から抜け出して 壊れた僕らを救っていく様を見て 君も変わっていくよね?笑う前に 傷だらけで僕らのせいになって 壊れてしまった君のことを救ってる僕達の本当の姿が見えなくて怖いけど僕たちの未来が見えるなら</p>
+<h3 id="テレキャスターの真実"><a href="#テレキャスターの真実" class="headerlink" title="テレキャスターの真実"></a>テレキャスターの真実</h3><p>テレキャスターの真実は? と聞いてみたら テレキャスターが伝えたかったことは「僕を好き」って言葉にしましたか? 今からワクワクしながら「僕のことを嫌いだなあ」なんて思いながら 君を見つめてあげるよね? もう少しだけ見守っていたいかな そう思えたら誰かが見てもらいたいドラマがあるはず。今からワクワクしてた頃を思い出したら「このドラマは僕じゃないよ</p>
+<p>テレキャスターの真実は、今から24年前の「奇跡」で僕が歌う言葉とメロディーを織り交ぜて伝えます。その全てが今に生きる意味があるのなら、今から22分ある時間を僕の中で繋いでくれた大切な誰かを奇跡として君の声も届きだしましたよね? この世界に入り込んでしまったらもう戻れないけど僕らは戻れるよ 今この瞬間に目を覚ましてあげるっていうのが僕達にとって大切なんだ</p>
+<p>テレキャスターの真実は、誰にも見えない秘密に閉じ込められた僕らの心には秘密が隠されてたんだろう? 僕らは君と繋いでる奇跡さえも届かないからねえよこの二人だけの秘密を壊してまであの日を永遠に残していくのは誰になるの? 僕たちの未来を切り裂いてでもその傷を癒すためならまだ良いのかなあなんて思いながら見上げてたけどさ</s> - - - - - -</p>
+<h3 id="JPOP-Xfile"><a href="#JPOP-Xfile" class="headerlink" title="JPOP Xfile"></a>JPOP Xfile</h3><p>君の自由にもう飽きて歌うこともなくなってから いつか僕は誰よりも僕を殺そうとしてるんだろうなあと思わせてくれるフレーズがいい歌だね。 いつかこの歌のために 僕と僕を繋ぐ未来を創り出したいって思うよ 夢見てたけど今叶わないよ 夢なんて叶うはずもないんだよ 僕もいつかこの歌のために いつかあの場所で死ぬまで僕を殺さないでいたかった</s> - - - - -</p>
+<p>君の自由にもう飽きて歌うこともなくなってしまいましたよね。僕は僕を見つめていたいから声を上げて歌えるようにしてるんだろうな?今は僕と触れ合いたいって願っているから少しだけ僕に寄りかかったりして笑っていたりしているんだけどその言葉が僕の中で鳴り止まないように僕の中に鳴り止まない様に僕の中に入れて来たりしていたら僕はまだまだ僕のことを知ってしまうだろうなあと僕は何でもいいけど僕には分からなくて</p>
+<p>君の自由にもう飽きて歌うこともなくなってしまいますが 僕は僕を愛せないからね 君に僕がいるよね 今すぐ泣いて笑ってあげる 誰かのために僕を守ってくれる人になってくれたら僕なんて何もできないからね僕は無意味なんだってさ 今だけじゃ足りないけど足りないものを僕らは与えないでいい もっと遠くへ行こうかな 今だけの世界と未来がある限り今のままで良い いつまでも君を見つめ</p>
+<h3 id="俺ら東京さいくだ"><a href="#俺ら東京さいくだ" class="headerlink" title="俺ら東京さいくだ"></a>俺ら東京さいくだ</h3><p>は～ テレビも無え ラジオも無えがきでごまかせてください。 いつもの通りお願いしますねぇ もう少しだけ待ってるよ? でもまだ慣れているから、また少しだけ待っていたいです いつもありがとうございます 明日の朝まで待っていてくれてるよ 今日も頑張らないと 今日は無理だよ 今になってやっといいかな? 今日だけはちょっとだけ待ってて まだ覚えてくれて</p>
+<p>は～ テレビも無え ラジオも無え ラジオも無え ラジオも無え ラジオも無え ラジオも無え ラジオも無え ラジオも無え ラジオも無え ラジオも無え ラジオも無え ラジオも無え ラジオも無え ラジオも無え ラジオも無え ラジオも無え ラジオも無え ラジオも無え ラジオも無え ラジオ</p>
+<p>は～ テレビも無え ラジオも無えに いつまで続くの?誰が言ったか知らないんだろう? あの日見た夢の中で 君は何を思うかなあ?僕と君は 君のことを思い浮かべたかい?まだ何も残ってないよ誰かが僕を見失わないでほしいよ 君を忘れないから君を思い出してね 未来へ さよならの歌もう会えたらいいけど 今だけだよ誰かに伝えてもいいし</p>
+</blockquote>
+
+<p>敬語が減ってきて、文体が時雨っぽくなってきました。</p>
+<p>これとかはかなり時雨みが強いです。<br>ワードチョイスが時雨っぽいのと文体が時雨の歌詞のようになっています。</p>
+<blockquote><p>改造されて君を嫌いになっていく。 その言葉は僕の心の中に染み付いている 僕の中で君と僕が混ざり合うようにして 僕の中の記憶が消えていく様に 壊された君が僕の体から抜け出して 壊れた僕らを救っていく様を見て 君も変わっていくよね?笑う前に 傷だらけで僕らのせいになって 壊れてしまった君のことを救ってる僕達の本当の姿が見えなくて怖いけど僕たちの未来が見えるなら</p>
+</blockquote>
+
+
+<h2 id="学習２０回目"><a href="#学習２０回目" class="headerlink" title="学習２０回目"></a>学習２０回目</h2><p>最後に20回やった結果がこちらです。</p>
+<blockquote><h3 id="Re-automation"><a href="#Re-automation" class="headerlink" title="Re:automation"></a>Re:automation</h3><p>改造されて君を嫌いになっていくの僕はいつの間にか僕が操る世界が僕と似ていたよね? 僕の中で何かを操って君を殺して君を奪うなんて夢じゃないの 誰かを刺して 君を奪っていくだけ僕を奪い返すから殺し屋になったり殺したりする未来を創っていくんだよ僕も壊せないの分かっていたらもう終わりなんだから壊さないであげようぜ僕は無意識になって消えていく未来を切り開いたあとで壊れ</p>
+<p>改造されて君を嫌いになっていくの僕はいつの間にか僕が操る世界が僕と似ていたよね? 僕の中で何かを操って君を殺して君を奪うなんて夢じゃないの 誰かを刺して 君を奪っていくだけ僕を奪い返すから殺し屋になったり殺したりする未来を創っていくんだよ僕も壊せないの分かっていたらもう終わりなんだから壊さないであげようぜ僕は無意識になって消えていく未来を切り開いたあとで壊れ</p>
+<p>改造されて君を嫌いになっていく 君が嫌いになっていく君の記憶は壊れていく- 僕らの記憶と 君の声 君の色は? 未来は? 誰かが変えていいよ僕らは変わるから 変えられないから 壊さないようにするっていうのは 僕達の記憶を奪ってしまうよ僕らにとって大切な事だわね いつか忘れるんだったら 消えてもおかしく無いんだろうなって 思いながら思い出すって</p>
+<h3 id="テレキャスターの真実"><a href="#テレキャスターの真実" class="headerlink" title="テレキャスターの真実"></a>テレキャスターの真実</h3><p>テレキャスターの真実はどこに消えたのか? 君と僕の境界線が曖昧なまま僕らの境界線が曖昧なまま僕らだけの境界線が見えなくなったら もう僕を知らない 誰かが僕を奪ってしまう 誰かが僕を奪うって怖いよねぇ 誰かがその場所に逃げてしまうなんて誰にも見えてこないで誰かが僕を奪い去っていくなんて想像してなかったわw いつか君を殺してあげるから見つけられなくて僕も殺せないよ</p>
+<p>テレキャスターの真実は? と聞かれれば「僕じゃないよね?」って答えてしまう。 僕が聞きたいんだったら、その答えを聞いてみる? 僕に答えを教えて! って答えてしまうんだろうなっていうのを掴むと ふわりした僕の中に「君」の声が浮かんで来て「あ〜い!!もういいかい?まだあげなくてよいかな」って 僕の中で「君のこと嫌いだなぁ」「もう少しあげる</p>
+<p>テレキャスターの真実は? テレキャスターの真実は? テレキャスターが真実を知ったら、どんなドラマになる? テレキャスターとテレキャスターを繋いで「テレ」な世界へ連れて行かれたテレキャスターは誰だったっけ? 「テレキャスターに騙されてる?」って言われた時もテレキャスターは嘘つきでしょ テレキャスターの嘘探しキタコレ! テレキャスターが嘘を見つけたら いつまでかテレキャスターは嘘だらけじゃない</p>
+<h3 id="JPOP-Xfile"><a href="#JPOP-Xfile" class="headerlink" title="JPOP Xfile"></a>JPOP Xfile</h3><p>君の自由にもう飽きて歌うこともなくなってしまっていた僕は、僕の中で僕が歌う「自由」を歌ってあげようという意識にふれました。 誰かの言葉を歌おうと思ったりして「自由」を歌うなんて事ないんだろう?僕と僕のリズムが合わなくなった僕らのリズムさえあればいいじゃないか 誰かが声を出し合って歌うなんておかしな世界だってあるよね 僕も歌いますがリズムで歌う事だけが</p>
+<p>君の自由にもう飽きて歌うこともなくなってるよね いつの間にか消えてしまった記憶とメロディーを思い出して泣いていた 記憶に戻れないから悲しくなって泣けた歌が頭にあってもおかしく無いなあの頃の僕はいつか忘れてしまうけど 誰かの歌を聞いていて少し笑った記憶とメロディを思い出すから怖くなったり悲しくなるよね 記憶なんて曖昧で何も始まらないんだけどいつか消えていく夢見て泣いた記憶を忘れた景色の中でふ</p>
+<p>君の自由にもう飽きて歌うこともなくなってくると僕は歌うようにして歌うようになるから歌えなくなった時も歌う事なんてなくなるんだよ僕が歌えばいいって分かってるから誰かのせいにするから あっちこっちで声を上げて歌うことさえままならないのさ今夜はこのフレーズを思い出して 僕の中で僕の中に揺れている風を感じながら踊り続けるからいつかは僕の中に入り込んでくる 夢の中では僕の中の揺れた音は僕の声が</p>
+<h3 id="俺ら東京さいくだ"><a href="#俺ら東京さいくだ" class="headerlink" title="俺ら東京さいくだ"></a>俺ら東京さいくだ</h3><p>は～ テレビも無え ラジオも無えの ドラマもないよねぇ・・・。 どうかしてあげていいですか? もう少しだけね ちょっと前に「今すぐ会いたい」って 思いましたけど もう いませんでしたから 「あぁ 今を逃がしている」と 思わせてあげたいですねぇ・・・ でもあの時、私は もう少しだけね もっと ずっとここに居て欲しい</p>
+<p>は～ テレビも無え ラジオも無え テレビも無えの 耳鳴りで止まらないでよ どうぞ静かにしてくれねぇ! 頭が下がるわあああ 僕らの歌ってる世界の歌に 心奪われないよな? この世界に一人だけ君がいるから君を想っている未来が見えるんだろうけど 僕らは誰なんだろうな いつか誰かを壊してしまえば もう僕じゃないんだろう?君だけの</p>
+<p>は～ テレビも無え ラジオも無え もう飽きてたよねぇっ? 今夜から ControllerのClashで 君と二人きりで 君を見上げてあげるよねぇ あしたのこのあとどうなったんだろう? 僕に夢中になってたよねぇっ? 僕が何かを夢見ているのか分からないんだねぇっと頭の中に 頭の中で 妄想してるよね</p>
+</blockquote>
+
+<p>どうでしょうか。<br>ところどころおかしなところはありますが、かなり時雨っぽい、といえるのではないでしょうか。<br>なんというかワードチョイスが絶妙に時雨です。</p>
+<img src="/2022/06/2022-0613-ai-shigure/rinna-guitar.png" class="" title="[rinna with guitar]">
+
+<p>吉幾三ですら時雨っぽさが出ています。</p>
+<p>逆にテレキャスターの真実は少し難しかったようです。<br>一個目の生成は歌詞に見えますが、ほかの二つはちょっと出来が良くないです。<br>やはりテレキャスターという単語がうまく認識できていないのかと思います。<br>AIの学習前に特定の単語を登録しておくこともできるみたいなので、次回試してみたいです。</p>
+<p>テレキャスターという単語は時雨の歌詞にたくさん出ているような気がしていましたが、<br>今回使ったデータには三回しか出てきません。<br>意外ですね。</p>
+<h2 id="その他"><a href="#その他" class="headerlink" title="その他"></a>その他</h2><p>せっかくなので、この時雨AIにほかの曲も生成してもらいました。</p>
+<blockquote><h3 id="鮮やかな殺人"><a href="#鮮やかな殺人" class="headerlink" title="鮮やかな殺人"></a>鮮やかな殺人</h3><p>鮮やかなクラクション君が鳴らしてた「僕」を鳴らすように 頭の中で 浮かんできたメロディは誰だって ふわっと 頭の中をよぎった感情の波みたいに ふわりと揺れる 君の声も 耳の奥で 揺れている声さえ 耳の奥深くに 揺れてるんだろうなってふわりと揺れて ふわりっと揺れてる あの頃を思い出してみてもいい? ふわりと揺れたら</p>
+<p>鮮やかなクラクション君が鳴らしてた「Can you know? 」のフレーズを思い出して 僕は今この瞬間に揺れている何かを感じてるって気付いてるよね 少し前に耳にしたフレーズを思い出したんだろう もう記憶も無くなってるし もう忘れたい事なんて無いから あの頃の記憶と変わらないよね この前の出来事を忘れないようにしたいから 今頃になってやっと忘れようとしてるから今日になったかな 忘れちゃうよ</p>
+<p>鮮やかなクラクション君が鳴らしてたのが聞こえないで 頭の中は赤く染まっていく音 君の声を僕に操れる様な君達が 僕を殺しに行くから僕も殺したいんだよ 殺さないでねえ誰かを殺したいと思ったのなら 殺していい?殺せないの君達のせいだろって殺せばいいんじゃなくて殺せるなら殺したかったのに 殺せなくなる前に もう終わりの無い様に 君たちが殺</p>
+</blockquote>
+
+<p>鮮やかなクラクション、という歌いだしから「殺す」という単語を生成しているのは元の歌詞の影響なのでしょうか。<br>また、ふわふわというのも時雨っぽいです。</p>
+<blockquote><h3 id="illusion-is-mine"><a href="#illusion-is-mine" class="headerlink" title="illusion is mine"></a>illusion is mine</h3><p>今半透明、水の中で溺れているのを想像してるんだろうが怖くなって「君を殺していいよ」って叫んで でも「殺したい?」と思ったりしてるからもう少しだけ目を開ければ 頭の中はもう溶け出してしまってるだろう 僕に刺さったり殺したりしないで 僕の中に潜らせて 君も僕の中の何かを溶かしていくから少しだけ心の奥深くに潜っていくのは 少しだけ心の中に 溶け</p>
+<p>今半透明、水の中で溺れている Crazy face in the world &#x2F; kill you to me? &#x2F; 僕の知らない世界を君に捧ぐ奇跡は誰にも届かない &#x2F; kill you are for you &#x2F; 僕の見えない世界が消えて Crazy face of my love you &#x2F; kill you are not? &#x2F; kill you kill you are not? &#x2F; kill you are not? &#x2F; kill you are</s></p>
+<p>今半透明、水の中で溺れていると「ふいにフタをする」と言うのでした。 僕はふらっと目を閉じて目を閉じたあとに浮かんだのが「ふいにフタする」というフレーズですよね。 もうすぐ2月になりましたし、もう少し季節を感じられるようにしてみようと思います! 今日も朝から雨降ってきました。風邪ひいてるかな?と思っていたけど今日からは止んでいいみたい</p>
+</blockquote>
+
+<p>全体的に殺意が強めの歌詞です。<br>溺れる、というワードに引っ張られているのでしょうか。</p>
+<p>Crazy face in the worldとかいうパワーフレーズは時雨の新譜といわれても信じてしまいそうです。<br>3個目はちょっと時雨っぽくないですね。</p>
+<p>ただ「フタをする」というフレーズ自体はいくつかの歌で出てくるので、<br>まったく的外れという感じでもないです。</p>
+<blockquote><h3 id="abnormalize"><a href="#abnormalize" class="headerlink" title="abnormalize"></a>abnormalize</h3><p>誰にも見せられないもの頭の中溢れてはいるけど、その正体を暴かれたいと願うのに夢中になっちゃって「僕のこと嫌い」なんて言わせてあげないよ いつかあの頃に戻ってもおかしくはない もう忘れてしまうから誰かに見られたくないんだろうねぇ 今夜もふらっと夢の中に居た気配さえあればいいよねぇ 君の声が聞こえてきたよ</s> - - - - - - - - -</p>
+<p>誰にも見せられないもの頭の中溢れてたって君だけの奇跡の奇跡に溺れる僕を救えたら幸せだけどね。誰かが笑ったから今があるよ叶わないんだよいつかは叶えたい憧れてる未来を思い出すことで夢が叶うっていう感情さえも消え去っていく世界に憧れていたから僕は僕を殺してしまうと夢の中で揺れていく僕の感情さえも消え去っていく世界に憧れてたものすべて叶えばいいけどね</s> - -</p>
+<p>誰にも見せられないもの頭の中溢れてたものが、いつの間にか「お前ら」になってしまってるから気付けばもう何も見えなくなってきたので気づけないんだってばあちゃんに似てるよねw もう見慣れた「お前らは」は僕を睨みつけたみたいに見えるから少し笑わせればいい? でもその気になればもうちょっとだけ笑いながら僕を見つめ直してあげれるかな? でもそれでも君と会うまでは少し</p>
+</blockquote>
+<p>突然の「ばあちゃんに似てるよねw」がどこから出てきたのかが不思議でしょうがない。<br>草まで生やしてるし。<br>ばあちゃん以外はかなり時雨っぽいですね。</p>
+<h2 id="まとめ"><a href="#まとめ" class="headerlink" title="まとめ"></a>まとめ</h2><p>どう思いましたか？<br>思ったより時雨っぽい文章が生成できたかと思います。</p>
+<h2 id="参考記事"><a href="#参考記事" class="headerlink" title="参考記事"></a>参考記事</h2><p>最後に、似たようなことをしてみたい！という人のために<br>参考にした記事を貼っておきます。</p>
+<p>歌詞の取得<br>WordCloudで凛として時雨の歌詞の傾向を可視化する<br><a target="_blank" rel="noopener" href="https://qiita.com/nekoumei/items/b1afca7cfb9e54303ab4">https://qiita.com/nekoumei/items/b1afca7cfb9e54303ab4</a></p>
+<p>Rinnaのファインチューニング<br>GPT-2をファインチューニングしてニュース記事のタイトルを条件付きで生成してみた。<br><a target="_blank" rel="noopener" href="https://qiita.com/m__k/items/36875fedf8ad1842b729">https://qiita.com/m__k/items/36875fedf8ad1842b729</a></p>
+<p>テキスト生成時のパラメータについて<br>rinna GPT-2モデルの生成パラメータ<br><a target="_blank" rel="noopener" href="https://zenn.dev/tyaahan/articles/a8d99900000002">https://zenn.dev/tyaahan/articles/a8d99900000002</a></p>
+<h2 id="関連記事"><a href="#関連記事" class="headerlink" title="関連記事"></a>関連記事</h2><p>こちらの記事もおすすめです。  </p>
+<p><a href="/2020/09/2020-0920-creativity/">クリエイティブになるための6つの方法！「Mastering Creativity」をエンジニアが読んだ感想</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://www.bedroomcomputing.com/2022/06/2022-0613-ai-shigure/" data-id="cm030t6vi00772nqrak1r8ipl" data-title="AIで凛として時雨をRe:Automationする！（歌詞をAIに自動生成させてみた）" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AI/" rel="tag">AI</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/06/2022-0626-php-session/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          PHP $_SESSIONの背後で起こっていること
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/05/2022-0527-php-di/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">PHP DIでDIを学ぶ</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    <div class="widget-wrap">
+<h3 class="widget-title">About</h3>
+<div class="widget">
+	<img src="/css/images/author.png" alt="著者" class="author-img">
+	<a class="author-link" href="/about" >karintomania</a>
+	<p><p>イギリス在住のWeb開発者が日々学んだことを書き連ねています。<br> PHPメインでやらせてもらってます。</p>
+</p>
+</div>
+</div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2024/08/2024-0820-understanding/">AIに負けないプログラマ - 理解によるプログラミングについて</a>
+          </li>
+        
+          <li>
+            <a href="/2024/08/2024-0802-zellij-update-recovery/">Zellijのアップデートでセッションが消えてしまったとき</a>
+          </li>
+        
+          <li>
+            <a href="/2024/06/2024-0606-tripled-salary/">イギリスに来てから5年かけて給料を3倍にした話</a>
+          </li>
+        
+          <li>
+            <a href="/2024/05/2024-0522-aiterm/">iTerm2に追加されたAIサポートを使ってみる</a>
+          </li>
+        
+          <li>
+            <a href="/2024/05/2024-0501-ghcr-image/">GitHubのコンテナレジストリにイメージをアップロードする</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%83%A9%E3%82%A4%E3%83%95/">エンジニアライフ</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E8%A1%93/">技術</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AI/" rel="tag">AI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apache/" rel="tag">Apache</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Azure/" rel="tag">Azure</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bot/" rel="tag">Bot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cosmos-DB/" rel="tag">Cosmos DB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DB/" rel="tag">DB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DI/" rel="tag">DI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Excel/" rel="tag">Excel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitHub/" rel="tag">GitHub</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitHub-Container-Registry/" rel="tag">GitHub Container Registry</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github-Pages/" rel="tag">Github Pages</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Google-Tech-Dev-Guide/" rel="tag">Google Tech Dev Guide</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Helix/" rel="tag">Helix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Heroku/" rel="tag">Heroku</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hotwire/" rel="tag">Hotwire</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kotlin/" rel="tag">Kotlin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kubernetes/" rel="tag">Kubernetes</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LINE-Bot/" rel="tag">LINE Bot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Laravel/" rel="tag">Laravel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux-Command/" rel="tag">Linux Command</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Livewire/" rel="tag">Livewire</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Logcat/" rel="tag">Logcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lua/" rel="tag">Lua</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Minikube/" rel="tag">Minikube</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NeoVim/" rel="tag">NeoVim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NeoVim%E3%83%97%E3%83%A9%E3%82%B0%E3%82%A4%E3%83%B3/" rel="tag">NeoVimプラグイン</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OR-Mapper/" rel="tag">OR Mapper</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OSS/" rel="tag">OSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Orchid/" rel="tag">Orchid</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PDF/" rel="tag">PDF</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PHP/" rel="tag">PHP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PostgreSQL/" rel="tag">PostgreSQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PowerShell/" rel="tag">PowerShell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RPA/" rel="tag">RPA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Room/" rel="tag">Room</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SMTP/" rel="tag">SMTP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQLite/" rel="tag">SQLite</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SSH/" rel="tag">SSH</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Shell-Script/" rel="tag">Shell Script</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring-Boot/" rel="tag">Spring Boot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tabula/" rel="tag">Tabula</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Twitter/" rel="tag">Twitter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Twitter-API/" rel="tag">Twitter API</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Twitter4j/" rel="tag">Twitter4j</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UiPath/" rel="tag">UiPath</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Unity/" rel="tag">Unity</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VBS/" rel="tag">VBS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VS-Code/" rel="tag">VS Code</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vim/" rel="tag">Vim</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Windows/" rel="tag">Windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Xdebug/" rel="tag">Xdebug</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/admob/" rel="tag">admob</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android/" rel="tag">android</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/android-studio/" rel="tag">android studio</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/code-igniter/" rel="tag">code igniter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iTerm2-AI-ChatGPT-CLI/" rel="tag">iTerm2, AI, ChatGPT, CLI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mybatis/" rel="tag">mybatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/" rel="tag">node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php-di/" rel="tag">php-di</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/smtp4dev/" rel="tag">smtp4dev</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zellij/" rel="tag">zellij</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0/" rel="tag">アルゴリズム</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%82%A8%E3%83%87%E3%82%A3%E3%82%BF/" rel="tag">エディタ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%82%AD%E3%83%A3%E3%83%AA%E3%82%A2/" rel="tag">キャリア</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%82%AF%E3%83%AA%E3%82%A8%E3%82%A4%E3%83%86%E3%82%A3%E3%83%93%E3%83%86%E3%82%A3/" rel="tag">クリエイティビティ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3/" rel="tag">セッション</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%83%90%E3%83%83%E3%83%81/" rel="tag">バッチ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%83%96%E3%83%AD%E3%82%B0/" rel="tag">ブログ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%83%9E%E3%82%AF%E3%83%AD/" rel="tag">マクロ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%83%A2%E3%83%81%E3%83%99%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3/" rel="tag">モチベーション</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%80%8B%E4%BA%BA%E9%96%8B%E7%99%BA/" rel="tag">個人開発</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%9D%E5%BF%83%E8%80%85/" rel="tag">初心者</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%80%E9%80%9FKotlin-Android%E3%82%A2%E3%83%97%E3%83%AA%E9%96%8B%E7%99%BA%E5%85%A5%E9%96%80/" rel="tag">最速Kotlin&amp;Androidアプリ開発入門</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%AD%A3%E8%A6%8F%E8%A1%A8%E7%8F%BE/" rel="tag">正規表現</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%8B%AC%E5%AD%A6/" rel="tag">独学</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%87%AA%E5%8B%95%E5%8C%96/" rel="tag">自動化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%8B%B1%E8%AA%9E/" rel="tag">英語</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%96%8B%E7%99%BA%E3%83%84%E3%83%BC%E3%83%AB/" rel="tag">開発ツール</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%96%A2%E6%95%B0%E5%9E%8B%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0/" rel="tag">関数型プログラミング</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/AI/" style="font-size: 11px;">AI</a> <a href="/tags/Apache/" style="font-size: 10px;">Apache</a> <a href="/tags/Azure/" style="font-size: 11px;">Azure</a> <a href="/tags/Bot/" style="font-size: 10px;">Bot</a> <a href="/tags/Cosmos-DB/" style="font-size: 11px;">Cosmos DB</a> <a href="/tags/DB/" style="font-size: 11px;">DB</a> <a href="/tags/DI/" style="font-size: 10px;">DI</a> <a href="/tags/Docker/" style="font-size: 16px;">Docker</a> <a href="/tags/Excel/" style="font-size: 10px;">Excel</a> <a href="/tags/Git/" style="font-size: 11px;">Git</a> <a href="/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/tags/GitHub-Container-Registry/" style="font-size: 10px;">GitHub Container Registry</a> <a href="/tags/Github-Pages/" style="font-size: 15px;">Github Pages</a> <a href="/tags/Google-Tech-Dev-Guide/" style="font-size: 15px;">Google Tech Dev Guide</a> <a href="/tags/Helix/" style="font-size: 10px;">Helix</a> <a href="/tags/Heroku/" style="font-size: 11px;">Heroku</a> <a href="/tags/Hexo/" style="font-size: 17px;">Hexo</a> <a href="/tags/Hotwire/" style="font-size: 10px;">Hotwire</a> <a href="/tags/Java/" style="font-size: 19px;">Java</a> <a href="/tags/Kotlin/" style="font-size: 13px;">Kotlin</a> <a href="/tags/Kubernetes/" style="font-size: 11px;">Kubernetes</a> <a href="/tags/LINE-Bot/" style="font-size: 11px;">LINE Bot</a> <a href="/tags/Laravel/" style="font-size: 11px;">Laravel</a> <a href="/tags/Linux-Command/" style="font-size: 10px;">Linux Command</a> <a href="/tags/Livewire/" style="font-size: 10px;">Livewire</a> <a href="/tags/Logcat/" style="font-size: 10px;">Logcat</a> <a href="/tags/Lua/" style="font-size: 11px;">Lua</a> <a href="/tags/Minikube/" style="font-size: 10px;">Minikube</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/NeoVim/" style="font-size: 14px;">NeoVim</a> <a href="/tags/NeoVim%E3%83%97%E3%83%A9%E3%82%B0%E3%82%A4%E3%83%B3/" style="font-size: 12px;">NeoVimプラグイン</a> <a href="/tags/OR-Mapper/" style="font-size: 11px;">OR Mapper</a> <a href="/tags/OSS/" style="font-size: 11px;">OSS</a> <a href="/tags/Orchid/" style="font-size: 10px;">Orchid</a> <a href="/tags/PDF/" style="font-size: 10px;">PDF</a> <a href="/tags/PHP/" style="font-size: 18px;">PHP</a> <a href="/tags/PostgreSQL/" style="font-size: 11px;">PostgreSQL</a> <a href="/tags/PowerShell/" style="font-size: 10px;">PowerShell</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/RPA/" style="font-size: 10px;">RPA</a> <a href="/tags/React/" style="font-size: 10px;">React</a> <a href="/tags/Room/" style="font-size: 10px;">Room</a> <a href="/tags/SMTP/" style="font-size: 10px;">SMTP</a> <a href="/tags/SQLite/" style="font-size: 11px;">SQLite</a> <a href="/tags/SSH/" style="font-size: 10px;">SSH</a> <a href="/tags/Shell-Script/" style="font-size: 10px;">Shell Script</a> <a href="/tags/Spring-Boot/" style="font-size: 17px;">Spring Boot</a> <a href="/tags/Tabula/" style="font-size: 10px;">Tabula</a> <a href="/tags/Twitter/" style="font-size: 11px;">Twitter</a> <a href="/tags/Twitter-API/" style="font-size: 12px;">Twitter API</a> <a href="/tags/Twitter4j/" style="font-size: 10px;">Twitter4j</a> <a href="/tags/UiPath/" style="font-size: 10px;">UiPath</a> <a href="/tags/Unity/" style="font-size: 10px;">Unity</a> <a href="/tags/VBS/" style="font-size: 11px;">VBS</a> <a href="/tags/VS-Code/" style="font-size: 11px;">VS Code</a> <a href="/tags/Vim/" style="font-size: 11px;">Vim</a> <a href="/tags/Windows/" style="font-size: 12px;">Windows</a> <a href="/tags/Xdebug/" style="font-size: 10px;">Xdebug</a> <a href="/tags/admob/" style="font-size: 10px;">admob</a> <a href="/tags/android/" style="font-size: 20px;">android</a> <a href="/tags/android-studio/" style="font-size: 10px;">android studio</a> <a href="/tags/code-igniter/" style="font-size: 11px;">code igniter</a> <a href="/tags/iTerm2-AI-ChatGPT-CLI/" style="font-size: 10px;">iTerm2, AI, ChatGPT, CLI</a> <a href="/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/php-di/" style="font-size: 10px;">php-di</a> <a href="/tags/smtp4dev/" style="font-size: 10px;">smtp4dev</a> <a href="/tags/zellij/" style="font-size: 10px;">zellij</a> <a href="/tags/%E3%82%A2%E3%83%AB%E3%82%B4%E3%83%AA%E3%82%BA%E3%83%A0/" style="font-size: 15px;">アルゴリズム</a> <a href="/tags/%E3%82%A8%E3%83%87%E3%82%A3%E3%82%BF/" style="font-size: 10px;">エディタ</a> <a href="/tags/%E3%82%AD%E3%83%A3%E3%83%AA%E3%82%A2/" style="font-size: 11px;">キャリア</a> <a href="/tags/%E3%82%AF%E3%83%AA%E3%82%A8%E3%82%A4%E3%83%86%E3%82%A3%E3%83%93%E3%83%86%E3%82%A3/" style="font-size: 11px;">クリエイティビティ</a> <a href="/tags/%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3/" style="font-size: 10px;">セッション</a> <a href="/tags/%E3%83%90%E3%83%83%E3%83%81/" style="font-size: 10px;">バッチ</a> <a href="/tags/%E3%83%96%E3%83%AD%E3%82%B0/" style="font-size: 10px;">ブログ</a> <a href="/tags/%E3%83%9E%E3%82%AF%E3%83%AD/" style="font-size: 10px;">マクロ</a> <a href="/tags/%E3%83%A2%E3%83%81%E3%83%99%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3/" style="font-size: 10px;">モチベーション</a> <a href="/tags/%E5%80%8B%E4%BA%BA%E9%96%8B%E7%99%BA/" style="font-size: 13px;">個人開発</a> <a href="/tags/%E5%88%9D%E5%BF%83%E8%80%85/" style="font-size: 10px;">初心者</a> <a href="/tags/%E6%9C%80%E9%80%9FKotlin-Android%E3%82%A2%E3%83%97%E3%83%AA%E9%96%8B%E7%99%BA%E5%85%A5%E9%96%80/" style="font-size: 14px;">最速Kotlin&Androidアプリ開発入門</a> <a href="/tags/%E6%AD%A3%E8%A6%8F%E8%A1%A8%E7%8F%BE/" style="font-size: 10px;">正規表現</a> <a href="/tags/%E7%8B%AC%E5%AD%A6/" style="font-size: 10px;">独学</a> <a href="/tags/%E8%87%AA%E5%8B%95%E5%8C%96/" style="font-size: 13px;">自動化</a> <a href="/tags/%E8%8B%B1%E8%AA%9E/" style="font-size: 11px;">英語</a> <a href="/tags/%E9%96%8B%E7%99%BA%E3%83%84%E3%83%BC%E3%83%AB/" style="font-size: 10px;">開発ツール</a> <a href="/tags/%E9%96%A2%E6%95%B0%E5%9E%8B%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0/" style="font-size: 10px;">関数型プログラミング</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">August 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">June 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/05/">May 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/03/">March 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">November 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/09/">September 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/08/">August 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/07/">July 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/12/">December 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/11/">November 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/08/">August 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/07/">July 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/06/">June 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">April 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">December 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">June 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">May 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">April 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2024 karintomania<br>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+    <a href="/categories/%E6%8A%80%E8%A1%93/" class="mobile-nav-link">Dev</a>
+  
+    <a href="/categories/%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%83%A9%E3%82%A4%E3%83%95/" class="mobile-nav-link">Engineer&#39;s life</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
