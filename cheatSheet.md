@@ -50,7 +50,13 @@ tags: [Java, PHP, Java script]
 feature は10 x 5くらいでOK
 
 ## Git関連
-deplo時のエラー
+
+Build wiht ssh keys
+```
+SSH_PUBLIC_KEY=$(cat ~/.ssh/id_ed25519.pub) SSH_PRIVATE_KEY=$(cat ~/.ssh/id_ed25519) docker compose build
+```
+
+deploy時のエラー
 ```
 Author identity unknown
 
@@ -62,7 +68,6 @@ Run
   git config --global user.name "Your Name"
 ```
 ```
-rm -rf .deploy_git && \
 git config --global user.name karintomania && git config --global user.email 19652340+karintomania@users.noreply.github.com && \
 hexo deploy
 ```
