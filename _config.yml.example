@@ -33,7 +33,7 @@ skip_render:
 
 # Writing
 new_post_name: :month:day-:title.md # File name of new posts
-default_layout: post
+default_layout: posthttps://karintomania:xxxx@github.com/karintomania/tech-memo.git
 titlecase: false # Transform title into titlecase
 external_link:
   enable: true # Open external links in new tab
@@ -91,7 +91,7 @@ theme: landscape
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://karintomania:xxxx@github.com/karintomania/tech-memo.git
+  repo: git@github.com:karintomania/tech-memo.git
   branch: gh-pages
 
 # site map
