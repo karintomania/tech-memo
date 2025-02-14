@@ -4,7 +4,9 @@
 hexo server
 hexo server --draft  
 hexo generate
-hexo deploy
+hexo d
+
+
 
 ドラフト作成  
 hexo new draft {draft名}  
@@ -67,6 +69,8 @@ Run
   git config --global user.email "you@example.com"
   git config --global user.name "Your Name"
 ```
+
+
 ```
 git config --global user.name karintomania && git config --global user.email 19652340+karintomania@users.noreply.github.com && \
 hexo deploy
