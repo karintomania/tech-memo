@@ -25,8 +25,3 @@ zellijのセッションは`~/Library/Caches/org.Zellij-Contributors.Zellij`（M
 https://github.com/zellij-org/zellij/issues/3371
 
 それじゃ今日はこの辺で。
-
-## 関連記事
-こちらの記事もおすすめです。  
-
-[イギリスに来てから5年かけて給料を3倍にした話](/2024/06/2024-0606-tripled-salary/)
