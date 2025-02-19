@@ -38,13 +38,37 @@ app()->instance(Service::class, $serviceMock);
 
 {% endcodeblock %}
 
-また上記のコードは`moいいと思います。ck()`が第２引数に無名関数を取れることを利用してワンライナーっぽく書けます。
+ただ上記のコードは`shouldReceive`や`andReturn`の返り値はmock自身ではないことから
+
+- mockを生成する
+- mockを設定する
+- mockをバインドする
+
+と記述が３行に渡っています。これはなんかすっきりしない、という人（私）もいると思います。
+
+そこで`getMock()`関数を使ってmock生成と設定を一気にやってしまうことができます。
+{% codeblock lang:php %}
+// ワンライナーで書く
+app()->instance(
+    Service::class,
+    mock(Service::class)
+        ->shouldReceive('test')
+        ->andReturn('mocked result')
+        ->once()
+        ->getMock()
+    )
+);
+{% endcodeblock %}
+
+
+もしくは`mock()`が第２引数に無名関数を取れることを利用してワンライナーっぽく書けます。
 
 {% codeblock lang:php %}
+// ワンライナーで書く - その２
 app()->instance(
-    MockingService::class,
+    Service::class,
     mock(
-        MockingService::class,
+        Service::class,
         fn (MockInterface $mock) => $mock->shouldReceive('test')
             ->andReturn('mocked result')
             ->once()
@@ -61,9 +85,11 @@ $mock = Mockery::mock(Service::class);
 $mock->shouldReceive('run')->andReturn('Mocked Response')->once();
 
 // MockをServiceクラスにバインドする
-app()->instance(Service::class, $serviceMock);
+app()->instance(Service::class, $mock);
 
 {% endcodeblock %}
+
+この方法は正直`mock()`があるのでわざわざ使わないかなと思います。
 
 ## 2. $this→mock()を使う
 
@@ -94,7 +120,9 @@ $this->partialMock(Service::class,
 
 ## mock()を使うとき
 
-基本的には`$this→mock`でいいのですが、`app()→instance()`のかわりに`app()→bind()`を使いたいときには`mock()`を使う必要があります。
+そんな感じで優秀な`$this→mock`なのですが、万能ではありません。
+
+`app()→instance()`のかわりに`app()→bind()`を使いたいときには`mock()`を使う必要があります。
 
 例えば、モックするクラスのインスタンスを作る際に引数を渡したいときなどが該当します。
 
@@ -103,7 +131,7 @@ app()->bind(
         Service::class,
         function(Application $app, array $params) {
             $mock = mock(Service::class);
-            $mock->shouldReceive('run')->andReturn('Mocked Response');
+            $mock->shouldReceive('run')->andReturn('Mocked Response')->once();
             return $mock;
 });
 
@@ -112,9 +140,21 @@ $serviceMock = app()->make(Service::class, ['param1' => 'test parameter']);
 
 {% endcodeblock %}
 
-## まとめ
 
-引数を渡したいなど、特に理由がない限りは`$this→mock`を使いましょう。
+私のプロジェクトでは`app()->bind()`も使いたかったので、`$this->mock`と`mock()`が混在しないように`mock()`で統一しようということになりました。
+
+ケースバイケースだったり個人の好みによるところが多いのでチームメンバーと話して決めるのがいいでしょう。
+
+## おまけ
+上記の例ではいつも`once()`を呼んでいます。  
+これをしないとモックした関数がテスト中に呼ばれなくてもエラーを吐かないので予期せずテストが通ってしまうことがあります。
+
+`shouldReceive`が効いてない！とパニくった実体験が私はあるので、皆さんは気をつけましょう。
+
+## まとめ
+Laravelには（良くも悪くも）Mockひとつとっても様々な書き方があります。  
+`$this→mock`を使うか`mock`を使うかはケースバイケースなので、  
+チームで統一性がとれるルールを選んで使いましょう。
 
 それじゃ今日はこの辺で。
 
