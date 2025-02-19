@@ -1,24 +1,14 @@
 # 基本
-
-サーバ起動  
-hexo server
-hexo server --draft  
-hexo generate
-hexo d
-
-
-
 ドラフト作成  
-hexo new draft {draft名}  
-hexo publish {draft名}    
+```
+make draft {タイトル}
+make publish {タイトル}
+```
 
-諸々きれいにする  
-hexo clean
-
-まとめてやる
-hexo clean && hexo generate && hexo deploy
-hexo clean && hexo generate
-
+きれいにする {タイトル}
+```
+make clean
+```
 
 # タグスクリプト
 ![](initializr.png) //　トップページでしくじる
@@ -29,14 +19,6 @@ hexo clean && hexo generate
 {% asset_img about_style.png [著者プロフィール] %}
 {% asset_img about_style.png %}
 
-[ブログ内のリンク](/tech-memo/2020/04/2020-0415-hexoCheatsheet/)
-
-こんにちは。[karintomania](https://twitter.com/karintozuki)です。
-[リンク文面](https://orchid.run/wiki/learn )
-
-https://karintomania.github.io/tech-memo/
-
-tags: [Java, PHP, Java script]
 
 テーブル
 |
@@ -47,31 +29,3 @@ tags: [Java, PHP, Java script]
 アフィリリンク用
 {% raw %}
 {% endraw %}
-
-## 画像
-feature は10 x 5くらいでOK
-
-## Git関連
-
-Build wiht ssh keys
-```
-SSH_PUBLIC_KEY=$(cat ~/.ssh/id_ed25519.pub) SSH_PRIVATE_KEY=$(cat ~/.ssh/id_ed25519) docker compose build
-```
-
-deploy時のエラー
-```
-Author identity unknown
-
-*** Please tell me who you are.
-
-Run
-
-  git config --global user.email "you@example.com"
-  git config --global user.name "Your Name"
-```
-
-
-```
-git config --global user.name karintomania && git config --global user.email 19652340+karintomania@users.noreply.github.com && \
-hexo deploy
-```

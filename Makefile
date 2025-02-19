@@ -1,4 +1,4 @@
-.PHONY: up, shell, draft, publish, deploy
+.PHONY: up, shell, draft, publish
 
 up: 
 	docker compose up -d
@@ -14,6 +14,9 @@ shell:
 		docker compose exec tech-memo /bin/bash; \
 	fi
 
+clean:
+	docker compose exec tech-memo /bin/bash -c 'hexo clean'
+
 draft:
 	$(eval TITLE := $(wordlist 2,$(words $(MAKECMDGOALS)),$(MAKECMDGOALS)))
 	docker compose run --rm tech-memo /bin/bash -c 'hexo new draft $(TITLE)'
@@ -21,7 +24,3 @@ draft:
 publish:
 	$(eval TITLE := $(wordlist 2,$(words $(MAKECMDGOALS)),$(MAKECMDGOALS)))
 	docker compose run --rm tech-memo /bin/bash -c 'hexo publish $(TITLE)'
-
-deploy:
-	docker compose run --rm tech-memo /bin/bash -c 'hexo clean && hexo generate'
-	docker compose run --rm tech-memo /bin/bash -c 'git config --global user.name karintomania && git config --global user.email 19652340+karintomania@users.noreply.github.com && hexo deploy'

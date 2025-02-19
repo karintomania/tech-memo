@@ -4,9 +4,6 @@ services:
     build:
       dockerfile: Dockerfile
       context: .
-      args:
-        SSH_PRIVATE_KEY: ${SSH_PRIVATE_KEY}
-        SSH_PUBLIC_KEY: ${SSH_PUBLIC_KEY}
     container_name: tech-memo
     volumes:
       - .:/app
