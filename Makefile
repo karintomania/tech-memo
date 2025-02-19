@@ -3,6 +3,9 @@
 up: 
 	docker compose up -d
 
+down: 
+	docker compose down
+
 shell:
 	$(eval CMD := $(wordlist 2,$(words $(MAKECMDGOALS)),$(MAKECMDGOALS)))
 	@if  [ "$(CMD)" ]; then \
