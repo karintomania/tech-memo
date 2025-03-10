@@ -1,5 +1,9 @@
 .PHONY: up, shell, draft, publish
 
+
+install: 
+	docker compose run --rm tech-memo /bin/bash -c 'npm install'
+
 up: 
 	docker compose up -d
 
