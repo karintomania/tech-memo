@@ -1,8 +1,9 @@
 # .clinerules
 
 # プロジェクトの概要
-これは私かりんとうマニアの技術ブログです。Hexoを使ったMarkdownで書かれています。
+これは私、かりんとうマニアの技術ブログです。Hexoを使ったMarkdownで書かれています。
 記事は日本語で書かれています。
+
 # 下書きの作成
 以下のコマンドで下書きを作成します。
 ```bash
@@ -18,15 +19,20 @@ $ make draft "slug-of-the-post"
    - `categories`: 技術 // categoriesの値はいつも技術
    - `featured_image`: thumb.png // featured_imageの値はいつもthumb.png
 
-2. **導入**: 記事の冒頭で「こんにちは。 [かりんとうマニア(@karintozuki)](https://twitter.com/karintozuki)です。」と挨拶し、著者の簡単な紹介から始め、記事の背景や動機を説明します。抜粋用に「more」タグを含めます。
+2. **導入**: 記事の冒頭で「こんにちは。 [かりんとうマニア(@karintozuki)](https://twitter.com/karintozuki)です。」と挨拶し、
+   著者の簡単な紹介から始め、記事の背景や動機を説明します。抜粋用に「more」タグを含めます。
 
-3. **本文**: 見出しや小見出しを使って内容を整理します。コードブロック、画像、リンクを適宜含めます。コードブロックは適切な言語タグを使用して記述します。例:
-  {% codeblock lang:php %}
+3. **本文**: 見出しや小見出しを使って内容を整理します。
+   コードブロック、画像、リンクを適宜含めます。
+   コードブロックは適切な言語タグを使用して記述します。
+   例:
+   {% codeblock lang:php %}
    // PHPのコード例
    $serviceMock = mock(Service::class);
    $serviceMock->shouldReceive('run')->andReturn('Mocked Response')->once();
    {% endcodeblock %}
-   画像を挿入する際は、`{% asset_img 画像ファイル名 %}`の形式を使用します。リンクを挿入する際は、適切なアンカーテキストを使用します。例:
+   画像を挿入する際は、`{% asset_img 画像ファイル名 %}`の形式を使用します。
+   リンクを挿入する際は、適切なアンカーテキストを使用します。例:
    [HelixのGitHubリンク](https://github.com/helix-editor/helix)
 
 4. **結論**: 主要なポイントをまとめ、記事の最後に「それじゃ今日はこの辺で。」と締めくくります。
