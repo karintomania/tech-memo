@@ -19,7 +19,7 @@ shell:
 	fi
 
 clean:
-	docker compose exec tech-memo /bin/bash -c 'hexo clean'
+	docker compose exec tech-memo /bin/bash -c 'hexo clean && hexo generate'
 
 draft:
 	$(eval TITLE := $(wordlist 2,$(words $(MAKECMDGOALS)),$(MAKECMDGOALS)))
