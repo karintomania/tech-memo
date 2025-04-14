@@ -26,6 +26,5 @@ make clean
 |
 |
 
-アフィリリンク用
-{% raw %}
-{% endraw %}
+広告
+{% adv 1 %}
