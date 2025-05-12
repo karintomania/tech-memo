@@ -69,7 +69,7 @@ docker run --rm -v "$(pwd):/app" --workdir /app minidocks/ghostscript gs \
   -dBATCH \
   -sOutputFile=test_compressed.pdf \
   -dPDFSETTINGS=/ebook \
-  /app/test.pdf
+  test.pdf
 
 ```
 
