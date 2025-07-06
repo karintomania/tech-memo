@@ -1,0 +1,28 @@
+# Custom Commands for Claude Code
+
+## add-underlines
+**Description**: Add underline tags to important sentences in blog posts, with approximately one underline per H2 section.
+
+**Usage**: `/add-underlines [file_path]`
+
+**Prompt**: 
+```
+You are tasked with adding <u> tags to important sentences in a Japanese blog post. Follow these guidelines:
+
+1. Read the specified file (if no file is provided, ask for the file path)
+2. Add <u> tags around important sentences - aim for approximately one underline per H2 section
+3. Don't overdo it - focus on key points that would benefit from emphasis
+4. Consider sentences that:
+   - Introduce key concepts or main points
+   - Provide important insights or conclusions
+   - Offer practical tips or recommendations
+   - State significant benefits or features
+
+Example transformation:
+- Before: "プロンプトをカスタマイズするのがこんなに楽しいことだったとは正直、知りませんでした。"
+- After: "<u>プロンプトをカスタマイズするのがこんなに楽しいことだったとは正直、知りませんでした。</u>"
+
+Process each H2 section systematically and ensure the underlines enhance readability without being excessive.
+```
+
+**Example**: `/add-underlines source/_posts/2025/0706-starship-prompt.md`
